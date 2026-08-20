@@ -173,7 +173,7 @@ Start with one simple query before running the full list.
 python -m rappi_co.study --country ar --terms cigarrillos --collect-only
 ```
 
-This runs the query at both configured Argentina locations and saves the raw result. It does not
+This runs the query at both configured Argentina locations and saves raw results. It does not
 classify or export a final workbook.
 
 Check that both locations returned sensible products. If Rappi returns a CAPTCHA, challenge page, or
@@ -191,7 +191,8 @@ The program completes these steps:
 
 1. It searches every configured term at both delivery locations.
 2. It saves each raw response and writes a completion record.
-3. It combines duplicate search results using `store_id` and `product_id`.
+3. Within each delivery location, it combines duplicate search results using `store_id` and
+   `product_id`.
 4. It classifies every product offline.
 5. It keeps only the four study categories in the final output.
 6. It writes CSV files, an Excel workbook, and a study manifest.
@@ -231,8 +232,16 @@ The raw completion record lists the queries used at one location. The study mani
 exact input files, output files, row counts, file sizes, and checksums for the final country run.
 
 The `data/` folder is ignored by Git. Do not force it into the repository. Raw responses can contain
-platform metadata that is not needed in a public data release. After review, copy only the final
-workbook intended for publication into `datasets/` and update `datasets/manifest.json`.
+platform metadata that is not needed in a public data release.
+
+Replacing a published workbook is a maintainer task. After review, copy only the approved workbook
+into `datasets/`, update its file size, checksum, and counts in `datasets/manifest.json`, and run:
+
+```bash
+python -m pytest tests/test_published_datasets.py -q
+```
+
+This test fails when a workbook and the release manifest do not agree.
 
 ## Rebuild from saved raw files
 

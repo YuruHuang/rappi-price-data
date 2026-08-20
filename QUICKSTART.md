@@ -3,6 +3,11 @@
 This page is the short command guide. The main [`README.md`](README.md) explains the files, method,
 and output structure.
 
+To read the published data only, open `datasets/argentina.xlsx`, `colombia.xlsx`, `peru.xlsx`, or
+`mexico.xlsx`. Python is not required for that.
+
+Run all commands below from the repository root.
+
 ## 1. Install
 
 ```bash
