@@ -1,0 +1,33 @@
+# Search seeds, not a national sales ranking. local_market means locally relevant,
+# not necessarily locally owned. Evidence was reviewed on the date below.
+country: pe
+checked_on: 2026-08-16
+brand_terms:
+  nicotine_pouches:
+    - {brand: ZYN, query: zyn bolsas de nicotina, market_scope: international, match: distinctive}
+    - {brand: VELO, query: velo bolsas de nicotina, market_scope: international, match: context_required}
+    - {brand: WAKA, query: waka pouches nicotina, market_scope: international, match: distinctive}
+    - {brand: KIK, query: kik stlth pouches nicotina, market_scope: local_market, match: distinctive}
+    - {brand: VIKA, query: vika pouches nicotina, market_scope: local_market, match: distinctive}
+    - {brand: BAGZ, query: bagz pouches nicotina, market_scope: local_market, match: distinctive}
+  electronic_cigarettes:
+    - {brand: Vuse Go, query: vuse go vapeador, market_scope: international, match: distinctive}
+    - {brand: VEEV Now, query: veev now vapeador, market_scope: international, match: distinctive}
+    - {brand: STLTH, query: stlth vapeador, market_scope: international, match: distinctive}
+    - {brand: WAKA, query: waka vapeador, market_scope: international, match: distinctive}
+    - {brand: RELX, query: relx pod vapeador, market_scope: international, match: distinctive}
+    - {brand: Elf Bar, query: elfbar vapeador, market_scope: international, match: distinctive}
+    - {brand: Geek Bar, query: geek bar vapeador, market_scope: international, match: distinctive}
+    - {brand: Lost Mary, query: lost mary vapeador, market_scope: international, match: distinctive}
+    - {brand: Life Pod, query: life pod vapeador, market_scope: local_market, match: context_required}
+    - {brand: Lophty, query: lophty vapeador, market_scope: local_market, match: distinctive}
+  heated_tobacco:
+    - {brand: TEREA, query: terea iqos tabaco calentado, market_scope: international, match: distinctive}
+    - {brand: IQOS, query: iqos iluma dispositivo tabaco calentado, market_scope: international, match: distinctive}
+  cigarettes:
+    - {brand: Marlboro, aliases: [Malboro], query: marlboro cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Lucky Strike, query: lucky strike cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Pall Mall, aliases: [Pall], query: pall mall cigarrillos, market_scope: international, match: distinctive}
+    - {brand: "L&M", aliases: [LyM], query: "l&m cigarrillos", market_scope: international, match: distinctive}
+    - {brand: Winston, query: winston cigarrillos, market_scope: international, match: context_required}
+    - {brand: Kent, query: kent cigarrillos tabaco, market_scope: international, match: context_required}

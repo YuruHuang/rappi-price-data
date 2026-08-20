@@ -1,0 +1,14 @@
+# Public commercial landmarks used as Buenos Aires delivery pins.
+country: ar
+checked_on: 2026-08-16
+zones:
+  - slug: centro-galerias-pacifico
+    lat: -34.599250
+    lng: -58.374779
+    address: "Av. Córdoba 550, C1054 CABA"
+    district: San Nicolás, Comuna 1
+  - slug: palermo-alto-palermo
+    lat: -34.588402
+    lng: -58.410737
+    address: "Av. Santa Fe 3253, CABA"
+    district: Palermo, Comuna 14

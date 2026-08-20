@@ -1,0 +1,14 @@
+# Public cultural and commercial landmarks used as Mexico City delivery pins.
+country: mx
+checked_on: 2026-08-16
+zones:
+  - slug: centro-bellas-artes
+    lat: 19.435470
+    lng: -99.141280
+    address: "Palacio de Bellas Artes, Av. Juárez s/n, Centro, 06050 Ciudad de México"
+    district: Cuauhtémoc
+  - slug: coyoacan-perisur
+    lat: 19.304197
+    lng: -99.190284
+    address: "Centro Comercial Perisur, Anillo Periférico Sur 4690, 04500 Ciudad de México"
+    district: Coyoacán

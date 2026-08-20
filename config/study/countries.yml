@@ -1,0 +1,39 @@
+# Country metadata for the four-market study. Bounds are a coarse guardrail around
+# the selected city, not a definition of its administrative limits.
+countries:
+  ar:
+    name: Argentina
+    city: Buenos Aires
+    currency: ARS
+    locale: es-AR
+    timezone: America/Argentina/Buenos_Aires
+    rappi_base_url: https://www.rappi.com.ar
+    services_url: https://services.rappi.com.ar
+    bounds: {lat: [-34.75, -34.45], lng: [-58.60, -58.30]}
+  co:
+    name: Colombia
+    city: Bogotá
+    currency: COP
+    locale: es-CO
+    timezone: America/Bogota
+    rappi_base_url: https://www.rappi.com.co
+    services_url: https://services.grability.rappi.com
+    bounds: {lat: [3.50, 5.50], lng: [-75.00, -73.50]}
+  pe:
+    name: Peru
+    city: Lima
+    currency: PEN
+    locale: es-PE
+    timezone: America/Lima
+    rappi_base_url: https://www.rappi.com.pe
+    services_url: https://services.rappi.pe
+    bounds: {lat: [-12.30, -11.80], lng: [-77.30, -76.70]}
+  mx:
+    name: Mexico
+    city: Mexico City
+    currency: MXN
+    locale: es-MX
+    timezone: America/Mexico_City
+    rappi_base_url: https://www.rappi.com.mx
+    services_url: https://services.mxgrability.rappi.com
+    bounds: {lat: [19.10, 19.70], lng: [-99.40, -98.90]}

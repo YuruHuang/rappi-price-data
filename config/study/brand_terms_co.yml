@@ -1,0 +1,35 @@
+# Search seeds, not a national sales ranking. local_market means locally relevant,
+# not necessarily locally owned. Evidence was reviewed on the date below.
+country: co
+checked_on: 2026-08-16
+brand_terms:
+  nicotine_pouches:
+    - {brand: ZYN, query: zyn nicotina, market_scope: international, match: distinctive}
+    - {brand: VELO, query: velo nicotina, market_scope: international, match: context_required}
+    - {brand: Glucloud, aliases: [Glu Cloud], query: glucloud nicotina, market_scope: local_market, match: distinctive}
+  electronic_cigarettes:
+    - {brand: Vuse, query: vuse vapeador, market_scope: international, match: distinctive}
+    - {brand: Lost Mary, query: lost mary vapeador, market_scope: international, match: distinctive}
+    - {brand: Geek Bar, query: geek bar vapeador, market_scope: international, match: distinctive}
+    - {brand: WAKA, query: waka vapeador, market_scope: international, match: distinctive}
+    - {brand: HQD, query: hqd vapeador, market_scope: international, match: distinctive}
+    - {brand: RELX, query: relx vapeador, market_scope: international, match: distinctive}
+    - {brand: Glucloud, aliases: [Glu Cloud], query: glucloud vapeador, market_scope: local_market, match: distinctive}
+    - {brand: MTRX, query: mtrx vapeador, market_scope: local_market, match: distinctive}
+    - {brand: Priv Bar, query: priv bar vapeador, market_scope: local_market, match: distinctive}
+    - {brand: Mijo, query: mijo vapeador, market_scope: local_market, match: context_required}
+  heated_tobacco:
+    - {brand: TEREA, query: terea tabaco, market_scope: international, match: distinctive}
+    - {brand: HEETS, query: heets tabaco, market_scope: international, match: distinctive}
+    - {brand: IQOS, query: iqos tabaco calentado, market_scope: international, match: distinctive}
+  cigarettes:
+    - {brand: Marlboro, aliases: [Malboro], query: marlboro cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Lucky Strike, aliases: [Lucky, Lucky Srike], query: lucky strike cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Rothmans, query: rothmans cigarrillos, market_scope: international, match: distinctive}
+    - {brand: "L&M", aliases: [LyM], query: "l&m cigarrillos", market_scope: international, match: distinctive}
+    - {brand: Chesterfield, query: chesterfield cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Piel Roja, query: piel roja cigarrillos, market_scope: local_market, match: distinctive}
+    - {brand: Starlite, query: starlite cigarrillos, market_scope: local_market, match: distinctive}
+    - {brand: Caribe, query: caribe cigarrillos, market_scope: local_market, match: context_required}
+    - {brand: Mustang, query: mustang cigarrillos, market_scope: local_market, match: context_required}
+    - {brand: Belmont, query: belmont cigarrillos, market_scope: local_market, match: context_required}

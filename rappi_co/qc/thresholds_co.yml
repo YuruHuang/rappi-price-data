@@ -1,0 +1,4 @@
+# gate config for the offline CO tobacco classifier (read by rappi_co/qc/gate.py).
+tobacco_team:
+  precision_min: 0.98    # >=98% of items labeled tobacco must really be tobacco
+  recall_min: 0.97       # >=97% of real tobacco must be caught

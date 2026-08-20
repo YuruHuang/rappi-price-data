@@ -1,0 +1,14 @@
+# Public commercial landmarks used as Lima delivery pins.
+country: pe
+checked_on: 2026-08-16
+zones:
+  - slug: miraflores-larcomar
+    lat: -12.132220
+    lng: -77.030550
+    address: "Centro Comercial Larcomar, Malecón de la Reserva 610, Miraflores 15074, Lima"
+    district: Miraflores
+  - slug: independencia-megaplaza
+    lat: -11.994440
+    lng: -77.061150
+    address: "Centro Comercial MegaPlaza, Av. Alfredo Mendiola 3698, Independencia 15311, Lima"
+    district: Independencia

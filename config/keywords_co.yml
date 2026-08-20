@@ -1,0 +1,794 @@
+# =============================================================================
+# Rappi COLOMBIA tobacco/nicotine lexicon  (es-CO)
+# =============================================================================
+# Used by rappi_co/classify/tobacco_classifier.py. Matching: lowercase + strip
+# accents + collapse separators, then word-boundary match on name+brand+section.
+# Scope: cigarettes/cigars/rolling/vapes/pods/e-liquid/heated/pouches + NRT +
+# zero-nic vapes are IN. Paraphernalia + candy cigarettes are OUT (but tagged).
+#
+# LOCALIZATION NOTES (Colombian market):
+#   - Generic Spanish terms (cigarrillo, tabaco, vape, nicotina, ...) are language-wide.
+#   - Cigarette BRANDS target the Colombian market: distinctive brands
+#     (Pielroja, Marlboro, ...) go in tobacco_safe; collision-prone brand words that
+#     are also everyday words (Boston, Caribe, Premier, Mustang, Belmont, Kool) go in
+#     tobacco_context_required, so they only count as tobacco WITH corroboration.
+#   - VERIFY tobacco_sections aisle names + add brands after reviewing the first
+#     live scrape's catalog vocabulary.
+# =============================================================================
+
+# tobacco_safe: distinctive terms/brands — count as a tobacco hit on a bare match.
+tobacco_safe:
+  - cigarrillo
+  - cigarrillos
+  - cigarillo
+  - cigarillos
+  - cigarito
+  - cigarro
+  - cigarros
+  - tabaco
+  - tabacos
+  - cajetilla de cigarrillos
+  - tabaco para armar
+  - tabaco para pipa
+  - tabaco de pipa
+  - tabaco armado
+  # Colombia cigarette brands — distinctive (low collision risk).
+  - pielroja
+  - piel roja
+  - marlboro
+  - marlboto      # observed retailer typo for Marlboro
+  - philip morris
+  - chesterfield
+  - lucky strike
+  - pall mall
+  - rothmans
+  - dunhill
+  - parliament
+  - benson hedges
+  - benson and hedges
+  - l m
+  - virginia slims
+  - vogue cigarrillos
+  # Cigars (puros) — Cuban/specialty brands distinctive enough to be safe.
+  - habano
+  - habanos
+  - cohiba
+  - montecristo cigarro
+  - romeo y julieta cigarro
+  - blunt          # tobacco-leaf wrap — in scope
+  # Heated tobacco
+  - iqos
+  - heets
+  - terea
+  - glo neo
+  - ploom
+  - lil hybrid
+  - tabaco calentado
+  - sticks de tabaco
+  - recambio de tabaco
+  - heatsticks
+  # Vapes / e-cigarettes
+  - vape
+  - vapes
+  - vapeador
+  - vapeadores
+  - vaporizador
+  - cigarrillo electronico
+  - cigarrillos electronicos
+  - e cigarette
+  - e cig
+  - nicotina liquida
+  - liquido para vape
+  - e liquid
+  - nic salt
+  - nic salts
+  - sal de nic
+  - sal de nicotina
+  - sales de nicotina
+  - elf bar
+  - elfbar
+  - lost mary
+  - geek bar
+  - vuse
+  - juul
+  - waka vape
+  - oxva
+  - vaporesso
+  - caliburn
+  - smok
+  - voopoo
+  - maskking
+  - veev
+  - relx
+  - puff descartable
+  # high-volume disposable vape brands sold by model name
+  - hqd
+  - vozol
+  - yuoto
+  - air bar
+  - bang
+  # generic e-liquid terms + brands ('vapeo'/'eliquido' were missing as positive terms)
+  - vapeo
+  - liquido para vapeo
+  - eliquido
+  - vape juice
+  - nasty juice
+  - naked 100
+  - vapetasia
+  # Nicotine pouches / snus
+  - zyn
+  - velo nicotina
+  - nordic spirit
+  - bolsita de nicotina
+  - bolsitas de nicotina
+  - snus
+  - nicotine pouch
+  - nicotine pouches
+  - white fox
+  - killa
+  # Hookah / shisha TOBACCO (in scope) — distinctive phrases/brands only.
+  - tabaco para narguile
+  - tabaco para shisha
+  - tabaco narguile
+  - tabaco shisha
+  - melaza para shisha
+  - melaza para narguile
+  - al fakher
+  - adalya
+
+# tobacco_generic: low-distinctiveness terms. They mark tobacco but do NOT override
+# a paraphernalia/candy/scent demoter. Everything in tobacco_safe NOT listed here is
+# a "strong" signal (used by _strong_terms()).
+tobacco_generic:
+  - cigarrillo
+  - cigarrillos
+  - cigarillo
+  - cigarillos
+  - cigarito
+  - cigarro
+  - cigarros
+  - tabaco
+  - tabacos
+
+# Collision-prone brand tokens — count as tobacco ONLY with corroboration (tobacco
+# section / has_antismoking / generic token); else logged oos_context_unconfirmed.
+# These are Colombian cigarette brands that are ALSO everyday words/names, plus
+# international collision brands.
+tobacco_context_required:
+  - boston       # Coltabaco brand; also "Boston cream", place name
+  - caribe       # CO brand; also "Caribe"/Caribbean everything
+  - premier      # CO brand; also a generic marketing word
+  - mustang      # CO brand; also Ford Mustang, energy products
+  - belmont      # CO/LatAm brand; also a place/name
+  - kool         # CO/intl brand; collides with "cool"/Kool-Aid
+  - president    # CO brand; collides with "presidente" beer/title
+  - camel        # intl brand; also the animal/backpacks
+  - kent         # intl brand; also a name
+  - viceroy
+  - vogue        # collides with the magazine / clothing
+  - imperial
+  - next
+  - box
+
+tobacco_generic_corroborators:
+  - cigarrillo
+  - cigarrillos
+  - cigarro
+  - cigarros
+  - tabaco
+  - cajetilla
+  - filtro rojo
+  - filtro azul
+  - box 20
+  - box 10
+  - x 20
+  - x 10
+  - 20 unidades
+  - 10 unidades
+  - 20 und
+  - 10 und
+  - carton
+  - cigarrillo electronico
+  - vape
+  - nicotina
+
+tobacco_sections:
+  - cigarrillos
+  - cigarrillos y tabaco
+  - cigarrillos tabaco y riesgo reducido   # real rappi.com.co aisle name (Bogotá scrape)
+  - riesgo reducido
+  - cigarrillos y vaporizadores
+  - tabaco
+  - tabaqueria
+  - tabaquería
+  - cigarros
+  - cigarreria
+  - cigarrería
+  - puros
+  - vaporizadores
+  - vapeo
+  - productos de tabaco
+  # additional tobacco aisle families
+  - vapeadores desechables
+  - vape
+  - pods
+  - pods recargables
+  - bolsas de nicotina
+  - bolsitas de nicotina
+  - productos con nicotina
+  - sin humo
+  - tabaco sin humo
+  - heat not burn
+  - shisha
+  - hookah
+  - cachimba
+  - narguile
+  - fumadores
+
+product_type_map:
+  shisha_tobacco:
+    - tabaco para narguile
+    - tabaco para shisha
+    - tabaco narguile
+    - tabaco shisha
+    - melaza para shisha
+    - melaza para narguile
+    - al fakher
+    - adalya
+  heated_tobacco:
+    - iqos
+    - heets
+    - terea
+    - glo neo
+    - ploom
+    - lil hybrid
+    - tabaco calentado
+    - sticks de tabaco
+    - recambio de tabaco
+    - heatsticks
+  nicotine_pouch:
+    - zyn
+    - velo nicotina
+    - nordic spirit
+    - bolsita de nicotina
+    - bolsitas de nicotina
+    - bolsa de nicotina
+    - bolsas de nicotina
+    - snus
+    - nicotine pouch
+    - nicotine pouches
+    - pouch
+    - pouches
+    - white fox
+    - killa
+  vape_liquid:
+    - nicotina liquida
+    - liquido para vape
+    - liquido para vapeo
+    - eliquido
+    - vape juice
+    - e liquid
+    - nic salt
+    - nic salts
+    - sal de nic
+    - sal de nicotina
+    - sales de nicotina
+    - nasty juice
+    - naked 100
+    - vapetasia
+  vape_pod:
+    - pod
+    - boxpod
+    - box pod
+    - juul
+    - vuse
+    - caliburn
+    - relx
+  vape_disposable:
+    - elf bar
+    - elfbar
+    - lost mary
+    - geek bar
+    - waka vape
+    - maskking
+    - puff descartable
+    - puff
+    - descartable
+    - hqd
+    - vozol
+    - yuoto
+    - air bar
+    - bang
+  vape:
+    - vape
+    - vapes
+    - vapeador
+    - vapeadores
+    - vaporizador
+    - vaporizadores
+    - veev
+    - cigarrillo electronico
+    - cigarrillos electronicos
+    - e cig
+    - e cigarette
+  pipe_tobacco:
+    - tabaco para pipa
+    - tabaco de pipa
+    - tabaco pipa
+  rolling_tobacco:
+    - tabaco para armar
+    - tabaco armado
+    - tabaco de liar
+    - de liar
+    - para liar
+    - armar
+  cigar:
+    - habano
+    - habanos
+    - cohiba
+    - cigarro
+    - cigarros
+    - puro
+    - puros
+    - blunt
+  nrt:
+    - nicorette
+    - niquitin
+    - nicotinell
+    - parche de nicotina
+    - parches de nicotina
+    - chicle de nicotina
+    - chicles de nicotina
+    - pastillas de nicotina
+    - comprimidos de nicotina
+  cigarette:
+    - cigarrillo
+    - cigarrillos
+    - cigarito
+    - cajetilla
+    - pielroja
+    - piel roja
+    - marlboro
+    - marlboto
+    - philip morris
+    - chesterfield
+    - lucky strike
+    - pall mall
+    - rothmans
+    - dunhill
+    - parliament
+    - l m
+    - boston
+    - caribe
+    - premier
+    - mustang
+    - belmont
+    - kool
+    - president
+    - camel
+    - kent
+    - viceroy
+
+# NRT / cessation — IN-SCOPE (flag nrt). Matched in name + brand.
+nrt:
+  - nicorette
+  - niquitin
+  - nicotinell
+  - nicotrol
+  - parche de nicotina
+  - parches de nicotina
+  - chicle de nicotina
+  - chicles de nicotina
+  - goma de nicotina
+  - pastillas de nicotina
+  - comprimidos de nicotina
+  - reemplazo de nicotina
+  - terapia de reemplazo nicotinico
+
+# Zero-nicotine vape markers — keep IN-SCOPE, flag zero_nicotine.
+zero_nicotine_markers:
+  - sin nicotina
+  - 0 mg
+  - 0mg
+  - 0 mg/ml
+  - cero nicotina
+  - zero nicotine
+  - libre de nicotina
+  - nicotine free
+  - nicotina 0
+  - sin nicotina 0
+  - 0% nic
+  - 0 % nic
+
+# Paraphernalia — OUT-OF-SCOPE but captured (flag tobacco_paraphernalia).
+paraphernalia:
+  - rolling paper
+  - rolling papers
+  - papel para armar
+  - papel de armar
+  - papel para fumar
+  - papelillo
+  - papelillos
+  - ocb
+  - rizla
+  - smoking papers
+  - hemp blunt
+  - encendedor
+  - encendedores
+  - encededor
+  - encededores
+  - mechero
+  - mecheros
+  - yesquero
+  - fosforos
+  - cenicero
+  - ceniceros
+  - pipa de fumar
+  - pipa para tabaco
+  - picadora de tabaco
+  - filtros para armar
+  - filtros para cigarrillo
+  - filtros para cigarrillos
+  - filtros reductores
+  - filtro reductor
+  - reductores de nicotina
+  - reductor de nicotina
+  - nicout
+  - papel smoking
+  - papel king size
+  - tips para armar
+  - boquilla
+  - cachimba
+  - narguilera
+  - carbon para narguile
+  - carbones para narguile
+  - carbon para shisha
+  - manguera para narguile
+  - manguera para shisha
+  # accessories/devices that carry a cigarette word but are NOT consumable tobacco
+  # Keep these out of the in-scope cigarette bucket.
+  - porta cigarrillos
+  - portacigarrillos
+  - cigarrillera
+  - pitillera
+  - maquina de llenado
+  - maquina para llenar
+  - maquina para liar
+  - maquina de liar
+  - maquina de armar
+  - armador cigarrillos
+  - armador de cigarrillos
+  - llenadora de cigarrillos
+  - entubadora
+  - atacador
+  - bong
+  - pipa de agua
+  - pipa de vidrio
+  - zippo
+  - pedernal
+  - piedra para encendedor
+  - inserto para zippo
+  - papel cueros
+  - papeles cueros
+  - papel para enrolar
+  - maquina para enrolar
+  - enroladora
+  - estuche protector
+  - guarda tus cigarrillos
+  - guarda cigarros
+  - guarda cigarrillos
+  - soplete
+  - porta cigarro
+  - portacigarro
+  - bolsa hermetica
+  - bolsa ermetica
+  - candela encendedor
+  - candela encededor
+  - paper roll
+  - rolling tray
+  - bandeja para armar
+  - raw tin
+  - tin pop box
+
+# Candy / chocolate "cigarettes" — OUT-OF-SCOPE (flag candy_cigarette).
+candy_cigarette_markers:
+  - cigarrillo de chocolate
+  - cigarrillos de chocolate
+  - cigarrillo de caramelo
+  - cigarrillos de caramelo
+  - cigarro de caramelo
+  - cigarros de caramelo
+  - cigarrillo de dulce
+  - chocolate cigarette
+  - candy cigarette
+  - cigarrillo dulce
+  - chicle cigarrillo
+  - forma de cigarrillo
+  - en forma de cigarrillo
+
+# Confection context: a confection section/word + a generic CIGARETTE word (not
+# "tabaco") with no strong brand => candy (out of scope).
+confectionery_context:
+  - caramelo
+  - caramelos
+  - chocolate
+  - chocolates
+  - golosina
+  - golosinas
+  - dulce
+  - dulces
+  - confite
+  - confites
+  - confiteria
+  - bombon
+  - bombones
+  - masticable
+  - chupeta
+
+# Scent/cosmetic context — fragrance-PRODUCT nouns only (bare "aroma" excluded: it
+# is a flavor descriptor on real tobacco). + generic tabaco/cigarro => out of scope.
+scent_context:
+  - aromatizante
+  - aromatica
+  - aromatico
+  - esencia
+  - esencias
+  - perfume
+  - perfumeria
+  - fragancia
+  - difusor
+  - sahumerio
+  - sahumerios
+  - incienso
+  - ambientador
+  - vela aromatica
+  - velas aromaticas
+
+# Herbal / non-nicotine cessation — out of scope (no tobacco AND no nicotine). Fires
+# when a no_nicotine marker co-occurs with a non_tobacco_context marker.
+no_nicotine_markers:
+  - sin nicotina
+  - 0 nicotina
+  - cero nicotina
+  - libre de nicotina
+  - nicotine free
+non_tobacco_context:
+  - sin tabaco
+  - anti tabaco
+  - antitabaco
+  - herbal
+  - herbales
+  - homeopatico
+  - homeopatica
+  - ayurvedico
+
+# Home-goods / textile / furniture / apparel / appliance context (full-catalog FP guard,
+# On the full catalog (not just tobacco aisles), the brown colour
+# words "tabaco"/"habano" and the clothes-steamer "vaporizador de ropa" collide with
+# furniture/curtains/apparel. When one of these context words is in the item name AND the
+# only tobacco signal is a colour/appliance term (not a distinctive brand), demote to OOS.
+non_consumable_context:
+  - cortina
+  - cortinas
+  - persiana
+  - persianas
+  - mesa
+  - silla
+  - sillas
+  - mueble
+  - muebles
+  - sofa
+  - cama
+  - colchon
+  - almohada
+  - almohadas
+  - sabana
+  - sabanas
+  - cobija
+  - cobijas
+  - edredon
+  - toalla
+  - toallas
+  - tapete
+  - alfombra
+  - lampara
+  - cojin
+  - cojines
+  - cuadro
+  - espejo
+  - florero
+  - jarron
+  - ropa
+  - prenda
+  - prendas
+  - camisa
+  - camiseta
+  - pantalon
+  - jean
+  - jeans
+  - vestido
+  - falda
+  - chaqueta
+  - zapato
+  - zapatos
+  - tenis
+  - sandalia
+  - bolso
+  - bolsos
+  - mochila
+  - morral
+  - maleta
+  - billetera
+  - cartera
+  - gorra
+  - sombrero
+  - rattan
+  - mimbre
+  - lino
+  - algodon
+  - cuero
+  - madera
+  - aluminio
+  - ceramica
+  - porcelana
+  - cooler
+  - hielera
+  - nevera
+  - refrigeradora
+  - refrigerador
+  - esmalte
+  - galon
+  - pintura
+  - barniz
+  - cueros
+  - olla
+  - ollas
+  - sarten
+  - vajilla
+  - licuadora
+  - plancha
+  - ventilador
+  - humidificador
+  - facial
+  - poros
+  - limpia poros
+  - limpiaporos
+  - limpiapipas
+  - armonica
+  # electronics / networking / appliances (mis-shelved in a "Vaporizadores" aisle)
+  - router
+  - access point
+  - gigabit
+  - wifi
+  - ethernet
+  - tp-link
+  - usb
+  - hdmi
+  - adaptador
+  - cargador
+  - bateria
+  - gamepad
+  - mouse
+  - teclado
+  - parlante
+  - audifonos
+  - camara
+  - impresora
+  - monitor
+  - laptop
+  - computador
+  - portatil
+  # non-tobacco items mis-shelved in a marketplace vape/tobacco aisle (section-derived FP guard,
+  # add 2026-07-01). specific enough not to collide with real tobacco; NOT plain "chicle" (that
+  # would demote NRT nicotine gum). motor-oil viscosity codes catch "Elf 10w40" (oil, not vape).
+  - 10w40
+  - 15w40
+  - 20w50
+  - 25w60
+  - 10w30
+  - 5w30
+  - aceite de motor
+  - aceite para motor
+  - delineador
+  - labial
+  - rimel
+  - mascarilla
+  - foot peel
+  - peel mask
+  - chile ancho
+  - ice breakers
+  - tic tac
+  - mentos
+  - trident
+  - mug
+  - taza
+  - oraculo
+  - tarot
+  - baraja
+  - butano
+  - gas butano
+  # Marketplace collisions found in tobacco aisles: adult products, cosmetics, candy containers,
+  # trays, and cannabis-oriented accessories. These cues are applied only in relevant context.
+  - vibrador
+  - estimulador
+  - satisfyer
+  - lovense
+  - consolador
+  - dildo
+  - masturbador
+  - plug anal
+  - juguete sexual
+  - henna
+  - cejas
+  - rompe hielo
+  - bandeja
+  - bandejas
+  - tapa magnetica
+  - soplete
+  - grinder
+  - moledor
+  - trillador
+  - rascador
+  - ranete
+  - porta joint
+  - porta-joint
+  - portaporros
+  - portaporro
+  - pre-rolled
+  - prerolled
+  - hemp wrap
+  - blunt wrap
+  - hemp          # hemp/herbal "wraps" + "cones" are tobacco-FREE rolling accessories, not products
+  - kush
+  - herbal wrap
+  - wraps per pack
+  - cones
+  - hemp wick
+  - bare2go
+  - bare2togo
+  # marketplace collisions: pet, beauty, homeware, stationery, and related products
+  - bebedero
+  - mascota
+  - perro
+  - gato
+  - cera brillante
+  - corrector de postura
+  - postura
+  - depiladora
+  - peluqueria
+  - corta cabello
+  - keratin
+  - kit liso
+  - alisado
+  - libro
+  - llavero
+  - popper
+  - termo
+  - funda
+  - antiespia
+  - privacidad
+  - espumador
+  - greca
+  - resistencia
+  # home-improvement / hardware / gardening collisions: "tabaco" is also a wood-finish and paint
+  # colour (a cabinet's "Tabaco Exterior/Interior"), a sealant shade ("... Tabaco Claro"), and the
+  # active ingredient of a garden pesticide ("Extracto de Tabaco"). These demote only when the sole
+  # tobacco cue is the bare colour word, so real rolling tobacco / brands are untouched.
+  - adhesivo
+  - sellador
+  - sellante
+  - silicona
+  - masilla
+  - junta
+  - laca
+  - estuco
+  - pegante
+  - pegamento
+  - extracto
+  - sustrato
+  - abono
+  - fertilizante
+  - plaguicida
+  - insecticida
+  - exterior
+  - interior

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "release_date": "2026-08-20",
+  "source_collection_date": "2026-08-16",
+  "unit_of_observation": [
+    "country_code",
+    "zone_slug",
+    "store_id",
+    "product_id"
+  ],
+  "files": [
+    {
+      "country_code": "ar",
+      "country": "Argentina",
+      "path": "datasets/argentina.xlsx",
+      "observations": 2325,
+      "store_location_observations": 59,
+      "bytes": 607159,
+      "sha256": "e36d00d4f187a88bf2f5888e3ed1e0917b4308568fe2be2180ec7d7496834e6b"
+    },
+    {
+      "country_code": "co",
+      "country": "Colombia",
+      "path": "datasets/colombia.xlsx",
+      "observations": 4543,
+      "store_location_observations": 138,
+      "bytes": 1152658,
+      "sha256": "9b8a26b5c87568af9c07998f68d17154de828a277cc0d4bfd37e1cce130ec1f6"
+    },
+    {
+      "country_code": "pe",
+      "country": "Peru",
+      "path": "datasets/peru.xlsx",
+      "observations": 3374,
+      "store_location_observations": 104,
+      "bytes": 866741,
+      "sha256": "d15ae6a712ebba776a381bb49fd0cd208f78ec8fa980d27fc463423ef34f46a6"
+    },
+    {
+      "country_code": "mx",
+      "country": "Mexico",
+      "path": "datasets/mexico.xlsx",
+      "observations": 597,
+      "store_location_observations": 18,
+      "bytes": 162951,
+      "sha256": "95dfa96f77272ecd8194b10277c79f89a64e5744188060f6b7c63fcd7b70f75c"
+    }
+  ]
+}

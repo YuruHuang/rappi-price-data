@@ -1,0 +1,15 @@
+# store-type directory slugs to enumerate on rappi.com.co.
+#
+# important: rappi.com.co does NOT expose clean per-type filtering — most /tiendas/tipo/<slug>
+# paths (supermercados, express, turbo, kioscos, licores, farmacia, ...) 308-redirect to the
+# same retail aggregate `rappimall-parent` (~1,200+ stores that already include supermarkets,
+# convenience, liquor, pharmacies, etc.). so the full store universe is captured by the
+# aggregate plus the two slugs that return their own distinct lists (market, express-big).
+# the union (deduped by store_id) is ~1,700 stores for a bogotá address. restaurants are out.
+#
+# checks.py verifies real chains (Éxito/Carulla/OXXO/D1/...) actually appear, so "missing
+# supermarkets/convenience" still fails loudly even though we can't filter by type.
+seed_paths:
+  - {path: /tiendas/tipo/rappimall-parent,  store_type: retail-aggregate}   # full retail set
+  - {path: /tiendas/tipo/market,            store_type: market}             # distinct subset
+  - {path: /tiendas/tipo/express-big,       store_type: express-big}        # distinct subset

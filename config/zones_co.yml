@@ -1,0 +1,14 @@
+# Bogotá delivery addresses used for the two-location study. Each is locked into a real
+# rappi session by bootstrap.py (crafted currentLocation cookie, autoLocation=false),
+# then enumerated/crawled separately. coords geocoded from the street addresses.
+zones:
+  - slug: calle-19-centro
+    lat: 4.6093
+    lng: -74.0682
+    address: "Calle 19 #2A-10, 111711 Bogotá D.C."
+    district: La Candelaria
+  - slug: carrera-108-fontibon
+    lat: 4.6995
+    lng: -74.1452
+    address: "Carrera 108 #16H-31, 110921 Bogotá D.C."
+    district: Fontibón

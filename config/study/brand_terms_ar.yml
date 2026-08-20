@@ -1,0 +1,30 @@
+# Search seeds, not a national sales ranking. local_market means locally relevant,
+# not necessarily locally owned. Evidence was reviewed on the date below.
+country: ar
+checked_on: 2026-08-16
+brand_terms:
+  nicotine_pouches:
+    - {brand: ZYN, query: zyn pouch de nicotina, market_scope: international, match: distinctive}
+    - {brand: VELO, query: velo pouch de nicotina, market_scope: international, match: context_required}
+  electronic_cigarettes:
+    - {brand: Elf Bar, query: elfbar vapeador, market_scope: international, match: distinctive}
+    - {brand: Lost Mary, query: lost mary vapeador, market_scope: international, match: distinctive}
+    - {brand: Ignite, query: ignite vapeador, market_scope: international, match: context_required}
+    - {brand: Geek Bar, query: geek bar vapeador, market_scope: international, match: distinctive}
+    - {brand: Spaceman, query: spaceman vapeador, market_scope: local_market, match: distinctive}
+    - {brand: Supreme, query: supreme vapeador, market_scope: local_market, match: context_required}
+  heated_tobacco:
+    - {brand: IQOS, query: iqos dispositivo de tabaco calentado, market_scope: international, match: distinctive}
+    - {brand: TEREA, query: terea sticks de tabaco calentado, market_scope: international, match: distinctive}
+    - {brand: HEETS, query: heets sticks de tabaco calentado, market_scope: international, match: distinctive}
+  cigarettes:
+    - {brand: Marlboro, query: marlboro cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Philip Morris, query: philip morris cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Lucky Strike, aliases: [Luckies, Lucky], query: lucky strike cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Camel, query: camel cigarrillos, market_scope: international, match: context_required}
+    - {brand: Chesterfield, aliases: [Chesterfiel], query: chesterfield cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Harmony, query: harmony cigarrillos, market_scope: local_market, match: context_required}
+    - {brand: Red Point, query: red point cigarrillos, market_scope: local_market, match: context_required}
+    - {brand: Master, query: master cigarrillos, market_scope: local_market, match: context_required}
+    - {brand: Melbourne, query: melbourne cigarrillos, market_scope: local_market, match: context_required}
+    - {brand: Dolchester, query: dolchester cigarrillos, market_scope: local_market, match: distinctive}

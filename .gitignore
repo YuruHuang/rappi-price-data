@@ -1,0 +1,15 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.idea/
+.vscode/
+
+# Collection outputs and browser state are local by default.
+data/
+*.partial
+*.tmp
+~$*.xlsx

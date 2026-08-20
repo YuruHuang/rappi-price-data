@@ -1,0 +1,35 @@
+# Search seeds, not a national sales ranking. Vape terms are observational detection
+# seeds under Mexico's current commercial prohibition. Evidence reviewed 2026-08-16.
+country: mx
+checked_on: 2026-08-16
+brand_terms:
+  nicotine_pouches:
+    - {brand: ZYN, query: zyn bolsas de nicotina, market_scope: international, match: distinctive}
+    - {brand: VELO, query: velo bolsas de nicotina, market_scope: international, match: context_required}
+    - {brand: Sesh, query: sesh bolsas de nicotina, market_scope: international, match: distinctive}
+  electronic_cigarettes:
+    - {brand: Vuse, query: vuse vapeador, market_scope: international, match: distinctive}
+    - {brand: Elf Bar, query: elf bar vapeador, market_scope: international, match: distinctive}
+    - {brand: Lost Mary, query: lost mary vapeador, market_scope: international, match: distinctive}
+    - {brand: Geek Bar, query: geek bar vapeador, market_scope: international, match: distinctive}
+    - {brand: Maskking, query: maskking vapeador, market_scope: international, match: distinctive}
+    - {brand: WAKA, query: waka vapeador, market_scope: international, match: distinctive}
+    - {brand: RELX, query: relx vapeador, market_scope: international, match: distinctive}
+    - {brand: IPLAY, query: iplay vapeador, market_scope: international, match: distinctive}
+    - {brand: Esco Bars, query: esco bars vapeador, market_scope: international, match: distinctive}
+    - {brand: VHILL, query: vhill vapeador, market_scope: local_market, match: distinctive}
+  heated_tobacco:
+    - {brand: IQOS, query: iqos dispositivo tabaco calentado, market_scope: international, match: distinctive}
+    - {brand: TEREA, query: terea tabaco para iqos, market_scope: international, match: distinctive}
+    - {brand: HEETS, query: heets tabaco para iqos, market_scope: international, match: distinctive}
+  cigarettes:
+    - {brand: Marlboro, query: marlboro cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Pall Mall, query: pall mall cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Lucky Strike, query: lucky strike cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Camel, query: camel cigarrillos, market_scope: international, match: context_required}
+    - {brand: "Benson & Hedges", query: benson hedges cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Chesterfield, query: chesterfield cigarrillos, market_scope: international, match: distinctive}
+    - {brand: Winston, query: winston cigarrillos, market_scope: international, match: context_required}
+    - {brand: Montana, query: montana cigarrillos, market_scope: local_market, match: context_required}
+    - {brand: Faros, query: faros cigarrillos, market_scope: local_market, match: context_required}
+    - {brand: Delicados, query: delicados cigarrillos, market_scope: local_market, match: context_required}

@@ -1,0 +1,162 @@
+# broad relevance filter for the DEEPEN crawl: which aisles to paginate to full depth.
+# recall-first — err toward including an aisle; the classifier (downstream) does the precise
+# labeling. covers the three sin-tax categories: tobacco/nicotine, alcohol, non-alcoholic beverages.
+# used by the content spider (name trigger = aisle name; content trigger = first-page item text)
+# and by the search audit (seed terms). matching is lowercase + accent-stripped substring.
+
+# --- aisle NAME trigger: an aisle whose name contains any of these is deep-paginated ---
+relevance_sections:
+  # tobacco / nicotine
+  - cigarrillo
+  - tabaco
+  - tabaqueria
+  - cigarreria
+  - cigarro
+  - puros
+  - vaporizador
+  - vapeo
+  - vape
+  - riesgo reducido
+  - productos de tabaco
+  - nicotina
+  - sin humo
+  - shisha
+  - hookah
+  - narguile
+  - cachimba
+  - fumador
+  # alcohol
+  - licor
+  - cerveza
+  - vino
+  - aguardiente
+  - whisky
+  - whiskey
+  - ron
+  - vodka
+  - ginebra
+  - tequila
+  - aperitivo
+  - espumante
+  - espumoso
+  - champana
+  - sidra
+  - vermut
+  - sake
+  - destilado
+  - coctel
+  - bebidas alcoholicas
+  # non-alcoholic beverages
+  - bebida
+  - gaseosa
+  - refresco
+  - jugo
+  - nectar
+  - agua
+  - energizante
+  - hidratante
+  - isotonico
+  - te helado
+  - bebidas
+  - hidratacion
+
+# --- product CONTENT trigger: an aisle whose first-page items contain any of these terms
+#     (in name or section) is deep-paginated, even if its name didn't match ---
+relevance_terms:
+  # tobacco / nicotine
+  - cigarrillo
+  - cigarrillos
+  - cigarro
+  - tabaco
+  - vape
+  - vapeador
+  - vaporizador
+  - cigarrillo electronico
+  - nicotina
+  - puff
+  - elf bar
+  - lost mary
+  - marlboro
+  - pielroja
+  - lucky strike
+  - chesterfield
+  - iqos
+  - heets
+  - zyn
+  - velo
+  # alcohol
+  - cerveza
+  - vino
+  - licor
+  - aguardiente
+  - whisky
+  - ron
+  - vodka
+  - ginebra
+  - tequila
+  - aperol
+  - baileys
+  - jagermeister
+  - champana
+  - sidra
+  - aguila
+  - poker
+  - club colombia
+  - bavaria
+  - smirnoff
+  - bacardi
+  - buchanans
+  # non-alcoholic beverages
+  - gaseosa
+  - jugo
+  - nectar
+  - agua mineral
+  - agua con gas
+  - energizante
+  - hidratante
+  - coca cola
+  - pepsi
+  - postobon
+  - colombiana
+  - sprite
+  - fanta
+  - red bull
+  - monster
+  - vive 100
+  - gatorade
+  - powerade
+
+# --- search seed queries (Rappi unified-search, per address) ---
+# these DRIVE collection (search backbone) — generics first, then a few unambiguous brand/variant
+# terms to lift recall on products search didn't surface under the generics. keep terms specific
+# enough not to pull obvious noise (e.g. "vape pod", not bare "pod" which returns coffee pods).
+search_terms:
+  # tobacco / nicotine
+  - cigarrillos
+  - tabaco
+  - cigarro
+  - puros
+  - cigarrillo electronico
+  - vape
+  - vapeador
+  - vaper
+  - vape pod
+  - nicotina
+  - bolsas de nicotina
+  - hookah
+  - shisha
+  - elf bar
+  - chesterfield
+  - rothmans
+  # alcohol
+  - licor
+  - cerveza
+  - vino
+  - aguardiente
+  - whisky
+  - ron
+  # non-alcoholic beverages
+  - gaseosa
+  - jugo
+  - agua
+  - energizante

@@ -1,0 +1,12 @@
+# Fixed generic search scope. Brand-qualified queries live in brand_terms_<country>.yml.
+categories:
+  nicotine_pouches:
+    - bolsas de nicotina
+  electronic_cigarettes:
+    - cigarrillos electronicos
+    - vapeador
+    - vapeadores
+  heated_tobacco:
+    - productos de tabaco calentado
+  cigarettes:
+    - cigarrillos

@@ -1,0 +1,41 @@
+product_id,store_id,store_type,name,brand,menu_section,menu_subsection,short_description,has_antismoking,age_restriction,gold_label
+g01,s1,market,Marlboro Box x20,Marlboro,Cigarrillos,,,true,true,tobacco
+g02,s1,market,Cigarrillos Pielroja Sin Filtro x14,Pielroja,Cigarrillos,,,true,true,tobacco
+g03,s1,market,Chesterfield Original x20,Chesterfield,Cigarrillos,,,true,true,tobacco
+g04,s1,market,Lucky Strike Click x20,Lucky Strike,Cigarrillos,,,true,true,tobacco
+g05,s1,market,Cigarrillos L&M Azul x20,L&M,Cigarrillos,,,true,true,tobacco
+g06,s1,market,Boston Rojo x20,Boston,Cigarrillos,,,true,true,tobacco
+g07,s1,market,Mustang Full Flavor x20,Mustang,Cigarrillos,,,true,true,tobacco
+g08,s1,market,Caribe Suave x20,Caribe,Cigarrillos,,,true,true,tobacco
+g09,s1,market,Premier x20,Premier,Cigarrillos,,,true,true,tobacco
+g10,s1,market,Belmont Extra Suave x20,Belmont,Cigarrillos,,,true,true,tobacco
+g11,s1,market,Kool Menthol x20,Kool,Cigarrillos,,,true,true,tobacco
+g12,s1,market,Cigarro Cohiba Robusto,Cohiba,Cigarros,,,false,true,tobacco
+g13,s1,market,Tabaco para armar x30g,,Tabaco,,,false,true,tobacco
+g14,s1,market,IQOS HEETS Amber Selection,HEETS,Cigarrillos,,,true,true,tobacco
+g15,s1,market,ZYN Cool Mint bolsita de nicotina,ZYN,Vapeo,,,false,true,tobacco
+g16,s1,market,VELO Bolsitas de Nicotina Ice 10mg,VELO,Vapeo,,,false,true,tobacco
+g17,s1,market,Elf Bar 600 puffs Watermelon,Elf Bar,Vapeo,,,false,true,tobacco
+g18,s1,market,Juul Pod Virginia Tobacco,Juul,Vapeo,,,false,true,tobacco
+g19,s1,market,Vape descartable Waka 6000,Waka,Vapeo,,,false,true,tobacco
+g20,s1,market,Nicotina liquida nic salt 20mg sandia,,Vapeo,,,false,true,tobacco
+g21,s1,market,Nicorette Chicle 2mg,Nicorette,Salud,,,false,true,tobacco
+g22,s1,market,Niquitin Parches de Nicotina 21mg,Niquitin,Salud,,,false,true,tobacco
+g23,s1,market,Vape descartable sin nicotina 0 mg menta,,Vapeo,,,false,true,tobacco
+g24,s1,market,Galletas Boston Chips,Boston,Mercado,,,false,false,out_of_scope
+g25,s1,market,Bebida Caribe Cola 1.5L,Caribe,Bebidas,,,false,false,out_of_scope
+g26,s1,market,Gaseosa Premier Naranja,Premier,Bebidas,,,false,false,out_of_scope
+g27,s1,market,Bebida energizante Mustang 269ml,Mustang,Bebidas,,,false,false,out_of_scope
+g28,s1,market,Mochila Camel Active,Camel,Bazar,,,false,false,out_of_scope
+g29,s1,market,Mango Kent x kg,,Frutas y Verduras,,,false,false,out_of_scope
+g30,s1,market,Cerveza Imperial Lata 330ml,Imperial,Cervezas,,,false,false,out_of_scope
+g31,s1,market,Panuelos Next x100,Next,Aseo,,,false,false,out_of_scope
+g32,s1,market,Encendedor Bic Maxi,Bic,Cigarrillos,,,false,false,out_of_scope
+g33,s1,market,Papel para armar OCB Premium,OCB,Cigarrillos,,,false,false,out_of_scope
+g34,s1,market,Cenicero de vidrio,,Bazar,,,false,false,out_of_scope
+g35,s1,market,Filtros para armar 6mm,,Tabaco,,,false,false,out_of_scope
+g36,s1,market,Cigarrillos de chocolate Jet,Jet,Golosinas,,,false,false,out_of_scope
+g37,s1,market,Cigarrillos herbales sin tabaco sin nicotina,,Salud,,,false,false,out_of_scope
+g38,s1,market,Coca Cola 1.5L,Coca Cola,Bebidas,,,false,false,out_of_scope
+g39,s1,market,Leche Alqueria Entera 1L,Alqueria,Lacteos,,,false,false,out_of_scope
+g40,s1,market,Pan Bimbo Artesano,Bimbo,Panaderia,,,false,false,out_of_scope
