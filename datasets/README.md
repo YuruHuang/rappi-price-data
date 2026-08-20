@@ -1,10 +1,9 @@
 # 📊 Dataset notes
 
 > [!NOTE]
-> These workbooks are included project files in a private repository. They are not a formally
-> published dataset.
+> These workbooks are working data files in a private repository. They are under review.
 
-The four workbooks are the complete analytical datasets currently included in this repository. They
+The four workbooks are the country data files currently included in this repository. They
 were built from Rappi responses collected on 16 August 2026 at two delivery points per country and
 regenerated with the final classification and workbook formatting code on 20 August 2026.
 

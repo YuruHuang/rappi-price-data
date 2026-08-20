@@ -6,7 +6,12 @@ and output structure.
 To read the included data only, open `datasets/argentina.xlsx`, `colombia.xlsx`, `peru.xlsx`, or
 `mexico.xlsx`. Python is not required for that.
 
-Run all commands below from the repository root.
+Clone the private repository if needed, then run all remaining commands from its root:
+
+```bash
+git clone https://github.com/YuruHuang/rappi-tobacco-data.git
+cd rappi-tobacco-data
+```
 
 ## ⚙️ 1. Install
 
