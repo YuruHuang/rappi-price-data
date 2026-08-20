@@ -173,7 +173,7 @@ def brand_variants(entry: dict) -> list[str]:
 
 
 def load_study_profile(country: str, config_dir: Path) -> dict:
-    """Load one complete multicountry study profile."""
+    """Load one complete multicountry collection profile."""
     code = str(country).strip().lower()
     config_dir = Path(config_dir)
     countries = load_country_profiles(config_dir / "countries.yml")
@@ -185,7 +185,7 @@ def load_study_profile(country: str, config_dir: Path) -> dict:
         raise ConfigError(f"{zones_path.name}: country must be '{code}'")
     zones = load_zones(zones_path)
     if len(zones) != 2:
-        raise ConfigError(f"{zones_path.name}: study profiles require exactly two zones")
+        raise ConfigError(f"{zones_path.name}: collection profiles require exactly two zones")
     lat_bounds, lng_bounds = profile["bounds"]["lat"], profile["bounds"]["lng"]
     for zone in zones:
         if not zone.get("address") or not zone.get("district"):

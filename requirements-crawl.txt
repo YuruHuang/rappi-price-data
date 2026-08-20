@@ -1,4 +1,4 @@
-# Optional breadth-crawl/browser stack. The search-first release pipeline does not use it.
+# Optional breadth-crawl/browser stack. The search-first collection workflow does not use it.
 -r requirements.txt
 scrapy>=2.11,<3
 scrapy-playwright>=0.0.34,<1

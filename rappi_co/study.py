@@ -1,4 +1,4 @@
-"""Run the search-first multicountry study without changing the Colombia release."""
+"""Run the multicountry data collection without changing the earlier Colombia workflow."""
 from __future__ import annotations
 
 import argparse
@@ -43,7 +43,7 @@ def _file_record(path: str | Path, data_root: Path, *, rows: bool = False) -> di
         relative = resolved.relative_to(root).as_posix()
     except ValueError as exc:
         raise ValueError(
-            f"processed study artifact must be inside data_root: {resolved}"
+            f"processed collection artifact must be inside data_root: {resolved}"
         ) from exc
     record = {
         "data_root_relative_path": relative,
@@ -58,7 +58,7 @@ def _file_record(path: str | Path, data_root: Path, *, rows: bool = False) -> di
 def _source_timestamp(source: str | Path) -> str:
     match = re.fullmatch(r"search_items_(\d{8}_\d{6})\.csv", Path(source).name)
     if not match:
-        raise ValueError(f"unexpected study source filename: {Path(source).name}")
+        raise ValueError(f"unexpected collection source filename: {Path(source).name}")
     return match.group(1)
 
 
@@ -109,7 +109,7 @@ def _write_processed_manifest(country: str, plan: dict, sources: dict[str, str],
     match = re.fullmatch(
         r"tobacco_items_(\d{8}_\d{6}_\d{6})\.csv", items_path.name)
     if not match:
-        raise ValueError(f"unexpected study deliverable filename: {items_path.name}")
+        raise ValueError(f"unexpected collection output filename: {items_path.name}")
     manifest_path = items_path.with_name(f"study_manifest_{match.group(1)}.json")
     payload = {
         "schema_version": 2,
@@ -190,7 +190,7 @@ def _complete_raw_archive(raw_directory: Path, manifest: dict,
         return False
 
     # New collectors record the collision-proof indexed filename for every query.
-    # Older archived study runs omit raw_file; the exact count and payload checks
+    # Older archived collection runs omit raw_file; the exact count and payload checks
     # retain backward compatibility with that schema-1 layout.
     named = [result.get("raw_file") for result in term_results]
     if any(value is not None for value in named):
@@ -329,7 +329,7 @@ def run_country(country: str, addresses: list[str] | None = None,
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="run the four-market Rappi tobacco study")
+    parser = argparse.ArgumentParser(description="run the four-country Rappi tobacco data collection")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--country", action="append", choices=COUNTRIES,
                        help="country code; repeat to run more than one")

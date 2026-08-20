@@ -1,4 +1,4 @@
-# Peru study notes
+# Peru data collection notes
 
 Sources and indexed listings were checked on 2026-08-16. The sample is two Lima delivery points, not
 Peru as a whole.
@@ -40,7 +40,7 @@ Pouch evidence comes from Rappi's [pouch page](https://www.rappi.com.pe/retail/p
 and a [BAGZ product page](https://www.rappi.com.pe/p/bagz-nic-pouches-artic-freeze-4mg-x-1673715).
 KIK has a dedicated [STLTH Peru storefront](https://pe.stlthvape.com/collections/stlth-kik).
 Snus and tobacco "tab pouch" titles (observed here as `Odens`, `Siberia`, and `Vika Tab Pouches`)
-contain tobacco and are classified as `smokeless_tobacco`, outside this study's tobacco-free
+contain tobacco and are classified as `smokeless_tobacco`, outside the requested tobacco-free
 nicotine-pouch family; titles that state a nicotine pouch (`Vika Nic Pouches`, `Bagz Nic Pouches`)
 remain eligible.
 

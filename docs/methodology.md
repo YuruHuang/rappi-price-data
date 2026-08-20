@@ -1,16 +1,17 @@
-# Four-market tobacco search study
+# Four-country Rappi tobacco product data collection
 
 ## Purpose
 
-This study mode adapts the Colombia search collector to Argentina, Colombia, Peru, and Mexico. It
+This four-country collection workflow adapts the Colombia search collector to Argentina, Colombia,
+Peru, and Mexico. It
 samples two public delivery locations in one major Rappi city per country. It does not claim national
 coverage or market share.
 
 The earlier two location Colombia workflow remains in the repository for compatibility. Its files
 use `config/zones_co.yml`, `config/relevant_sections_co.yml`, and the original commands. The four
-country study uses the separate `config/study/` directory and always requires `--country`.
+country collection uses the separate `config/study/` directory and always requires `--country`.
 
-## Study frame
+## Collection scope
 
 | Code | Country | Sampled city | Currency | Locations | Default queries | Requests |
 |---|---|---|---|---:|---:|---:|
@@ -111,7 +112,7 @@ countries. The collector then:
 6. writes a completion manifest with the exact ordered queries, endpoint, coordinates, paths, and
    row counts.
 
-Study files are isolated by country and location:
+Collection files are isolated by country and location:
 
 ```text
 data/<country>/raw/<zone>/search_items_<timestamp>.csv
@@ -151,13 +152,13 @@ as `Camel`, `Master`, `Kent`, or `Montana` are `context_required`: the product a
 aisle, a health-warning signal, or a word such as `cigarrillos`, `cajetilla`, or `nicotina`. This is
 the main protection against false positives such as Camel clothing or Master household products.
 
-The classifier writes its rule, rationale, confidence, product type, and review flags. The study
+The classifier writes its rule, rationale, confidence, product type, and review flags. The final
 export then keeps only the four agreed families: `nicotine_pouch`; the vape family (`vape`,
 `vape_disposable`, `vape_pod`, `vape_liquid`); `heated_tobacco`; and `cigarette`. Cigars, rolling
 tobacco, pipe tobacco, shisha, cessation products, paraphernalia, standalone heated devices
 (`heated_device`), and the observed tobacco-containing oral products (`smokeless_tobacco`) remain
 available in the run-specific offline classification file for review but are not included in the
-study workbook. There is no model or external API in this stage.
+workbook. There is no model or external API in this stage.
 
 A brand used in more than one category, such as WAKA or Glucloud, is not assigned a product type
 from the brand alone. If the product name and aisle do not resolve the family, the classifier adds
@@ -166,7 +167,7 @@ silently forced into a final category.
 
 ### Product and component boundary
 
-The final four-family table is a product study, not an accessories inventory:
+The final four-category table contains product observations, not an accessories inventory:
 
 - Finished disposable vapes, pod products, e-liquids, complete device kits, and nicotine-bearing
   refill pods are included when the title supplies product evidence such as a brand, puff count,
@@ -212,14 +213,14 @@ The final four-family table is a product study, not an accessories inventory:
   The bundle's nicotine, puff, pack-count, and unit-price fields are blank because those values
   cannot be attributed to one component.
 - Cannabinoid and concentrate/wax devices, insecticides using the word “vape,” gift boxes,
-  cosmetics, and other observed search collisions are excluded from this nicotine/tobacco study.
+  cosmetics, and other observed search collisions are excluded from the requested product data.
 
-These rules are deterministic and study-specific. Excluded rows remain in each location's
-run-specific classification CSV, with the rule and flags that explain the decision.
+These rules are deterministic and specific to this collection. Excluded rows remain in each
+location's run-specific classification CSV, with the rule and flags that explain the decision.
 
 ## Deliverables
 
-The study exporter combines each selected location without collapsing location-specific price or
+The exporter combines each selected location without collapsing location-specific price or
 availability. The observation key is `(country_code, zone_slug, store_id, product_id)`. The runner
 passes the exact collected CSV and matching classification file to export and verifies that their
 key sets are identical; it does not reselect a merely newer file.
@@ -235,9 +236,10 @@ Full-protocol per-location classifications and combined outputs are written as:
 
 All five combined artifacts share the same UTC-derived, microsecond-resolution run identifier. The
 exporter reserves that identifier, stages all files under unique adjacent names, refuses to
-overwrite an existing generation, and rolls back a partial publication if finalization fails.
+overwrite an existing generation, and rolls back a partially finalized output set if finalization
+fails.
 
-A new processed study manifest is schema 2. It labels the run `full` or `partial` and records the
+A new processed run manifest is schema 2. It labels the run `full` or `partial` and records the
 ordered queries, locations, request count, source collection manifests, row and byte counts,
 SHA-256 hashes, and aggregate output counts. Every `data_root_relative_path` is a portable POSIX
 path whose base is declared by `path_base: data_root`; the JSON contains no workstation or home

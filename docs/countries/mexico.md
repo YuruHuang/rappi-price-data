@@ -1,4 +1,4 @@
-# Mexico study notes
+# Mexico data collection notes
 
 Sources and indexed listings were checked on 2026-08-16. The sample is two Mexico City delivery
 points, not Mexico as a whole.

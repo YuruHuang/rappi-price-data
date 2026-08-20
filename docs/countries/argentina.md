@@ -1,4 +1,4 @@
-# Argentina study notes
+# Argentina data collection notes
 
 Sources and indexed listings were checked on 2026-08-16. The sample is two Buenos Aires delivery
 points, not Argentina as a whole.

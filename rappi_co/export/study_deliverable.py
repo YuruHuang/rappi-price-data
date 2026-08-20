@@ -1,4 +1,4 @@
-"""Build a country-aware tobacco deliverable from study search files."""
+"""Build country-aware tobacco data files from the configured search results."""
 from __future__ import annotations
 
 import glob
@@ -52,7 +52,7 @@ LOCATION_COLS = [
     "latitude", "longitude", "n_tobacco_observations",
 ]
 ITEM_DEFINITIONS = {
-    "country_code": "ISO alpha-2 study country code.",
+    "country_code": "ISO alpha-2 country code.",
     "country": "Country name.",
     "city": "Sampled Rappi city.",
     "currency": "ISO 4217 currency used by the local-price fields.",
@@ -68,7 +68,7 @@ ITEM_DEFINITIONS = {
     "store_name": "Store display name.",
     "parent_store_type": "Rappi parent store-type category.",
     "name": "Product name shown by Rappi.",
-    "brand": "Reviewed study brand matched in name/source brand; source brand is the fallback.",
+    "brand": "Reviewed configured brand matched in name/source brand; source brand is the fallback.",
     "brand_market_scope": "international or local_market; local_market does not imply local ownership.",
     "ean": "Barcode or GTIN when supplied.",
     "supplier": "Supplier or importer when supplied.",
@@ -90,8 +90,8 @@ ITEM_DEFINITIONS = {
     "has_antismoking": "Rappi anti-smoking or health-warning signal.",
     "has_menthol": "Menthol signal derived by the existing enrichment rules.",
     "primary_class": "Deterministic classifier verdict; exported item rows are tobacco.",
-    "study_category": "One of the four product families fixed in the study protocol.",
-    "product_type": "Classifier subtype used to map the row into a study category.",
+    "study_category": "One of the four configured product categories.",
+    "product_type": "Classifier subtype used to map the row into a product category.",
     "confidence": "Classifier confidence: high, medium, or low.",
     "method": "Deterministic classification rule that fired.",
     "rationale": "Short explanation of the classification evidence.",
@@ -570,7 +570,7 @@ def run_export(country: str, addresses: list[str] | None = None, out_dir: str | 
     ) for slug in slugs]
     items = pd.concat(frames, ignore_index=True)
     if items.empty:
-        raise ValueError(f"{country}: no products in the four study categories to export")
+        raise ValueError(f"{country}: no products in the four configured categories to export")
 
     enrichment = pd.DataFrame([
         enrich_tobacco_fields(row.get("name"), row.get("short_description"),
@@ -800,7 +800,7 @@ def run_export(country: str, addresses: list[str] | None = None, out_dir: str | 
             handle.write(f"{artifact_token}\n")
     except FileExistsError as exc:
         raise FileExistsError(
-            f"study export token is already active: {artifact_token}"
+            f"collection export token is already active: {artifact_token}"
         ) from exc
 
     stage_id = uuid.uuid4().hex
@@ -813,7 +813,7 @@ def run_export(country: str, addresses: list[str] | None = None, out_dir: str | 
         conflicts = [path for path in final.values() if path.exists()]
         if conflicts:
             raise FileExistsError(
-                "study export targets already exist: "
+                "collection export targets already exist: "
                 + ", ".join(str(path) for path in conflicts)
             )
         items.to_csv(work["items_csv"], index=False, encoding="utf-8-sig")
@@ -831,7 +831,7 @@ def run_export(country: str, addresses: list[str] | None = None, out_dir: str | 
         conflicts = [path for path in final.values() if path.exists()]
         if conflicts:
             raise FileExistsError(
-                "study export targets appeared during staging: "
+                "collection export targets appeared during staging: "
                 + ", ".join(str(path) for path in conflicts)
             )
         for key, path in final.items():

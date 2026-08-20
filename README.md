@@ -1,14 +1,14 @@
-# Rappi tobacco and nicotine product study
+# Rappi tobacco and nicotine product data collection
 
 > [!IMPORTANT]
-> **Status:** This is a private working repository. The workbook files are project outputs under
-> review. They are not a formally published dataset.
+> **Status:** This is a private working repository. The workbook files are working data files under
+> review. They have not been formally released or published.
 
 This repository contains tobacco and nicotine product observations from Rappi in Argentina,
 Colombia, Peru, and Mexico. It includes four country workbooks and the complete code used to collect,
 classify, check, and export the data.
 
-This is an independent research project. It is not affiliated with or endorsed by Rappi.
+This data collection is independent and is not affiliated with or endorsed by Rappi.
 
 ## 📦 Included dataset files
 
@@ -80,7 +80,7 @@ Category counts and interpretation notes are in [`datasets/README.md`](datasets/
 ## 🗂️ Main file map
 
 ```text
-rappi-tobacco-study/
+repository/
 |
 |-- datasets/
 |   |-- argentina.xlsx
@@ -198,8 +198,8 @@ The program completes these steps:
 3. Within each delivery location, it combines duplicate search results using `store_id` and
    `product_id`.
 4. It classifies every product offline.
-5. It keeps only the four study categories in the final output.
-6. It writes CSV files, an Excel workbook, and a study manifest.
+5. It keeps only the four requested product categories in the final output.
+6. It writes CSV files, an Excel workbook, and a run manifest.
 
 Run the other countries in the same way:
 
@@ -232,8 +232,8 @@ data/<country>/
         `-- study_manifest_<run_id>.json
 ```
 
-The raw completion record lists the queries used at one location. The study manifest records the
-exact input files, output files, row counts, file sizes, and checksums for the final country run.
+The raw completion record lists the queries used at one location. The processed run manifest records
+the exact input files, output files, row counts, file sizes, and checksums for the final country run.
 
 The `data/` folder is ignored by Git. Do not force it into the repository. Raw responses can contain
 platform metadata that is not needed in the shared dataset folder.
@@ -299,6 +299,6 @@ Read [`docs/methodology.md`](docs/methodology.md) for the complete method and th
 
 ## 📄 License and source content
 
-The software is provided under [`LICENSE`](LICENSE). The workbooks reproduce factual product
-observations from Rappi for research. No ownership of merchant names, product names, images, or Rappi
+The software is provided under [`LICENSE`](LICENSE). The workbooks contain factual product
+observations collected from Rappi. No ownership of merchant names, product names, images, or Rappi
 content is claimed. Confirm institutional and source requirements before redistributing the data.

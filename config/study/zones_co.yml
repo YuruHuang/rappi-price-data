@@ -1,5 +1,5 @@
-# Public landmarks in central and northern Bogotá. The published Colombia sample
-# remains in config/zones_co.yml and is not changed by this study profile.
+# Public landmarks in central and northern Bogotá. The earlier Colombia location profile
+# remains in config/zones_co.yml and is not changed by this four-country profile.
 country: co
 checked_on: 2026-08-16
 zones:

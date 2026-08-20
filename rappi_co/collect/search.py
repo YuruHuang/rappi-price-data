@@ -1,7 +1,7 @@
 """Search-driven depth and coverage collection (tokenless unified-search).
 
 Legacy mode reads the Colombia search terms and locations shipped with the original release.
-Study mode (``--country``) reads the fixed generic and brand-qualified queries from
+Country mode (``--country``) reads the fixed generic and brand-qualified queries from
 config/study/, while keeping collection address-specific and country-aware.
 
 run:  python -m rappi_co.collect.search --country ar --address centro-galerias-pacifico
@@ -251,7 +251,7 @@ def run(address: str, terms: list[str], out_dir: Path,
 def main() -> int:
     p = argparse.ArgumentParser(description="collect relevant products via unified-search")
     p.add_argument("--country", choices=["ar", "co", "pe", "mx"], default=None,
-                   help="study country; omit for the original Colombia release config")
+                   help="collection country; omit for the earlier Colombia config")
     p.add_argument("--address", required=True, help="zone slug from the selected config")
     p.add_argument("--terms", default=None, help="comma-separated override of the seed terms")
     p.add_argument("--out", default=None, help="output dir (default data/raw/<address>/)")

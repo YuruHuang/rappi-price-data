@@ -1,4 +1,4 @@
-# Country metadata for the four-market study. Bounds are a coarse guardrail around
+# Country metadata for the four-country collection. Bounds are a coarse guardrail around
 # the selected city, not a definition of its administrative limits.
 countries:
   ar:

@@ -1,4 +1,4 @@
-# Bogotá delivery addresses used for the two-location study. Each is locked into a real
+# Bogotá delivery addresses used for the two-location collection. Each is locked into a real
 # rappi session by bootstrap.py (crafted currentLocation cookie, autoLocation=false),
 # then enumerated/crawled separately. coords geocoded from the street addresses.
 zones:

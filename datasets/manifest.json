@@ -15,8 +15,8 @@
       "path": "datasets/argentina.xlsx",
       "observations": 2325,
       "store_location_observations": 59,
-      "bytes": 607159,
-      "sha256": "e36d00d4f187a88bf2f5888e3ed1e0917b4308568fe2be2180ec7d7496834e6b"
+      "bytes": 607141,
+      "sha256": "0116b11ea3ca549344e17deb8f4a7510603ec83566faf05ab1497a47b1b5f8ac"
     },
     {
       "country_code": "co",
@@ -24,8 +24,8 @@
       "path": "datasets/colombia.xlsx",
       "observations": 4543,
       "store_location_observations": 138,
-      "bytes": 1152658,
-      "sha256": "9b8a26b5c87568af9c07998f68d17154de828a277cc0d4bfd37e1cce130ec1f6"
+      "bytes": 1152639,
+      "sha256": "d99457a62e9df4192d939ac8aa5cde16ffd57e38d9c3f90c1db1feab2622d4de"
     },
     {
       "country_code": "pe",
@@ -33,8 +33,8 @@
       "path": "datasets/peru.xlsx",
       "observations": 3374,
       "store_location_observations": 104,
-      "bytes": 866741,
-      "sha256": "d15ae6a712ebba776a381bb49fd0cd208f78ec8fa980d27fc463423ef34f46a6"
+      "bytes": 866723,
+      "sha256": "bee62e05571f475cb21999c2a735c9baaba4d7918b7f0fd9d65b20a5f4f2f3d0"
     },
     {
       "country_code": "mx",
@@ -42,8 +42,8 @@
       "path": "datasets/mexico.xlsx",
       "observations": 597,
       "store_location_observations": 18,
-      "bytes": 162951,
-      "sha256": "95dfa96f77272ecd8194b10277c79f89a64e5744188060f6b7c63fcd7b70f75c"
+      "bytes": 162932,
+      "sha256": "be6435e570f7a5b65c3ff486e85fdce0333ae742cebc614be6168942ab4198dc"
     }
   ]
 }

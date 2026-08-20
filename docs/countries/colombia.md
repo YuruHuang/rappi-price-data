@@ -1,4 +1,4 @@
-# Colombia study notes
+# Colombia data collection notes
 
 Sources and indexed listings were checked on 2026-08-16. This public-landmark profile was selected
 for the four-market comparison and is separate from the addresses used in the earlier Colombia
