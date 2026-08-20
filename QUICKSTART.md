@@ -1,51 +1,76 @@
 # Quick start
 
-## Open the published data
+This page is the short command guide. The main [`README.md`](README.md) explains the files, method,
+and output structure.
 
-Download one of the four files under [`datasets/`](datasets/):
-
-- `argentina.xlsx`
-- `colombia.xlsx`
-- `peru.xlsx`
-- `mexico.xlsx`
-
-Start with the `summary` sheet. The main observations are in `items`, and every column is defined in
-`data_dictionary`.
-
-## Inspect the study plan
+## 1. Install
 
 ```bash
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
+```
+
+## 2. Check the full plan without using the network
+
+```bash
 python -m rappi_co.study --all-countries --dry-run
 ```
 
-The dry run prints all eight locations, the exact ordered queries, and the request total without
-contacting Rappi.
+Expected plan: four countries, two locations per country, and 242 requests.
 
-## Run one country
-
-```bash
-python -m rappi_co.study --country pe
-```
-
-This collects both configured Peruvian locations, writes a raw completion manifest for each one,
-classifies the products offline, and creates the combined CSV and Excel outputs under `data/pe/`.
-
-To rebuild from your own previously completed raw archive:
+## 3. Test one query at both locations
 
 ```bash
-python -m rappi_co.study --country pe --skip-collect
+python -m rappi_co.study --country ar --terms cigarrillos --collect-only
 ```
 
-The archived raw inputs used for the four published workbooks are not included in this repository.
+Review the two raw output folders before starting the complete run.
 
-## Verify the code
+## 4. Run one complete country
+
+```bash
+python -m rappi_co.study --country ar
+```
+
+Valid country codes are:
+
+- `ar` for Argentina
+- `co` for Colombia
+- `pe` for Peru
+- `mx` for Mexico
+
+The final workbook is written to:
+
+```text
+data/<country>/processed/combined/tobacco_master_<run_id>.xlsx
+```
+
+## 5. Rebuild from an existing complete raw run
+
+```bash
+python -m rappi_co.study --country ar --skip-collect
+```
+
+The historical raw files for the published workbooks are not included here. This command works with
+raw files created locally by the same pipeline.
+
+## 6. Run the tests
 
 ```bash
 python -m pytest tests -q
 ```
 
-Read [`docs/methodology.md`](docs/methodology.md) before collecting or interpreting results. The
-workflow stops on CAPTCHAs or access challenges and does not attempt to bypass them.
+## Main configuration files
+
+```text
+config/study/terms.yml                 shared search terms
+config/study/brand_terms_ar.yml        Argentina brands
+config/study/brand_terms_co.yml        Colombia brands
+config/study/brand_terms_pe.yml        Peru brands
+config/study/brand_terms_mx.yml        Mexico brands
+config/study/zones_<country>.yml       delivery locations
+config/study/countries.yml             country and currency settings
+```
+
+Stop if Rappi returns a CAPTCHA or an access challenge. The workflow does not bypass access controls.
