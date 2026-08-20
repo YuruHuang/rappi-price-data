@@ -1,14 +1,14 @@
-# Quick start
+# 🚀 Quick start
 
 This page is the short command guide. The main [`README.md`](README.md) explains the files, method,
 and output structure.
 
-To read the published data only, open `datasets/argentina.xlsx`, `colombia.xlsx`, `peru.xlsx`, or
+To read the included data only, open `datasets/argentina.xlsx`, `colombia.xlsx`, `peru.xlsx`, or
 `mexico.xlsx`. Python is not required for that.
 
 Run all commands below from the repository root.
 
-## 1. Install
+## ⚙️ 1. Install
 
 ```bash
 python3 -m venv .venv
@@ -16,7 +16,7 @@ python3 -m venv .venv
 pip install -r requirements.txt
 ```
 
-## 2. Check the full plan without using the network
+## 👀 2. Check the full plan without using the network
 
 ```bash
 python -m rappi_co.study --all-countries --dry-run
@@ -24,7 +24,7 @@ python -m rappi_co.study --all-countries --dry-run
 
 Expected plan: four countries, two locations per country, and 242 requests.
 
-## 3. Test one query at both locations
+## 🔎 3. Test one query at both locations
 
 ```bash
 python -m rappi_co.study --country ar --terms cigarrillos --collect-only
@@ -32,7 +32,7 @@ python -m rappi_co.study --country ar --terms cigarrillos --collect-only
 
 Review the two raw output folders before starting the complete run.
 
-## 4. Run one complete country
+## ▶️ 4. Run one complete country
 
 ```bash
 python -m rappi_co.study --country ar
@@ -51,22 +51,22 @@ The final workbook is written to:
 data/<country>/processed/combined/tobacco_master_<run_id>.xlsx
 ```
 
-## 5. Rebuild from an existing complete raw run
+## ♻️ 5. Rebuild from an existing complete raw run
 
 ```bash
 python -m rappi_co.study --country ar --skip-collect
 ```
 
-The historical raw files for the published workbooks are not included here. This command works with
+The historical raw files for the included workbooks are not included here. This command works with
 raw files created locally by the same pipeline.
 
-## 6. Run the tests
+## ✅ 6. Run the tests
 
 ```bash
 python -m pytest tests -q
 ```
 
-## Main configuration files
+## 🗂️ Main configuration files
 
 ```text
 config/study/terms.yml                 shared search terms

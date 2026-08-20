@@ -10,12 +10,12 @@ MANIFEST = ROOT / "datasets" / "manifest.json"
 EXPECTED_SHEETS = ["items", "stores", "locations", "summary", "data_dictionary"]
 
 
-def test_published_workbooks_match_release_manifest():
-    release = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assert release["schema_version"] == 1
-    assert len(release["files"]) == 4
+def test_included_workbooks_match_dataset_manifest():
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    assert manifest["schema_version"] == 1
+    assert len(manifest["files"]) == 4
 
-    for record in release["files"]:
+    for record in manifest["files"]:
         path = ROOT / record["path"]
         payload = path.read_bytes()
         assert len(payload) == record["bytes"], path

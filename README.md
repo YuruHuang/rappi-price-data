@@ -1,12 +1,16 @@
 # Rappi tobacco and nicotine product study
 
+> [!IMPORTANT]
+> **Status:** This is a private working repository. The workbook files are project outputs under
+> review. They are not a formally published dataset.
+
 This repository contains tobacco and nicotine product observations from Rappi in Argentina,
 Colombia, Peru, and Mexico. It includes four country workbooks and the complete code used to collect,
 classify, check, and export the data.
 
-The project is an independent research release. It is not affiliated with or endorsed by Rappi.
+This is an independent research project. It is not affiliated with or endorsed by Rappi.
 
-## Published data
+## 📦 Included dataset files
 
 | Country | Workbook | Product observations | Store records by location |
 |---|---|---:|---:|
@@ -39,7 +43,7 @@ local market. These are search seeds, not sales rankings. The exact brand querie
 `config/study/brand_terms_ar.yml`, `brand_terms_co.yml`, `brand_terms_pe.yml`, and
 `brand_terms_mx.yml`.
 
-## What is inside each workbook
+## 📊 Workbook guide
 
 Each workbook contains five sheets.
 
@@ -73,7 +77,7 @@ Prices remain in local currency. Check the `currency` field before comparing cou
 Workbook checksums and file counts are in [`datasets/manifest.json`](datasets/manifest.json).
 Category counts and interpretation notes are in [`datasets/README.md`](datasets/README.md).
 
-## Main file map
+## 🗂️ Main file map
 
 ```text
 rappi-tobacco-study/
@@ -144,7 +148,7 @@ The local team will normally work with these files:
 The repository also keeps the earlier Colombia crawl modules for compatibility. They are not needed
 for the four country search workflow described below.
 
-## Set up the project
+## ⚙️ 1. Set up the project
 
 Python 3.10 or newer is required. Run the following commands from the repository root.
 
@@ -154,7 +158,7 @@ python3 -m venv .venv
 pip install -r requirements.txt
 ```
 
-## Check the plan before collection
+## 👀 2. Check the plan before collection
 
 This command does not contact Rappi. It prints all eight locations, every query, and the total number
 of requests.
@@ -165,7 +169,7 @@ python -m rappi_co.study --all-countries --dry-run
 
 The complete plan contains two locations in each country. It uses 242 requests in total.
 
-## Run a small collection check
+## 🔎 3. Run a small collection check
 
 Start with one simple query before running the full list.
 
@@ -179,7 +183,7 @@ classify or export a final workbook.
 Check that both locations returned sensible products. If Rappi returns a CAPTCHA, challenge page, or
 unexpected response, stop the run. The code does not bypass access controls.
 
-## Run one complete country
+## ▶️ 4. Run one complete country
 
 Use the two letter country code: `ar`, `co`, `pe`, or `mx`.
 
@@ -205,7 +209,7 @@ python -m rappi_co.study --country pe
 python -m rappi_co.study --country mx
 ```
 
-## Output files
+## 📁 Output files
 
 A complete country run creates files under `data/<country>/`.
 
@@ -232,18 +236,18 @@ The raw completion record lists the queries used at one location. The study mani
 exact input files, output files, row counts, file sizes, and checksums for the final country run.
 
 The `data/` folder is ignored by Git. Do not force it into the repository. Raw responses can contain
-platform metadata that is not needed in a public data release.
+platform metadata that is not needed in the shared dataset folder.
 
-Replacing a published workbook is a maintainer task. After review, copy only the approved workbook
+Replacing an included workbook is a maintainer task. After review, copy only the approved workbook
 into `datasets/`, update its file size, checksum, and counts in `datasets/manifest.json`, and run:
 
 ```bash
-python -m pytest tests/test_published_datasets.py -q
+python -m pytest tests/test_dataset_files.py -q
 ```
 
-This test fails when a workbook and the release manifest do not agree.
+This test fails when a workbook and the dataset manifest do not agree.
 
-## Rebuild from saved raw files
+## ♻️ Rebuild from saved raw files
 
 Use this only when the complete raw files already exist on the same computer.
 
@@ -254,11 +258,11 @@ python -m rappi_co.study --country ar --skip-collect
 The program accepts only a complete raw run whose ordered query list matches the current full plan.
 It will not treat a small collection check as a complete country run.
 
-The raw files used to create the four published workbooks are not included in this GitHub
+The raw files used to create the four included workbooks are not included in this GitHub
 repository. The repository contains the final analytical workbooks and the code needed to run a new
 collection.
 
-## Test changes
+## ✅ Test changes
 
 Run the tests before and after changing queries, rules, or export code.
 
@@ -266,13 +270,13 @@ Run the tests before and after changing queries, rules, or export code.
 python -m pytest tests -q
 ```
 
-The release currently passes 281 tests, with one optional test skipped.
+The repository currently passes 281 tests, with one optional test skipped.
 
 When adding a new classification rule, add examples that should be included and examples that should
-be excluded. Then compare the new country output with the previous output before replacing a
-published workbook.
+be excluded. Then compare the new country output with the previous output before replacing an
+included workbook.
 
-## Interpretation limits
+## ⚠️ Interpretation limits
 
 The collection used two public landmark delivery points in each capital city. The results describe
 products surfaced by Rappi at those places and at that time. They are not:
@@ -283,7 +287,7 @@ products surfaced by Rappi at those places and at that time. They are not:
 - a complete list of unavailable products
 - a legal status assessment
 
-All published rows were returned as available. Source prices were preserved. Very large discounts or
+All included rows were returned as available. Source prices were preserved. Very large discounts or
 apparent merchant entry errors should be flagged during price analysis instead of silently changed.
 
 The `confidence` field describes the strength of a classification rule. It is not a probability.
@@ -293,7 +297,7 @@ source text.
 Read [`docs/methodology.md`](docs/methodology.md) for the complete method and the country notes under
 [`docs/countries/`](docs/countries/) for the exact addresses and brand searches.
 
-## License and source content
+## 📄 License and source content
 
 The software is provided under [`LICENSE`](LICENSE). The workbooks reproduce factual product
 observations from Rappi for research. No ownership of merchant names, product names, images, or Rappi

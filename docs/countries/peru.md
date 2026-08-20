@@ -57,10 +57,10 @@ and a [TEREA product page](https://www.rappi.com.pe/p/terea-for-iqos-iluma-turqu
 
 ## Validated collection snapshot
 
-The complete 2026-08-16 collection used all 30 queries at both pins. The published offline build was
-regenerated on 2026-08-20 and is available as
+The complete 2026-08-16 collection used all 30 queries at both pins. The included workbook was
+prepared on 2026-08-20 and is available as
 [`datasets/peru.xlsx`](../../datasets/peru.xlsx); its checksum and row count are recorded in the
-[release manifest](../../datasets/manifest.json). Counts below are store-location product
+[dataset manifest](../../datasets/manifest.json). Counts below are store-location product
 observations after strict four-family filtering.
 
 | Location | Collection manifest | Raw rows | Returned stores | Pouches | E-cigarettes | Heated | Cigarettes | Final |

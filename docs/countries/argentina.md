@@ -71,10 +71,10 @@ for them during the review, so they must not be described as currently available
 
 ## Validated collection snapshot
 
-The complete 2026-08-16 collection used all 27 queries at both pins. The published offline build was
-regenerated on 2026-08-20 and is available as
+The complete 2026-08-16 collection used all 27 queries at both pins. The included workbook was
+prepared on 2026-08-20 and is available as
 [`datasets/argentina.xlsx`](../../datasets/argentina.xlsx); its checksum and row count are recorded in
-the [release manifest](../../datasets/manifest.json). Counts below are store-location product
+the [dataset manifest](../../datasets/manifest.json). Counts below are store-location product
 observations after strict four-family filtering. One homeware title from a decor store (a
 Camel-coloured bowl filed under the cigarette aisle) is excluded as a
 `study_homeware_collision`.

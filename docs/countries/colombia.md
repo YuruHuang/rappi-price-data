@@ -64,10 +64,10 @@ reviewed in the earlier Colombia pilot. `local_market` records local relevance, 
 
 ## Validated collection snapshot
 
-The complete 2026-08-16 collection used all 32 queries at both pins. The published offline build was
-regenerated on 2026-08-20 and is available as
+The complete 2026-08-16 collection used all 32 queries at both pins. The included workbook was
+prepared on 2026-08-20 and is available as
 [`datasets/colombia.xlsx`](../../datasets/colombia.xlsx); its checksum and row count are recorded in
-the [release manifest](../../datasets/manifest.json). Counts below are store-location product
+the [dataset manifest](../../datasets/manifest.json). Counts below are store-location product
 observations after strict four-family filtering. Two Lookah Unicorn concentrate/wax devices returned
 by vape searches were excluded from the nicotine-product table.
 

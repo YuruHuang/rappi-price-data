@@ -6,9 +6,9 @@ This study mode adapts the Colombia search collector to Argentina, Colombia, Per
 samples two public delivery locations in one major Rappi city per country. It does not claim national
 coverage or market share.
 
-The original two-location Colombia release remains unchanged. Its files still use
-`config/zones_co.yml`, `config/relevant_sections_co.yml`, and the original commands. The four-market
-study uses the separate `config/study/` directory and always requires `--country`.
+The earlier two location Colombia workflow remains in the repository for compatibility. Its files
+use `config/zones_co.yml`, `config/relevant_sections_co.yml`, and the original commands. The four
+country study uses the separate `config/study/` directory and always requires `--country`.
 
 ## Study frame
 
@@ -274,10 +274,10 @@ When Rappi's pack metadata conflicts with the listing title and comparable price
 title rule is used only when documented in the country note. Ambiguous rows otherwise keep a blank
 pack count and unit price.
 
-## Portable release archive
+## Portable archive
 
 `data/` is intentionally ignored by Git and can contain session state or many superseded rebuilds.
-Do not force-add or archive the entire directory. Stage a release from an explicit allowlist built
+Do not force add or archive the entire directory. Stage an archive from an explicit allowlist built
 from the four canonical processed manifests.
 
 For a self-contained reproducibility archive, preserve a single `data/` tree and include exactly:
@@ -291,7 +291,7 @@ For a self-contained reproducibility archive, preserve a single `data/` tree and
   paths resolve beneath the packaged `data/` directory.
 
 Exclude `.env`, cookies, tokens, `data/state`, browser/session data, checkpoints, `.partial` or
-temporary files, diagnostic runs, and superseded generations. Normalize public files to mode 0644
+temporary files, diagnostic runs, and superseded generations. Normalize shared files to mode 0644
 and directories to 0755 in the staged copy, and reject absolute or traversal archive member names.
 Verify every manifest-recorded byte count, SHA-256 hash, and CSV row count after staging and again
 after extracting the archive. If only the analytical outputs are shared, label the package
@@ -334,8 +334,7 @@ python -m rappi_co.study --country pe --skip-collect
 requested run. With no `--terms`, that means the complete default country query list. Passing the
 same diagnostic `--terms` rebuilds that partial run only under `processed/diagnostic/`; it cannot
 write the normal per-zone or combined paths. `--collect-only` creates raw collection artifacts and
-no processed manifest. This prevents a newer one-query file from being published as if it were a
-full collection.
+no processed manifest. This prevents a newer one query file from being treated as a full collection.
 
 ## Interpretation limits
 
