@@ -7,8 +7,6 @@ This repository contains four workbooks, one per country, and Python code for co
 classifying, checking, and exporting tobacco and nicotine product observations from Rappi in
 Argentina, Colombia, Peru, and Mexico.
 
-This data collection is independent and is not affiliated with or endorsed by Rappi.
-
 ## 🚀 Start here
 
 | Task | Command or file | Result |
