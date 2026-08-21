@@ -1,7 +1,7 @@
 # Rappi tobacco and nicotine product data
 
 > [!IMPORTANT]
-> **Status:** This is a private working repository. The included data files are under review.
+> **Status:** This is a private working repository. 
 
 This repository contains four workbooks, one per country, and Python code for collecting,
 classifying, checking, and exporting tobacco and nicotine product observations from Rappi in
