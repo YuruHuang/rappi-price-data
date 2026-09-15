@@ -1,0 +1,733 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "run_id": "20260910_124608_117667",
+  "plan": {
+    "country_code": "pe",
+    "country": "Peru",
+    "city": "Lima",
+    "currency": "PEN",
+    "addresses": [
+      {
+        "slug": "miraflores-larcomar",
+        "lat": -12.13222,
+        "lng": -77.03055,
+        "address": "Centro Comercial Larcomar, Malecón de la Reserva 610, Miraflores 15074, Lima",
+        "district": "Miraflores"
+      },
+      {
+        "slug": "independencia-megaplaza",
+        "lat": -11.99444,
+        "lng": -77.06115,
+        "address": "Centro Comercial MegaPlaza, Av. Alfredo Mendiola 3698, Independencia 15311, Lima",
+        "district": "Independencia"
+      }
+    ],
+    "queries": [
+      "agua",
+      "agua mineral",
+      "agua sin gas",
+      "agua con gas",
+      "gaseosa",
+      "refresco",
+      "bebida azucarada",
+      "bebida energetica",
+      "bebida deportiva",
+      "bebida isotonica",
+      "te helado",
+      "jugo",
+      "nectar",
+      "agua saborizada",
+      "bebida de frutas",
+      "cerveza",
+      "vino",
+      "espumante",
+      "whisky",
+      "vodka",
+      "ron",
+      "tequila",
+      "gin",
+      "licor",
+      "coctel",
+      "sidra",
+      "agua de mesa",
+      "chicha morada",
+      "pisco",
+      "cerveza sin alcohol",
+      "agua San Luis",
+      "agua Cielo",
+      "agua San Mateo",
+      "gaseosa Coca Cola",
+      "gaseosa Inca Kola",
+      "gaseosa Kola Real",
+      "bebida Sporade",
+      "bebida Cifrut",
+      "bebida Volt",
+      "cerveza Cristal",
+      "cerveza Pilsen Callao",
+      "cerveza Cusquena",
+      "pisco Queirolo",
+      "ron Cartavio"
+    ],
+    "requests": 88,
+    "protocol_status": "full",
+    "full_protocol": true,
+    "scope": "beverages",
+    "config_version": 1,
+    "search_url": "https://services.rappi.pe/api/pns-global-search-api/v1/unified-search?is_prime=false&unlimited_shipping=false",
+    "catalog_completeness": "unknown; search results may be capped"
+  },
+  "inputs": {
+    "miraflores-larcomar": {
+      "items": {
+        "data_root_relative_path": "pe/raw/miraflores-larcomar/search_items_20260910_044954.csv",
+        "bytes": 7710373,
+        "sha256": "4454e4a996653ca31b891254361f23189ca9946f8c3aa9f498364e8f9f87e78e",
+        "rows": 12937
+      },
+      "stores": {
+        "data_root_relative_path": "pe/raw/miraflores-larcomar/search_stores_20260910_044954.csv",
+        "bytes": 36866,
+        "sha256": "24edc1cf5b2062dedaed9b44f475f451834ed88bf1aac5b9cdd4b96d980e91ef",
+        "rows": 214
+      },
+      "manifest": {
+        "data_root_relative_path": "pe/raw/miraflores-larcomar/search_manifest_20260910_044954.json",
+        "bytes": 6292,
+        "sha256": "f9b3bd059c6d8e0b0e804631874a020e5ec75d9d14b15ae48c6b484a0c21c379"
+      },
+      "raw_responses": [
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/001_agua.json.gz",
+          "bytes": 104661,
+          "sha256": "e61b1634dea61689b4853a18e91461534066af27357a00b1920fbd6ea8f6dfd5"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/002_agua_mineral.json.gz",
+          "bytes": 108904,
+          "sha256": "3a21ec3714aba03342986ba84f821664db354fefcba3c51972cffd4ef10a3aac"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/003_agua_sin_gas.json.gz",
+          "bytes": 55196,
+          "sha256": "aeabfb54abd35d77cafd61bc31cfa5212564eec65c3ad0e93c0db9c1a5c5c0cf"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/004_agua_con_gas.json.gz",
+          "bytes": 64093,
+          "sha256": "717e5d70717f0d78c7b34200774a26b8c72a2a208d1a9226de34a41959193f37"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/005_gaseosa.json.gz",
+          "bytes": 142612,
+          "sha256": "63eb571e05676604d472cb2a71675235ae08b7ab5de54f9927a47370c76e2f65"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/006_refresco.json.gz",
+          "bytes": 58342,
+          "sha256": "4950026d1e8ecad22c2ebf0f46c33ac98cef2d52a81e68d4e09c98747b1ced2f"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/007_bebida_azucarada.json.gz",
+          "bytes": 135515,
+          "sha256": "ebedf870aeb701f9c0829a36e798620cf11a05a8458964259e92e477e94ae833"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/008_bebida_energetica.json.gz",
+          "bytes": 106855,
+          "sha256": "949b477529e5d1668038a030ed5982bed74e333b4d8e7e93867e6a48f7bdd847"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/009_bebida_deportiva.json.gz",
+          "bytes": 113562,
+          "sha256": "58a5992a792c5da4339a095330ca8cda5afe7a73a58e29533c564845cf3d8188"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/010_bebida_isotonica.json.gz",
+          "bytes": 103579,
+          "sha256": "7f3dbb8413c206de637f0cceeb0cddf8ae0271769a20b0789b372fe412c96909"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/011_te_helado.json.gz",
+          "bytes": 78438,
+          "sha256": "5cf85d30989f43f9212f4830ceed8b4ccf3c64a431c0d2923166dc85229125a4"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/012_jugo.json.gz",
+          "bytes": 57049,
+          "sha256": "8f209f2601e91ee88112c4e777725cf38233d1fe3f55bf5087d193726c5241d9"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/013_nectar.json.gz",
+          "bytes": 66465,
+          "sha256": "9937027d47d2c34f5f6c511b3d0c07535c5622f8acb80299953bc8dc27180ba1"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/014_agua_saborizada.json.gz",
+          "bytes": 96530,
+          "sha256": "4f89b778a4e37639777186bd2a8f25652623b3a1ed6df7f419f5edef29a05980"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/015_bebida_de_frutas.json.gz",
+          "bytes": 53407,
+          "sha256": "4d34d34c7f07451a2fdadbecf3548853c897fbd4f62c1aa63bc8e44fe82270a0"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/016_cerveza.json.gz",
+          "bytes": 158131,
+          "sha256": "28b92bee76149f0d068866ac9e0ffb0482d8809b5f6159cd34c8e4dce8f5bc5a"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/017_vino.json.gz",
+          "bytes": 185339,
+          "sha256": "bc15c30f58d901b83034888a9ebc95a8d1b988e5edfc8775fbd99430a098edff"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/018_espumante.json.gz",
+          "bytes": 70475,
+          "sha256": "0ef66e44f7c1337453ea104c4b2b324ca4271254297408d15a07ab1222f2ed0b"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/019_whisky.json.gz",
+          "bytes": 102841,
+          "sha256": "484704451f887f4a215e96b5c357a8f1207216f592d270b46d10e4fa1561d264"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/020_vodka.json.gz",
+          "bytes": 63336,
+          "sha256": "3dc5ef499f9c8e146326dd06d94b16cff19df6e33d30e3ed61c5cb80dbe0bf35"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/021_ron.json.gz",
+          "bytes": 129756,
+          "sha256": "4ba3398709c6395082a43d5bb1de1452d8659771f4b1ed71b4375052ca20fe26"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/022_tequila.json.gz",
+          "bytes": 27014,
+          "sha256": "bb3b35951339bf3f308c5082bac1a46769d3a8ebb5729ccdcb80c815b10b32aa"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/023_gin.json.gz",
+          "bytes": 44357,
+          "sha256": "c2c3124bda12b0781a60483853395b8dadef28c91993748dec6db1b81c3136be"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/024_licor.json.gz",
+          "bytes": 156962,
+          "sha256": "410ddfbd7ace10e37db43b86c5c44b2b09290b4117a936c56b747be624c929d7"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/025_coctel.json.gz",
+          "bytes": 102474,
+          "sha256": "3b128a5fb8ebf2971bfa07fe5dbb42376bf1573b6b350d5dfa7a4025c4ce2e8d"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/026_sidra.json.gz",
+          "bytes": 5356,
+          "sha256": "858453852398b13b6e9f694f424035418cc2fe7b64d55fc8386dce9ca7032547"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/027_agua_de_mesa.json.gz",
+          "bytes": 105181,
+          "sha256": "16dfb4a606cfbda52dad03292493cc0ae43a89e73dda4bd3920cd61c39d09fd7"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/028_chicha_morada.json.gz",
+          "bytes": 108926,
+          "sha256": "bfd541e5dadd729913015650945e328e6b9e274c4da06282be42f278ca0bc119"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/029_pisco.json.gz",
+          "bytes": 102979,
+          "sha256": "8bf037a8432e6f3c4c2639a9bf5136e63fdff5145d8742dd2a144acc8d5939c5"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/030_cerveza_sin_alcohol.json.gz",
+          "bytes": 104653,
+          "sha256": "52aceb95a44ead2a8e3d688fe2ab712a85a226c57c5ff599f2d913140c84ce31"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/031_agua_San_Luis.json.gz",
+          "bytes": 56384,
+          "sha256": "9bd1a0b93876346a43d9f3bcafd419968d759d950335df97ef5a51b2bd753ae0"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/032_agua_Cielo.json.gz",
+          "bytes": 67456,
+          "sha256": "a4c7d1a6673874f9c674ecc7e400bfc26b7359659119e2a8ae5b2bd728a9c112"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/033_agua_San_Mateo.json.gz",
+          "bytes": 54128,
+          "sha256": "a664e41ca7545a061b05aa8a19f61355461f64e8abfe597db963dee41f22bc1c"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/034_gaseosa_Coca_Cola.json.gz",
+          "bytes": 90190,
+          "sha256": "7e23b55c57325e9c5b79b82facf124ae427f7fd0e24429af2f03d866769f0046"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/035_gaseosa_Inca_Kola.json.gz",
+          "bytes": 140269,
+          "sha256": "4fb657ba56148ccad892f1d59b10dfbb5888c3a54c6474ae5381f37fd35272ee"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/036_gaseosa_Kola_Real.json.gz",
+          "bytes": 89774,
+          "sha256": "c2fed52a33b5ad91b76b185b5ff271c1bb5678555be35f7ddcecf8330f92d280"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/037_bebida_Sporade.json.gz",
+          "bytes": 91211,
+          "sha256": "5d119016aca5118c54f8705f67606257becd3af3b5a808ffbde1f612cbbc4096"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/038_bebida_Cifrut.json.gz",
+          "bytes": 103987,
+          "sha256": "14d79fa7f068812b2708a7d0c45114f1521f2865d722b781414c99c4a7ae1ac4"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/039_bebida_Volt.json.gz",
+          "bytes": 92793,
+          "sha256": "4e5fe127b946303d2686b7a152a890559f0bc7c20520bbfdf73b78c87a95b6f5"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/040_cerveza_Cristal.json.gz",
+          "bytes": 108103,
+          "sha256": "7c9684379a0a21cdfcf5aef661a238d11d789809c109df78939ed84e53d5395b"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/041_cerveza_Pilsen_Callao.json.gz",
+          "bytes": 106029,
+          "sha256": "234022ef84dd9d307c489b8faacf77d87ff6ee9216265b96ce67ded02f9e3432"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/042_cerveza_Cusquena.json.gz",
+          "bytes": 105533,
+          "sha256": "bf3c861531a1bfe43dab58f96b8ae95674ebb5cc856119352d6a80bc3e986e3f"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/043_pisco_Queirolo.json.gz",
+          "bytes": 101880,
+          "sha256": "17ed644e38affcf5582dd023e60625f1fb12ff5de47972c4d53ce0460483fbd2"
+        },
+        {
+          "data_root_relative_path": "pe/raw/miraflores-larcomar/search_raw_20260910_044954/044_ron_Cartavio.json.gz",
+          "bytes": 124878,
+          "sha256": "147e336ccf71ba57887aa724203b2ff52e8d7dc47c8a585b107d8803c38c9b1c"
+        }
+      ]
+    },
+    "independencia-megaplaza": {
+      "items": {
+        "data_root_relative_path": "pe/raw/independencia-megaplaza/search_items_20260910_045214.csv",
+        "bytes": 5903253,
+        "sha256": "974efddd39476acf00f463f1312c6f292f1b113e90429b6742a68f72d281e061",
+        "rows": 10012
+      },
+      "stores": {
+        "data_root_relative_path": "pe/raw/independencia-megaplaza/search_stores_20260910_045214.csv",
+        "bytes": 33384,
+        "sha256": "42b45012cd0e08ff0bea382d40767463e46b6d5c462c17044edea0ac7ce1ddb3",
+        "rows": 167
+      },
+      "manifest": {
+        "data_root_relative_path": "pe/raw/independencia-megaplaza/search_manifest_20260910_045214.json",
+        "bytes": 6290,
+        "sha256": "8a05af1586b603c9d99c25ad1336bf0d85e4c1abc4459f698577f7d49312f3fd"
+      },
+      "raw_responses": [
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/001_agua.json.gz",
+          "bytes": 90960,
+          "sha256": "8d42b0f4e9b9776891b8e1187039f04553afc1be276f3ff2fd8f2cc12111da89"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/002_agua_mineral.json.gz",
+          "bytes": 108492,
+          "sha256": "da64ba9be82441353a46bb202aab1eed23faaad64a5483efd0bd3ec0a0c942d8"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/003_agua_sin_gas.json.gz",
+          "bytes": 40963,
+          "sha256": "4e6b36110a3cc400cda83716b308b79bab542f1b8fe08c886b42639e4c239d2d"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/004_agua_con_gas.json.gz",
+          "bytes": 46179,
+          "sha256": "a46a7d4f8edb6b5677bac7af177b89e1f4cc1610195355479c37eca2c133142e"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/005_gaseosa.json.gz",
+          "bytes": 120252,
+          "sha256": "fd8454476ca6cb29aef6902a2b7f7ae91b211c9c6d12abcefb762408d305393b"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/006_refresco.json.gz",
+          "bytes": 55692,
+          "sha256": "42dee4cdebdf4c1c3e7c4e04b1b6c779b5b1458cefcaf8357969ff9ea5b55f45"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/007_bebida_azucarada.json.gz",
+          "bytes": 115543,
+          "sha256": "9763865848b26a8cf9f44354a5a3a4cf930fbe3b25501b5c9ef3a24a4dd2bf36"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/008_bebida_energetica.json.gz",
+          "bytes": 100992,
+          "sha256": "4d240551eb5fb5e980ab748c45e4908f0e44a13b4c8f6caa843bb78932aea9bc"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/009_bebida_deportiva.json.gz",
+          "bytes": 116455,
+          "sha256": "413e3828e555f4cf5d4dce8c6b9545b4cbcc90a637802c9d5283f49124e50928"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/010_bebida_isotonica.json.gz",
+          "bytes": 94365,
+          "sha256": "8a6fcc1f0db213508207877c4181f7ada030be7701080510b19546a959d0bcac"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/011_te_helado.json.gz",
+          "bytes": 54889,
+          "sha256": "dabc9fba273649d24b8f948ced3e8732a716bbf26b16ac40663efcff169ae12b"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/012_jugo.json.gz",
+          "bytes": 55612,
+          "sha256": "b5126fcaff265173cba5902d38e45ee0c740eed8b9348676cc3629d21dc1d6e3"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/013_nectar.json.gz",
+          "bytes": 68548,
+          "sha256": "f08e88389f819e4f2e0c9d06042af8e1592f2a4eb7b7f05bb6813861f4a493c8"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/014_agua_saborizada.json.gz",
+          "bytes": 68844,
+          "sha256": "bff1aedfe98de58dd2fac6321bdeccec927cf7cbecb854b4968b48489b90e31f"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/015_bebida_de_frutas.json.gz",
+          "bytes": 54014,
+          "sha256": "0e5d88321f856804f3c89b1e48fbea0ce71c3a74dea4eb05910273829cdd6f16"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/016_cerveza.json.gz",
+          "bytes": 128185,
+          "sha256": "b4069774d31ac4ea13a1d91b3d2140c9dea9479d139e1ecf02f1c0e43fcd07e1"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/017_vino.json.gz",
+          "bytes": 138110,
+          "sha256": "c53a71280962d6f84ed1f5803d59a5bfb02964dde847b05e05b35edf835825a6"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/018_espumante.json.gz",
+          "bytes": 45590,
+          "sha256": "93065965ef3aab3a1036fa95e06db7e5b21655468e08fe77abf64b7b5a6ebd31"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/019_whisky.json.gz",
+          "bytes": 83299,
+          "sha256": "cc2c3880c0c0f83ba86dedd4c384ae854f6adb3b4f4e3ab6c5b21c802fb9b549"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/020_vodka.json.gz",
+          "bytes": 58196,
+          "sha256": "1c7a70c0b70ed56ff426283e124ceb128e94cbfa0450a4cf10f0a5614e6ed4fc"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/021_ron.json.gz",
+          "bytes": 105673,
+          "sha256": "49e3a8461b76c0c51b630039c86bca98f14b04e6a0b0516cf541a700eb437ef7"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/022_tequila.json.gz",
+          "bytes": 24167,
+          "sha256": "b5e45b859cf44a07688022f2496df9b64ca39799a5140de91f80614c4cad6d5c"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/023_gin.json.gz",
+          "bytes": 25983,
+          "sha256": "ac2bce8de491b8dd73ff4e2f6bc38e9dac89a58eccc5a3ba2ddef6f96a56c222"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/024_licor.json.gz",
+          "bytes": 141980,
+          "sha256": "493d205668562c0ac851d26b39fc647adfca9c9bb8759d36ec606dede83c4043"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/025_coctel.json.gz",
+          "bytes": 86696,
+          "sha256": "573324f4572a1dd833924feea56f327c52f6bcd3df215ecb44ab0a5028c2dfb1"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/026_sidra.json.gz",
+          "bytes": 50877,
+          "sha256": "e402f4c67638a8c328c2321068c1ccbf29f58719f5074bb309185a2f047891c0"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/027_agua_de_mesa.json.gz",
+          "bytes": 102372,
+          "sha256": "c672aed3ee2a9491ed93e3f2db5c3274a9ca8b4ff8a721b6a112fbcfe23e078b"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/028_chicha_morada.json.gz",
+          "bytes": 104823,
+          "sha256": "6f408ee0c27e603e331b6c0d0eda03e12fc35ae40bd4175f879c336cdcd0eb3e"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/029_pisco.json.gz",
+          "bytes": 77712,
+          "sha256": "c57a4e0954cd540316f9cbd4768b8b56f80a9322ebfc1c2e419130e2e75c668a"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/030_cerveza_sin_alcohol.json.gz",
+          "bytes": 80167,
+          "sha256": "65d1f5c8d654271859b0ea1a6ac439c308bd042f94662590c7a1ffc66cfd1d55"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/031_agua_San_Luis.json.gz",
+          "bytes": 40659,
+          "sha256": "29f124f2f77b64b5fbd46f85ced4e6691e3e19d8c5cb940d66dc18455ef50601"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/032_agua_Cielo.json.gz",
+          "bytes": 40308,
+          "sha256": "3d8f59b821cdc5d4ea628455f7521225533bdb694af6efdcce9891f4302a2006"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/033_agua_San_Mateo.json.gz",
+          "bytes": 40415,
+          "sha256": "e39d136bba97fce35aed4382f35eb70c71ace80640697f0eaba4292e6b25783a"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/034_gaseosa_Coca_Cola.json.gz",
+          "bytes": 68441,
+          "sha256": "992916f55868cf912fbcaa45fa43c84a3277d21044dab13cf3ae35751ead893e"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/035_gaseosa_Inca_Kola.json.gz",
+          "bytes": 119311,
+          "sha256": "721c4fe9bf1cb24d383a5a95531fcb7b8a702c1dc1e94e72a965d96f218ce513"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/036_gaseosa_Kola_Real.json.gz",
+          "bytes": 68672,
+          "sha256": "908081bb5d9603ce88a3b1b708e17c835c51cd2f1650e5df0c98f606955d4b9a"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/037_bebida_Sporade.json.gz",
+          "bytes": 87003,
+          "sha256": "7e910a1d93e66db961075e22532792e59bf3484cdb6e113bea1a45666e96f49f"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/038_bebida_Cifrut.json.gz",
+          "bytes": 91087,
+          "sha256": "a06b66bfc9d70bc46b4eee9b36652b176c30c765efe471dd189ea85399714f1b"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/039_bebida_Volt.json.gz",
+          "bytes": 78938,
+          "sha256": "2d9194f469527f73f7638bcffb3d14bffe7731d362a1eed77fdd0a1527440d27"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/040_cerveza_Cristal.json.gz",
+          "bytes": 84122,
+          "sha256": "79d4bf7dc1aa2abf5aa568d730220ef7c37fad15cade8e9d2429ff38f2679ebb"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/041_cerveza_Pilsen_Callao.json.gz",
+          "bytes": 79981,
+          "sha256": "82552944c7bcf431d41da4fe3d8fcf98b74e744cc46ddd08af7dced4511eabb0"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/042_cerveza_Cusquena.json.gz",
+          "bytes": 82391,
+          "sha256": "900c750a19bb70bc45b501d3849c96eebf039dc3a1635154660fda1d965e49b0"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/043_pisco_Queirolo.json.gz",
+          "bytes": 76101,
+          "sha256": "ea75e42ee0aad5cdf0e24516bb91fe0ab41482a3317ccc0b61af0a74345262ae"
+        },
+        {
+          "data_root_relative_path": "pe/raw/independencia-megaplaza/search_raw_20260910_045214/044_ron_Cartavio.json.gz",
+          "bytes": 102912,
+          "sha256": "437b04e6cb60f9a5737e290aeb75be5cb3b1a9deeefbc9be7793fe8afcd6fac3"
+        }
+      ]
+    }
+  },
+  "config_sha256": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053",
+  "config_files_sha256": {
+    "config/beverages.yml": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053",
+    "config/keywords_co.yml": "a10ab30232309664509b28f00bf14578681cc1471b82e8b1ef7dd8bf535a05e5",
+    "config/relevant_sections_co.yml": "c3ca75d7e080694b1e9a8532b7ff48b02c39395571d2683360f14ad98da8fdd6",
+    "config/seed_paths_co.yml": "64eea55dec8bd78d49de619b59e3153a7bc8354dd82093dd27cc3bfea405b85c",
+    "config/study/brand_terms_ar.yml": "646e3bd4befeeb78cddc6f1567be8d3997d8b4aebac35caaab8ae47a44a385e4",
+    "config/study/brand_terms_co.yml": "39b0e6f4a2ae6e5ce3aef4cb0fc9114e7ff048b8bd20cf73ec41e5950363adf8",
+    "config/study/brand_terms_mx.yml": "20f78ae4b8f36e977d13a4d131c0b3bd5984437f244899d14c6d2f422ce359b1",
+    "config/study/brand_terms_pe.yml": "db5f568bb5f7ff23d8a816338adf7c8200d278bd947de653f6f9abf305298905",
+    "config/study/countries.yml": "bdc87c6a0b64043d63b2aa7bcf04d68c567fae1a835e791782122f822b0aca74",
+    "config/study/terms.yml": "1c835b4501e1e2d56c493d7f5ce9e5155041dfc5b21b1c226ed61b2ed2c9b607",
+    "config/study/zones_ar.yml": "9a3c790405bb4c7a8952349cd7a0470964611ef349115c4c92f12ce584150eba",
+    "config/study/zones_co.yml": "64fe809a804aa2bf7c661433b9762533a776e3d8e77f996dd703f60d9b76dc78",
+    "config/study/zones_mx.yml": "aff777cdf61f20ae4fd68e3cabd5903cc772d4327eeaab4e36feb049a6e158f3",
+    "config/study/zones_pe.yml": "88cfdb9fef24a4badc3383569742bbf59cf6d4cdadccfb28d81885e7ccac7fec",
+    "config/zones_co.yml": "84ed40973bd54a3fa674b1ad6b4df98f370c620b84ce33f0d041a4c707131c4c"
+  },
+  "code_sha256": {
+    "rappi_co/__init__.py": "655193a1bf78279b95cbf71ba78ac227b5d62615e170b9cf73e231433a7b5ebb",
+    "rappi_co/beverages.py": "99d9c7ce4001dc5b9f1265c59a189807c3958779d5e3892396896ed28602507e",
+    "rappi_co/bootstrap.py": "a18157f3e4cf117e29a663008e667f67ec72009fc3414152b7c7ec436ffc2917",
+    "rappi_co/checks.py": "e82e5646f1dbdf26244d32e28525d9d18120e997d485842223b245c82b5695f2",
+    "rappi_co/classify/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/classify/run.py": "42d894aa229c57f5917c4f7b6d12f470e656be6bcffcda836e5e799d3a1bacac",
+    "rappi_co/classify/stage_c_overrides.py": "0dbb54b29ab90676570c0a013e63933ff2adcc8aa83086556aef0ef8cb2cab8c",
+    "rappi_co/classify/tobacco_classifier.py": "f07688fdbd1287bf1b10f04ed4288e5f601336b4858048baa106482c97719ec6",
+    "rappi_co/collect/__init__.py": "9684c549db5e995f8aebf3b317913aed8167f562241932a7f37c19e6efe8f396",
+    "rappi_co/collect/catalog.py": "7418f6d86d3a8cc720bb564c57061ec818937835535531d8a98dc1e3b05daf7b",
+    "rappi_co/collect/merge_stores.py": "a10e3a063514cd0e98ecf48839a99c44a7e4510b6c8c6372dc8f3c14669549cd",
+    "rappi_co/collect/product_details.py": "61e8ed4e2c12377220cb5a0023b941de13952565b8c8b0a60f46213ccd232799",
+    "rappi_co/collect/search.py": "40fdb3d01a106e6891c458306d18e925bebb59f326994291c0755a71820730b0",
+    "rappi_co/collect/union.py": "3f2b1672946f5ecd9445932702ff03411ea23c39178f097517d64a8010032fa0",
+    "rappi_co/collect/union_zones.py": "13bf8a83cf9f0c01606808596d1c2417ee3f5cba84c94399dae14a4f052c4b55",
+    "rappi_co/configs.py": "b5b60c1960c125b43f2ce024d39ac2c3a727ea0da0cca5af25c63061ee14bc02",
+    "rappi_co/enrich/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/enrich/beverage_fields.py": "4cdd5e8f93731a31356ed683daa926cd59fb368a47a6a305dc46fb3a5c7e0f75",
+    "rappi_co/enrich/tobacco_fields.py": "5f505a78faf6884fff03c52a2161b3607d37b446e7e81e9cd499fb095904efee",
+    "rappi_co/export/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/export/study_deliverable.py": "ca99494f91710abc1c6188f39576a0fa8406621dd6384e613773703d93d6f21a",
+    "rappi_co/export/tobacco_deliverable.py": "762b53c4ee6211a2ef5580dd5b7fb0e2a387c10adbece2f9f1bc0746304ace7e",
+    "rappi_co/extract/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/extract/regex_enrich.py": "fdaa58bc0100a5bcdff39fa3a9038a53f67c64674d93fc1e7d925ee2c9e6c60c",
+    "rappi_co/items.py": "a0ea3ee203bf5d044d8af560249a1bfcb83d92d912133d377128985efe49d4b5",
+    "rappi_co/middlewares.py": "6af81be9742283f98b555756ce37faad566d01e362e8fd9e7311a7d75fa8a90d",
+    "rappi_co/parsers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/parsers/beverage_search.py": "3c50ded4a65f4e17f99d5852de529fab682c03b5ea51d586a58e8044ee0b9ece",
+    "rappi_co/parsers/catalog_api.py": "34a9671320badd11c6f5dd470953f56821729e125609587f4d0a0920b5921585",
+    "rappi_co/parsers/search_api.py": "7650a3f04e45aa5b2e1522a6978b1bece78a541b38ea029d7f3c05ca6cbebc40",
+    "rappi_co/parsers/store_index.py": "ff330db78012fcba6a0c76342c848dd4f06d0e9d1733355b872a8e65992ca661",
+    "rappi_co/parsers/store_payload.py": "06f191e95f9f16fa83fea720d8f029b2be136ca7523659b4b6b6474d77aaea39",
+    "rappi_co/pipelines.py": "ab8e3dc3940a63ea0a6e346855cf473c16f4e2afe9c83e34544c817146821431",
+    "rappi_co/qc/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/qc/beverage_coverage.py": "f333a408df0c34ab68022feba3865924b3f2793eb9c5cf67b7cf2076a92d5658",
+    "rappi_co/qc/common.py": "64bf8770fae9961586c60a50a17c5046cd6806ee0851189e27dd997681fc38b6",
+    "rappi_co/qc/gate.py": "7cbcab1b1f55d2acb04a05e50154a6f7e750b5240c445fb325971fc6838a69da",
+    "rappi_co/release.py": "95f0123794aed2f0e41c6e72d66af0364ec98f564c0b6814b09ec213940c405b",
+    "rappi_co/settings.py": "7eebd91efddd0faeedf57805ee21a275526cd7dbd690a3b95171df1d81d1aa4d",
+    "rappi_co/spiders/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/spiders/menu.py": "e83cdde7fa3414673beac26d7e495d3c6eb139fa38c536407849c6f48438cd8e",
+    "rappi_co/spiders/stores.py": "caaf8b50db9a4ea04e7b86c23d305641e764e263f5efe093f4f273fc3e37ac97",
+    "rappi_co/study.py": "3e18f85aba9deb8033c223781480f413b0ba78d15226b94ec10118c6da219541"
+  },
+  "runtime": {
+    "python": "3.12.2",
+    "pandas": "3.0.5",
+    "pyyaml": "6.0.3"
+  },
+  "outputs": {
+    "items_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_items_20260910_124608_117667.csv",
+      "bytes": 26436112,
+      "sha256": "5ee21913f3d0a8cbf8be0780f923a1f79d9487f7115eef4eb520de352a05ec90",
+      "rows": 10275
+    },
+    "ssb_candidates_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_ssb_candidates_20260910_124608_117667.csv",
+      "bytes": 11523210,
+      "sha256": "97469e634d1fc5b9a135756e839e33ae6afbb22141b4754518e5d511b1a0612a",
+      "rows": 4673
+    },
+    "review_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_review_20260910_124608_117667.csv",
+      "bytes": 22617727,
+      "sha256": "81b79995a67cd18f644b87ffb9a35cc1906483a55dd6865f6410e0ba49a35d3c",
+      "rows": 11029
+    },
+    "comparison_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_comparison_20260910_124608_117667.csv",
+      "bytes": 2696115,
+      "sha256": "62e20c6efd915ae4d0219e4b0d7183cd93b196aa69ec18eb60aadef826a8afbd",
+      "rows": 992
+    },
+    "audit_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_audit_20260910_124608_117667.csv",
+      "bytes": 105193545,
+      "sha256": "7f065bd8b8134b450c184337e9cb3b2359012dd68f42c595e037781953cc0c22",
+      "rows": 22949
+    },
+    "candidates_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_candidates_20260910_124608_117667.csv",
+      "bytes": 51747240,
+      "sha256": "b3a4175d36bf4903db924c6564523e29139e4d5e92d193d7b1c8f2345e5631bf",
+      "rows": 22296
+    },
+    "stores_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_stores_20260910_124608_117667.csv",
+      "bytes": 27091,
+      "sha256": "94cfdf1295e69acc59452a53c5cd313ef01bad40fe2fd7318f091ad71b59c6ff",
+      "rows": 379
+    },
+    "locations_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_locations_20260910_124608_117667.csv",
+      "bytes": 344,
+      "sha256": "68c3ef506e052d191a72ef5d23d36b5ba4c38e9e377d4c96efddb6fa95f81c68",
+      "rows": 2
+    },
+    "coverage_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_coverage_20260910_124608_117667.csv",
+      "bytes": 1054,
+      "sha256": "d76f553c88576768b889357d386567deff482674ecd51e2d7b4181b7035d234c",
+      "rows": 10
+    },
+    "query_yield_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_query_yield_20260910_124608_117667.csv",
+      "bytes": 36808,
+      "sha256": "27b21c7e16b26d9bded6978f9e7155841b866de06740f3e916b18cd04a6592a8",
+      "rows": 88
+    },
+    "summary_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_summary_20260910_124608_117667.csv",
+      "bytes": 358,
+      "sha256": "77b4b1b6ad8ebf6f09cb44315bd74ae7c56f7428761f994ac95b88c64007136b",
+      "rows": 13
+    },
+    "review_sample_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_review_sample_20260910_124608_117667.csv",
+      "bytes": 290846,
+      "sha256": "c218db238674415bd34a52b8ca8239eddb70c7c6c5123f263dc5d3a2b598e1a2",
+      "rows": 120
+    },
+    "xlsx": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverages_pe_20260910_124608_117667.xlsx",
+      "bytes": 10842572,
+      "sha256": "acb598e36a1c47c91f37002e5a50b8a396e9e8a9be791e091b676fd64f7e2c35"
+    },
+    "excel_truncations_csv": {
+      "data_root_relative_path": "pe/processed/20260910_124608_117667/beverage_excel_truncations_20260910_124608_117667.csv",
+      "bytes": 118,
+      "sha256": "c6c4db32ffeb4e42816512f7f318431c17280c3e17548bc24808f773288021f9",
+      "rows": 0
+    }
+  },
+  "counts": {
+    "items": 10275,
+    "ssb_candidates": 4673,
+    "review": 11029,
+    "comparison": 992,
+    "audit": 22949,
+    "candidates": 22296,
+    "stores": 379,
+    "locations": 2,
+    "coverage": 10,
+    "query_yield": 88,
+    "summary": 13,
+    "review_sample": 120,
+    "excel_truncations": 0
+  },
+  "detail_input": null
+}

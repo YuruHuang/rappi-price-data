@@ -1,0 +1,749 @@
+{
+  "schema_version": 1,
+  "observation_unit": "product-store-delivery-location; not unique products or national estimates",
+  "catalog_completeness": "unknown",
+  "interpretation": [
+    "All planned requests can finish while searches omit relevant products or stores.",
+    "Final-query discoveries depend on query order; continued yield does not prove saturation.",
+    "Group-size maxima and histograms are observed diagnostics, not verified platform limits.",
+    "Missing sugar is not zero; candidate identity does not establish sweetening.",
+    "Candidate cohorts overlap review/items and must not be summed as disjoint categories."
+  ],
+  "provenance": [
+    {
+      "country_code": "ar",
+      "run_id": "20260910_124608_994043",
+      "provenance_sha256": "407bce90959200afb688df4976bf461a5d4d1678ddbac9adbf6c1bd8e1fd65b7"
+    },
+    {
+      "country_code": "co",
+      "run_id": "20260910_124832_159958",
+      "provenance_sha256": "bffd110b1598202152a4980be9254e069b575b7e360f7346141af3aadc7b09e9"
+    },
+    {
+      "country_code": "pe",
+      "run_id": "20260910_124608_117667",
+      "provenance_sha256": "e2b77c471a9424d3cf2f13ee18c076432619e6fb818901bfaa904dec57696db1"
+    },
+    {
+      "country_code": "mx",
+      "run_id": "20260910_124827_120073",
+      "provenance_sha256": "83f5a961f4fe2cafd99b12f9ca313c0ce2e9198dbaf70303bf5b30ea3d63ad29"
+    }
+  ],
+  "countries": [
+    {
+      "country_code": "ar",
+      "country": "Argentina",
+      "city": "Buenos Aires",
+      "currency": "ARS",
+      "full_protocol": true,
+      "locations": [
+        {
+          "zone_slug": "centro-galerias-pacifico",
+          "address": "Av. Córdoba 550, C1054 CABA",
+          "latitude": -34.59925,
+          "longitude": -58.374779,
+          "requests": 45,
+          "observations": 11341,
+          "categories": {
+            "alcohol": 3533,
+            "excluded": 984,
+            "non_ssb": 1007,
+            "review": 5164,
+            "water": 653
+          },
+          "final_queries": [
+            "cerveza Quilmes",
+            "cerveza Brahma",
+            "fernet Branca",
+            "vino Trapiche",
+            "cerveza Patagonia"
+          ],
+          "new_observations_from_final_queries": 249,
+          "skipped_raw_rows": 0
+        },
+        {
+          "zone_slug": "palermo-alto-palermo",
+          "address": "Av. Santa Fe 3253, CABA",
+          "latitude": -34.588402,
+          "longitude": -58.410737,
+          "requests": 45,
+          "observations": 12940,
+          "categories": {
+            "alcohol": 4161,
+            "excluded": 1054,
+            "non_ssb": 1180,
+            "review": 5734,
+            "water": 811
+          },
+          "final_queries": [
+            "cerveza Quilmes",
+            "cerveza Brahma",
+            "fernet Branca",
+            "vino Trapiche",
+            "cerveza Patagonia"
+          ],
+          "new_observations_from_final_queries": 453,
+          "skipped_raw_rows": 0
+        }
+      ],
+      "raw_observations": 24281,
+      "ssb_candidate_observations": 6073,
+      "unresolved_unknown_identity": 4069,
+      "source_brand_present": 0,
+      "search_description_present": 0,
+      "observed_product_url_present": 0,
+      "source_conflict_observations": 0,
+      "store_query_group_size_histogram": {
+        "1": 142,
+        "2": 142,
+        "3": 124,
+        "4": 128,
+        "5": 150,
+        "6": 114,
+        "7": 112,
+        "8": 210,
+        "9": 125,
+        "10": 170,
+        "11": 143,
+        "12": 100,
+        "13": 149,
+        "14": 94,
+        "15": 1343,
+        "16": 69,
+        "17": 56,
+        "18": 43,
+        "19": 40,
+        "20": 19,
+        "21": 20,
+        "22": 16,
+        "23": 30,
+        "24": 28,
+        "25": 37,
+        "26": 15,
+        "27": 37,
+        "28": 41,
+        "29": 32,
+        "30": 14,
+        "31": 14,
+        "32": 23,
+        "33": 24,
+        "34": 19,
+        "35": 41,
+        "36": 25,
+        "37": 15,
+        "38": 15,
+        "39": 28,
+        "40": 37,
+        "41": 36,
+        "42": 35,
+        "43": 47,
+        "44": 17,
+        "45": 21,
+        "46": 22,
+        "47": 24,
+        "48": 33,
+        "49": 58,
+        "50": 116
+      },
+      "observed_maximum_group_size": 50,
+      "groups_at_observed_maximum": 116,
+      "historical_groups_at_least_25": 826,
+      "quantitative_field_coverage": {
+        "all_observations": {
+          "observations": 24281,
+          "volume_per_unit_ml_present": 17885,
+          "pack_count_present": 17487,
+          "total_volume_ml_present": 16838,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 7202
+        },
+        "ssb_candidates": {
+          "observations": 6073,
+          "volume_per_unit_ml_present": 5291,
+          "pack_count_present": 5358,
+          "total_volume_ml_present": 5073,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 5
+        },
+        "alcohol": {
+          "observations": 7694,
+          "volume_per_unit_ml_present": 7534,
+          "pack_count_present": 7343,
+          "total_volume_ml_present": 7297,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 6723
+        },
+        "excluded": {
+          "observations": 2038,
+          "volume_per_unit_ml_present": 480,
+          "pack_count_present": 523,
+          "total_volume_ml_present": 415,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 0
+        },
+        "non_ssb": {
+          "observations": 2187,
+          "volume_per_unit_ml_present": 2101,
+          "pack_count_present": 2126,
+          "total_volume_ml_present": 2056,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 0
+        },
+        "review": {
+          "observations": 10898,
+          "volume_per_unit_ml_present": 6332,
+          "pack_count_present": 6135,
+          "total_volume_ml_present": 5712,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 479
+        },
+        "water": {
+          "observations": 1464,
+          "volume_per_unit_ml_present": 1438,
+          "pack_count_present": 1360,
+          "total_volume_ml_present": 1358,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 0
+        }
+      }
+    },
+    {
+      "country_code": "co",
+      "country": "Colombia",
+      "city": "Bogotá",
+      "currency": "COP",
+      "full_protocol": true,
+      "locations": [
+        {
+          "zone_slug": "centro-plaza-bolivar",
+          "address": "Carrera 7 #10-47, 111711 Bogotá D.C.",
+          "latitude": 4.59806,
+          "longitude": -74.07609,
+          "requests": 44,
+          "observations": 8423,
+          "categories": {
+            "alcohol": 3318,
+            "excluded": 303,
+            "non_ssb": 648,
+            "review": 3636,
+            "water": 518
+          },
+          "final_queries": [
+            "cerveza Aguila",
+            "cerveza Poker",
+            "cerveza Club Colombia",
+            "aguardiente Antioqueno",
+            "ron Medellin"
+          ],
+          "new_observations_from_final_queries": 460,
+          "skipped_raw_rows": 0
+        },
+        {
+          "zone_slug": "chapinero-andino",
+          "address": "Carrera 11 #82-71, 110221 Bogotá D.C.",
+          "latitude": 4.66695,
+          "longitude": -74.053126,
+          "requests": 44,
+          "observations": 9557,
+          "categories": {
+            "alcohol": 2999,
+            "excluded": 263,
+            "non_ssb": 579,
+            "review": 5189,
+            "water": 527
+          },
+          "final_queries": [
+            "cerveza Aguila",
+            "cerveza Poker",
+            "cerveza Club Colombia",
+            "aguardiente Antioqueno",
+            "ron Medellin"
+          ],
+          "new_observations_from_final_queries": 412,
+          "skipped_raw_rows": 0
+        }
+      ],
+      "raw_observations": 17980,
+      "ssb_candidate_observations": 6116,
+      "unresolved_unknown_identity": 1814,
+      "source_brand_present": 0,
+      "search_description_present": 0,
+      "observed_product_url_present": 0,
+      "source_conflict_observations": 0,
+      "store_query_group_size_histogram": {
+        "1": 192,
+        "2": 177,
+        "3": 207,
+        "4": 150,
+        "5": 142,
+        "6": 102,
+        "7": 124,
+        "8": 128,
+        "9": 98,
+        "10": 82,
+        "11": 98,
+        "12": 84,
+        "13": 74,
+        "14": 103,
+        "15": 402,
+        "16": 86,
+        "17": 118,
+        "18": 92,
+        "19": 113,
+        "20": 107,
+        "21": 91,
+        "22": 78,
+        "23": 91,
+        "24": 87,
+        "25": 98
+      },
+      "observed_maximum_group_size": 25,
+      "groups_at_observed_maximum": 98,
+      "historical_groups_at_least_25": 98,
+      "quantitative_field_coverage": {
+        "all_observations": {
+          "observations": 17980,
+          "volume_per_unit_ml_present": 14536,
+          "pack_count_present": 14048,
+          "total_volume_ml_present": 13413,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 6274
+        },
+        "ssb_candidates": {
+          "observations": 6116,
+          "volume_per_unit_ml_present": 5277,
+          "pack_count_present": 5102,
+          "total_volume_ml_present": 4892,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 21
+        },
+        "alcohol": {
+          "observations": 6317,
+          "volume_per_unit_ml_present": 6008,
+          "pack_count_present": 5787,
+          "total_volume_ml_present": 5592,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 5740
+        },
+        "excluded": {
+          "observations": 566,
+          "volume_per_unit_ml_present": 140,
+          "pack_count_present": 158,
+          "total_volume_ml_present": 131,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 3
+        },
+        "non_ssb": {
+          "observations": 1227,
+          "volume_per_unit_ml_present": 1170,
+          "pack_count_present": 1180,
+          "total_volume_ml_present": 1131,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 2
+        },
+        "review": {
+          "observations": 8825,
+          "volume_per_unit_ml_present": 6215,
+          "pack_count_present": 5967,
+          "total_volume_ml_present": 5637,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 529
+        },
+        "water": {
+          "observations": 1045,
+          "volume_per_unit_ml_present": 1003,
+          "pack_count_present": 956,
+          "total_volume_ml_present": 922,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 0
+        }
+      }
+    },
+    {
+      "country_code": "pe",
+      "country": "Peru",
+      "city": "Lima",
+      "currency": "PEN",
+      "full_protocol": true,
+      "locations": [
+        {
+          "zone_slug": "miraflores-larcomar",
+          "address": "Centro Comercial Larcomar, Malecón de la Reserva 610, Miraflores 15074, Lima",
+          "latitude": -12.13222,
+          "longitude": -77.03055,
+          "requests": 44,
+          "observations": 12937,
+          "categories": {
+            "alcohol": 5640,
+            "excluded": 372,
+            "non_ssb": 606,
+            "review": 5826,
+            "water": 493
+          },
+          "final_queries": [
+            "cerveza Cristal",
+            "cerveza Pilsen Callao",
+            "cerveza Cusquena",
+            "pisco Queirolo",
+            "ron Cartavio"
+          ],
+          "new_observations_from_final_queries": 237,
+          "skipped_raw_rows": 0
+        },
+        {
+          "zone_slug": "independencia-megaplaza",
+          "address": "Centro Comercial MegaPlaza, Av. Alfredo Mendiola 3698, Independencia 15311, Lima",
+          "latitude": -11.99444,
+          "longitude": -77.06115,
+          "requests": 44,
+          "observations": 10012,
+          "categories": {
+            "alcohol": 3829,
+            "excluded": 281,
+            "non_ssb": 386,
+            "review": 5203,
+            "water": 313
+          },
+          "final_queries": [
+            "cerveza Cristal",
+            "cerveza Pilsen Callao",
+            "cerveza Cusquena",
+            "pisco Queirolo",
+            "ron Cartavio"
+          ],
+          "new_observations_from_final_queries": 105,
+          "skipped_raw_rows": 0
+        }
+      ],
+      "raw_observations": 22949,
+      "ssb_candidate_observations": 4673,
+      "unresolved_unknown_identity": 5056,
+      "source_brand_present": 0,
+      "search_description_present": 0,
+      "observed_product_url_present": 0,
+      "source_conflict_observations": 0,
+      "store_query_group_size_histogram": {
+        "1": 145,
+        "2": 193,
+        "3": 176,
+        "4": 131,
+        "5": 126,
+        "6": 116,
+        "7": 124,
+        "8": 120,
+        "9": 78,
+        "10": 103,
+        "11": 70,
+        "12": 108,
+        "13": 70,
+        "14": 89,
+        "15": 1452,
+        "16": 42,
+        "17": 46,
+        "18": 37,
+        "19": 31,
+        "20": 18,
+        "21": 34,
+        "22": 31,
+        "23": 23,
+        "24": 31,
+        "25": 22,
+        "26": 22,
+        "27": 35,
+        "28": 25,
+        "29": 16,
+        "30": 11,
+        "31": 16,
+        "32": 30,
+        "33": 21,
+        "34": 21,
+        "35": 22,
+        "36": 30,
+        "37": 24,
+        "38": 32,
+        "39": 11,
+        "40": 23,
+        "41": 34,
+        "42": 43,
+        "43": 36,
+        "44": 32,
+        "45": 28,
+        "46": 18,
+        "47": 24,
+        "48": 24,
+        "49": 22,
+        "50": 77
+      },
+      "observed_maximum_group_size": 50,
+      "groups_at_observed_maximum": 77,
+      "historical_groups_at_least_25": 699,
+      "quantitative_field_coverage": {
+        "all_observations": {
+          "observations": 22949,
+          "volume_per_unit_ml_present": 16071,
+          "pack_count_present": 14665,
+          "total_volume_ml_present": 14023,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 8635
+        },
+        "ssb_candidates": {
+          "observations": 4673,
+          "volume_per_unit_ml_present": 3756,
+          "pack_count_present": 3227,
+          "total_volume_ml_present": 3097,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 0
+        },
+        "alcohol": {
+          "observations": 9469,
+          "volume_per_unit_ml_present": 9295,
+          "pack_count_present": 8828,
+          "total_volume_ml_present": 8707,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 8295
+        },
+        "excluded": {
+          "observations": 653,
+          "volume_per_unit_ml_present": 170,
+          "pack_count_present": 228,
+          "total_volume_ml_present": 141,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 5
+        },
+        "non_ssb": {
+          "observations": 992,
+          "volume_per_unit_ml_present": 954,
+          "pack_count_present": 774,
+          "total_volume_ml_present": 753,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 0
+        },
+        "review": {
+          "observations": 11029,
+          "volume_per_unit_ml_present": 4878,
+          "pack_count_present": 4144,
+          "total_volume_ml_present": 3744,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 335
+        },
+        "water": {
+          "observations": 806,
+          "volume_per_unit_ml_present": 774,
+          "pack_count_present": 691,
+          "total_volume_ml_present": 678,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 0
+        }
+      }
+    },
+    {
+      "country_code": "mx",
+      "country": "Mexico",
+      "city": "Mexico City",
+      "currency": "MXN",
+      "full_protocol": true,
+      "locations": [
+        {
+          "zone_slug": "centro-bellas-artes",
+          "address": "Palacio de Bellas Artes, Av. Juárez s/n, Centro, 06050 Ciudad de México",
+          "latitude": 19.43547,
+          "longitude": -99.14128,
+          "requests": 45,
+          "observations": 10916,
+          "categories": {
+            "alcohol": 3135,
+            "excluded": 191,
+            "non_ssb": 664,
+            "review": 6008,
+            "water": 918
+          },
+          "final_queries": [
+            "cerveza Corona",
+            "cerveza Modelo",
+            "cerveza Tecate",
+            "tequila Jose Cuervo",
+            "mezcal 400 Conejos"
+          ],
+          "new_observations_from_final_queries": 511,
+          "skipped_raw_rows": 0
+        },
+        {
+          "zone_slug": "coyoacan-perisur",
+          "address": "Centro Comercial Perisur, Anillo Periférico Sur 4690, 04500 Ciudad de México",
+          "latitude": 19.304197,
+          "longitude": -99.190284,
+          "requests": 45,
+          "observations": 8723,
+          "categories": {
+            "alcohol": 2659,
+            "excluded": 256,
+            "non_ssb": 546,
+            "review": 4439,
+            "water": 823
+          },
+          "final_queries": [
+            "cerveza Corona",
+            "cerveza Modelo",
+            "cerveza Tecate",
+            "tequila Jose Cuervo",
+            "mezcal 400 Conejos"
+          ],
+          "new_observations_from_final_queries": 403,
+          "skipped_raw_rows": 0
+        }
+      ],
+      "raw_observations": 19639,
+      "ssb_candidate_observations": 6367,
+      "unresolved_unknown_identity": 3332,
+      "source_brand_present": 0,
+      "search_description_present": 0,
+      "observed_product_url_present": 0,
+      "source_conflict_observations": 1,
+      "store_query_group_size_histogram": {
+        "1": 148,
+        "2": 141,
+        "3": 81,
+        "4": 72,
+        "5": 89,
+        "6": 66,
+        "7": 71,
+        "8": 64,
+        "9": 60,
+        "10": 61,
+        "11": 48,
+        "12": 56,
+        "13": 58,
+        "14": 85,
+        "15": 634,
+        "16": 97,
+        "17": 130,
+        "18": 163,
+        "19": 253,
+        "20": 355
+      },
+      "observed_maximum_group_size": 20,
+      "groups_at_observed_maximum": 355,
+      "historical_groups_at_least_25": 0,
+      "quantitative_field_coverage": {
+        "all_observations": {
+          "observations": 19639,
+          "volume_per_unit_ml_present": 15141,
+          "pack_count_present": 14539,
+          "total_volume_ml_present": 13953,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 4377
+        },
+        "ssb_candidates": {
+          "observations": 6367,
+          "volume_per_unit_ml_present": 5806,
+          "pack_count_present": 5617,
+          "total_volume_ml_present": 5480,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 4
+        },
+        "alcohol": {
+          "observations": 5794,
+          "volume_per_unit_ml_present": 5638,
+          "pack_count_present": 5222,
+          "total_volume_ml_present": 5091,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 3908
+        },
+        "excluded": {
+          "observations": 447,
+          "volume_per_unit_ml_present": 113,
+          "pack_count_present": 155,
+          "total_volume_ml_present": 112,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 2
+        },
+        "non_ssb": {
+          "observations": 1210,
+          "volume_per_unit_ml_present": 1165,
+          "pack_count_present": 1171,
+          "total_volume_ml_present": 1133,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 0
+        },
+        "review": {
+          "observations": 10447,
+          "volume_per_unit_ml_present": 6645,
+          "pack_count_present": 6368,
+          "total_volume_ml_present": 6116,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 467
+        },
+        "water": {
+          "observations": 1741,
+          "volume_per_unit_ml_present": 1580,
+          "pack_count_present": 1623,
+          "total_volume_ml_present": 1501,
+          "sugar_g_per_100ml_present": 0,
+          "sugar_g_per_serving_present": 0,
+          "serving_volume_ml_present": 0,
+          "abv_pct_present": 0
+        }
+      }
+    }
+  ],
+  "total_locations": 8,
+  "total_requests": 356,
+  "total_observations": 84849,
+  "new_observations_from_final_queries": 2830
+}

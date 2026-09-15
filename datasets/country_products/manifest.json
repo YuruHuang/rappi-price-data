@@ -1,0 +1,1265 @@
+{
+  "schema_version": 2,
+  "status": "final_country_category_workbooks",
+  "scope": "frozen_target_observations_four_countries_five_sheets",
+  "created_at_utc": "2026-09-16T01:43:34.048818+00:00",
+  "network_requests": 0,
+  "countries": [
+    "ar",
+    "co",
+    "pe",
+    "mx"
+  ],
+  "sheet_order": [
+    "Technical specifications",
+    "Tobacco products",
+    "SSBs",
+    "Water",
+    "Alcohol"
+  ],
+  "observation_key": [
+    "source_dataset",
+    "source_release",
+    "country_code",
+    "zone_slug",
+    "store_id",
+    "product_id"
+  ],
+  "product_rows": 68398,
+  "excluded_integrated_observations": 27290,
+  "columns": {
+    "Tobacco products": [
+      {
+        "source_field": "name",
+        "header": "Product name"
+      },
+      {
+        "source_field": "brand",
+        "header": "Brand"
+      },
+      {
+        "source_field": "tobacco_brand_market_scope",
+        "header": "Brand search group"
+      },
+      {
+        "source_field": "tobacco_study_category",
+        "header": "Tobacco study category"
+      },
+      {
+        "source_field": "tobacco_product_type",
+        "header": "Tobacco product type"
+      },
+      {
+        "source_field": "price_local",
+        "header": "Price"
+      },
+      {
+        "source_field": "original_price_local",
+        "header": "Original price"
+      },
+      {
+        "source_field": "currency",
+        "header": "Currency"
+      },
+      {
+        "source_field": "tobacco_discount_pct",
+        "header": "Discount (%)"
+      },
+      {
+        "source_field": "tobacco_quantity",
+        "header": "Listed quantity"
+      },
+      {
+        "source_field": "tobacco_pack_count",
+        "header": "Pack count"
+      },
+      {
+        "source_field": "tobacco_volume_ml",
+        "header": "Product volume (mL)"
+      },
+      {
+        "source_field": "tobacco_puff_count",
+        "header": "Puff count"
+      },
+      {
+        "source_field": "tobacco_nicotine_mg_per_ml",
+        "header": "Nicotine (mg/mL)"
+      },
+      {
+        "source_field": "tobacco_nicotine_mg_per_pouch",
+        "header": "Nicotine (mg/pouch)"
+      },
+      {
+        "source_field": "tobacco_nicotine_pct",
+        "header": "Nicotine (%)"
+      },
+      {
+        "source_field": "tobacco_unit_price_local",
+        "header": "Unit price"
+      },
+      {
+        "source_field": "tobacco_unit_price_unit",
+        "header": "Unit-price basis"
+      },
+      {
+        "source_field": "tobacco_stock",
+        "header": "Stock"
+      },
+      {
+        "source_field": "tobacco_age_restriction",
+        "header": "Age restriction"
+      },
+      {
+        "source_field": "tobacco_has_antismoking",
+        "header": "Anti-smoking warning shown"
+      },
+      {
+        "source_field": "tobacco_has_menthol",
+        "header": "Menthol indicated"
+      },
+      {
+        "source_field": "availability",
+        "header": "Availability"
+      },
+      {
+        "source_field": "source_collection_date",
+        "header": "Collection date"
+      },
+      {
+        "source_field": "zone_slug",
+        "header": "Delivery zone"
+      },
+      {
+        "source_field": "store_name",
+        "header": "Store name"
+      },
+      {
+        "source_field": "store_id",
+        "header": "Store ID"
+      },
+      {
+        "source_field": "product_id",
+        "header": "Product ID"
+      },
+      {
+        "source_field": "record_id",
+        "header": "Record ID"
+      },
+      {
+        "source_field": "tobacco_discount_amount_local",
+        "header": "Discount amount"
+      },
+      {
+        "source_field": "thumbnail_url",
+        "header": "Product image URL"
+      },
+      {
+        "source_field": "scrape_timestamp",
+        "header": "Collection timestamp"
+      },
+      {
+        "source_field": "country_code",
+        "header": "Country code"
+      },
+      {
+        "source_field": "country",
+        "header": "Country"
+      },
+      {
+        "source_field": "city",
+        "header": "City"
+      },
+      {
+        "source_field": "district",
+        "header": "District"
+      },
+      {
+        "source_field": "address",
+        "header": "Delivery address"
+      },
+      {
+        "source_field": "latitude",
+        "header": "Latitude"
+      },
+      {
+        "source_field": "longitude",
+        "header": "Longitude"
+      },
+      {
+        "source_field": "store_type",
+        "header": "Store type"
+      },
+      {
+        "source_field": "parent_store_type",
+        "header": "Parent store type"
+      },
+      {
+        "source_field": "master_product_id",
+        "header": "Master product ID"
+      },
+      {
+        "source_field": "ean",
+        "header": "EAN"
+      },
+      {
+        "source_field": "supplier",
+        "header": "Supplier"
+      },
+      {
+        "source_field": "menu_section",
+        "header": "Menu section"
+      },
+      {
+        "source_field": "menu_subsection",
+        "header": "Menu subsection"
+      },
+      {
+        "source_field": "category_id",
+        "header": "Category ID"
+      },
+      {
+        "source_field": "source_term",
+        "header": "Search term"
+      },
+      {
+        "source_field": "source_terms",
+        "header": "All matching search terms"
+      },
+      {
+        "source_field": "source_url",
+        "header": "Source URL"
+      },
+      {
+        "source_field": "source_dataset",
+        "header": "Source dataset"
+      },
+      {
+        "source_field": "source_release",
+        "header": "Source release"
+      },
+      {
+        "source_field": "source_file",
+        "header": "Source file"
+      },
+      {
+        "source_field": "source_row",
+        "header": "Source row"
+      }
+    ],
+    "SSBs": [
+      {
+        "source_field": "name",
+        "header": "Product name"
+      },
+      {
+        "source_field": "price_local",
+        "header": "Price"
+      },
+      {
+        "source_field": "original_price_local",
+        "header": "Original price"
+      },
+      {
+        "source_field": "currency",
+        "header": "Currency"
+      },
+      {
+        "source_field": "candidate_view_status",
+        "header": "SSB candidate status"
+      },
+      {
+        "source_field": "sugar_status",
+        "header": "Sugar information status"
+      },
+      {
+        "source_field": "sugar_g_per_100ml",
+        "header": "Sugar (g/100 mL)"
+      },
+      {
+        "source_field": "sugar_g_per_serving",
+        "header": "Sugar (g/serving)"
+      },
+      {
+        "source_field": "serving_volume_ml",
+        "header": "Serving volume (mL)"
+      },
+      {
+        "source_field": "abv_pct",
+        "header": "Alcohol by volume (%)"
+      },
+      {
+        "source_field": "alcoholic_beverage",
+        "header": "Alcohol indicator"
+      },
+      {
+        "source_field": "volume_per_unit_ml",
+        "header": "Volume per unit (mL)"
+      },
+      {
+        "source_field": "pack_count",
+        "header": "Pack count"
+      },
+      {
+        "source_field": "total_volume_ml",
+        "header": "Total volume (mL)"
+      },
+      {
+        "source_field": "price_per_liter_local",
+        "header": "Price per liter"
+      },
+      {
+        "source_field": "presentation",
+        "header": "Presentation"
+      },
+      {
+        "source_field": "beverage_subcategory",
+        "header": "Beverage subcategory"
+      },
+      {
+        "source_field": "discount_pct",
+        "header": "Discount (%)"
+      },
+      {
+        "source_field": "availability",
+        "header": "Availability"
+      },
+      {
+        "source_field": "source_collection_date",
+        "header": "Collection date"
+      },
+      {
+        "source_field": "zone_slug",
+        "header": "Delivery zone"
+      },
+      {
+        "source_field": "store_name",
+        "header": "Store name"
+      },
+      {
+        "source_field": "store_id",
+        "header": "Store ID"
+      },
+      {
+        "source_field": "product_id",
+        "header": "Product ID"
+      },
+      {
+        "source_field": "record_id",
+        "header": "Record ID"
+      },
+      {
+        "source_field": "sugar_g_per_100ml_source",
+        "header": "Sugar g/100 mL source"
+      },
+      {
+        "source_field": "sugar_g_per_100ml_evidence",
+        "header": "Sugar g/100 mL evidence"
+      },
+      {
+        "source_field": "sugar_g_per_serving_source",
+        "header": "Sugar g/serving source"
+      },
+      {
+        "source_field": "sugar_g_per_serving_evidence",
+        "header": "Sugar g/serving evidence"
+      },
+      {
+        "source_field": "serving_volume_ml_source",
+        "header": "Serving-volume source"
+      },
+      {
+        "source_field": "serving_volume_ml_evidence",
+        "header": "Serving-volume evidence"
+      },
+      {
+        "source_field": "abv_pct_source",
+        "header": "ABV source"
+      },
+      {
+        "source_field": "abv_pct_evidence",
+        "header": "ABV evidence"
+      },
+      {
+        "source_field": "volume_per_unit_ml_source",
+        "header": "Volume-per-unit source"
+      },
+      {
+        "source_field": "volume_per_unit_ml_evidence",
+        "header": "Volume-per-unit evidence"
+      },
+      {
+        "source_field": "pack_count_source",
+        "header": "Pack-count source"
+      },
+      {
+        "source_field": "pack_count_evidence",
+        "header": "Pack-count evidence"
+      },
+      {
+        "source_field": "total_volume_ml_source",
+        "header": "Total-volume source"
+      },
+      {
+        "source_field": "total_volume_ml_evidence",
+        "header": "Total-volume evidence"
+      },
+      {
+        "source_field": "pack_format_raw",
+        "header": "Pack format as listed"
+      },
+      {
+        "source_field": "quantity",
+        "header": "Listed quantity"
+      },
+      {
+        "source_field": "unit_type",
+        "header": "Listed unit"
+      },
+      {
+        "source_field": "min_purchasing_units",
+        "header": "Minimum purchase units"
+      },
+      {
+        "source_field": "sale_type",
+        "header": "Sale type"
+      },
+      {
+        "source_field": "attributes_json",
+        "header": "Structured attributes (JSON)"
+      },
+      {
+        "source_field": "requires_medical_prescription",
+        "header": "Medical prescription required"
+      },
+      {
+        "source_field": "is_medical_product",
+        "header": "Medical product indicator"
+      },
+      {
+        "source_field": "age_restriction",
+        "header": "Age restriction"
+      },
+      {
+        "source_field": "identification_required",
+        "header": "Identification required"
+      },
+      {
+        "source_field": "stock",
+        "header": "Raw stock value"
+      },
+      {
+        "source_field": "is_available_raw",
+        "header": "Raw available flag"
+      },
+      {
+        "source_field": "in_stock_raw",
+        "header": "Raw in-stock flag"
+      },
+      {
+        "source_field": "is_possible_stockout_raw",
+        "header": "Raw possible-stockout flag"
+      },
+      {
+        "source_field": "thumbnail_url",
+        "header": "Product image URL"
+      },
+      {
+        "source_field": "scrape_timestamp",
+        "header": "Collection timestamp"
+      },
+      {
+        "source_field": "country_code",
+        "header": "Country code"
+      },
+      {
+        "source_field": "country",
+        "header": "Country"
+      },
+      {
+        "source_field": "city",
+        "header": "City"
+      },
+      {
+        "source_field": "district",
+        "header": "District"
+      },
+      {
+        "source_field": "address",
+        "header": "Delivery address"
+      },
+      {
+        "source_field": "latitude",
+        "header": "Latitude"
+      },
+      {
+        "source_field": "longitude",
+        "header": "Longitude"
+      },
+      {
+        "source_field": "store_type",
+        "header": "Store type"
+      },
+      {
+        "source_field": "parent_store_type",
+        "header": "Parent store type"
+      },
+      {
+        "source_field": "master_product_id",
+        "header": "Master product ID"
+      },
+      {
+        "source_field": "source_product_id",
+        "header": "Source product ID"
+      },
+      {
+        "source_field": "retail_id",
+        "header": "Retail ID"
+      },
+      {
+        "source_field": "ean",
+        "header": "EAN"
+      },
+      {
+        "source_field": "supplier",
+        "header": "Supplier"
+      },
+      {
+        "source_field": "menu_section",
+        "header": "Menu section"
+      },
+      {
+        "source_field": "menu_subsection",
+        "header": "Menu subsection"
+      },
+      {
+        "source_field": "category_id",
+        "header": "Category ID"
+      },
+      {
+        "source_field": "source_term",
+        "header": "Search term"
+      },
+      {
+        "source_field": "source_terms",
+        "header": "All matching search terms"
+      },
+      {
+        "source_field": "source_url",
+        "header": "Source URL"
+      },
+      {
+        "source_field": "source_dataset",
+        "header": "Source dataset"
+      },
+      {
+        "source_field": "source_release",
+        "header": "Source release"
+      },
+      {
+        "source_field": "source_file",
+        "header": "Source file"
+      },
+      {
+        "source_field": "source_row",
+        "header": "Source row"
+      }
+    ],
+    "Water": [
+      {
+        "source_field": "name",
+        "header": "Product name"
+      },
+      {
+        "source_field": "price_local",
+        "header": "Price"
+      },
+      {
+        "source_field": "original_price_local",
+        "header": "Original price"
+      },
+      {
+        "source_field": "currency",
+        "header": "Currency"
+      },
+      {
+        "source_field": "volume_per_unit_ml",
+        "header": "Volume per unit (mL)"
+      },
+      {
+        "source_field": "pack_count",
+        "header": "Pack count"
+      },
+      {
+        "source_field": "total_volume_ml",
+        "header": "Total volume (mL)"
+      },
+      {
+        "source_field": "price_per_liter_local",
+        "header": "Price per liter"
+      },
+      {
+        "source_field": "presentation",
+        "header": "Presentation"
+      },
+      {
+        "source_field": "beverage_subcategory",
+        "header": "Beverage subcategory"
+      },
+      {
+        "source_field": "discount_pct",
+        "header": "Discount (%)"
+      },
+      {
+        "source_field": "availability",
+        "header": "Availability"
+      },
+      {
+        "source_field": "source_collection_date",
+        "header": "Collection date"
+      },
+      {
+        "source_field": "zone_slug",
+        "header": "Delivery zone"
+      },
+      {
+        "source_field": "store_name",
+        "header": "Store name"
+      },
+      {
+        "source_field": "store_id",
+        "header": "Store ID"
+      },
+      {
+        "source_field": "product_id",
+        "header": "Product ID"
+      },
+      {
+        "source_field": "record_id",
+        "header": "Record ID"
+      },
+      {
+        "source_field": "volume_per_unit_ml_source",
+        "header": "Volume-per-unit source"
+      },
+      {
+        "source_field": "volume_per_unit_ml_evidence",
+        "header": "Volume-per-unit evidence"
+      },
+      {
+        "source_field": "pack_count_source",
+        "header": "Pack-count source"
+      },
+      {
+        "source_field": "pack_count_evidence",
+        "header": "Pack-count evidence"
+      },
+      {
+        "source_field": "total_volume_ml_source",
+        "header": "Total-volume source"
+      },
+      {
+        "source_field": "total_volume_ml_evidence",
+        "header": "Total-volume evidence"
+      },
+      {
+        "source_field": "pack_format_raw",
+        "header": "Pack format as listed"
+      },
+      {
+        "source_field": "quantity",
+        "header": "Listed quantity"
+      },
+      {
+        "source_field": "unit_type",
+        "header": "Listed unit"
+      },
+      {
+        "source_field": "min_purchasing_units",
+        "header": "Minimum purchase units"
+      },
+      {
+        "source_field": "sale_type",
+        "header": "Sale type"
+      },
+      {
+        "source_field": "attributes_json",
+        "header": "Structured attributes (JSON)"
+      },
+      {
+        "source_field": "requires_medical_prescription",
+        "header": "Medical prescription required"
+      },
+      {
+        "source_field": "is_medical_product",
+        "header": "Medical product indicator"
+      },
+      {
+        "source_field": "alcoholic_beverage",
+        "header": "Alcohol indicator"
+      },
+      {
+        "source_field": "age_restriction",
+        "header": "Age restriction"
+      },
+      {
+        "source_field": "identification_required",
+        "header": "Identification required"
+      },
+      {
+        "source_field": "stock",
+        "header": "Raw stock value"
+      },
+      {
+        "source_field": "is_available_raw",
+        "header": "Raw available flag"
+      },
+      {
+        "source_field": "in_stock_raw",
+        "header": "Raw in-stock flag"
+      },
+      {
+        "source_field": "is_possible_stockout_raw",
+        "header": "Raw possible-stockout flag"
+      },
+      {
+        "source_field": "thumbnail_url",
+        "header": "Product image URL"
+      },
+      {
+        "source_field": "scrape_timestamp",
+        "header": "Collection timestamp"
+      },
+      {
+        "source_field": "country_code",
+        "header": "Country code"
+      },
+      {
+        "source_field": "country",
+        "header": "Country"
+      },
+      {
+        "source_field": "city",
+        "header": "City"
+      },
+      {
+        "source_field": "district",
+        "header": "District"
+      },
+      {
+        "source_field": "address",
+        "header": "Delivery address"
+      },
+      {
+        "source_field": "latitude",
+        "header": "Latitude"
+      },
+      {
+        "source_field": "longitude",
+        "header": "Longitude"
+      },
+      {
+        "source_field": "store_type",
+        "header": "Store type"
+      },
+      {
+        "source_field": "parent_store_type",
+        "header": "Parent store type"
+      },
+      {
+        "source_field": "master_product_id",
+        "header": "Master product ID"
+      },
+      {
+        "source_field": "source_product_id",
+        "header": "Source product ID"
+      },
+      {
+        "source_field": "retail_id",
+        "header": "Retail ID"
+      },
+      {
+        "source_field": "ean",
+        "header": "EAN"
+      },
+      {
+        "source_field": "supplier",
+        "header": "Supplier"
+      },
+      {
+        "source_field": "menu_section",
+        "header": "Menu section"
+      },
+      {
+        "source_field": "menu_subsection",
+        "header": "Menu subsection"
+      },
+      {
+        "source_field": "category_id",
+        "header": "Category ID"
+      },
+      {
+        "source_field": "source_term",
+        "header": "Search term"
+      },
+      {
+        "source_field": "source_terms",
+        "header": "All matching search terms"
+      },
+      {
+        "source_field": "source_url",
+        "header": "Source URL"
+      },
+      {
+        "source_field": "source_dataset",
+        "header": "Source dataset"
+      },
+      {
+        "source_field": "source_release",
+        "header": "Source release"
+      },
+      {
+        "source_field": "source_file",
+        "header": "Source file"
+      },
+      {
+        "source_field": "source_row",
+        "header": "Source row"
+      }
+    ],
+    "Alcohol": [
+      {
+        "source_field": "name",
+        "header": "Product name"
+      },
+      {
+        "source_field": "price_local",
+        "header": "Price"
+      },
+      {
+        "source_field": "original_price_local",
+        "header": "Original price"
+      },
+      {
+        "source_field": "currency",
+        "header": "Currency"
+      },
+      {
+        "source_field": "abv_pct",
+        "header": "Alcohol by volume (%)"
+      },
+      {
+        "source_field": "volume_per_unit_ml",
+        "header": "Volume per unit (mL)"
+      },
+      {
+        "source_field": "pack_count",
+        "header": "Pack count"
+      },
+      {
+        "source_field": "total_volume_ml",
+        "header": "Total volume (mL)"
+      },
+      {
+        "source_field": "price_per_liter_local",
+        "header": "Price per liter"
+      },
+      {
+        "source_field": "presentation",
+        "header": "Presentation"
+      },
+      {
+        "source_field": "beverage_subcategory",
+        "header": "Beverage subcategory"
+      },
+      {
+        "source_field": "discount_pct",
+        "header": "Discount (%)"
+      },
+      {
+        "source_field": "age_restriction",
+        "header": "Age restriction"
+      },
+      {
+        "source_field": "identification_required",
+        "header": "Identification required"
+      },
+      {
+        "source_field": "availability",
+        "header": "Availability"
+      },
+      {
+        "source_field": "source_collection_date",
+        "header": "Collection date"
+      },
+      {
+        "source_field": "zone_slug",
+        "header": "Delivery zone"
+      },
+      {
+        "source_field": "store_name",
+        "header": "Store name"
+      },
+      {
+        "source_field": "store_id",
+        "header": "Store ID"
+      },
+      {
+        "source_field": "product_id",
+        "header": "Product ID"
+      },
+      {
+        "source_field": "record_id",
+        "header": "Record ID"
+      },
+      {
+        "source_field": "sugar_status",
+        "header": "Sugar information status"
+      },
+      {
+        "source_field": "abv_pct_source",
+        "header": "ABV source"
+      },
+      {
+        "source_field": "abv_pct_evidence",
+        "header": "ABV evidence"
+      },
+      {
+        "source_field": "volume_per_unit_ml_source",
+        "header": "Volume-per-unit source"
+      },
+      {
+        "source_field": "volume_per_unit_ml_evidence",
+        "header": "Volume-per-unit evidence"
+      },
+      {
+        "source_field": "pack_count_source",
+        "header": "Pack-count source"
+      },
+      {
+        "source_field": "pack_count_evidence",
+        "header": "Pack-count evidence"
+      },
+      {
+        "source_field": "total_volume_ml_source",
+        "header": "Total-volume source"
+      },
+      {
+        "source_field": "total_volume_ml_evidence",
+        "header": "Total-volume evidence"
+      },
+      {
+        "source_field": "pack_format_raw",
+        "header": "Pack format as listed"
+      },
+      {
+        "source_field": "quantity",
+        "header": "Listed quantity"
+      },
+      {
+        "source_field": "unit_type",
+        "header": "Listed unit"
+      },
+      {
+        "source_field": "min_purchasing_units",
+        "header": "Minimum purchase units"
+      },
+      {
+        "source_field": "sale_type",
+        "header": "Sale type"
+      },
+      {
+        "source_field": "attributes_json",
+        "header": "Structured attributes (JSON)"
+      },
+      {
+        "source_field": "requires_medical_prescription",
+        "header": "Medical prescription required"
+      },
+      {
+        "source_field": "is_medical_product",
+        "header": "Medical product indicator"
+      },
+      {
+        "source_field": "alcoholic_beverage",
+        "header": "Alcohol indicator"
+      },
+      {
+        "source_field": "stock",
+        "header": "Raw stock value"
+      },
+      {
+        "source_field": "is_available_raw",
+        "header": "Raw available flag"
+      },
+      {
+        "source_field": "in_stock_raw",
+        "header": "Raw in-stock flag"
+      },
+      {
+        "source_field": "is_possible_stockout_raw",
+        "header": "Raw possible-stockout flag"
+      },
+      {
+        "source_field": "thumbnail_url",
+        "header": "Product image URL"
+      },
+      {
+        "source_field": "scrape_timestamp",
+        "header": "Collection timestamp"
+      },
+      {
+        "source_field": "country_code",
+        "header": "Country code"
+      },
+      {
+        "source_field": "country",
+        "header": "Country"
+      },
+      {
+        "source_field": "city",
+        "header": "City"
+      },
+      {
+        "source_field": "district",
+        "header": "District"
+      },
+      {
+        "source_field": "address",
+        "header": "Delivery address"
+      },
+      {
+        "source_field": "latitude",
+        "header": "Latitude"
+      },
+      {
+        "source_field": "longitude",
+        "header": "Longitude"
+      },
+      {
+        "source_field": "store_type",
+        "header": "Store type"
+      },
+      {
+        "source_field": "parent_store_type",
+        "header": "Parent store type"
+      },
+      {
+        "source_field": "master_product_id",
+        "header": "Master product ID"
+      },
+      {
+        "source_field": "source_product_id",
+        "header": "Source product ID"
+      },
+      {
+        "source_field": "retail_id",
+        "header": "Retail ID"
+      },
+      {
+        "source_field": "ean",
+        "header": "EAN"
+      },
+      {
+        "source_field": "supplier",
+        "header": "Supplier"
+      },
+      {
+        "source_field": "menu_section",
+        "header": "Menu section"
+      },
+      {
+        "source_field": "menu_subsection",
+        "header": "Menu subsection"
+      },
+      {
+        "source_field": "category_id",
+        "header": "Category ID"
+      },
+      {
+        "source_field": "source_term",
+        "header": "Search term"
+      },
+      {
+        "source_field": "source_terms",
+        "header": "All matching search terms"
+      },
+      {
+        "source_field": "source_url",
+        "header": "Source URL"
+      },
+      {
+        "source_field": "source_dataset",
+        "header": "Source dataset"
+      },
+      {
+        "source_field": "source_release",
+        "header": "Source release"
+      },
+      {
+        "source_field": "source_file",
+        "header": "Source file"
+      },
+      {
+        "source_field": "source_row",
+        "header": "Source row"
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "argentina.xlsx",
+      "bytes": 6331028,
+      "sha256": "30930127f73dbca26a5aae01f24f044494eeb01bfaee16c8683564900450a6df",
+      "sheet_rows": {
+        "Tobacco products": 2325,
+        "SSBs": 6073,
+        "Water": 1464,
+        "Alcohol": 7694,
+        "Technical specifications": 127
+      },
+      "country_code": "ar",
+      "country": "Argentina",
+      "currency": "ARS",
+      "product_rows": 17556,
+      "reporting_groups": {
+        "Tobacco products": 2325,
+        "SSBs": 6073,
+        "Water": 1464,
+        "Alcohol": 7694
+      },
+      "source_sha256": "3a965d1fe80c6ab51f782d517e3bfac97e2b1bdc52fc0ff018d00907ba3b99b3"
+    },
+    {
+      "path": "colombia.xlsx",
+      "bytes": 6262531,
+      "sha256": "5de118bdb7797b6b56a204826aebfe4a699a91b0195a45135f650024f005d186",
+      "sheet_rows": {
+        "Tobacco products": 4543,
+        "SSBs": 6116,
+        "Water": 1045,
+        "Alcohol": 6317,
+        "Technical specifications": 127
+      },
+      "country_code": "co",
+      "country": "Colombia",
+      "currency": "COP",
+      "product_rows": 18021,
+      "reporting_groups": {
+        "Tobacco products": 4543,
+        "SSBs": 6116,
+        "Water": 1045,
+        "Alcohol": 6317
+      },
+      "source_sha256": "077f1c3fe4d6dc5c28bcb4f166baea2be6a52d6b8d0616a8d2b912d3c355013f"
+    },
+    {
+      "path": "peru.xlsx",
+      "bytes": 6386288,
+      "sha256": "8927a873510105b15f97e980ecb39236fdffa0bc1902127dea065de300b2820a",
+      "sheet_rows": {
+        "Tobacco products": 3374,
+        "SSBs": 4673,
+        "Water": 806,
+        "Alcohol": 9469,
+        "Technical specifications": 127
+      },
+      "country_code": "pe",
+      "country": "Peru",
+      "currency": "PEN",
+      "product_rows": 18322,
+      "reporting_groups": {
+        "Tobacco products": 3374,
+        "SSBs": 4673,
+        "Water": 806,
+        "Alcohol": 9469
+      },
+      "source_sha256": "531e49440ad67557d3dcec60f32a5c3541edbc43281f4d945533d25f6a7d59ff"
+    },
+    {
+      "path": "mexico.xlsx",
+      "bytes": 5374254,
+      "sha256": "d016f24f55e9a3bbcdddf21547f72debaedbb4187bdd1ee0f230c0d841434016",
+      "sheet_rows": {
+        "Tobacco products": 597,
+        "SSBs": 6367,
+        "Water": 1741,
+        "Alcohol": 5794,
+        "Technical specifications": 127
+      },
+      "country_code": "mx",
+      "country": "Mexico",
+      "currency": "MXN",
+      "product_rows": 14499,
+      "reporting_groups": {
+        "Tobacco products": 597,
+        "SSBs": 6367,
+        "Water": 1741,
+        "Alcohol": 5794
+      },
+      "source_sha256": "18bd18087073577840177d3cb1e70b87c197a3cdc0e892d6079a3c143cd6ee42"
+    }
+  ],
+  "documentation": {
+    "path": "README.md",
+    "bytes": 1394,
+    "sha256": "e0ea067e7cb274ffd94cf776a989a5b45645555054bf0b18886a7cf1e472f0f7"
+  },
+  "inputs": [
+    {
+      "path": "datasets/integrated/manifest.json",
+      "role": "integrated_manifest",
+      "bytes": 14971,
+      "sha256": "2ceda783c00683bc49ac4c4e4b28a25f3512e39cb67daa478b4424266a871431"
+    },
+    {
+      "path": "docs/brand_coverage_matrix_manifest.json",
+      "role": "brand_coverage_manifest",
+      "bytes": 4169,
+      "sha256": "ed50626ff6258524535d7e0324d58ba2be558271319fe11753ee55441e9e5f70"
+    },
+    {
+      "path": "docs/brand_coverage_matrix.csv",
+      "role": "brand_coverage_matrix",
+      "bytes": 17213,
+      "sha256": "a65eab869859407cc761c4eba58158b9bb80206ff496957239d67497315ad37a"
+    },
+    {
+      "path": "rappi_co/export/country_product_workbooks.py",
+      "role": "exporter",
+      "bytes": 57539,
+      "sha256": "473b1846250878315d69f50f8d4d7dac0f85d7fc24d2bce7b57e952b76f3fcf8"
+    },
+    {
+      "path": "datasets/integrated/argentina.xlsx",
+      "role": "integrated_country_ar",
+      "bytes": 15219046,
+      "sha256": "3a965d1fe80c6ab51f782d517e3bfac97e2b1bdc52fc0ff018d00907ba3b99b3"
+    },
+    {
+      "path": "datasets/integrated/colombia.xlsx",
+      "role": "integrated_country_co",
+      "bytes": 12860212,
+      "sha256": "077f1c3fe4d6dc5c28bcb4f166baea2be6a52d6b8d0616a8d2b912d3c355013f"
+    },
+    {
+      "path": "datasets/integrated/peru.xlsx",
+      "role": "integrated_country_pe",
+      "bytes": 13970874,
+      "sha256": "531e49440ad67557d3dcec60f32a5c3541edbc43281f4d945533d25f6a7d59ff"
+    },
+    {
+      "path": "datasets/integrated/mexico.xlsx",
+      "role": "integrated_country_mx",
+      "bytes": 12395533,
+      "sha256": "18bd18087073577840177d3cb1e70b87c197a3cdc0e892d6079a3c143cd6ee42"
+    }
+  ],
+  "limitations": [
+    "every SSB row has unconfirmed sweetening status",
+    "quantitative sugar fields contain no measurements in this frozen beverage release",
+    "separate August tobacco and September beverage collection waves",
+    "finite search protocol at two delivery locations per country; catalog and national completeness unknown",
+    "brand labels in the coverage audit are discovery roles, not ownership or origin",
+    "no renewed product-detail collection and no product-information enrichment"
+  ]
+}

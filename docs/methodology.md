@@ -7,7 +7,7 @@ Peru, and Mexico. It
 samples two public delivery locations in one major Rappi city per country. It does not claim national
 coverage or market share.
 
-The earlier two location Colombia workflow remains in the repository for compatibility. Its files
+The historical two-location Colombia workflow remains in the repository for compatibility. Its files
 use `config/zones_co.yml`, `config/relevant_sections_co.yml`, and the original commands. The four
 country collection uses the separate `config/study/` directory and always requires `--country`.
 

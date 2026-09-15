@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "artifact": "brand_discovery_coverage_matrix",
+  "status": "archived_presence_and_proposed_unexecuted_query_checks",
+  "prepared_date": "2026-09-13",
+  "rows": 12,
+  "key_columns": [
+    "country_code",
+    "family"
+  ],
+  "source_release_generations": {
+    "ar": "20260910_124608_994043",
+    "co": "20260910_124832_159958",
+    "pe": "20260910_124608_117667",
+    "mx": "20260910_124827_120073"
+  },
+  "input_sha256": {
+    "datasets/beverages/provenance_ar.json": "407bce90959200afb688df4976bf461a5d4d1678ddbac9adbf6c1bd8e1fd65b7",
+    "data/beverages/ar/processed/20260910_124608_994043/beverage_audit_20260910_124608_994043.csv": "94dcd1fa5caf970ed1a90fbc7a10ff868052e7004fbc5ce3fa299593e0180a3c",
+    "datasets/beverages/provenance_co.json": "bffd110b1598202152a4980be9254e069b575b7e360f7346141af3aadc7b09e9",
+    "data/beverages/co/processed/20260910_124832_159958/beverage_audit_20260910_124832_159958.csv": "72c12ed8e09f33ec0ee13f5e974dd30a28d17d4166075725f82be9f07ae68a76",
+    "datasets/beverages/provenance_pe.json": "e2b77c471a9424d3cf2f13ee18c076432619e6fb818901bfaa904dec57696db1",
+    "data/beverages/pe/processed/20260910_124608_117667/beverage_audit_20260910_124608_117667.csv": "7f065bd8b8134b450c184337e9cb3b2359012dd68f42c595e037781953cc0c22",
+    "datasets/beverages/provenance_mx.json": "83f5a961f4fe2cafd99b12f9ca313c0ce2e9198dbaf70303bf5b30ea3d63ad29",
+    "data/beverages/mx/processed/20260910_124827_120073/beverage_audit_20260910_124827_120073.csv": "c309785c480989d2709a6bcb12951ea57a1544a3d648769effbc3616fcd421a9",
+    "config/beverages.yml": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053"
+  },
+  "output": {
+    "path": "docs/brand_coverage_matrix.csv",
+    "bytes": 17213,
+    "sha256": "a65eab869859407cc761c4eba58158b9bb80206ff496957239d67497315ad37a"
+  },
+  "normalization": "NFKD, remove combining marks, lowercase, replace non-ASCII letters/digits with space, collapse spaces; match aliases with Unicode word boundaries.",
+  "token_aliases": {
+    "ar/water/local": [
+      "villavicencio"
+    ],
+    "ar/water/international": [
+      "perrier"
+    ],
+    "ar/ssb/local": [
+      "manaos"
+    ],
+    "ar/ssb/international": [
+      "coca cola",
+      "cocacola"
+    ],
+    "ar/alcohol/local": [
+      "quilmes"
+    ],
+    "ar/alcohol/international": [
+      "heineken"
+    ],
+    "co/water/local": [
+      "cristal"
+    ],
+    "co/water/international": [
+      "evian"
+    ],
+    "co/ssb/local": [
+      "colombiana"
+    ],
+    "co/ssb/international": [
+      "coca cola",
+      "cocacola"
+    ],
+    "co/alcohol/local": [
+      "aguila"
+    ],
+    "co/alcohol/international": [
+      "heineken"
+    ],
+    "pe/water/local": [
+      "san mateo"
+    ],
+    "pe/water/international": [
+      "evian"
+    ],
+    "pe/ssb/local": [
+      "inca kola"
+    ],
+    "pe/ssb/international": [
+      "coca cola",
+      "cocacola"
+    ],
+    "pe/alcohol/local": [
+      "cusquena"
+    ],
+    "pe/alcohol/international": [
+      "heineken"
+    ],
+    "mx/water/local": [
+      "ciel"
+    ],
+    "mx/water/international": [
+      "evian"
+    ],
+    "mx/ssb/local": [
+      "jarritos"
+    ],
+    "mx/ssb/international": [
+      "coca cola",
+      "cocacola"
+    ],
+    "mx/alcohol/local": [
+      "corona"
+    ],
+    "mx/alcohol/international": [
+      "heineken"
+    ]
+  },
+  "example_selection": "Prefer explicit family noun in title, then shortest name, lexical name, zone, store, product ID; must be in counted eligible subset.",
+  "ssb_eligible_families": [
+    "dairy_beverage",
+    "energy_drink",
+    "flavored_water",
+    "juice",
+    "other_beverage",
+    "soft_drink",
+    "sports_drink",
+    "tea_coffee"
+  ],
+  "limits": [
+    "Discovery role is not ownership, brand origin, production location or imported-product status.",
+    "Counts include repeated stores and locations; no market-share interpretation.",
+    "SSB-family counts include review candidates and non-SSB comparisons; brand alone does not establish sweetening.",
+    "No mixed bundles enter these counts.",
+    "Examples and source paths refer to the frozen released observations; next-wave queries have not run."
+  ]
+}

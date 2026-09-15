@@ -1,7 +1,11 @@
-# 📊 Dataset notes
+# Tobacco source workbooks
 
-> [!NOTE]
-> These workbooks are working data files in a private repository. They are under review.
+For tobacco, water, SSB candidates, and alcohol together, use the
+[integrated release](integrated/README.md): four country workbooks and one
+combined workbook. The original files below are preserved source snapshots.
+
+Water, SSB candidates, and alcohol have a separate [beverage first pass](beverages/README.md).
+The notes and counts below describe the original tobacco release.
 
 The four workbooks are the country data files currently included in this repository. They
 were built from Rappi responses collected on 16 August 2026 at two delivery points per country and

@@ -1,8 +1,8 @@
 # Colombia data collection notes
 
 Sources and indexed listings were checked on 2026-08-16. This public-landmark profile was selected
-for the four-market comparison and is separate from the addresses used in the earlier Colombia
-pilot.
+for the four-market comparison and is separate from the addresses used by the earlier Colombia
+workflow.
 
 ## Delivery locations
 
@@ -60,7 +60,7 @@ only an mg dose is excluded as an edible collision.
 The local-market cigarette selection is anchored by current Rappi pages for
 [Piel Roja](https://www.rappi.com.co/shopping/piel-roja) and
 [Starlite](https://www.rappi.com.co/retail/licores-y-cigarrillos), then by brands already observed and
-reviewed in the earlier Colombia pilot. `local_market` records local relevance, not ownership.
+reviewed in the earlier Colombia collection. `local_market` records local relevance, not ownership.
 
 ## Validated collection snapshot
 

@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "scope": "beverages_first_pass",
+  "created_at_utc": "2026-09-10T12:51:37.188469+00:00",
+  "observation_key": [
+    "country_code",
+    "zone_slug",
+    "store_id",
+    "product_id"
+  ],
+  "catalog_completeness": "unknown; finite search protocol",
+  "workbooks": [
+    {
+      "path": "datasets/beverages/argentina.xlsx",
+      "bytes": 11548007,
+      "sha256": "3f3d4b42239d63e2ae429a376ebb36cd2387fe36b970a7f9f1117064dcf88cdb",
+      "country_code": "ar",
+      "country": "Argentina",
+      "currency": "ARS",
+      "locations": 2,
+      "requests": 90,
+      "raw_observations": 24281,
+      "water_observations": 1464,
+      "alcohol_observations": 7694,
+      "confirmed_ssb_observations": 0,
+      "ssb_candidate_observations": 6073,
+      "review_observations": 10898,
+      "comparison_observations": 2187,
+      "excluded_observations": 2038,
+      "sheet_rows": {
+        "summary": 13,
+        "items": 9158,
+        "ssb_candidates": 6073,
+        "review": 10898,
+        "comparison": 2187,
+        "stores": 264,
+        "locations": 2,
+        "coverage": 10,
+        "query_yield": 90
+      },
+      "provenance": {
+        "path": "datasets/beverages/provenance_ar.json",
+        "bytes": 36970,
+        "sha256": "407bce90959200afb688df4976bf461a5d4d1678ddbac9adbf6c1bd8e1fd65b7"
+      },
+      "sugar_concentration_observations": 0,
+      "alcohol_abv_observations": 6723
+    },
+    {
+      "path": "datasets/beverages/colombia.xlsx",
+      "bytes": 9598085,
+      "sha256": "8a31410c2f1db6067f3575eb1dbc675377ae0f51e4911b886c0bdcd97c2212a4",
+      "country_code": "co",
+      "country": "Colombia",
+      "currency": "COP",
+      "locations": 2,
+      "requests": 88,
+      "raw_observations": 17980,
+      "water_observations": 1045,
+      "alcohol_observations": 6317,
+      "confirmed_ssb_observations": 0,
+      "ssb_candidate_observations": 6116,
+      "review_observations": 8825,
+      "comparison_observations": 1227,
+      "excluded_observations": 566,
+      "sheet_rows": {
+        "summary": 13,
+        "items": 7362,
+        "ssb_candidates": 6116,
+        "review": 8825,
+        "comparison": 1227,
+        "stores": 307,
+        "locations": 2,
+        "coverage": 10,
+        "query_yield": 88
+      },
+      "provenance": {
+        "path": "datasets/beverages/provenance_co.json",
+        "bytes": 36031,
+        "sha256": "bffd110b1598202152a4980be9254e069b575b7e360f7346141af3aadc7b09e9"
+      },
+      "sugar_concentration_observations": 0,
+      "alcohol_abv_observations": 5740
+    },
+    {
+      "path": "datasets/beverages/peru.xlsx",
+      "bytes": 10842572,
+      "sha256": "acb598e36a1c47c91f37002e5a50b8a396e9e8a9be791e091b676fd64f7e2c35",
+      "country_code": "pe",
+      "country": "Peru",
+      "currency": "PEN",
+      "locations": 2,
+      "requests": 88,
+      "raw_observations": 22949,
+      "water_observations": 806,
+      "alcohol_observations": 9469,
+      "confirmed_ssb_observations": 0,
+      "ssb_candidate_observations": 4673,
+      "review_observations": 11029,
+      "comparison_observations": 992,
+      "excluded_observations": 653,
+      "sheet_rows": {
+        "summary": 13,
+        "items": 10275,
+        "ssb_candidates": 4673,
+        "review": 11029,
+        "comparison": 992,
+        "stores": 379,
+        "locations": 2,
+        "coverage": 10,
+        "query_yield": 88
+      },
+      "provenance": {
+        "path": "datasets/beverages/provenance_pe.json",
+        "bytes": 36391,
+        "sha256": "e2b77c471a9424d3cf2f13ee18c076432619e6fb818901bfaa904dec57696db1"
+      },
+      "sugar_concentration_observations": 0,
+      "alcohol_abv_observations": 8295
+    },
+    {
+      "path": "datasets/beverages/mexico.xlsx",
+      "bytes": 10202114,
+      "sha256": "b55a64074af073903e729e1b7a6e6d47b760d52bb258cd3ecf77b081a6ef9a67",
+      "country_code": "mx",
+      "country": "Mexico",
+      "currency": "MXN",
+      "locations": 2,
+      "requests": 90,
+      "raw_observations": 19639,
+      "water_observations": 1741,
+      "alcohol_observations": 5794,
+      "confirmed_ssb_observations": 0,
+      "ssb_candidate_observations": 6367,
+      "review_observations": 10447,
+      "comparison_observations": 1210,
+      "excluded_observations": 447,
+      "sheet_rows": {
+        "summary": 13,
+        "items": 7535,
+        "ssb_candidates": 6367,
+        "review": 10447,
+        "comparison": 1210,
+        "stores": 340,
+        "locations": 2,
+        "coverage": 10,
+        "query_yield": 90
+      },
+      "provenance": {
+        "path": "datasets/beverages/provenance_mx.json",
+        "bytes": 36578,
+        "sha256": "83f5a961f4fe2cafd99b12f9ca313c0ce2e9198dbaf70303bf5b30ea3d63ad29"
+      },
+      "sugar_concentration_observations": 0,
+      "alcohol_abv_observations": 3908
+    }
+  ],
+  "product_information_pilot": {
+    "path": "datasets/beverages/product_information_pilot.csv",
+    "bytes": 3463,
+    "sha256": "aafb6315f87a0ed82dee8d7d647c8caf1c5f042a30e841c0c46d5559a57ff120",
+    "rows": 4,
+    "scope": "product",
+    "successful_click_captures": 3,
+    "truncated_click_captures": 1,
+    "saved_ssr_descriptions": 4,
+    "verified_observation_joins": 0,
+    "later_browser_run": "HTTP 403 on first product; remaining three skipped; browser requests stopped"
+  },
+  "coverage_audit": {
+    "path": "datasets/beverages/coverage_audit.json",
+    "bytes": 22607,
+    "sha256": "d1f717a6bf6472cc0db38e17d6ca5651ba7911e42249908fd3031c948bc6f334"
+  },
+  "review_revision": 2
+}

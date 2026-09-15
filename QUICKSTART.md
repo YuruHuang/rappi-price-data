@@ -1,86 +1,71 @@
-# 🚀 Quick start
+# Quick start
 
-This page is the short command guide. The main [`README.md`](README.md) explains the files, method,
-and output structure.
+The final files are in [`datasets/country_products/`](datasets/country_products/).
+There is one workbook for each country, and every workbook has the same five
+worksheets:
 
-To read the included data only, open `datasets/argentina.xlsx`, `colombia.xlsx`, `peru.xlsx`, or
-`mexico.xlsx`. Python is not required for that.
+1. `Technical specifications`
+2. `Tobacco products`
+3. `SSBs`
+4. `Water`
+5. `Alcohol`
 
-Clone the private repository if needed, then run all remaining commands from its root:
+Python is not needed to open or analyze the published Excel files.
 
-```bash
-git clone https://github.com/YuruHuang/rappi-tobacco-data.git
-cd rappi-tobacco-data
-```
+## Install the pipeline
 
-## ⚙️ 1. Install
+From the repository root:
 
-```bash
+```sh
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## 👀 2. Check the full plan without using the network
+## Rebuild the final workbooks
 
-```bash
+The final four workbooks can be rebuilt offline from the integrated release:
+
+```sh
+python -m rappi_co.export.country_product_workbooks \
+  --out data/country_products_rebuild
+```
+
+Choose a new output directory. The exporter checks its inputs and validates the
+workbooks before writing the release.
+
+## Review a collection plan
+
+Dry runs show the requests without contacting Rappi:
+
+```sh
 python -m rappi_co.study --all-countries --dry-run
+python -m rappi_co.beverages --all-countries --dry-run
 ```
 
-Expected plan: four countries, two locations per country, and 242 requests.
+Valid country codes are `ar`, `co`, `pe`, and `mx`. To collect or rebuild one
+country with the original tobacco workflow:
 
-## 🔎 3. Test one query at both locations
-
-```bash
-python -m rappi_co.study --country ar --terms cigarrillos --collect-only
-```
-
-Review the two raw output folders before starting the complete run.
-
-## ▶️ 4. Run one complete country
-
-```bash
+```sh
 python -m rappi_co.study --country ar
-```
-
-Valid country codes are:
-
-- `ar` for Argentina
-- `co` for Colombia
-- `pe` for Peru
-- `mx` for Mexico
-
-The final workbook is written to:
-
-```text
-data/<country>/processed/combined/tobacco_master_<run_id>.xlsx
-```
-
-## ♻️ 5. Rebuild from an existing complete raw run
-
-```bash
 python -m rappi_co.study --country ar --skip-collect
 ```
 
-The historical raw files for the included workbooks are not included here. This command works with
-raw files created locally by the same pipeline.
+To run the beverage workflow for all four countries:
 
-## ✅ 6. Run the tests
-
-```bash
-python -m pytest tests -q
+```sh
+python -m rappi_co.beverages --all-countries
+python -m rappi_co.beverages --all-countries --skip-collect
 ```
 
-## 🗂️ Main configuration files
+The rebuild commands require raw files previously produced by the same
+pipeline. Stop collection if the site returns a CAPTCHA or access challenge.
 
-```text
-config/study/terms.yml                 shared search terms
-config/study/brand_terms_ar.yml        Argentina brands
-config/study/brand_terms_co.yml        Colombia brands
-config/study/brand_terms_pe.yml        Peru brands
-config/study/brand_terms_mx.yml        Mexico brands
-config/study/zones_<country>.yml       delivery locations
-config/study/countries.yml             country and currency settings
+## Run the tests
+
+```sh
+python -m pytest -q
 ```
 
-Stop if Rappi returns a CAPTCHA or an access challenge. The workflow does not bypass access controls.
+See the [study protocol](docs/study_protocol.md) for the sample design,
+classification rules, measurements, and limitations.

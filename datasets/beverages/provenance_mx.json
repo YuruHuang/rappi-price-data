@@ -1,0 +1,744 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "run_id": "20260910_124827_120073",
+  "plan": {
+    "country_code": "mx",
+    "country": "Mexico",
+    "city": "Mexico City",
+    "currency": "MXN",
+    "addresses": [
+      {
+        "slug": "centro-bellas-artes",
+        "lat": 19.43547,
+        "lng": -99.14128,
+        "address": "Palacio de Bellas Artes, Av. Juárez s/n, Centro, 06050 Ciudad de México",
+        "district": "Cuauhtémoc"
+      },
+      {
+        "slug": "coyoacan-perisur",
+        "lat": 19.304197,
+        "lng": -99.190284,
+        "address": "Centro Comercial Perisur, Anillo Periférico Sur 4690, 04500 Ciudad de México",
+        "district": "Coyoacán"
+      }
+    ],
+    "queries": [
+      "agua",
+      "agua mineral",
+      "agua sin gas",
+      "agua con gas",
+      "gaseosa",
+      "refresco",
+      "bebida azucarada",
+      "bebida energetica",
+      "bebida deportiva",
+      "bebida isotonica",
+      "te helado",
+      "jugo",
+      "nectar",
+      "agua saborizada",
+      "bebida de frutas",
+      "cerveza",
+      "vino",
+      "espumante",
+      "whisky",
+      "vodka",
+      "ron",
+      "tequila",
+      "gin",
+      "licor",
+      "coctel",
+      "sidra",
+      "agua purificada",
+      "agua fresca",
+      "bebida rehidratante",
+      "mezcal",
+      "cerveza sin alcohol",
+      "agua Bonafont",
+      "agua Ciel",
+      "agua Epura",
+      "refresco Coca Cola",
+      "refresco Pepsi",
+      "refresco Jarritos",
+      "bebida Jumex",
+      "bebida Del Valle",
+      "bebida Gatorade",
+      "cerveza Corona",
+      "cerveza Modelo",
+      "cerveza Tecate",
+      "tequila Jose Cuervo",
+      "mezcal 400 Conejos"
+    ],
+    "requests": 90,
+    "protocol_status": "full",
+    "full_protocol": true,
+    "scope": "beverages",
+    "config_version": 1,
+    "search_url": "https://services.mxgrability.rappi.com/api/pns-global-search-api/v1/unified-search?is_prime=false&unlimited_shipping=false",
+    "catalog_completeness": "unknown; search results may be capped"
+  },
+  "inputs": {
+    "centro-bellas-artes": {
+      "items": {
+        "data_root_relative_path": "mx/raw/centro-bellas-artes/search_items_20260910_045426.csv",
+        "bytes": 6680990,
+        "sha256": "e04e5fbaa36af0fd949b6e03e4703d733f9107152f85ed448f5dfdfb0dde1efe",
+        "rows": 10916
+      },
+      "stores": {
+        "data_root_relative_path": "mx/raw/centro-bellas-artes/search_stores_20260910_045426.csv",
+        "bytes": 30974,
+        "sha256": "e104953601bd40c1e5df1c6a801f2444b649e25e37d5da44df08e90cc3cd8463",
+        "rows": 215
+      },
+      "manifest": {
+        "data_root_relative_path": "mx/raw/centro-bellas-artes/search_manifest_20260910_045426.json",
+        "bytes": 6471,
+        "sha256": "6843b22dde6882130ab5527a4f68f13018cbc3c3ba306feedb0b91da234ef4bf"
+      },
+      "raw_responses": [
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/001_agua.json.gz",
+          "bytes": 58835,
+          "sha256": "6571a884919279ab208593bc2e6712744caed20edbf2497b9968df56abd17b9e"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/002_agua_mineral.json.gz",
+          "bytes": 45781,
+          "sha256": "eff01e396b3aca4bdc197010fb432d0c2850f926a1255b1ae717626bb16e7b32"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/003_agua_sin_gas.json.gz",
+          "bytes": 108125,
+          "sha256": "e0a076b1f603a307210eec0e1aa29b33f0492c29335064fa0018874e6acf85e5"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/004_agua_con_gas.json.gz",
+          "bytes": 89777,
+          "sha256": "47c00befd3d53f921cc0c0bf6bc793e03848f703dc9881deea597b5252612cf8"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/005_gaseosa.json.gz",
+          "bytes": 73274,
+          "sha256": "2ffa71a72ba20b42caed6e681abc3d53d1181af31520dad98da3756dac8e6892"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/006_refresco.json.gz",
+          "bytes": 58057,
+          "sha256": "fcd24c91f22d7157907c456d2cd4e59c6330654db961e070840906d55432df43"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/007_bebida_azucarada.json.gz",
+          "bytes": 87196,
+          "sha256": "adb123c2f4123a26a42387851fed06c2472fb6800dfe1b2b96690ecc2ebbf713"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/008_bebida_energetica.json.gz",
+          "bytes": 51823,
+          "sha256": "67ed4671c673add745082317fbc609244e495602a03829505a2739e1e72b390b"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/009_bebida_deportiva.json.gz",
+          "bytes": 84041,
+          "sha256": "43b614adbc4e19146d10e502b0f6f6ef6f268566d4d5d0ec09fbf0f344ea7bd4"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/010_bebida_isotonica.json.gz",
+          "bytes": 78433,
+          "sha256": "e9d64fa629cf10e010fe2a0e4c0c70b06fd466f5210045a0412d1104410dec8e"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/011_te_helado.json.gz",
+          "bytes": 83968,
+          "sha256": "1372e7104a2acf4c60c88123d16898d5f9625da56ad4636396fa0d398629bbd9"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/012_jugo.json.gz",
+          "bytes": 93267,
+          "sha256": "ed1a787e8a133aeb5ce423646b7a9a668a1339fc195b512ac2b74245aa5933f0"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/013_nectar.json.gz",
+          "bytes": 73728,
+          "sha256": "30ef7a607cd514d096f0ca40b2e33e4861369d52f748b58a5cdd959545878050"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/014_agua_saborizada.json.gz",
+          "bytes": 117129,
+          "sha256": "e9a3dc8ad458081f7f86beeec0c1f60999228cf11c34188ee1ce2dfc853f4f56"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/015_bebida_de_frutas.json.gz",
+          "bytes": 51405,
+          "sha256": "6fce9b85fb5c5ee30bebba782b4d78430f7e6513e6b7bd1a293d04aa2f6d9cb8"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/016_cerveza.json.gz",
+          "bytes": 60899,
+          "sha256": "4ff51635afedf231a02d2d91a63e81f459591bdab8ae5f7f98bced239cfbb00c"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/017_vino.json.gz",
+          "bytes": 41349,
+          "sha256": "8608eac003fba9a39a3dc5397f12803b151765a4ff0a637968d2565eb2a2461d"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/018_espumante.json.gz",
+          "bytes": 46860,
+          "sha256": "4336a20e79c235caebf17446f17427dc61104c23d1411563e5458808b9d60dc4"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/019_whisky.json.gz",
+          "bytes": 65933,
+          "sha256": "593552750517ec77c06c7f1a6ca0c0c1c8ab54e0933c1aca1b8a54a56d09e4d0"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/020_vodka.json.gz",
+          "bytes": 44923,
+          "sha256": "d839b99ae18bf8157645130ca4d8f01748d409f9e3c004342f1140ed7835dc57"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/021_ron.json.gz",
+          "bytes": 53119,
+          "sha256": "26856a2879338c87c660068eef20209c1b1147e2c7e6158add43753d7ddc1c02"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/022_tequila.json.gz",
+          "bytes": 66154,
+          "sha256": "641bbcd4bdb069e4139a9c000531dea91c9b1692b2525b155a3829b2af754a6c"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/023_gin.json.gz",
+          "bytes": 76635,
+          "sha256": "035f356fbf1304ee06cd2028422c6cedda443064ff676a6d0bbaa0a13abd86ce"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/024_licor.json.gz",
+          "bytes": 43064,
+          "sha256": "7cb7540192d509bd4a51b7eb0d548e2b33546919e5c3a42c28eaca4787a655e9"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/025_coctel.json.gz",
+          "bytes": 60319,
+          "sha256": "3e8aba98e326ef5042fe1f2f329751d9e739b78f79e82115b9bbf5f76c580220"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/026_sidra.json.gz",
+          "bytes": 8567,
+          "sha256": "9efdd0f10c8466cc403a9e11bf6ad6084d098244e781d305911cd5280542de2e"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/027_agua_purificada.json.gz",
+          "bytes": 58407,
+          "sha256": "5d2bd86f92e4dd4bd2c8419fb59d573471ec9b7f4ebd46a1bebb306330f5b93a"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/028_agua_fresca.json.gz",
+          "bytes": 109390,
+          "sha256": "844c9df70f04370942fa0150d9633e4ceb00f5460b8a93b8a8c1921fc6f1a439"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/029_bebida_rehidratante.json.gz",
+          "bytes": 76281,
+          "sha256": "b884c0595d1593cd6fc317555d9c77282d06b68271c98357fed30e177b0c373c"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/030_mezcal.json.gz",
+          "bytes": 45043,
+          "sha256": "18ca11d1873ca9e613569fc52233eceba6447ce9d379f01c90ffea6f3a487a03"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/031_cerveza_sin_alcohol.json.gz",
+          "bytes": 58245,
+          "sha256": "00d203a662bd6df1b02a927cc7b9871da24a334dbb7566c846e15205dd07b3b4"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/032_agua_Bonafont.json.gz",
+          "bytes": 64328,
+          "sha256": "78ac58bf164480f2e2b05fed0478b29041fad9ae54435b8795736fd53b9bcaa1"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/033_agua_Ciel.json.gz",
+          "bytes": 52604,
+          "sha256": "6304fbfc8729997879ea174033526903196e410a99c903e7bab7bb58168642bd"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/034_agua_Epura.json.gz",
+          "bytes": 59389,
+          "sha256": "c144740e3aeba6642a540d7890199d800ac19beb092c2efd53a8791ccd58172c"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/035_refresco_Coca_Cola.json.gz",
+          "bytes": 65200,
+          "sha256": "1263887338fa315cdf53f9989ec6d0a03dfad484afc98ac64c260c343c9984f4"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/036_refresco_Pepsi.json.gz",
+          "bytes": 67769,
+          "sha256": "eb0c7505596e822d765ce8001aead5ed967a3e8fe72e8db9cd774c16944f00af"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/037_refresco_Jarritos.json.gz",
+          "bytes": 48815,
+          "sha256": "33864515cc4638cc737922ab0102ac4ac911501f8063a43cee718bc45b082d4a"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/038_bebida_Jumex.json.gz",
+          "bytes": 49689,
+          "sha256": "f55701ba4645f48b64869d0861c174bff87bca0096dba4c299fbce5b65147189"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/039_bebida_Del_Valle.json.gz",
+          "bytes": 105132,
+          "sha256": "782a4cdef4447f0f6759f5dcdf5de17cafdf2649bd79ec29c3bfd972990a1c8b"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/040_bebida_Gatorade.json.gz",
+          "bytes": 78118,
+          "sha256": "46cd578b0e97dc114e74a6a760c3a36ebe413a97fea0f8fba244b50b2d5f6282"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/041_cerveza_Corona.json.gz",
+          "bytes": 58335,
+          "sha256": "016e0e934d0c199154a6106f36c95a82bbe00b4db5c552738c9c2e65c35aa0c9"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/042_cerveza_Modelo.json.gz",
+          "bytes": 61533,
+          "sha256": "adbe68428f7a209b821b08d444ce80e06b18253332504449e4387c49fe289d08"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/043_cerveza_Tecate.json.gz",
+          "bytes": 59275,
+          "sha256": "3bddd45bc3621639bd8aa5163fcf9ebb1f9dcd2def2789cc94924ee4411a797e"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/044_tequila_Jose_Cuervo.json.gz",
+          "bytes": 66426,
+          "sha256": "cd092c2c9db7693f97f60a04c3739c449459eb010b84f4a5b275d0dbb60d6598"
+        },
+        {
+          "data_root_relative_path": "mx/raw/centro-bellas-artes/search_raw_20260910_045426/045_mezcal_400_Conejos.json.gz",
+          "bytes": 46367,
+          "sha256": "f3d734f918be6ee7e74e728a5b7a9701d8890a6472dbec11b55143dd01754ad0"
+        }
+      ]
+    },
+    "coyoacan-perisur": {
+      "items": {
+        "data_root_relative_path": "mx/raw/coyoacan-perisur/search_items_20260910_045714.csv",
+        "bytes": 5469408,
+        "sha256": "59f8849cc10f98aa4955f59fac2e5ef543d76902b52179164cbeaccec8d78703",
+        "rows": 8723
+      },
+      "stores": {
+        "data_root_relative_path": "mx/raw/coyoacan-perisur/search_stores_20260910_045714.csv",
+        "bytes": 24224,
+        "sha256": "ad059b52297911324281446f8e300f05d3d8648ec4aedea95a5b9d6d48facb24",
+        "rows": 130
+      },
+      "manifest": {
+        "data_root_relative_path": "mx/raw/coyoacan-perisur/search_manifest_20260910_045714.json",
+        "bytes": 6467,
+        "sha256": "d5d65e2530089c7ddfaae015af107152e1706662e65c6aef89e750e37d1efe88"
+      },
+      "raw_responses": [
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/001_agua.json.gz",
+          "bytes": 53383,
+          "sha256": "67dfbc1a87e57921a96e63837f3b5660426995c9217b4a262da69c18d9d2ab3a"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/002_agua_mineral.json.gz",
+          "bytes": 42644,
+          "sha256": "fea2f81369e1d96b39fef21db25f4676949023613af00bf1bec3f006cb00b487"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/003_agua_sin_gas.json.gz",
+          "bytes": 98172,
+          "sha256": "c0100a4da7de18feee869aa300a58dfa25c56004d37f0e71f3c10f2a983ed51c"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/004_agua_con_gas.json.gz",
+          "bytes": 86584,
+          "sha256": "c7d3281ebee04b56c280c672842d01fdda4155596861cfdbeb8ef65b0d07aa04"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/005_gaseosa.json.gz",
+          "bytes": 71090,
+          "sha256": "292397c35e9d8821e39216f006e43cd86f0097dedfb018f58c372874cbce0496"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/006_refresco.json.gz",
+          "bytes": 62719,
+          "sha256": "099ff6f4b811860eca519ec78c6a99d4fedb83fb5e71faea305128bf8cb51757"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/007_bebida_azucarada.json.gz",
+          "bytes": 91616,
+          "sha256": "419ad561307352c94bf67c8c76df99f7b9faa628428ae8f5528f983d125a7ac0"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/008_bebida_energetica.json.gz",
+          "bytes": 43522,
+          "sha256": "e469a9ea024c4b3978e68999488cb7e5672957467c7385e77239bfe9f46769ef"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/009_bebida_deportiva.json.gz",
+          "bytes": 74247,
+          "sha256": "b980a252481665b18c1d3397d740e9c593dfbe9d6b9bcb883c895186a142964b"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/010_bebida_isotonica.json.gz",
+          "bytes": 71777,
+          "sha256": "476fed09386b0934f7ce3bb22eb025f4aa078e95ae153401eb01422b27b4d680"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/011_te_helado.json.gz",
+          "bytes": 79893,
+          "sha256": "2ac9b1b7c609084a1fc8bd420ebef493de05c765de9cfb6739f1f5bd3b61b13a"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/012_jugo.json.gz",
+          "bytes": 101265,
+          "sha256": "24fe468bd812e3c9c3f1487946b08975804517e151d3da838d8825293fd20b5b"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/013_nectar.json.gz",
+          "bytes": 77401,
+          "sha256": "59c7cc76e33d349f2f47996cb024110933a05000c6c9d78764cd8d1a3b867f15"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/014_agua_saborizada.json.gz",
+          "bytes": 103409,
+          "sha256": "b74b14d2be755c4d3a6ad84d090a7f96996319d9dfd040aed95fa7c0e633d6a3"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/015_bebida_de_frutas.json.gz",
+          "bytes": 62372,
+          "sha256": "73c8d20881928074a33296bd014024a6457bf681d496d1d58af8639ff0ee11e4"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/016_cerveza.json.gz",
+          "bytes": 54178,
+          "sha256": "83afbeb79f0574355cac15e4210cc5fe93de2104a75dd9fed2eb12c337b47755"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/017_vino.json.gz",
+          "bytes": 38984,
+          "sha256": "5f1fb633aafefc366b59ce66d0de4088cdbd0c747ab12260617e3a5e71af09bf"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/018_espumante.json.gz",
+          "bytes": 42570,
+          "sha256": "1b14abc15ecf6883595a85e81600187e7b2ef050b0ec3b1b0c1832e53599688d"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/019_whisky.json.gz",
+          "bytes": 51944,
+          "sha256": "d0a498f87f3efdd98c992537052112ad04e2b393438f8bbae2a51c92ada06e96"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/020_vodka.json.gz",
+          "bytes": 41502,
+          "sha256": "cc7ff34467f908b29933aacbfaa8de0f02d4e62084ecb8dc8a9614e206434e5e"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/021_ron.json.gz",
+          "bytes": 47690,
+          "sha256": "9e703d29e657557ed99f43a2d452eeb582c372b73c830b9f6ed94b425762fb1f"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/022_tequila.json.gz",
+          "bytes": 55204,
+          "sha256": "3fc829098079ab92092184765a28f7a51ad097e29eb2b5a3ba07aa6b253f7f02"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/023_gin.json.gz",
+          "bytes": 72968,
+          "sha256": "f50b5d3037578dd3d0489b906bc7b3c3b266c27ba5c11c948034c4ec64b8297f"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/024_licor.json.gz",
+          "bytes": 49355,
+          "sha256": "34f4f041cb0a4adb7dc3958594bb9a032a2ba0cdd8d39943db49a19557ca4b51"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/025_coctel.json.gz",
+          "bytes": 72694,
+          "sha256": "164bc9c1d2ee53cfdc64483b9d3d085469f8fd81de945664bf1fccaa47b6d437"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/026_sidra.json.gz",
+          "bytes": 10490,
+          "sha256": "c9414c3b372b47f67e536d25f104249390258c24d6e5c2762481a02aa25c09d9"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/027_agua_purificada.json.gz",
+          "bytes": 54332,
+          "sha256": "9ad7d9d3190f47b7373a69e6ae606805ce190cbf7837e3ff352d7924ddf2fb82"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/028_agua_fresca.json.gz",
+          "bytes": 114123,
+          "sha256": "29251ff07ddc9f10d911532e17ba282d2baab450a0638daa65ba5e5e78aa2875"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/029_bebida_rehidratante.json.gz",
+          "bytes": 69763,
+          "sha256": "8e9af746e540f933688e6b14d121a76f9d543611694c1ddbb0e5017b39b86384"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/030_mezcal.json.gz",
+          "bytes": 35745,
+          "sha256": "65951dd3ca17bac78e75f9d87d123437f7a963cfcbab22052a6da96f185f2ff7"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/031_cerveza_sin_alcohol.json.gz",
+          "bytes": 56156,
+          "sha256": "4fa8951442dbeb0239496166599458635b609ee97223010c8fdaf6c95e7d041d"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/032_agua_Bonafont.json.gz",
+          "bytes": 56641,
+          "sha256": "3604eeaf95151fbd432dc894ba85dd8fc6a6141c2f61ca273562604b3504c5d8"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/033_agua_Ciel.json.gz",
+          "bytes": 48650,
+          "sha256": "2a8049ccb3616fb99d77327f4ce79ba9494e64b76cce8d4cd6f2fb4a9efad86a"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/034_agua_Epura.json.gz",
+          "bytes": 50084,
+          "sha256": "fa88d6c214fb6a3a0398fbe4d6756d245f83900b1a3f4d11737be62bb540b654"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/035_refresco_Coca_Cola.json.gz",
+          "bytes": 67342,
+          "sha256": "2ff84400236a4c42db7e0e1f3eea29a28349459ff15ccc3d76433cbdf1f9995e"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/036_refresco_Pepsi.json.gz",
+          "bytes": 63792,
+          "sha256": "4d89ec124fb2124c279f1971fb63afd223842a5f255d23212cae8ab33368823e"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/037_refresco_Jarritos.json.gz",
+          "bytes": 40860,
+          "sha256": "2f6e4273caca10ef2256a27e044a4f91feddc5f21f5253cbce976f68f9ac41e2"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/038_bebida_Jumex.json.gz",
+          "bytes": 46591,
+          "sha256": "32ef1a6ba33297db05040b731d7d3d572da05129fc488154c437ab8ab4f38a03"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/039_bebida_Del_Valle.json.gz",
+          "bytes": 93287,
+          "sha256": "d824c1630704c008dde5b8efe259e95b1178da442f0cc0e8f5e19131dd320153"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/040_bebida_Gatorade.json.gz",
+          "bytes": 68551,
+          "sha256": "7715185ef686fd640b9098cbf656cd9c1b664f67d1b8ec1c43c45c907e740951"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/041_cerveza_Corona.json.gz",
+          "bytes": 55931,
+          "sha256": "c6f6b0f9bcbfda8a08acb91284c6e51cd729820e21e6bb0fcaf3815ea3798544"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/042_cerveza_Modelo.json.gz",
+          "bytes": 58839,
+          "sha256": "814de7d25e5dfe02dd5954e4a8c4887348c7e8c566fe4f66e4be55e0e27c6858"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/043_cerveza_Tecate.json.gz",
+          "bytes": 57186,
+          "sha256": "30c7b120045a77d52f80eb6807da8279c98b7ed0a91dfd10c9c8061bb5c324ec"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/044_tequila_Jose_Cuervo.json.gz",
+          "bytes": 56623,
+          "sha256": "026e0e0cdddc1d59359317638e6ed0ff1bcd5091ee00682c57fd849027c1ba19"
+        },
+        {
+          "data_root_relative_path": "mx/raw/coyoacan-perisur/search_raw_20260910_045714/045_mezcal_400_Conejos.json.gz",
+          "bytes": 35789,
+          "sha256": "27c77916a712106cb2ee1305d9bb56cdbe4224adebb911f550df88e7fa1d693f"
+        }
+      ]
+    }
+  },
+  "config_sha256": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053",
+  "config_files_sha256": {
+    "config/beverages.yml": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053",
+    "config/keywords_co.yml": "a10ab30232309664509b28f00bf14578681cc1471b82e8b1ef7dd8bf535a05e5",
+    "config/relevant_sections_co.yml": "c3ca75d7e080694b1e9a8532b7ff48b02c39395571d2683360f14ad98da8fdd6",
+    "config/seed_paths_co.yml": "64eea55dec8bd78d49de619b59e3153a7bc8354dd82093dd27cc3bfea405b85c",
+    "config/study/brand_terms_ar.yml": "646e3bd4befeeb78cddc6f1567be8d3997d8b4aebac35caaab8ae47a44a385e4",
+    "config/study/brand_terms_co.yml": "39b0e6f4a2ae6e5ce3aef4cb0fc9114e7ff048b8bd20cf73ec41e5950363adf8",
+    "config/study/brand_terms_mx.yml": "20f78ae4b8f36e977d13a4d131c0b3bd5984437f244899d14c6d2f422ce359b1",
+    "config/study/brand_terms_pe.yml": "db5f568bb5f7ff23d8a816338adf7c8200d278bd947de653f6f9abf305298905",
+    "config/study/countries.yml": "bdc87c6a0b64043d63b2aa7bcf04d68c567fae1a835e791782122f822b0aca74",
+    "config/study/terms.yml": "1c835b4501e1e2d56c493d7f5ce9e5155041dfc5b21b1c226ed61b2ed2c9b607",
+    "config/study/zones_ar.yml": "9a3c790405bb4c7a8952349cd7a0470964611ef349115c4c92f12ce584150eba",
+    "config/study/zones_co.yml": "64fe809a804aa2bf7c661433b9762533a776e3d8e77f996dd703f60d9b76dc78",
+    "config/study/zones_mx.yml": "aff777cdf61f20ae4fd68e3cabd5903cc772d4327eeaab4e36feb049a6e158f3",
+    "config/study/zones_pe.yml": "88cfdb9fef24a4badc3383569742bbf59cf6d4cdadccfb28d81885e7ccac7fec",
+    "config/zones_co.yml": "84ed40973bd54a3fa674b1ad6b4df98f370c620b84ce33f0d041a4c707131c4c"
+  },
+  "code_sha256": {
+    "rappi_co/__init__.py": "655193a1bf78279b95cbf71ba78ac227b5d62615e170b9cf73e231433a7b5ebb",
+    "rappi_co/beverages.py": "99d9c7ce4001dc5b9f1265c59a189807c3958779d5e3892396896ed28602507e",
+    "rappi_co/bootstrap.py": "a18157f3e4cf117e29a663008e667f67ec72009fc3414152b7c7ec436ffc2917",
+    "rappi_co/checks.py": "e82e5646f1dbdf26244d32e28525d9d18120e997d485842223b245c82b5695f2",
+    "rappi_co/classify/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/classify/run.py": "42d894aa229c57f5917c4f7b6d12f470e656be6bcffcda836e5e799d3a1bacac",
+    "rappi_co/classify/stage_c_overrides.py": "0dbb54b29ab90676570c0a013e63933ff2adcc8aa83086556aef0ef8cb2cab8c",
+    "rappi_co/classify/tobacco_classifier.py": "f07688fdbd1287bf1b10f04ed4288e5f601336b4858048baa106482c97719ec6",
+    "rappi_co/collect/__init__.py": "9684c549db5e995f8aebf3b317913aed8167f562241932a7f37c19e6efe8f396",
+    "rappi_co/collect/catalog.py": "7418f6d86d3a8cc720bb564c57061ec818937835535531d8a98dc1e3b05daf7b",
+    "rappi_co/collect/merge_stores.py": "a10e3a063514cd0e98ecf48839a99c44a7e4510b6c8c6372dc8f3c14669549cd",
+    "rappi_co/collect/product_details.py": "61e8ed4e2c12377220cb5a0023b941de13952565b8c8b0a60f46213ccd232799",
+    "rappi_co/collect/search.py": "40fdb3d01a106e6891c458306d18e925bebb59f326994291c0755a71820730b0",
+    "rappi_co/collect/union.py": "3f2b1672946f5ecd9445932702ff03411ea23c39178f097517d64a8010032fa0",
+    "rappi_co/collect/union_zones.py": "13bf8a83cf9f0c01606808596d1c2417ee3f5cba84c94399dae14a4f052c4b55",
+    "rappi_co/configs.py": "b5b60c1960c125b43f2ce024d39ac2c3a727ea0da0cca5af25c63061ee14bc02",
+    "rappi_co/enrich/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/enrich/beverage_fields.py": "4cdd5e8f93731a31356ed683daa926cd59fb368a47a6a305dc46fb3a5c7e0f75",
+    "rappi_co/enrich/tobacco_fields.py": "5f505a78faf6884fff03c52a2161b3607d37b446e7e81e9cd499fb095904efee",
+    "rappi_co/export/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/export/study_deliverable.py": "ca99494f91710abc1c6188f39576a0fa8406621dd6384e613773703d93d6f21a",
+    "rappi_co/export/tobacco_deliverable.py": "762b53c4ee6211a2ef5580dd5b7fb0e2a387c10adbece2f9f1bc0746304ace7e",
+    "rappi_co/extract/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/extract/regex_enrich.py": "fdaa58bc0100a5bcdff39fa3a9038a53f67c64674d93fc1e7d925ee2c9e6c60c",
+    "rappi_co/items.py": "a0ea3ee203bf5d044d8af560249a1bfcb83d92d912133d377128985efe49d4b5",
+    "rappi_co/middlewares.py": "6af81be9742283f98b555756ce37faad566d01e362e8fd9e7311a7d75fa8a90d",
+    "rappi_co/parsers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/parsers/beverage_search.py": "3c50ded4a65f4e17f99d5852de529fab682c03b5ea51d586a58e8044ee0b9ece",
+    "rappi_co/parsers/catalog_api.py": "34a9671320badd11c6f5dd470953f56821729e125609587f4d0a0920b5921585",
+    "rappi_co/parsers/search_api.py": "7650a3f04e45aa5b2e1522a6978b1bece78a541b38ea029d7f3c05ca6cbebc40",
+    "rappi_co/parsers/store_index.py": "ff330db78012fcba6a0c76342c848dd4f06d0e9d1733355b872a8e65992ca661",
+    "rappi_co/parsers/store_payload.py": "06f191e95f9f16fa83fea720d8f029b2be136ca7523659b4b6b6474d77aaea39",
+    "rappi_co/pipelines.py": "ab8e3dc3940a63ea0a6e346855cf473c16f4e2afe9c83e34544c817146821431",
+    "rappi_co/qc/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/qc/beverage_coverage.py": "f333a408df0c34ab68022feba3865924b3f2793eb9c5cf67b7cf2076a92d5658",
+    "rappi_co/qc/common.py": "64bf8770fae9961586c60a50a17c5046cd6806ee0851189e27dd997681fc38b6",
+    "rappi_co/qc/gate.py": "7cbcab1b1f55d2acb04a05e50154a6f7e750b5240c445fb325971fc6838a69da",
+    "rappi_co/release.py": "95f0123794aed2f0e41c6e72d66af0364ec98f564c0b6814b09ec213940c405b",
+    "rappi_co/settings.py": "7eebd91efddd0faeedf57805ee21a275526cd7dbd690a3b95171df1d81d1aa4d",
+    "rappi_co/spiders/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/spiders/menu.py": "e83cdde7fa3414673beac26d7e495d3c6eb139fa38c536407849c6f48438cd8e",
+    "rappi_co/spiders/stores.py": "caaf8b50db9a4ea04e7b86c23d305641e764e263f5efe093f4f273fc3e37ac97",
+    "rappi_co/study.py": "3e18f85aba9deb8033c223781480f413b0ba78d15226b94ec10118c6da219541"
+  },
+  "runtime": {
+    "python": "3.12.2",
+    "pandas": "3.0.5",
+    "pyyaml": "6.0.3"
+  },
+  "outputs": {
+    "items_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_items_20260910_124827_120073.csv",
+      "bytes": 18783674,
+      "sha256": "47e690e1ceb966cf6318d0424f5c2a460bde959cff172c6a83a228e07e05c6e5",
+      "rows": 7535
+    },
+    "ssb_candidates_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_ssb_candidates_20260910_124827_120073.csv",
+      "bytes": 15391009,
+      "sha256": "402785c3f0d6e18e27b97f05ec065853ea8b5f80ce3c77d78b1da4ddf59bba7b",
+      "rows": 6367
+    },
+    "review_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_review_20260910_124827_120073.csv",
+      "bytes": 21849598,
+      "sha256": "48ccc36adaa74c2725a4957bf5f900094fb4f57ba1dd0aa6708446368129684b",
+      "rows": 10447
+    },
+    "comparison_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_comparison_20260910_124827_120073.csv",
+      "bytes": 3119357,
+      "sha256": "c44b0f8018809656b5bfa3954d36e73941c8e9279d50123846ce239a5ee810a6",
+      "rows": 1210
+    },
+    "audit_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_audit_20260910_124827_120073.csv",
+      "bytes": 91378364,
+      "sha256": "c309785c480989d2709a6bcb12951ea57a1544a3d648769effbc3616fcd421a9",
+      "rows": 19639
+    },
+    "candidates_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_candidates_20260910_124827_120073.csv",
+      "bytes": 43749915,
+      "sha256": "28cee6ed493e22181ab6be31591b263f7f0285f8c8165d72de96b971c65e409a",
+      "rows": 19192
+    },
+    "stores_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_stores_20260910_124827_120073.csv",
+      "bytes": 25453,
+      "sha256": "23a689efc789601deecf4ef869794988339635ac28faab9559d6df9f458364c6",
+      "rows": 340
+    },
+    "locations_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_locations_20260910_124827_120073.csv",
+      "bytes": 328,
+      "sha256": "145ca88341a25afe18d197ec5aafbb7b30fe0029515ad45f07adc3851f810fe9",
+      "rows": 2
+    },
+    "coverage_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_coverage_20260910_124827_120073.csv",
+      "bytes": 1019,
+      "sha256": "84d46ec0b1afc485a7fd46b2f495e8623f83916f5a71098d77873c35f0dba38b",
+      "rows": 10
+    },
+    "query_yield_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_query_yield_20260910_124827_120073.csv",
+      "bytes": 31604,
+      "sha256": "d89278e3eb9385de74f71bf86cea7677f2acda2ff8c99354860dc642efeafca9",
+      "rows": 90
+    },
+    "summary_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_summary_20260910_124827_120073.csv",
+      "bytes": 359,
+      "sha256": "69c86b97861fa31049d54577e4f7468f7f1beeda7120e52e51e4148b7437da62",
+      "rows": 13
+    },
+    "review_sample_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_review_sample_20260910_124827_120073.csv",
+      "bytes": 273352,
+      "sha256": "372c522f2a1b33f42bd1b86273248f2ff658b4102c7bfeac44742e485cfedc2e",
+      "rows": 120
+    },
+    "xlsx": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverages_mx_20260910_124827_120073.xlsx",
+      "bytes": 10202114,
+      "sha256": "b55a64074af073903e729e1b7a6e6d47b760d52bb258cd3ecf77b081a6ef9a67"
+    },
+    "excel_truncations_csv": {
+      "data_root_relative_path": "mx/processed/20260910_124827_120073/beverage_excel_truncations_20260910_124827_120073.csv",
+      "bytes": 118,
+      "sha256": "c6c4db32ffeb4e42816512f7f318431c17280c3e17548bc24808f773288021f9",
+      "rows": 0
+    }
+  },
+  "counts": {
+    "items": 7535,
+    "ssb_candidates": 6367,
+    "review": 10447,
+    "comparison": 1210,
+    "audit": 19639,
+    "candidates": 19192,
+    "stores": 340,
+    "locations": 2,
+    "coverage": 10,
+    "query_yield": 90,
+    "summary": 13,
+    "review_sample": 120,
+    "excel_truncations": 0
+  },
+  "detail_input": null
+}

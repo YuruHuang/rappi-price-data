@@ -1,0 +1,744 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "run_id": "20260910_124608_994043",
+  "plan": {
+    "country_code": "ar",
+    "country": "Argentina",
+    "city": "Buenos Aires",
+    "currency": "ARS",
+    "addresses": [
+      {
+        "slug": "centro-galerias-pacifico",
+        "lat": -34.59925,
+        "lng": -58.374779,
+        "address": "Av. Córdoba 550, C1054 CABA",
+        "district": "San Nicolás, Comuna 1"
+      },
+      {
+        "slug": "palermo-alto-palermo",
+        "lat": -34.588402,
+        "lng": -58.410737,
+        "address": "Av. Santa Fe 3253, CABA",
+        "district": "Palermo, Comuna 14"
+      }
+    ],
+    "queries": [
+      "agua",
+      "agua mineral",
+      "agua sin gas",
+      "agua con gas",
+      "gaseosa",
+      "refresco",
+      "bebida azucarada",
+      "bebida energetica",
+      "bebida deportiva",
+      "bebida isotonica",
+      "te helado",
+      "jugo",
+      "nectar",
+      "agua saborizada",
+      "bebida de frutas",
+      "cerveza",
+      "vino",
+      "espumante",
+      "whisky",
+      "vodka",
+      "ron",
+      "tequila",
+      "gin",
+      "licor",
+      "coctel",
+      "sidra",
+      "soda",
+      "agua de mesa",
+      "vino tinto",
+      "fernet",
+      "cerveza sin alcohol",
+      "agua Villavicencio",
+      "agua Eco de los Andes",
+      "agua Glaciar",
+      "gaseosa Coca Cola",
+      "gaseosa Pepsi",
+      "gaseosa Manaos",
+      "agua saborizada Levite",
+      "bebida Gatorade",
+      "bebida Speed",
+      "cerveza Quilmes",
+      "cerveza Brahma",
+      "fernet Branca",
+      "vino Trapiche",
+      "cerveza Patagonia"
+    ],
+    "requests": 90,
+    "protocol_status": "full",
+    "full_protocol": true,
+    "scope": "beverages",
+    "config_version": 1,
+    "search_url": "https://services.rappi.com.ar/api/pns-global-search-api/v1/unified-search?is_prime=false&unlimited_shipping=false",
+    "catalog_completeness": "unknown; search results may be capped"
+  },
+  "inputs": {
+    "centro-galerias-pacifico": {
+      "items": {
+        "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_items_20260910_044028.csv",
+        "bytes": 7259004,
+        "sha256": "c2c5d97af794b6783f5fd07b90826647aa1baf23861ffe1a5c4b9da6ee121d62",
+        "rows": 11341
+      },
+      "stores": {
+        "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_stores_20260910_044028.csv",
+        "bytes": 32880,
+        "sha256": "59bf7637c2c712da0de669cd771c948a96223bbbc9e7e69a944d24045f74ddca",
+        "rows": 118
+      },
+      "manifest": {
+        "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_manifest_20260910_044028.json",
+        "bytes": 6435,
+        "sha256": "f1700a90e2893d922c52be744eb7ec387aa58ff56fa33ad8b5f439e760bc7dd3"
+      },
+      "raw_responses": [
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/001_agua.json.gz",
+          "bytes": 126733,
+          "sha256": "cbb62f5097311be5469ed73a7ae9b4536192ca9d337f8476cbc6fff68a7e0c88"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/002_agua_mineral.json.gz",
+          "bytes": 76506,
+          "sha256": "60a0e222fe4eaa2778db780ee7217b8a41f8960a1ed582d35bfc7f0573df7e7d"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/003_agua_sin_gas.json.gz",
+          "bytes": 76624,
+          "sha256": "2e4d25643b69aa8c3a6f3109f1a191dce2b8fc61755191c7cd5934dbbb76b069"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/004_agua_con_gas.json.gz",
+          "bytes": 75758,
+          "sha256": "9fee3e849a72cd88ea041693f86849596b9f37351e48ec1bb28c68bd21a9888b"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/005_gaseosa.json.gz",
+          "bytes": 178895,
+          "sha256": "5b36ce47d0d08a3b6a3f5ba5ed4004a4212e0b3dab57ea34300064f88b1f78f2"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/006_refresco.json.gz",
+          "bytes": 122265,
+          "sha256": "4e541b2f046a6922c73d71d1e62f433526b307e27fb6bfbd39ef84bdf534bf7f"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/007_bebida_azucarada.json.gz",
+          "bytes": 135150,
+          "sha256": "558b129c8654167c9b3d48057e4c989482d4d33faf984b52c4dd6d6ffa4c00dc"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/008_bebida_energetica.json.gz",
+          "bytes": 99945,
+          "sha256": "9d5b099fb1fd2c8969927bcb18276355aa3a3f0f9283e3b4243684e1847865c3"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/009_bebida_deportiva.json.gz",
+          "bytes": 106866,
+          "sha256": "f4edbcf7d1be1f813f25e6d0e38ff4f24b4ada622a102a731783044760a76681"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/010_bebida_isotonica.json.gz",
+          "bytes": 54550,
+          "sha256": "827e418769582471dee5d6c96f31d718a6ec009fbc9f6e681eb976a061a69ae0"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/011_te_helado.json.gz",
+          "bytes": 132204,
+          "sha256": "7b461d0d7897e022a83e01c12a785033e59ef654f2f6eff64723491eee472f2d"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/012_jugo.json.gz",
+          "bytes": 146528,
+          "sha256": "975dfe8b569e7f16004ca4d9bccfd075f965bee4a4dc14bee2ed9b3ab874c885"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/013_nectar.json.gz",
+          "bytes": 145629,
+          "sha256": "0fa9d7a355025c6de46139603fcd998a5d076f530872ee6239b2a4105a4cf0dd"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/014_agua_saborizada.json.gz",
+          "bytes": 75220,
+          "sha256": "5cb45d7694312c0cd3b52e2588388a093ba1dee053213a62ba7c065a5a9a1650"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/015_bebida_de_frutas.json.gz",
+          "bytes": 136676,
+          "sha256": "577fa9cf855257c4516ddc97c1ed4f0e806e850254caa2226566e81f455cb802"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/016_cerveza.json.gz",
+          "bytes": 147126,
+          "sha256": "d41e6a75917916603938898ab6803f6b047ca91d88468c5d61061706ad989eb2"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/017_vino.json.gz",
+          "bytes": 134749,
+          "sha256": "9108177ee39a0baa7bf496071b3e73c4c6d3922797dd86d4f06d80d87d24d560"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/018_espumante.json.gz",
+          "bytes": 95250,
+          "sha256": "36e0bb1d48a98684d3378e1d1865ba9aa492895b36f5cc87cd9d55ecfd53cb64"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/019_whisky.json.gz",
+          "bytes": 41531,
+          "sha256": "f84258e75117ccf2207286d596489246ab7ca15b7ef5b4d6e22249404b709631"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/020_vodka.json.gz",
+          "bytes": 108854,
+          "sha256": "2e10e9444e10dfaffda1cf0ebc2bfb4e951a960c24037f1c3304933fec4ded9f"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/021_ron.json.gz",
+          "bytes": 8862,
+          "sha256": "15cd611649311ba7ff520406b9708bd2a21e05e62f42e5ff077a59b4c9eecedf"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/022_tequila.json.gz",
+          "bytes": 144001,
+          "sha256": "f17cab3d2662551911a91b8b8e6ae2c66c1fe602d43d304aab5a05fef9b3b230"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/023_gin.json.gz",
+          "bytes": 40947,
+          "sha256": "a24c3880f66038baf949af766d52800ae4d4d81c9b0419292807c8afe77a1601"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/024_licor.json.gz",
+          "bytes": 22682,
+          "sha256": "0cc2d9647b9d205a90ba52197ce5c4cd96a78ac038116463c3f33fc81f2e01dc"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/025_coctel.json.gz",
+          "bytes": 126475,
+          "sha256": "f96959b85f3bf685d63e0017ac1d6d13fbb3f1b83d1feea8c716277ebf98db60"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/026_sidra.json.gz",
+          "bytes": 115937,
+          "sha256": "a021e4295e6c7f774098e5a22ff0a41bc250cc87cc0b7f66f734f264209b8a12"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/027_soda.json.gz",
+          "bytes": 138388,
+          "sha256": "d3ad095a12d3fad0bb48db1f1dd5bbe04aa2360fa6d7d3e02c666a766e62dff9"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/028_agua_de_mesa.json.gz",
+          "bytes": 130115,
+          "sha256": "47327c9b702d75213edf3cd785e92f6d75cd039632f2b6a71183882fa89f09e2"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/029_vino_tinto.json.gz",
+          "bytes": 131589,
+          "sha256": "2945c30b5293d1042dd94e0332ee29b91f9764a637a14f72d5b9cfcce5e0dd77"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/030_fernet.json.gz",
+          "bytes": 82396,
+          "sha256": "9809985e781d2d0d783648e7ab50997a97aa766c1be4ac196f01c68a4c830c8c"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/031_cerveza_sin_alcohol.json.gz",
+          "bytes": 92028,
+          "sha256": "e8fcc3286d4ce71835d74595370bd96baee3979f17c886ec01a25255bc1f88ad"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/032_agua_Villavicencio.json.gz",
+          "bytes": 77123,
+          "sha256": "4ce64952cdf7c712b448dda8eb469078ad337338ad107a22e476e97da0a321d7"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/033_agua_Eco_de_los_Andes.json.gz",
+          "bytes": 130911,
+          "sha256": "54a4111fcd05f394a611bf5b1802f3adc5980ae9eb3027e4cdfd3d19480b5f68"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/034_agua_Glaciar.json.gz",
+          "bytes": 76266,
+          "sha256": "006a412861f47dd2aa85ea06f201333e7588af09aca44d7f378e4f4af35b4161"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/035_gaseosa_Coca_Cola.json.gz",
+          "bytes": 175716,
+          "sha256": "a8a1d55ef370b8caeba2dd11bd2578284ca82c6026078455c85767cc660f9c0c"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/036_gaseosa_Pepsi.json.gz",
+          "bytes": 128284,
+          "sha256": "ad3f0bde1e88e0aa3e87d7f10bb88f441b06c6dfc25d0e033d1c4798adcbe378"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/037_gaseosa_Manaos.json.gz",
+          "bytes": 133554,
+          "sha256": "b2bc3e583407562afa3cbdfa76fab4ebae7d84a12c664770de11d9830d46ab24"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/038_agua_saborizada_Levite.json.gz",
+          "bytes": 76937,
+          "sha256": "e3ecdffdf80bc5883c5186f5dda89b98d006875cbbab2163cab49adeb08006ad"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/039_bebida_Gatorade.json.gz",
+          "bytes": 54924,
+          "sha256": "9f5dd5f9f2e1fc79b9020d8e3cfec12182ec281279dfccb33db6e7f4a983d21e"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/040_bebida_Speed.json.gz",
+          "bytes": 43377,
+          "sha256": "f27e01931e20817e30c4ed18294a51fd61a70c96438ab2316d14e33de269886f"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/041_cerveza_Quilmes.json.gz",
+          "bytes": 80397,
+          "sha256": "0cf26273c8560b40c01d447b0049bc2d6b38306a8ab6ece341fe52650a3f483c"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/042_cerveza_Brahma.json.gz",
+          "bytes": 89738,
+          "sha256": "50fb0651637052f1ef986347f6c93420e60420f1854e5d6b0b7ea220760cdff6"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/043_fernet_Branca.json.gz",
+          "bytes": 16022,
+          "sha256": "938d2bea6eaa281650227c88c8b304d5d511408dafa135e68e3e0067b950bada"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/044_vino_Trapiche.json.gz",
+          "bytes": 140152,
+          "sha256": "ed042211b63bb497ba1a7960bd612a4f19fb78ccf5536f4999c012eac1ffee38"
+        },
+        {
+          "data_root_relative_path": "ar/raw/centro-galerias-pacifico/search_raw_20260910_044028/045_cerveza_Patagonia.json.gz",
+          "bytes": 131928,
+          "sha256": "087d1997c3a4a2c442fab08c47785db259abc51461652cbae96945b20c147e32"
+        }
+      ]
+    },
+    "palermo-alto-palermo": {
+      "items": {
+        "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_items_20260910_044246.csv",
+        "bytes": 8227985,
+        "sha256": "a4cd773dbb9abb9839ce1c9e78c8d12037e3071527dcef82f02b22fa98c7008b",
+        "rows": 12940
+      },
+      "stores": {
+        "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_stores_20260910_044246.csv",
+        "bytes": 33548,
+        "sha256": "6be7a7eec2a601db66af9dc657ebc54fd115b6ca55ea8cf18c5d2c15b7a74f23",
+        "rows": 155
+      },
+      "manifest": {
+        "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_manifest_20260910_044246.json",
+        "bytes": 6439,
+        "sha256": "c9988375703e11aac6eb681b84fa9099b79fd81c9cd9b5968ccaa94ab551c382"
+      },
+      "raw_responses": [
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/001_agua.json.gz",
+          "bytes": 134581,
+          "sha256": "aea55ae3c7993c1b8f2e6e2a0f8298a40fa3dc9ff9b107ba67875862fd240c32"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/002_agua_mineral.json.gz",
+          "bytes": 87925,
+          "sha256": "ad3f0717a33224a707cd148483ae2e76527cf77eebc2c754a56c8f75b18e64ab"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/003_agua_sin_gas.json.gz",
+          "bytes": 86670,
+          "sha256": "15a7b14a9012272a9bc90df2d9975ed97bbf8c3e393df8c275e8e1bd921da81d"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/004_agua_con_gas.json.gz",
+          "bytes": 89330,
+          "sha256": "93c1bf62207f0faff1845b5a9341dd51c4408383e647d3a5ae10ccd810ead6a5"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/005_gaseosa.json.gz",
+          "bytes": 169864,
+          "sha256": "1e6cc77ca3ca7f0d6465053ceeadae5655999d6d22891092cf0c5729c7593ec3"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/006_refresco.json.gz",
+          "bytes": 119047,
+          "sha256": "1dbc4681807b0a2f92bb41ecba3b373882cf2c825ad2960bd3cdfb195fccbbb1"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/007_bebida_azucarada.json.gz",
+          "bytes": 121254,
+          "sha256": "fc9c9d0138ca455b42cc512a173a3f085db58ed8182dc4f71bceb0f28160a34e"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/008_bebida_energetica.json.gz",
+          "bytes": 105280,
+          "sha256": "ff69a0a1bb6903bdb2f155ce3e9ab2a33f818e3d77906b9e88d93951f6c38c71"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/009_bebida_deportiva.json.gz",
+          "bytes": 110119,
+          "sha256": "b303d31185d9f89847f1819b48b892f7d03f0f803f49267bbff5b4778f69e1d3"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/010_bebida_isotonica.json.gz",
+          "bytes": 62057,
+          "sha256": "7e7bc0b6b8a86d1dd7ac5da4bce33226e11317818d1cdc034d852dd79437c4ff"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/011_te_helado.json.gz",
+          "bytes": 117283,
+          "sha256": "f1779ea19ced20bb78a2c461dd421755410380277ab0567a29b13ef45e1a5b2c"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/012_jugo.json.gz",
+          "bytes": 137657,
+          "sha256": "1f98c6f60200e638cf094c1cb7685be1c27c7000c1dd192bcc132bfab612b083"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/013_nectar.json.gz",
+          "bytes": 115174,
+          "sha256": "b46e4f2958e414e4635b246ef7df226d4a06fa8c762ff30797799c5e6d40f140"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/014_agua_saborizada.json.gz",
+          "bytes": 80942,
+          "sha256": "ce1c4c0b4be4854fd9d2b3aacfcd14c6b9ac404a141f90933462c96884817e3a"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/015_bebida_de_frutas.json.gz",
+          "bytes": 134014,
+          "sha256": "554291bb89845b02759c0382b2057d18cf3724063294d69ae91669c1f4610497"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/016_cerveza.json.gz",
+          "bytes": 158303,
+          "sha256": "ca6d4e7c4ae571984993ed995c1b0d5a61ab9954852bc634acfa0e1701c5aadb"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/017_vino.json.gz",
+          "bytes": 140352,
+          "sha256": "a2ce6220985e8b22372965dbfecf320cb302b4d2ba0bf9e13fa83cac49f10d8e"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/018_espumante.json.gz",
+          "bytes": 107183,
+          "sha256": "ac0601dc2ed7c3a43ec3a13ad889335735c5913a9cc294872c9361369063ee5a"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/019_whisky.json.gz",
+          "bytes": 57916,
+          "sha256": "703fe12375e68c6a8274d286bbb48eb86add46b520ec86fa31ba714e944e6abc"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/020_vodka.json.gz",
+          "bytes": 126427,
+          "sha256": "46504db404cd08967aaf3c5613e4af5170bb34e71f793b03cad04fc63d93a9e3"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/021_ron.json.gz",
+          "bytes": 13066,
+          "sha256": "2b07ce5a946f7aacd382cc56334b5b7d31e295607887260a6e40eeb474f09d71"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/022_tequila.json.gz",
+          "bytes": 84898,
+          "sha256": "309e9621132cf514b996d987614083d6c13444afd582a495a8fae32286f977da"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/023_gin.json.gz",
+          "bytes": 53173,
+          "sha256": "98c8df625cab7e4218758315f9316c49a0e50c9f91013e36f32e0e09fb3685a2"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/024_licor.json.gz",
+          "bytes": 26792,
+          "sha256": "8ca2ef61a3e14102ec47bb173f267f895d1f4a3dd53a4d268b6cb8c2b5dccf9b"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/025_coctel.json.gz",
+          "bytes": 127635,
+          "sha256": "27fb72e06b8272d8228d08ea21392415cbb129653303bb6c079e9fa471cf7a3e"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/026_sidra.json.gz",
+          "bytes": 63605,
+          "sha256": "ec874b8b61dd49e81c8302b8a4e4a067c68c827e82cb7856a5ea9accfed0a9f3"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/027_soda.json.gz",
+          "bytes": 95837,
+          "sha256": "d1139a3d3e4d183da4d1e3eacc84844be64e2f73bc4fc87dd930bf7067b919c8"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/028_agua_de_mesa.json.gz",
+          "bytes": 142078,
+          "sha256": "8c1f2618bb5995eef7bd24b008e43426daa552438c37a6abed53b5d22548f838"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/029_vino_tinto.json.gz",
+          "bytes": 141032,
+          "sha256": "0f60b42d8e7c563025011aa7976fa2f3fdba91c73508750e7ce3dc8bdc1d43ed"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/030_fernet.json.gz",
+          "bytes": 68934,
+          "sha256": "75005ae3412714d99d9e1e012fb23b54f28c153d9f4c8ff291884d951fed831e"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/031_cerveza_sin_alcohol.json.gz",
+          "bytes": 90659,
+          "sha256": "0aba0f597c3defe3a8984fe26943250d9896a3f6f4b04289e52bb129679a4ed9"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/032_agua_Villavicencio.json.gz",
+          "bytes": 73294,
+          "sha256": "bbdea8075cb07315ff8747b04bd834f48d133082197333ce7add7429c1d6c921"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/033_agua_Eco_de_los_Andes.json.gz",
+          "bytes": 121862,
+          "sha256": "037afb7efae04fd0b050e91bc0f08e4f5e557aea50acb7b1ca54a70fc8e1e544"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/034_agua_Glaciar.json.gz",
+          "bytes": 89294,
+          "sha256": "3d1521f60f791e0502e5699783c9a6c722e4e8f984dccff3e9a954605d0e55c7"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/035_gaseosa_Coca_Cola.json.gz",
+          "bytes": 161934,
+          "sha256": "bada295ef548a207e40a0fbad40fa0b3e406301545895ff93918f7ed55fa440c"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/036_gaseosa_Pepsi.json.gz",
+          "bytes": 129958,
+          "sha256": "bb6de2a57346185ee9b9bf1383a87d1acaf63c887f4477a8ac14e837bf4339c2"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/037_gaseosa_Manaos.json.gz",
+          "bytes": 107114,
+          "sha256": "e30ff5042c002dc3a0d5016fc94341cd9aedd7230b598b682a209101c61def2d"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/038_agua_saborizada_Levite.json.gz",
+          "bytes": 82474,
+          "sha256": "b1e52a41fe17c0aa775bc4de01f3eb1c020603788f6cadb8c9c0e3443a05a025"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/039_bebida_Gatorade.json.gz",
+          "bytes": 62597,
+          "sha256": "a1c5521c74ec17c2c12b11d353a44b9060c595508452232d2e919e2a3d605fd4"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/040_bebida_Speed.json.gz",
+          "bytes": 41270,
+          "sha256": "ab6098ecd4cff36b3ee400d9dd35e5801893f1e365a486eff36b0e2f3ba44c5e"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/041_cerveza_Quilmes.json.gz",
+          "bytes": 82821,
+          "sha256": "c807451010329654775e248d5f92b10ac2c82ce606fb0d7263e0f682ebdfe6aa"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/042_cerveza_Brahma.json.gz",
+          "bytes": 92963,
+          "sha256": "f48054c256b53439f1391de92bc44d139ffb6d58f65722cb860914296007cddd"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/043_fernet_Branca.json.gz",
+          "bytes": 20407,
+          "sha256": "7b698ee3fd589d3a34d87c85f0826423a2a2c54a5865d4a82985992fd0e0aee3"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/044_vino_Trapiche.json.gz",
+          "bytes": 147578,
+          "sha256": "e8631164fb078e822fd782795bea0770bff7cf8d8ef1e03dd6a6c9de1c6621e8"
+        },
+        {
+          "data_root_relative_path": "ar/raw/palermo-alto-palermo/search_raw_20260910_044246/045_cerveza_Patagonia.json.gz",
+          "bytes": 132838,
+          "sha256": "b2dcc9ba7a1fe954c26b5a9f0711816914ad0cf282b7937f843a327d96b7d0f0"
+        }
+      ]
+    }
+  },
+  "config_sha256": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053",
+  "config_files_sha256": {
+    "config/beverages.yml": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053",
+    "config/keywords_co.yml": "a10ab30232309664509b28f00bf14578681cc1471b82e8b1ef7dd8bf535a05e5",
+    "config/relevant_sections_co.yml": "c3ca75d7e080694b1e9a8532b7ff48b02c39395571d2683360f14ad98da8fdd6",
+    "config/seed_paths_co.yml": "64eea55dec8bd78d49de619b59e3153a7bc8354dd82093dd27cc3bfea405b85c",
+    "config/study/brand_terms_ar.yml": "646e3bd4befeeb78cddc6f1567be8d3997d8b4aebac35caaab8ae47a44a385e4",
+    "config/study/brand_terms_co.yml": "39b0e6f4a2ae6e5ce3aef4cb0fc9114e7ff048b8bd20cf73ec41e5950363adf8",
+    "config/study/brand_terms_mx.yml": "20f78ae4b8f36e977d13a4d131c0b3bd5984437f244899d14c6d2f422ce359b1",
+    "config/study/brand_terms_pe.yml": "db5f568bb5f7ff23d8a816338adf7c8200d278bd947de653f6f9abf305298905",
+    "config/study/countries.yml": "bdc87c6a0b64043d63b2aa7bcf04d68c567fae1a835e791782122f822b0aca74",
+    "config/study/terms.yml": "1c835b4501e1e2d56c493d7f5ce9e5155041dfc5b21b1c226ed61b2ed2c9b607",
+    "config/study/zones_ar.yml": "9a3c790405bb4c7a8952349cd7a0470964611ef349115c4c92f12ce584150eba",
+    "config/study/zones_co.yml": "64fe809a804aa2bf7c661433b9762533a776e3d8e77f996dd703f60d9b76dc78",
+    "config/study/zones_mx.yml": "aff777cdf61f20ae4fd68e3cabd5903cc772d4327eeaab4e36feb049a6e158f3",
+    "config/study/zones_pe.yml": "88cfdb9fef24a4badc3383569742bbf59cf6d4cdadccfb28d81885e7ccac7fec",
+    "config/zones_co.yml": "84ed40973bd54a3fa674b1ad6b4df98f370c620b84ce33f0d041a4c707131c4c"
+  },
+  "code_sha256": {
+    "rappi_co/__init__.py": "655193a1bf78279b95cbf71ba78ac227b5d62615e170b9cf73e231433a7b5ebb",
+    "rappi_co/beverages.py": "99d9c7ce4001dc5b9f1265c59a189807c3958779d5e3892396896ed28602507e",
+    "rappi_co/bootstrap.py": "a18157f3e4cf117e29a663008e667f67ec72009fc3414152b7c7ec436ffc2917",
+    "rappi_co/checks.py": "e82e5646f1dbdf26244d32e28525d9d18120e997d485842223b245c82b5695f2",
+    "rappi_co/classify/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/classify/run.py": "42d894aa229c57f5917c4f7b6d12f470e656be6bcffcda836e5e799d3a1bacac",
+    "rappi_co/classify/stage_c_overrides.py": "0dbb54b29ab90676570c0a013e63933ff2adcc8aa83086556aef0ef8cb2cab8c",
+    "rappi_co/classify/tobacco_classifier.py": "f07688fdbd1287bf1b10f04ed4288e5f601336b4858048baa106482c97719ec6",
+    "rappi_co/collect/__init__.py": "9684c549db5e995f8aebf3b317913aed8167f562241932a7f37c19e6efe8f396",
+    "rappi_co/collect/catalog.py": "7418f6d86d3a8cc720bb564c57061ec818937835535531d8a98dc1e3b05daf7b",
+    "rappi_co/collect/merge_stores.py": "a10e3a063514cd0e98ecf48839a99c44a7e4510b6c8c6372dc8f3c14669549cd",
+    "rappi_co/collect/product_details.py": "61e8ed4e2c12377220cb5a0023b941de13952565b8c8b0a60f46213ccd232799",
+    "rappi_co/collect/search.py": "40fdb3d01a106e6891c458306d18e925bebb59f326994291c0755a71820730b0",
+    "rappi_co/collect/union.py": "3f2b1672946f5ecd9445932702ff03411ea23c39178f097517d64a8010032fa0",
+    "rappi_co/collect/union_zones.py": "13bf8a83cf9f0c01606808596d1c2417ee3f5cba84c94399dae14a4f052c4b55",
+    "rappi_co/configs.py": "b5b60c1960c125b43f2ce024d39ac2c3a727ea0da0cca5af25c63061ee14bc02",
+    "rappi_co/enrich/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/enrich/beverage_fields.py": "4cdd5e8f93731a31356ed683daa926cd59fb368a47a6a305dc46fb3a5c7e0f75",
+    "rappi_co/enrich/tobacco_fields.py": "5f505a78faf6884fff03c52a2161b3607d37b446e7e81e9cd499fb095904efee",
+    "rappi_co/export/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/export/study_deliverable.py": "ca99494f91710abc1c6188f39576a0fa8406621dd6384e613773703d93d6f21a",
+    "rappi_co/export/tobacco_deliverable.py": "762b53c4ee6211a2ef5580dd5b7fb0e2a387c10adbece2f9f1bc0746304ace7e",
+    "rappi_co/extract/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/extract/regex_enrich.py": "fdaa58bc0100a5bcdff39fa3a9038a53f67c64674d93fc1e7d925ee2c9e6c60c",
+    "rappi_co/items.py": "a0ea3ee203bf5d044d8af560249a1bfcb83d92d912133d377128985efe49d4b5",
+    "rappi_co/middlewares.py": "6af81be9742283f98b555756ce37faad566d01e362e8fd9e7311a7d75fa8a90d",
+    "rappi_co/parsers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/parsers/beverage_search.py": "3c50ded4a65f4e17f99d5852de529fab682c03b5ea51d586a58e8044ee0b9ece",
+    "rappi_co/parsers/catalog_api.py": "34a9671320badd11c6f5dd470953f56821729e125609587f4d0a0920b5921585",
+    "rappi_co/parsers/search_api.py": "7650a3f04e45aa5b2e1522a6978b1bece78a541b38ea029d7f3c05ca6cbebc40",
+    "rappi_co/parsers/store_index.py": "ff330db78012fcba6a0c76342c848dd4f06d0e9d1733355b872a8e65992ca661",
+    "rappi_co/parsers/store_payload.py": "06f191e95f9f16fa83fea720d8f029b2be136ca7523659b4b6b6474d77aaea39",
+    "rappi_co/pipelines.py": "ab8e3dc3940a63ea0a6e346855cf473c16f4e2afe9c83e34544c817146821431",
+    "rappi_co/qc/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/qc/beverage_coverage.py": "f333a408df0c34ab68022feba3865924b3f2793eb9c5cf67b7cf2076a92d5658",
+    "rappi_co/qc/common.py": "64bf8770fae9961586c60a50a17c5046cd6806ee0851189e27dd997681fc38b6",
+    "rappi_co/qc/gate.py": "7cbcab1b1f55d2acb04a05e50154a6f7e750b5240c445fb325971fc6838a69da",
+    "rappi_co/release.py": "95f0123794aed2f0e41c6e72d66af0364ec98f564c0b6814b09ec213940c405b",
+    "rappi_co/settings.py": "7eebd91efddd0faeedf57805ee21a275526cd7dbd690a3b95171df1d81d1aa4d",
+    "rappi_co/spiders/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/spiders/menu.py": "e83cdde7fa3414673beac26d7e495d3c6eb139fa38c536407849c6f48438cd8e",
+    "rappi_co/spiders/stores.py": "caaf8b50db9a4ea04e7b86c23d305641e764e263f5efe093f4f273fc3e37ac97",
+    "rappi_co/study.py": "3e18f85aba9deb8033c223781480f413b0ba78d15226b94ec10118c6da219541"
+  },
+  "runtime": {
+    "python": "3.12.2",
+    "pandas": "3.0.5",
+    "pyyaml": "6.0.3"
+  },
+  "outputs": {
+    "items_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_items_20260910_124608_994043.csv",
+      "bytes": 24371400,
+      "sha256": "a3b20a59e008ffaa6c86df293a0611a54d0765860395da96f300f1c7cb825772",
+      "rows": 9158
+    },
+    "ssb_candidates_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_ssb_candidates_20260910_124608_994043.csv",
+      "bytes": 15081768,
+      "sha256": "39cf12ca2d1b195df4c916cb257fc728589d2818285fae40daede4ad89e75010",
+      "rows": 6073
+    },
+    "review_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_review_20260910_124608_994043.csv",
+      "bytes": 23951913,
+      "sha256": "4163c216cb9f3e7bf2703caede6161f50d106602c00f0a7755da09580f1ef650",
+      "rows": 10898
+    },
+    "comparison_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_comparison_20260910_124608_994043.csv",
+      "bytes": 6276548,
+      "sha256": "3a36d9a7647fe30dd0f8a48641fdb55ab5dfa58c0a2486bf0272167c4120a35d",
+      "rows": 2187
+    },
+    "audit_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_audit_20260910_124608_994043.csv",
+      "bytes": 115228212,
+      "sha256": "94dcd1fa5caf970ed1a90fbc7a10ff868052e7004fbc5ce3fa299593e0180a3c",
+      "rows": 24281
+    },
+    "candidates_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_candidates_20260910_124608_994043.csv",
+      "bytes": 54597147,
+      "sha256": "44038259c41bcdfaa248dd1881d667e694b7b12aaac217e6418d7d8ae3def8ea",
+      "rows": 22243
+    },
+    "stores_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_stores_20260910_124608_994043.csv",
+      "bytes": 19008,
+      "sha256": "435a5777287708648c4e4ef47b0a0706685b97183210106cd4483b0f49dab930",
+      "rows": 264
+    },
+    "locations_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_locations_20260910_124608_994043.csv",
+      "bytes": 264,
+      "sha256": "699047e3607b4cee53f84386b841b80d7dfce70f7818f92725d07477a903d566",
+      "rows": 2
+    },
+    "coverage_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_coverage_20260910_124608_994043.csv",
+      "bytes": 1075,
+      "sha256": "6bb7a4e99622512f6b3f16a4223306d9c7aa5490b387d0f1ff82e06abe036440",
+      "rows": 10
+    },
+    "query_yield_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_query_yield_20260910_124608_994043.csv",
+      "bytes": 38726,
+      "sha256": "ac954b91ed3b1654ab0e1e291654a43411d5777d8db06f24238aa874d5af7d30",
+      "rows": 90
+    },
+    "summary_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_summary_20260910_124608_994043.csv",
+      "bytes": 360,
+      "sha256": "ce354c5f9babec83abd64ffe8edee6a31ed05683da6585b0335ce1bff26735ab",
+      "rows": 13
+    },
+    "review_sample_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_review_sample_20260910_124608_994043.csv",
+      "bytes": 304742,
+      "sha256": "8781188ff4c07704098a8e10e18cafc425267817214189eb2abbf8234c22c8e1",
+      "rows": 120
+    },
+    "xlsx": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverages_ar_20260910_124608_994043.xlsx",
+      "bytes": 11548007,
+      "sha256": "3f3d4b42239d63e2ae429a376ebb36cd2387fe36b970a7f9f1117064dcf88cdb"
+    },
+    "excel_truncations_csv": {
+      "data_root_relative_path": "ar/processed/20260910_124608_994043/beverage_excel_truncations_20260910_124608_994043.csv",
+      "bytes": 118,
+      "sha256": "c6c4db32ffeb4e42816512f7f318431c17280c3e17548bc24808f773288021f9",
+      "rows": 0
+    }
+  },
+  "counts": {
+    "items": 9158,
+    "ssb_candidates": 6073,
+    "review": 10898,
+    "comparison": 2187,
+    "audit": 24281,
+    "candidates": 22243,
+    "stores": 264,
+    "locations": 2,
+    "coverage": 10,
+    "query_yield": 90,
+    "summary": 13,
+    "review_sample": 120,
+    "excel_truncations": 0
+  },
+  "detail_input": null
+}

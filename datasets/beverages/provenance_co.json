@@ -1,0 +1,733 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "run_id": "20260910_124832_159958",
+  "plan": {
+    "country_code": "co",
+    "country": "Colombia",
+    "city": "Bogotá",
+    "currency": "COP",
+    "addresses": [
+      {
+        "slug": "centro-plaza-bolivar",
+        "lat": 4.59806,
+        "lng": -74.07609,
+        "address": "Carrera 7 #10-47, 111711 Bogotá D.C.",
+        "district": "La Candelaria"
+      },
+      {
+        "slug": "chapinero-andino",
+        "lat": 4.66695,
+        "lng": -74.053126,
+        "address": "Carrera 11 #82-71, 110221 Bogotá D.C.",
+        "district": "Chapinero"
+      }
+    ],
+    "queries": [
+      "agua",
+      "agua mineral",
+      "agua sin gas",
+      "agua con gas",
+      "gaseosa",
+      "refresco",
+      "bebida azucarada",
+      "bebida energetica",
+      "bebida deportiva",
+      "bebida isotonica",
+      "te helado",
+      "jugo",
+      "nectar",
+      "agua saborizada",
+      "bebida de frutas",
+      "cerveza",
+      "vino",
+      "espumante",
+      "whisky",
+      "vodka",
+      "ron",
+      "tequila",
+      "gin",
+      "licor",
+      "coctel",
+      "sidra",
+      "agua de mesa",
+      "avena bebida",
+      "aguardiente",
+      "cerveza sin alcohol",
+      "agua Cristal",
+      "agua Brisa",
+      "agua Manantial",
+      "gaseosa Coca Cola",
+      "gaseosa Postobon",
+      "gaseosa Colombiana",
+      "bebida Pony Malta",
+      "bebida Hit",
+      "bebida Gatorade",
+      "cerveza Aguila",
+      "cerveza Poker",
+      "cerveza Club Colombia",
+      "aguardiente Antioqueno",
+      "ron Medellin"
+    ],
+    "requests": 88,
+    "protocol_status": "full",
+    "full_protocol": true,
+    "scope": "beverages",
+    "config_version": 1,
+    "search_url": "https://services.grability.rappi.com/api/pns-global-search-api/v1/unified-search?is_prime=false&unlimited_shipping=false",
+    "catalog_completeness": "unknown; search results may be capped"
+  },
+  "inputs": {
+    "centro-plaza-bolivar": {
+      "items": {
+        "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_items_20260910_044507.csv",
+        "bytes": 6040779,
+        "sha256": "8384d49fb2852e09f7fb891959feba8a2d1f5dbe1d88d571be4389a52a7d378d",
+        "rows": 8423
+      },
+      "stores": {
+        "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_stores_20260910_044507.csv",
+        "bytes": 24946,
+        "sha256": "31977826e7a4798c4ff1a0df5cbc4f5ab74c29c3ca32e3c9ba7ffc048b67ab89",
+        "rows": 116
+      },
+      "manifest": {
+        "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_manifest_20260910_044507.json",
+        "bytes": 6342,
+        "sha256": "f4e58e240c256818abd54d87631bb05f53072db6e3ae35a087a42b897583781a"
+      },
+      "raw_responses": [
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/001_agua.json.gz",
+          "bytes": 35537,
+          "sha256": "9703d687a3abb054820091eb78ac8e0f6fe31a22ef6d9e15cd394d31a3ed9db5"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/002_agua_mineral.json.gz",
+          "bytes": 40284,
+          "sha256": "0937b9bd9c2454e7f3b51ec17439a534ee85b79310d7ecbc90dc09132b513781"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/003_agua_sin_gas.json.gz",
+          "bytes": 31067,
+          "sha256": "40a579888d3964d6a84ce2333dfbe44230e02bc639e5ba287d5c1a3e121b1360"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/004_agua_con_gas.json.gz",
+          "bytes": 14352,
+          "sha256": "5bb7065548bee979d4012f675d300b30f1b606e102e2719e4e30e2b63bf7add1"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/005_gaseosa.json.gz",
+          "bytes": 95342,
+          "sha256": "16e77165ed01bf55d83bb0ccdb06de37f153047a98d66b3a12e2c18be2a3ad6b"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/006_refresco.json.gz",
+          "bytes": 95347,
+          "sha256": "6072342195015c9a6224dc277a992dbb1d8ce45ba8fbf12744c2ab9525f00090"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/007_bebida_azucarada.json.gz",
+          "bytes": 89356,
+          "sha256": "e8ba56b511a7b27ee486e16622dfeb5c8034afbee6a666f20a584eef67c79e34"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/008_bebida_energetica.json.gz",
+          "bytes": 63954,
+          "sha256": "6607796ffad1e43acad195a123145403a5c585e365afdb4a77343f217d529d2b"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/009_bebida_deportiva.json.gz",
+          "bytes": 77608,
+          "sha256": "f165c31c86de80f2efc8b78f620d28f1b8e249f19b97f602439b51e4e5c4f7b8"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/010_bebida_isotonica.json.gz",
+          "bytes": 40798,
+          "sha256": "e672c71689bf464b57d61e65915e739148ed4509745ecbef0cd803bb521c8117"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/011_te_helado.json.gz",
+          "bytes": 38788,
+          "sha256": "0ed6265027845ff4b31b16a4baba45d7947931d6dded95914d2d61d804c502de"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/012_jugo.json.gz",
+          "bytes": 53179,
+          "sha256": "b3914f60313014cbe261294629cf52cc8fd0e7352016786e2cb77e3f0eca7d0c"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/013_nectar.json.gz",
+          "bytes": 75743,
+          "sha256": "c6a058e575a41b1134f3ac0680f2016c5cba5749e170a1c4fb317b196404567e"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/014_agua_saborizada.json.gz",
+          "bytes": 26931,
+          "sha256": "131a9f0c10bf413c5cae00736540875e24af20513d438fa82091ecfe524e074d"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/015_bebida_de_frutas.json.gz",
+          "bytes": 66227,
+          "sha256": "4df23acd64bb74fd0e719e7d00dedf5f1f4245884e64304bed5d3c48b0eccb86"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/016_cerveza.json.gz",
+          "bytes": 76001,
+          "sha256": "5556762bfa9f42ec500423271c86e928f6b9f32a14ed316a2d9cfba10980530a"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/017_vino.json.gz",
+          "bytes": 29081,
+          "sha256": "324106f971e382f31f3510629ee62d08d8b1d4ee71c5a40e914b19e65bbbc12b"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/018_espumante.json.gz",
+          "bytes": 32628,
+          "sha256": "56930411b2173c111aa6896425139798b1fa8708e82bf7132ec167911c1af042"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/019_whisky.json.gz",
+          "bytes": 87059,
+          "sha256": "af318360df2fb667b6d64443ab5aed9bd4d27921c0a3db720ab7737597b9fdf2"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/020_vodka.json.gz",
+          "bytes": 18022,
+          "sha256": "b810802044351c4d3b9e3df16baaf068edcab1d4541fd30ec9973fbfb98d50bf"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/021_ron.json.gz",
+          "bytes": 44293,
+          "sha256": "abd9f4831ee8faba93c520421cd009ccc6a06f5f09456da28f2dbcf5c3077746"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/022_tequila.json.gz",
+          "bytes": 33701,
+          "sha256": "f763e3a76dc28a6bc921e7d1bb9cf62f3b14fbe4f2dd9f4094df0cb47626c0fc"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/023_gin.json.gz",
+          "bytes": 23146,
+          "sha256": "0b797716208b58bbb4eb43743fa14bc6aedf49e09741e6ec37d7f2be3c2acd87"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/024_licor.json.gz",
+          "bytes": 80030,
+          "sha256": "06280b2a1822c79df2ce798c8718c1d767135ffaead65c538c1a326c4a93f6b5"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/025_coctel.json.gz",
+          "bytes": 34193,
+          "sha256": "13478e078eb092f7052697ea31c8a863882a91b239eadaabc6ff9bb0c803a6a7"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/026_sidra.json.gz",
+          "bytes": 36120,
+          "sha256": "f814d8c367e34b4de85b8dfd73f498c96a9fe206d7eb430a323ca26cfe394d0b"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/027_agua_de_mesa.json.gz",
+          "bytes": 31979,
+          "sha256": "74d5f08f6f9fc4d8dbcb04937547f1dea913c9296ed169db09f1a2100bada318"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/028_avena_bebida.json.gz",
+          "bytes": 40116,
+          "sha256": "31f2e27d268df772c20e95ad2d3129d604efb982624b4ac0a457ba72acb96ba6"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/029_aguardiente.json.gz",
+          "bytes": 79818,
+          "sha256": "8b94298ea205a9b5c77edc1ca657f494e6d1d3e62ae79c9915ba44c6d08b9bc7"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/030_cerveza_sin_alcohol.json.gz",
+          "bytes": 79399,
+          "sha256": "4aa7ea8d2ec1e32f1a31469ab701ddb9ac2f909369e8aab0b7c0bab36aaa762a"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/031_agua_Cristal.json.gz",
+          "bytes": 28180,
+          "sha256": "986c090e01218a949334ffd76656b06d791a7783de9eeaa7872e91ebbd7132b5"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/032_agua_Brisa.json.gz",
+          "bytes": 29131,
+          "sha256": "1b4d31ccd1ea5e52d880c356d43e03bf73b21718bff6f98e7e3d26f0827794eb"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/033_agua_Manantial.json.gz",
+          "bytes": 29167,
+          "sha256": "030c04836a3e26764b9e5d535b427106cbaa641096caf71b7386b7556f070d40"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/034_gaseosa_Coca_Cola.json.gz",
+          "bytes": 95435,
+          "sha256": "2e9d987397678cb55c9adf3013b103e1fd1bdb767486de3d64112f5f3a6a42ed"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/035_gaseosa_Postobon.json.gz",
+          "bytes": 84500,
+          "sha256": "fb25bf67a842683060c66badf45dcf73bde5abeb5b1b1d8cdb0993d5d386d6a9"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/036_gaseosa_Colombiana.json.gz",
+          "bytes": 78172,
+          "sha256": "ccd8cf3bb421114ca3088591dd90be1bf4b2d7fdce6f9ea5e36e435beb34700b"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/037_bebida_Pony_Malta.json.gz",
+          "bytes": 71595,
+          "sha256": "b7281eeb1cf97d96276ff1ef0417c64c38a4fad5e87ca26981d40eb07474b138"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/038_bebida_Hit.json.gz",
+          "bytes": 38542,
+          "sha256": "b8180595143af33f58675a35c42f20f9bbc84972f74b3fd775726059a7d20886"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/039_bebida_Gatorade.json.gz",
+          "bytes": 43012,
+          "sha256": "8dcdcb420fcdf2c85350602621504c53231085127e031249a68a13f5efa7b42a"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/040_cerveza_Aguila.json.gz",
+          "bytes": 69546,
+          "sha256": "866aed22005eae01a7475f1a2518f3f79ae407f82b96e7968839e878740204eb"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/041_cerveza_Poker.json.gz",
+          "bytes": 59454,
+          "sha256": "0aa0f1dc59bcf7c6a076a019b8352039b5d1b6a7d5703676feceb0d3bbdcfe73"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/042_cerveza_Club_Colombia.json.gz",
+          "bytes": 58728,
+          "sha256": "64719c74c19478b56418f3d30635904809db2d3340bcecd5d8112af5f72281e5"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/043_aguardiente_Antioqueno.json.gz",
+          "bytes": 81332,
+          "sha256": "775939fcd0d1346426e9a5a97767286170c11eea829e36a819bb9ccc2c92997e"
+        },
+        {
+          "data_root_relative_path": "co/raw/centro-plaza-bolivar/search_raw_20260910_044507/044_ron_Medellin.json.gz",
+          "bytes": 54794,
+          "sha256": "619e9b29000058bfede64f40a813b1611e225738ea1dee9c2520d1269641b5b3"
+        }
+      ]
+    },
+    "chapinero-andino": {
+      "items": {
+        "data_root_relative_path": "co/raw/chapinero-andino/search_items_20260910_044721.csv",
+        "bytes": 6473291,
+        "sha256": "83c69c07b9d06d0d651cf81fe7a74301c159c303d2a7d62f25eddf6ea9c1fae4",
+        "rows": 9557
+      },
+      "stores": {
+        "data_root_relative_path": "co/raw/chapinero-andino/search_stores_20260910_044721.csv",
+        "bytes": 33013,
+        "sha256": "991628d393d1b2bf3e9d3e8221684f2cfae8971cdc90a756e82439e1e896c10f",
+        "rows": 195
+      },
+      "manifest": {
+        "data_root_relative_path": "co/raw/chapinero-andino/search_manifest_20260910_044721.json",
+        "bytes": 6341,
+        "sha256": "db54a10f627cde3134e1a8035a9093596444a1481ff4123a4a7c1005ef678934"
+      },
+      "raw_responses": [
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/001_agua.json.gz",
+          "bytes": 46312,
+          "sha256": "8b03be0f06ff7e7bbc5400e4a12870775f12ed29ce529790cd48c007c510a306"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/002_agua_mineral.json.gz",
+          "bytes": 101180,
+          "sha256": "39fb4f2e357becb45fc1c25499ce77d65af9ce147c8dca1b3a4361243c4ef523"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/003_agua_sin_gas.json.gz",
+          "bytes": 44643,
+          "sha256": "a549f89ca57bd91fb02507f8fd10c6e020f129b40ccb31e721edf6a6c35f4183"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/004_agua_con_gas.json.gz",
+          "bytes": 17707,
+          "sha256": "cf206ccfddb7b39b83d3d46f045674a918b3510078e561d811a2cb0d576b231c"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/005_gaseosa.json.gz",
+          "bytes": 88707,
+          "sha256": "d1a04d1c364caeca90fbd48ead399b1f4a834c5fc6e26352c7c8505f36a37ac9"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/006_refresco.json.gz",
+          "bytes": 142358,
+          "sha256": "24b3f76b20d9c14b240b374b0659e4b76fd7c2d956d362ca23bdf442ffeddcb9"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/007_bebida_azucarada.json.gz",
+          "bytes": 79060,
+          "sha256": "30e89f55724e282e0535bd79e7de1b90f0d237aa00603ebdf82572c5e69530a2"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/008_bebida_energetica.json.gz",
+          "bytes": 63090,
+          "sha256": "d4644dff3089e6cafbb9d9cac6ee1290325850450c237f3d5917d13507d86c6c"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/009_bebida_deportiva.json.gz",
+          "bytes": 75190,
+          "sha256": "d441c1b4015dd0b9e7a781d14e40a6950ed95a6242e8f5f89889aa58b75512f7"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/010_bebida_isotonica.json.gz",
+          "bytes": 67961,
+          "sha256": "1baf8c89d2bd4ce0620a1072f3a095a8ef3629729e6aa6863041a8a36f19e8b2"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/011_te_helado.json.gz",
+          "bytes": 104441,
+          "sha256": "98b74db257a420d0617c42c7fdf702bcc4c2a55eb8d7eb0078a6ccb1f4f443f0"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/012_jugo.json.gz",
+          "bytes": 110209,
+          "sha256": "6483f5fc7768b28575d068f74aec0262e775d3af05ef356b9e692974b10d8789"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/013_nectar.json.gz",
+          "bytes": 62577,
+          "sha256": "ff1a4c3b3889b8a8fcf986116f3c8a14ce0fe4e3edb472a918a1ed147cd28a2b"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/014_agua_saborizada.json.gz",
+          "bytes": 30375,
+          "sha256": "378a68651dae45a9a472836ef5a77119aef7bfc269892a22288450ad226cf7a5"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/015_bebida_de_frutas.json.gz",
+          "bytes": 120929,
+          "sha256": "38c87e43c711fd5b3774de5d1b38e0df886d96f87253f8ee8e3662796538bc67"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/016_cerveza.json.gz",
+          "bytes": 78362,
+          "sha256": "6149241d3484f0833d0e31bcaa2f61a9a50616ce784daa95efe7bb1957c9cc86"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/017_vino.json.gz",
+          "bytes": 46087,
+          "sha256": "022b4be459f04a0cc7fe564c4ee44abd8561af96abab35869976607427d8c6d6"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/018_espumante.json.gz",
+          "bytes": 38967,
+          "sha256": "44d36bb9d8fc5778906c04c99337238cfa1806e8410eee7818978b72000b54cf"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/019_whisky.json.gz",
+          "bytes": 75570,
+          "sha256": "61cce052a5f6d19360c9d754e8d64ece84290b1988a7d0cfa97d14bf53e9dba6"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/020_vodka.json.gz",
+          "bytes": 19405,
+          "sha256": "25a22c6ff904d1288f8f3e2adf3525c0df2600b5cb403794ac18335697c9e549"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/021_ron.json.gz",
+          "bytes": 43000,
+          "sha256": "996e04a7feeaf9b84689b1ce580ef165b5b6905d4a4e912d3eed93c7968e8a15"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/022_tequila.json.gz",
+          "bytes": 33181,
+          "sha256": "0d87a3248f400f4ca05128421afd2ba99bf133c5aa484d98b44344cda35a616b"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/023_gin.json.gz",
+          "bytes": 29386,
+          "sha256": "bfad0f4d67c02a9a0570f0ae9314d08f21b5eb8a2e5e5f847109e98d12f90279"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/024_licor.json.gz",
+          "bytes": 127827,
+          "sha256": "a225a93a05a008a68d5951f582cfcf70a8e73d07ca76ccfb0e81514e7b9076d0"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/025_coctel.json.gz",
+          "bytes": 85904,
+          "sha256": "a01bfa1a45391e842388687736383fcca12220301029369c95b0143d7ee7f924"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/026_sidra.json.gz",
+          "bytes": 40319,
+          "sha256": "837e7d33e50c7cf95b891e6d55a47ea84637c84aa2085476d31bacb1fe0639fc"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/027_agua_de_mesa.json.gz",
+          "bytes": 44867,
+          "sha256": "ed1413343aadce08385664b7aeb90943245db3ebb1270bd1cd48c935b6bb8605"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/028_avena_bebida.json.gz",
+          "bytes": 47237,
+          "sha256": "e2d1f9ebb2c4a4ec03a233650c1030e87f6d2f9fe8efe7243b1caea7cea8f979"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/029_aguardiente.json.gz",
+          "bytes": 68558,
+          "sha256": "15091b5a8f7f57b8b0ba3afb4c624adbc1b99523f803b5f6c4c43db573eb3c19"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/030_cerveza_sin_alcohol.json.gz",
+          "bytes": 73033,
+          "sha256": "5542770316c0f9512630092b0b93fc20b816f1920b90ff7603ba20f21bbe37da"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/031_agua_Cristal.json.gz",
+          "bytes": 34268,
+          "sha256": "7018bc5b6772a58ac2e90560309a4cd28c96e421d6aaa728d0c53cd383453eb7"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/032_agua_Brisa.json.gz",
+          "bytes": 35252,
+          "sha256": "fdccf9d243607ffe462db9b6b50cd78b761a3b6997ba7843ce3c8dd500a4e272"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/033_agua_Manantial.json.gz",
+          "bytes": 38842,
+          "sha256": "bdabab6c336654c2656c0b2a1cf7ce270ff33d02d81e1a3bd422f6d5690d26d9"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/034_gaseosa_Coca_Cola.json.gz",
+          "bytes": 140699,
+          "sha256": "f22dc14f36203885cb595bad257bf1e71722ec9043f696a1c0edfc91f9387173"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/035_gaseosa_Postobon.json.gz",
+          "bytes": 87980,
+          "sha256": "5a2a227133d2acd730bce4ccd3c69f4d6af37af3a620aebc4e9a32ec95d3fd32"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/036_gaseosa_Colombiana.json.gz",
+          "bytes": 137530,
+          "sha256": "ffb4eba0ffd0485b7e9b64a11d7787438a30d07dd21466e8fb19ecd6d97153d9"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/037_bebida_Pony_Malta.json.gz",
+          "bytes": 70291,
+          "sha256": "15254843ba26ea6478237349d5be0c24dddb460303aeba2faa2612ec4fcbb481"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/038_bebida_Hit.json.gz",
+          "bytes": 49423,
+          "sha256": "e3a39c2739be01f9da929c81c63170171e5359dc231458f7e0a8c35d02c25215"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/039_bebida_Gatorade.json.gz",
+          "bytes": 45030,
+          "sha256": "aaee84025f5d7089d0b8eeb11d6fcaf036452d61dc837330105b58dfc5fd617f"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/040_cerveza_Aguila.json.gz",
+          "bytes": 69743,
+          "sha256": "87b70aa9b56ff976d6ef9a2eddcb19060c450913df9d82edbd2fa371f8be7c99"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/041_cerveza_Poker.json.gz",
+          "bytes": 67850,
+          "sha256": "8446c6f8beef610c7496a1f3d948b6632105c9e19aa60efd772ca10e2c943997"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/042_cerveza_Club_Colombia.json.gz",
+          "bytes": 66439,
+          "sha256": "d9393de6528fbf2403412de434b3e497a1fd99c7b97c5b2de39d9933692746d9"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/043_aguardiente_Antioqueno.json.gz",
+          "bytes": 68415,
+          "sha256": "0e84a9ef7a7b27aee207ad82004fb7a33a8668a02d969f68c549e4ffb2230b76"
+        },
+        {
+          "data_root_relative_path": "co/raw/chapinero-andino/search_raw_20260910_044721/044_ron_Medellin.json.gz",
+          "bytes": 55920,
+          "sha256": "b867007c59fa6e92b2000189191c1e2998d4de193272c09a8f161b72d9503c60"
+        }
+      ]
+    }
+  },
+  "config_sha256": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053",
+  "config_files_sha256": {
+    "config/beverages.yml": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053",
+    "config/keywords_co.yml": "a10ab30232309664509b28f00bf14578681cc1471b82e8b1ef7dd8bf535a05e5",
+    "config/relevant_sections_co.yml": "c3ca75d7e080694b1e9a8532b7ff48b02c39395571d2683360f14ad98da8fdd6",
+    "config/seed_paths_co.yml": "64eea55dec8bd78d49de619b59e3153a7bc8354dd82093dd27cc3bfea405b85c",
+    "config/study/brand_terms_ar.yml": "646e3bd4befeeb78cddc6f1567be8d3997d8b4aebac35caaab8ae47a44a385e4",
+    "config/study/brand_terms_co.yml": "39b0e6f4a2ae6e5ce3aef4cb0fc9114e7ff048b8bd20cf73ec41e5950363adf8",
+    "config/study/brand_terms_mx.yml": "20f78ae4b8f36e977d13a4d131c0b3bd5984437f244899d14c6d2f422ce359b1",
+    "config/study/brand_terms_pe.yml": "db5f568bb5f7ff23d8a816338adf7c8200d278bd947de653f6f9abf305298905",
+    "config/study/countries.yml": "bdc87c6a0b64043d63b2aa7bcf04d68c567fae1a835e791782122f822b0aca74",
+    "config/study/terms.yml": "1c835b4501e1e2d56c493d7f5ce9e5155041dfc5b21b1c226ed61b2ed2c9b607",
+    "config/study/zones_ar.yml": "9a3c790405bb4c7a8952349cd7a0470964611ef349115c4c92f12ce584150eba",
+    "config/study/zones_co.yml": "64fe809a804aa2bf7c661433b9762533a776e3d8e77f996dd703f60d9b76dc78",
+    "config/study/zones_mx.yml": "aff777cdf61f20ae4fd68e3cabd5903cc772d4327eeaab4e36feb049a6e158f3",
+    "config/study/zones_pe.yml": "88cfdb9fef24a4badc3383569742bbf59cf6d4cdadccfb28d81885e7ccac7fec",
+    "config/zones_co.yml": "84ed40973bd54a3fa674b1ad6b4df98f370c620b84ce33f0d041a4c707131c4c"
+  },
+  "code_sha256": {
+    "rappi_co/__init__.py": "655193a1bf78279b95cbf71ba78ac227b5d62615e170b9cf73e231433a7b5ebb",
+    "rappi_co/beverages.py": "99d9c7ce4001dc5b9f1265c59a189807c3958779d5e3892396896ed28602507e",
+    "rappi_co/bootstrap.py": "a18157f3e4cf117e29a663008e667f67ec72009fc3414152b7c7ec436ffc2917",
+    "rappi_co/checks.py": "e82e5646f1dbdf26244d32e28525d9d18120e997d485842223b245c82b5695f2",
+    "rappi_co/classify/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/classify/run.py": "42d894aa229c57f5917c4f7b6d12f470e656be6bcffcda836e5e799d3a1bacac",
+    "rappi_co/classify/stage_c_overrides.py": "0dbb54b29ab90676570c0a013e63933ff2adcc8aa83086556aef0ef8cb2cab8c",
+    "rappi_co/classify/tobacco_classifier.py": "f07688fdbd1287bf1b10f04ed4288e5f601336b4858048baa106482c97719ec6",
+    "rappi_co/collect/__init__.py": "9684c549db5e995f8aebf3b317913aed8167f562241932a7f37c19e6efe8f396",
+    "rappi_co/collect/catalog.py": "7418f6d86d3a8cc720bb564c57061ec818937835535531d8a98dc1e3b05daf7b",
+    "rappi_co/collect/merge_stores.py": "a10e3a063514cd0e98ecf48839a99c44a7e4510b6c8c6372dc8f3c14669549cd",
+    "rappi_co/collect/product_details.py": "61e8ed4e2c12377220cb5a0023b941de13952565b8c8b0a60f46213ccd232799",
+    "rappi_co/collect/search.py": "40fdb3d01a106e6891c458306d18e925bebb59f326994291c0755a71820730b0",
+    "rappi_co/collect/union.py": "3f2b1672946f5ecd9445932702ff03411ea23c39178f097517d64a8010032fa0",
+    "rappi_co/collect/union_zones.py": "13bf8a83cf9f0c01606808596d1c2417ee3f5cba84c94399dae14a4f052c4b55",
+    "rappi_co/configs.py": "b5b60c1960c125b43f2ce024d39ac2c3a727ea0da0cca5af25c63061ee14bc02",
+    "rappi_co/enrich/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/enrich/beverage_fields.py": "4cdd5e8f93731a31356ed683daa926cd59fb368a47a6a305dc46fb3a5c7e0f75",
+    "rappi_co/enrich/tobacco_fields.py": "5f505a78faf6884fff03c52a2161b3607d37b446e7e81e9cd499fb095904efee",
+    "rappi_co/export/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/export/study_deliverable.py": "ca99494f91710abc1c6188f39576a0fa8406621dd6384e613773703d93d6f21a",
+    "rappi_co/export/tobacco_deliverable.py": "762b53c4ee6211a2ef5580dd5b7fb0e2a387c10adbece2f9f1bc0746304ace7e",
+    "rappi_co/extract/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/extract/regex_enrich.py": "fdaa58bc0100a5bcdff39fa3a9038a53f67c64674d93fc1e7d925ee2c9e6c60c",
+    "rappi_co/items.py": "a0ea3ee203bf5d044d8af560249a1bfcb83d92d912133d377128985efe49d4b5",
+    "rappi_co/middlewares.py": "6af81be9742283f98b555756ce37faad566d01e362e8fd9e7311a7d75fa8a90d",
+    "rappi_co/parsers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/parsers/beverage_search.py": "3c50ded4a65f4e17f99d5852de529fab682c03b5ea51d586a58e8044ee0b9ece",
+    "rappi_co/parsers/catalog_api.py": "34a9671320badd11c6f5dd470953f56821729e125609587f4d0a0920b5921585",
+    "rappi_co/parsers/search_api.py": "7650a3f04e45aa5b2e1522a6978b1bece78a541b38ea029d7f3c05ca6cbebc40",
+    "rappi_co/parsers/store_index.py": "ff330db78012fcba6a0c76342c848dd4f06d0e9d1733355b872a8e65992ca661",
+    "rappi_co/parsers/store_payload.py": "06f191e95f9f16fa83fea720d8f029b2be136ca7523659b4b6b6474d77aaea39",
+    "rappi_co/pipelines.py": "ab8e3dc3940a63ea0a6e346855cf473c16f4e2afe9c83e34544c817146821431",
+    "rappi_co/qc/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/qc/beverage_coverage.py": "f333a408df0c34ab68022feba3865924b3f2793eb9c5cf67b7cf2076a92d5658",
+    "rappi_co/qc/common.py": "64bf8770fae9961586c60a50a17c5046cd6806ee0851189e27dd997681fc38b6",
+    "rappi_co/qc/gate.py": "7cbcab1b1f55d2acb04a05e50154a6f7e750b5240c445fb325971fc6838a69da",
+    "rappi_co/release.py": "95f0123794aed2f0e41c6e72d66af0364ec98f564c0b6814b09ec213940c405b",
+    "rappi_co/settings.py": "7eebd91efddd0faeedf57805ee21a275526cd7dbd690a3b95171df1d81d1aa4d",
+    "rappi_co/spiders/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rappi_co/spiders/menu.py": "e83cdde7fa3414673beac26d7e495d3c6eb139fa38c536407849c6f48438cd8e",
+    "rappi_co/spiders/stores.py": "caaf8b50db9a4ea04e7b86c23d305641e764e263f5efe093f4f273fc3e37ac97",
+    "rappi_co/study.py": "3e18f85aba9deb8033c223781480f413b0ba78d15226b94ec10118c6da219541"
+  },
+  "runtime": {
+    "python": "3.12.2",
+    "pandas": "3.0.5",
+    "pyyaml": "6.0.3"
+  },
+  "outputs": {
+    "items_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_items_20260910_124832_159958.csv",
+      "bytes": 18821602,
+      "sha256": "90fe9467aa63edd77b964378be607fbab3415503837a64415dc9a0055c78e331",
+      "rows": 7362
+    },
+    "ssb_candidates_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_ssb_candidates_20260910_124832_159958.csv",
+      "bytes": 14819137,
+      "sha256": "bff44605bf6012db2e197a611a7e76e6c13e196108d7e435ff3d1d84351de8be",
+      "rows": 6116
+    },
+    "review_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_review_20260910_124832_159958.csv",
+      "bytes": 19571070,
+      "sha256": "25904bd329740bafb9e5e20615c8e87759feae3f3c2f245e7bfbad32e0ae2ec6",
+      "rows": 8825
+    },
+    "comparison_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_comparison_20260910_124832_159958.csv",
+      "bytes": 3409650,
+      "sha256": "7f658b3475beea4fd4a1aa65e1c99dbf2c8661e5c2657816be5f2000bf52c0d2",
+      "rows": 1227
+    },
+    "audit_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_audit_20260910_124832_159958.csv",
+      "bytes": 86217453,
+      "sha256": "72c12ed8e09f33ec0ee13f5e974dd30a28d17d4166075725f82be9f07ae68a76",
+      "rows": 17980
+    },
+    "candidates_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_candidates_20260910_124832_159958.csv",
+      "bytes": 41799608,
+      "sha256": "d9e891d2f1c66296bfeb5e92ba6c0f172ed2290ff26d07299afe72b3ccc494b1",
+      "rows": 17414
+    },
+    "stores_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_stores_20260910_124832_159958.csv",
+      "bytes": 22870,
+      "sha256": "94dbc61f64af40bd40373408981049d1eef9af55150c82e771b3066aa10ca3e6",
+      "rows": 307
+    },
+    "locations_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_locations_20260910_124832_159958.csv",
+      "bytes": 252,
+      "sha256": "a65159bccc3a6bbac07b7f1af50b8c9d5c033378d69af4c4296f6d8f8c34af50",
+      "rows": 2
+    },
+    "coverage_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_coverage_20260910_124832_159958.csv",
+      "bytes": 1024,
+      "sha256": "5197d8c3412a98401720f79874e0bbc09c5033e70ba6b9993032b6a976a870e3",
+      "rows": 10
+    },
+    "query_yield_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_query_yield_20260910_124832_159958.csv",
+      "bytes": 32275,
+      "sha256": "9f92935f39afff3a011aeec7ad475c92a027ccb5af06239ba9d19059e9ee4329",
+      "rows": 88
+    },
+    "summary_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_summary_20260910_124832_159958.csv",
+      "bytes": 358,
+      "sha256": "0a5099d73185d7fe8725dd785126c05dbfeb14cef2ca1be0983db390560c4771",
+      "rows": 13
+    },
+    "review_sample_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_review_sample_20260910_124832_159958.csv",
+      "bytes": 288883,
+      "sha256": "bec45519537271b007974fcd83cce2e7d8813323052caa906d7de5faf71c64ab",
+      "rows": 120
+    },
+    "xlsx": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverages_co_20260910_124832_159958.xlsx",
+      "bytes": 9598085,
+      "sha256": "8a31410c2f1db6067f3575eb1dbc675377ae0f51e4911b886c0bdcd97c2212a4"
+    },
+    "excel_truncations_csv": {
+      "data_root_relative_path": "co/processed/20260910_124832_159958/beverage_excel_truncations_20260910_124832_159958.csv",
+      "bytes": 118,
+      "sha256": "c6c4db32ffeb4e42816512f7f318431c17280c3e17548bc24808f773288021f9",
+      "rows": 0
+    }
+  },
+  "counts": {
+    "items": 7362,
+    "ssb_candidates": 6116,
+    "review": 8825,
+    "comparison": 1227,
+    "audit": 17980,
+    "candidates": 17414,
+    "stores": 307,
+    "locations": 2,
+    "coverage": 10,
+    "query_yield": 88,
+    "summary": 13,
+    "review_sample": 120,
+    "excel_truncations": 0
+  },
+  "detail_input": null
+}
