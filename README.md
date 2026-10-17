@@ -94,6 +94,24 @@ Run the tests with:
 python -m pytest -q
 ```
 
+## Collect an updated four-country release
+
+The published files above are a frozen September 2026 release. To collect a
+new release without changing those files, first review the exact four-country
+search plans, then run the dated update command:
+
+```sh
+python -m rappi_co.release_update --out data/updates/20261017 --dry-run
+python -m rappi_co.release_update --out data/updates/20261017 --collect
+```
+
+The command writes four updated country workbooks to
+`data/updates/20261017/country_products/` and publishes a manifest only after
+it verifies source hashes, identities, SSB-candidate membership, category
+partitions, and workbook integrity. It never overwrites the frozen
+`datasets/` release. Stop collection if Rappi returns a CAPTCHA or access
+challenge.
+
 The concise collection and classification method is documented in
 [`docs/study_protocol.md`](docs/study_protocol.md). Exact file hashes and counts
 are recorded in the manifests beside each release.
