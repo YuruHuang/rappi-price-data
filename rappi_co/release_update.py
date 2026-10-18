@@ -15,10 +15,7 @@ import argparse
 import csv
 import hashlib
 import json
-import shutil
-import tempfile
 import zipfile
-from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -151,6 +148,9 @@ def _validate_workbook(path: Path, expected: dict[str, tuple[list[str], list[dic
             for cells, source in zip(found, rows, strict=True):
                 if any(cell.data_type in {"f", "e"} for cell in cells):
                     raise ValueError(f"formula or error in output: {path}/{name}")
+                for header, cell in zip(headers, cells, strict=True):
+                    if cell.value != source.get(header):
+                        raise ValueError(f"output value differs from source: {path}/{name}/{header}")
     finally:
         book.close()
 
@@ -205,24 +205,42 @@ def _build_country(code: str, tobacco_manifest_path: Path, tobacco_root: Path,
                      "ssb_candidates": _record(candidates_path)}}
 
 
-def collect_and_build(out: Path, min_delay: float, max_delay: float) -> dict:
-    if out.exists():
-        raise FileExistsError(f"destination must be new: {out}")
+def _write_state(path: Path, payload: dict) -> None:
+    temporary = path.with_suffix(".tmp")
+    temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(path)
+
+
+def collect_and_build(out: Path, min_delay: float, max_delay: float, *, resume: bool = False) -> dict:
+    state_path = out / "update_state.json"
+    if out.exists() and not resume:
+        raise FileExistsError(f"destination must be new (or use --resume): {out}")
+    if resume and not state_path.is_file():
+        raise FileNotFoundError(f"no resumable update state: {state_path}")
     from rappi_co import beverages, study
     out.parent.mkdir(parents=True, exist_ok=True)
-    staging = Path(tempfile.mkdtemp(prefix=".country-update-", dir=out.parent))
-    tobacco_root, beverage_root = staging / "raw" / "tobacco", staging / "raw" / "beverages"
+    out.mkdir(parents=True, exist_ok=resume)
+    state = (json.loads(state_path.read_text(encoding="utf-8")) if resume else
+             {"schema_version": 1, "status": "in_progress", "completed": {}})
+    tobacco_root, beverage_root = out / "raw" / "tobacco", out / "raw" / "beverages"
     try:
-        tobacco_runs, beverage_runs = {}, {}
         for code in COUNTRIES:
-            tobacco_runs[code] = study.run_country(code, data_root=tobacco_root, min_delay=min_delay, max_delay=max_delay)
-            beverage_runs[code] = beverages.run_country(code, data_root=beverage_root, min_delay=min_delay, max_delay=max_delay)
-        sheets = staging / "country_products"
-        sheets.mkdir()
+            if code in state["completed"]:
+                continue
+            tobacco = study.run_country(code, data_root=tobacco_root, min_delay=min_delay, max_delay=max_delay)
+            beverage = beverages.run_country(code, data_root=beverage_root, min_delay=min_delay, max_delay=max_delay)
+            state["completed"][code] = {
+                "tobacco_manifest": tobacco["deliverable"]["manifest"],
+                "beverage_manifest": beverage["deliverable"]["manifest"],
+            }
+            _write_state(state_path, state)
+        sheets = out / "country_products"
+        sheets.mkdir(exist_ok=True)
         countries = []
         for code in COUNTRIES:
-            countries.append(_build_country(code, Path(tobacco_runs[code]["deliverable"]["manifest"]), tobacco_root,
-                                            Path(beverage_runs[code]["deliverable"]["manifest"]), beverage_root, sheets))
+            completed = state["completed"][code]
+            countries.append(_build_country(code, Path(completed["tobacco_manifest"]), tobacco_root,
+                                            Path(completed["beverage_manifest"]), beverage_root, sheets))
         manifest = {"schema_version": 1, "status": "verified_updated_country_workbooks",
                     "created_at_utc": datetime.now(timezone.utc).isoformat(), "countries": countries,
                     "collection_requested": True, "network_requests": "recorded in each completed source manifest",
@@ -230,14 +248,14 @@ def collect_and_build(out: Path, min_delay: float, max_delay: float) -> dict:
                                "category partitions", "workbook ZIP integrity", "workbook headers, row counts, and formula/error cells"],
                     "limitations": ["finite two-location search per country", "collection dates can differ across tobacco and beverages",
                                     "SSB candidates do not establish sugar concentration"]}
-        manifest_path = staging / "manifest.json"
+        manifest_path = out / "manifest.json"
         manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        if out.exists():
-            raise FileExistsError(f"destination appeared during build: {out}")
-        staging.rename(out)
+        state_path.unlink()
         return manifest
-    except BaseException:
-        shutil.rmtree(staging, ignore_errors=True)
+    except BaseException as error:
+        state["status"] = "failed"
+        state["error"] = str(error)
+        _write_state(state_path, state)
         raise
 
 
@@ -246,17 +264,18 @@ def main(argv=None) -> int:
     parser.add_argument("--out", type=Path, required=True, help="new dated release directory")
     parser.add_argument("--collect", action="store_true", help="collect and build all four countries")
     parser.add_argument("--dry-run", action="store_true", help="print the configured country plans without network requests")
+    parser.add_argument("--resume", action="store_true", help="resume an interrupted collection in --out")
     parser.add_argument("--min-delay", type=float, default=1.0)
     parser.add_argument("--max-delay", type=float, default=3.0)
     args = parser.parse_args(argv)
-    if args.collect == args.dry_run:
+    if args.collect == args.dry_run or (args.resume and not args.collect):
         parser.error("choose exactly one of --collect or --dry-run")
     if args.dry_run:
         from rappi_co import beverages, study
         print(json.dumps({"tobacco": [study.plan_country(code) for code in COUNTRIES],
                           "beverages": [beverages.plan_country(code) for code in COUNTRIES]}, ensure_ascii=False, indent=2))
         return 0
-    result = collect_and_build(args.out, args.min_delay, args.max_delay)
+    result = collect_and_build(args.out, args.min_delay, args.max_delay, resume=args.resume)
     print(json.dumps({"status": result["status"], "countries": [entry["country_code"] for entry in result["countries"]]}, indent=2))
     return 0
 

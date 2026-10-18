@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you use these data or code, please cite this repository and the release manifest."
+title: "Rappi price data"
+type: dataset
+license: MIT
+repository-code: "https://github.com/YuruHuang/rappi-price-data"
+abstract: "Product-listing data collected from Rappi in Argentina, Colombia, Peru, and Mexico."

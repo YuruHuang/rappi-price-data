@@ -99,7 +99,14 @@ python -m rappi_co.release_update --out data/updates/20261018 --collect
 
 The command writes verified country workbooks to
 `data/updates/20261018/country_products/`. It preserves the archived release
-and stops if Rappi returns a CAPTCHA or access challenge.
+and stops if Rappi returns a CAPTCHA or access challenge. If collection stops,
+rerun the same command with `--resume`.
+
+## 📌 Citation and contributions
+
+Use [`CITATION.cff`](CITATION.cff) to cite the repository and release manifest.
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) to report an error or contribute a
+reproducible update. Release changes are recorded in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## 📄 License
 

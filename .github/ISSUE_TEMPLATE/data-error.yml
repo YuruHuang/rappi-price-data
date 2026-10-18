@@ -1,0 +1,12 @@
+name: Data or documentation error
+description: Report a reproducible issue in a published release.
+body:
+  - type: input
+    attributes: {label: File and worksheet}
+    validations: {required: true}
+  - type: input
+    attributes: {label: Country and row identifier}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Evidence and expected correction}
+    validations: {required: true}

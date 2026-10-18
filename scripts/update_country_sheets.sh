@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Create a new, verified four-country release.  Never overwrites datasets/.
+# Create a new, verified release for four countries. Never overwrites datasets/.
 set -euo pipefail
 
 release_date="${1:-$(date +%Y%m%d)}"
