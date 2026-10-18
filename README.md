@@ -41,6 +41,51 @@ consumption, or market share. Raw beverage stock values are not verified
 inventory counts. Product-detail pages are not included in the final
 workbooks.
 
+## 🧭 Beverage search terms
+
+The archived beverage release used configuration version 1. Version 2 is the
+prospective search plan for the next collection. It retains the shared category
+and brand queries and adds terms tested at both delivery locations in October
+2026:
+
+- Argentina: `bebida lactea`, `limonada`, `cafe frio`, `vermut`, `aperitivo`
+- Colombia: `bebida lactea`, `bebida de malta`, `limonada`, `cafe frio`, `hard seltzer`
+- Peru: `bebida lactea`, `limonada`, `cafe frio`, `hard seltzer`, `bebida preparada`
+- Mexico: `bebida lactea`, `horchata`, `cafe frio`, `pulque`, `hard seltzer`
+
+The pilot completed 40 searches without an access or export error. It showed
+that these terms return listings, but also that results can be capped and broad
+terms create review records. They are discovery terms, not product categories
+or evidence that an item is sugar-sweetened. The complete, versioned list is
+in [`config/beverages.yml`](config/beverages.yml). The version-1 configuration
+used for the archived release is retained at
+[`config/archive/beverages_v1.yml`](config/archive/beverages_v1.yml) so the
+published release can still be verified.
+
+### Add a term carefully
+
+1. State the country, intended beverage family, and why the existing list is
+   likely to miss it. Do not add a term merely because it returns many results.
+2. Run a dated, non-published pilot at both configured delivery locations. For
+   example:
+
+   ```sh
+   python -m rappi_co.beverages --country mx --terms "horchata" \
+     --data-root data/pilots/beverage_term_check_YYYYMMDD
+   ```
+
+3. Inspect the pilot `beverage_query_yield_*.csv`, `beverage_coverage_*.csv`,
+   and review workbook. Check the item family, duplicate rate, capped store
+   groups, and whether the term produces a useful number of target or review
+   records. A non-empty search alone is not enough.
+4. If it is retained, place a generic term under `categories`, a country term
+   under `regional_terms`, or a named discovery seed under `brand_queries` in
+   [`config/beverages.yml`](config/beverages.yml). Keep the terms lower-case,
+   specific, and reproducible. Bump `version`, record the decision in
+   [`CHANGELOG.md`](CHANGELOG.md), and update the study protocol.
+5. Run the full plan with `--dry-run` before collecting. Treat a changed query
+   list as a new release protocol; do not mix it into an archived release.
+
 ## 🗂️ Repository map
 
 ```text
@@ -101,6 +146,12 @@ The command writes verified country workbooks to
 `data/updates/20261018/country_products/`. It preserves the archived release
 and stops if Rappi returns a CAPTCHA or access challenge. If collection stops,
 rerun the same command with `--resume`.
+
+Before a full release, confirm the exact plan and configuration version:
+
+```sh
+python -m rappi_co.beverages --all-countries --dry-run
+```
 
 ## 📌 Citation and contributions
 

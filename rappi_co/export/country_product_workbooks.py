@@ -450,9 +450,9 @@ def _brand_matrix(root: Path, integrated_manifest: dict | None = None) -> \
         integrated_sources = {entry.get("path"): entry.get("sha256")
                               for entry in integrated_manifest.get("sources", [])}
         for relative, digest in (manifest.get("input_sha256") or {}).items():
-            if relative == "config/beverages.yml":
+            if relative == "config/archive/beverages_v1.yml":
                 if sha256(root / relative) != digest:
-                    raise ValueError("Brand coverage configuration hash is stale")
+                    raise ValueError("Archived beverage configuration hash is stale")
             elif integrated_sources.get(relative) != digest:
                 raise ValueError(f"Brand coverage source is outside the integrated release: {relative}")
     inputs = [

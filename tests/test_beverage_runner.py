@@ -6,7 +6,7 @@ from rappi_co.beverages import plan_country, paired_coverage, review_sample
 
 def test_full_plan_reuses_eight_locations_and_records_finite_queries():
     plans = [plan_country(c) for c in ("ar", "co", "pe", "mx")]
-    assert sum(p["requests"] for p in plans) == 356
+    assert sum(p["requests"] for p in plans) == 396
     assert sum(len(p["addresses"]) for p in plans) == 8
     assert all(p["full_protocol"] for p in plans)
     assert {p["currency"] for p in plans} == {"ARS", "COP", "PEN", "MXN"}

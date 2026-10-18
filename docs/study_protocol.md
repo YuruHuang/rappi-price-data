@@ -61,6 +61,15 @@ can guarantee a complete platform catalog. Search results depend on the address,
 time, store participation, ranking, and platform response. Missing results do
 not establish that a product or brand was unavailable elsewhere in the country.
 
+The archived September 2026 beverage release used configuration version 1.
+Version 2 is a prospective protocol: after an October 2026 pilot at both
+configured locations in each country, it adds five country-specific discovery
+terms per country. The pilot confirmed that each term returned listings and
+could be processed without an access or export error. It did not establish
+complete catalogue coverage, product prevalence, or SSB status. The terms are
+therefore used only for discovery in future collections. The procedure for
+testing and adopting further terms is documented in the repository README.
+
 ## Collection and record handling
 
 The collector sends the planned queries for both delivery points and archives

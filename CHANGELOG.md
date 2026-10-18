@@ -3,6 +3,11 @@
 ## Unreleased
 
 - Added resumable updated-release collection and exact workbook value checks.
+- Updated the prospective beverage search plan to configuration version 2.
+  Following an October 2026 pilot, it adds five country-specific discovery
+  terms for each country. The archived September 2026 data release is unchanged.
+- Documented the beverage-term pilot, its coverage limits, and the procedure
+  for testing, reviewing, and adopting future terms.
 
 ## 2026.09
 

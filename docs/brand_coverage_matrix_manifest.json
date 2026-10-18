@@ -23,7 +23,7 @@
     "data/beverages/pe/processed/20260910_124608_117667/beverage_audit_20260910_124608_117667.csv": "7f065bd8b8134b450c184337e9cb3b2359012dd68f42c595e037781953cc0c22",
     "datasets/beverages/provenance_mx.json": "83f5a961f4fe2cafd99b12f9ca313c0ce2e9198dbaf70303bf5b30ea3d63ad29",
     "data/beverages/mx/processed/20260910_124827_120073/beverage_audit_20260910_124827_120073.csv": "c309785c480989d2709a6bcb12951ea57a1544a3d648769effbc3616fcd421a9",
-    "config/beverages.yml": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053"
+    "config/archive/beverages_v1.yml": "c7f9f174d29ec5252f0fc1d76449388cca048e3713238aec4265db8ee6bcc053"
   },
   "output": {
     "path": "docs/brand_coverage_matrix.csv",

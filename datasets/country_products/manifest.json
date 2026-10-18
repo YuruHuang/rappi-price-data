@@ -1214,8 +1214,8 @@
     {
       "path": "docs/brand_coverage_matrix_manifest.json",
       "role": "brand_coverage_manifest",
-      "bytes": 4169,
-      "sha256": "ed50626ff6258524535d7e0324d58ba2be558271319fe11753ee55441e9e5f70"
+      "bytes": 4180,
+      "sha256": "a3f19a7aeff4ecde14a01329c0ad165b35bcc22964405be951f3b679715448f4"
     },
     {
       "path": "docs/brand_coverage_matrix.csv",
@@ -1226,8 +1226,8 @@
     {
       "path": "rappi_co/export/country_product_workbooks.py",
       "role": "exporter",
-      "bytes": 57539,
-      "sha256": "473b1846250878315d69f50f8d4d7dac0f85d7fc24d2bce7b57e952b76f3fcf8"
+      "bytes": 57553,
+      "sha256": "f34d3095d37618b4cb267bde35f5e711f1313a480facbd5cffb09e36f919f4a4"
     },
     {
       "path": "datasets/integrated/argentina.xlsx",
