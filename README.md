@@ -5,7 +5,7 @@ Mexico. The release includes tobacco and nicotine products, sugar-sweetened
 beverage (SSB) candidates, water, and alcohol from two delivery locations in
 each country.
 
-## Data release
+## 📦 Data release
 
 The analysis-ready files are in
 [`datasets/country_products/`](datasets/country_products/). Each workbook has
@@ -25,7 +25,7 @@ time of collection. The same product can therefore occur in more than one row.
 The technical-specifications worksheet documents fields, units, collection
 dates, and fields hidden from the default view.
 
-## Coverage and limits
+## 🔎 Coverage and limits
 
 Tobacco was collected on 16 August 2026 and beverages on 10 September 2026.
 The two price waves are not contemporaneous.
@@ -41,7 +41,7 @@ consumption, or market share. Raw beverage stock values are not verified
 inventory counts. Product-detail pages are not included in the final
 workbooks.
 
-## Repository layout
+## 🗂️ Repository layout
 
 | Path | Contents |
 | --- | --- |
@@ -55,7 +55,7 @@ workbooks.
 The integrated and country workbooks are alternative views of the same
 observations. Do not append them to one another.
 
-## Reproduce the published release
+## ♻️ Reproduce the published release
 
 Create an environment and install dependencies:
 
@@ -81,7 +81,7 @@ Run the test suite with:
 python -m pytest -q
 ```
 
-## Collect an updated release
+## 🔄 Collect an updated release
 
 The published `datasets/` directory is an archived September 2026 release. To
 collect a new release for all four countries, inspect the configured search
@@ -96,7 +96,7 @@ The command writes verified country workbooks to
 `data/updates/20261018/country_products/`. It preserves the archived release
 and stops if Rappi returns a CAPTCHA or access challenge.
 
-## License
+## 📄 License
 
 The software is licensed under [`LICENSE`](LICENSE). The license does not
 assert ownership of content supplied by Rappi or its merchants.
