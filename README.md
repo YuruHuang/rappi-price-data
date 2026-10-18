@@ -41,16 +41,21 @@ consumption, or market share. Raw beverage stock values are not verified
 inventory counts. Product-detail pages are not included in the final
 workbooks.
 
-## 🗂️ Repository layout
+## 🗂️ Repository map
 
-| Path | Contents |
-| --- | --- |
-| [`datasets/country_products/`](datasets/country_products/) | Analysis-ready country workbooks. |
-| [`datasets/integrated/`](datasets/integrated/) | Full release, including comparison, review, and excluded beverage records. |
-| [`datasets/beverages/`](datasets/beverages/) | Archived beverage source release. |
-| [`datasets/`](datasets/) | Archived tobacco source release. |
-| [`docs/study_protocol.md`](docs/study_protocol.md) | Sample design, classification rules, and measurement notes. |
-| [`rappi_co/`](rappi_co/) | Collection, classification, validation, and export code. |
+```text
+datasets/
+├── country_products/   analysis-ready country workbooks
+├── integrated/         full release, including review and comparison records
+├── beverages/          archived beverage source release
+└── *.xlsx              archived tobacco source release
+docs/
+├── study_protocol.md   sample design, classification rules, and measurements
+└── countries/          country-specific collection notes
+rappi_co/               collection, classification, validation, and export code
+tests/                  automated checks
+config/                 search terms, delivery locations, and study settings
+```
 
 The integrated and country workbooks are alternative views of the same
 observations. Do not append them to one another.
