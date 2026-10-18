@@ -34,6 +34,21 @@ python -m rappi_co.export.country_product_workbooks \
 Choose a new output directory. The exporter checks its inputs and validates the
 workbooks before writing the release.
 
+## Collect updated country workbooks
+
+The published `datasets/` files are a frozen release. To create a new dated
+release for all four countries, review the planned searches and then collect:
+
+```sh
+python -m rappi_co.release_update --out data/updates/20261017 --dry-run
+python -m rappi_co.release_update --out data/updates/20261017 --collect
+```
+
+The verified updated workbooks are written to
+`data/updates/20261017/country_products/`. This command does not overwrite the
+frozen `datasets/` release. Stop collection if Rappi returns a CAPTCHA or
+access challenge.
+
 ## Review a collection plan
 
 Dry runs show the requests without contacting Rappi:
