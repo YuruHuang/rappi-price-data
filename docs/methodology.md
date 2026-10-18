@@ -1,8 +1,8 @@
-# Four-country Rappi tobacco product data collection
+# Rappi tobacco product data collection in four countries
 
 ## Purpose
 
-This four-country collection workflow adapts the Colombia search collector to Argentina, Colombia,
+This collection workflow adapts the Colombia search collector to Argentina, Colombia,
 Peru, and Mexico. It
 samples two public delivery locations in one major Rappi city per country. It does not claim national
 coverage or market share.

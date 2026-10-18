@@ -1,22 +1,18 @@
-# Rappi tobacco and beverage data
+# Rappi price data
 
-This repository contains product listings collected from Rappi in Argentina,
-Colombia, Peru, and Mexico. The study covers tobacco and nicotine products,
-sugar-sweetened beverage candidates, water, and alcohol at two delivery
-locations in each country.
+Product-listing data collected from Rappi in Argentina, Colombia, Peru, and
+Mexico. The release includes tobacco and nicotine products, sugar-sweetened
+beverage (SSB) candidates, water, and alcohol from two delivery locations in
+each country.
 
-## Final workbooks
+## Data release
 
-Use the country workbooks in [`datasets/country_products/`](datasets/country_products/)
-for analysis. Each workbook has the same five worksheets:
+The analysis-ready files are in
+[`datasets/country_products/`](datasets/country_products/). Each workbook has
+five worksheets: `Technical specifications`, `Tobacco products`, `SSBs`,
+`Water`, and `Alcohol`.
 
-1. `Technical specifications`
-2. `Tobacco products`
-3. `SSBs`
-4. `Water`
-5. `Alcohol`
-
-| Country | Workbook | Observations | Currency |
+| Country | Workbook | Rows | Currency |
 | --- | --- | ---: | --- |
 | Argentina | [argentina.xlsx](datasets/country_products/argentina.xlsx) | 17,556 | ARS |
 | Colombia | [colombia.xlsx](datasets/country_products/colombia.xlsx) | 18,021 | COP |
@@ -24,53 +20,44 @@ for analysis. Each workbook has the same five worksheets:
 | Mexico | [mexico.xlsx](datasets/country_products/mexico.xlsx) | 14,499 | MXN |
 | **Total** |  | **68,398** |  |
 
-The first worksheet explains the sample, dates, units, field coverage, and
-limitations. The product worksheets open with category measures and selected
-source context. Additional raw source fields, measurement evidence, and
-provenance are grouped in hidden columns at the right and can be unhidden in
-Excel. The first worksheet marks every field as shown or hidden.
+One row represents a product listing at a store and delivery location at the
+time of collection. The same product can therefore occur in more than one row.
+The technical-specifications worksheet documents fields, units, collection
+dates, and fields hidden from the default view.
 
-## Interpretation
+## Coverage and limits
 
-One row represents a product listing from one store, delivery location, and
-collection time. The same product may appear in more than one row when it was
-offered by different stores or at different locations.
+Tobacco was collected on 16 August 2026 and beverages on 10 September 2026.
+The two price waves are not contemporaneous.
 
-Tobacco was collected on 16 August 2026. Beverages were collected on
-10 September 2026. Prices from the two collection waves are therefore not
-contemporaneous.
+The SSB worksheet is a screening cohort. Sweetening is unconfirmed for every
+row, and this release does not contain quantitative sugar measurements. Blank
+sugar values mean unknown, not zero. Alcohol by volume is retained only where
+the listing supports it.
 
-The `SSBs` worksheets contain a screening cohort; sweetening is unconfirmed for
-every row. The current release has no quantitative sugar measurements, so blank
-sugar cells mean unknown, not zero. Alcohol indicators and alcohol by volume
-are shown as cross-category checks for candidates that may require review. ABV
-is populated only when supported by listing evidence.
-
-The beverage source did not provide a validated row-level brand field, so
-beverage brands were not inferred from product titles. Brand examples in the
-Technical specifications sheet document search coverage only. Availability is
-a normalized listing status at collection; hidden raw beverage stock values are not
-verified inventory counts.
-
-The data come from a finite search at two delivery locations per country. They
-do not represent a complete Rappi catalog, national availability, sales,
-consumption, or market share. Product-detail pages are not part of the final
+The dataset is a finite search at two delivery locations in each country. It
+does not estimate the full Rappi catalogue, national availability, sales,
+consumption, or market share. Raw beverage stock values are not verified
+inventory counts. Product-detail pages are not included in the final
 workbooks.
 
-## Other data layouts
+## Repository layout
 
-- [`datasets/integrated/`](datasets/integrated/) contains the full 95,688-row
-  release, including comparison, review, and excluded beverage records.
-- [`datasets/beverages/`](datasets/beverages/) contains the original beverage
-  source workbooks.
-- [`datasets/`](datasets/) contains the original tobacco source workbooks.
+| Path | Contents |
+| --- | --- |
+| [`datasets/country_products/`](datasets/country_products/) | Analysis-ready country workbooks. |
+| [`datasets/integrated/`](datasets/integrated/) | Full release, including comparison, review, and excluded beverage records. |
+| [`datasets/beverages/`](datasets/beverages/) | Archived beverage source release. |
+| [`datasets/`](datasets/) | Archived tobacco source release. |
+| [`docs/study_protocol.md`](docs/study_protocol.md) | Sample design, classification rules, and measurement notes. |
+| [`rappi_co/`](rappi_co/) | Collection, classification, validation, and export code. |
 
-These directories provide alternative views or source releases. Do not append
-them to the final country workbooks as if they were additional observations.
+The integrated and country workbooks are alternative views of the same
+observations. Do not append them to one another.
 
-## Rebuild and test
+## Reproduce the published release
 
-Create a Python environment from the repository root:
+Create an environment and install dependencies:
 
 ```sh
 python3 -m venv .venv
@@ -78,45 +65,38 @@ python3 -m venv .venv
 pip install -r requirements.txt
 ```
 
-Rebuild the final country workbooks from the integrated release:
+Rebuild the country workbooks from the archived integrated release:
 
 ```sh
 python -m rappi_co.export.country_product_workbooks \
   --out data/country_products_rebuild
 ```
 
-The destination must be new. The exporter works offline and verifies source
-hashes, row counts, identifiers, formulas, and output values before publishing.
+Use a new output directory. The exporter verifies source hashes, row counts,
+identifiers, formulas, and output values before it writes the release.
 
-Run the tests with:
+Run the test suite with:
 
 ```sh
 python -m pytest -q
 ```
 
-## Collect an updated four-country release
+## Collect an updated release
 
-The published files above are a frozen September 2026 release. To collect a
-new release without changing those files, first review the exact four-country
-search plans, then run the dated update command:
+The published `datasets/` directory is an archived September 2026 release. To
+collect a new release for all four countries, inspect the configured search
+plan and then run the update command:
 
 ```sh
-python -m rappi_co.release_update --out data/updates/20261017 --dry-run
-python -m rappi_co.release_update --out data/updates/20261017 --collect
+python -m rappi_co.release_update --out data/updates/20261018 --dry-run
+python -m rappi_co.release_update --out data/updates/20261018 --collect
 ```
 
-The command writes four updated country workbooks to
-`data/updates/20261017/country_products/` and publishes a manifest only after
-it verifies source hashes, identities, SSB-candidate membership, category
-partitions, and workbook integrity. It never overwrites the frozen
-`datasets/` release. Stop collection if Rappi returns a CAPTCHA or access
-challenge.
-
-The concise collection and classification method is documented in
-[`docs/study_protocol.md`](docs/study_protocol.md). Exact file hashes and counts
-are recorded in the manifests beside each release.
+The command writes verified country workbooks to
+`data/updates/20261018/country_products/`. It preserves the archived release
+and stops if Rappi returns a CAPTCHA or access challenge.
 
 ## License
 
-The repository software is licensed under the terms in [`LICENSE`](LICENSE).
-That license does not assert ownership of source-platform or merchant content.
+The software is licensed under [`LICENSE`](LICENSE). The license does not
+assert ownership of content supplied by Rappi or its merchants.
