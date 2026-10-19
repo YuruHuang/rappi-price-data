@@ -33,6 +33,14 @@ units, and collection dates are in the `Technical specifications` sheet.
   catalogue, national availability, sales, consumption, or market share.
 - Product-detail pages and verified stock counts are not part of this release.
 
+### How the collection was designed
+
+The same general terms are used in every country. Country terms cover local
+product language, and brand terms act as additional discovery seeds. Two
+delivery locations per country capture some variation in store coverage without
+presenting the results as nationally representative. Listings with unresolved
+sugar status stay in review rather than being labelled as SSBs.
+
 ## 🧭 Beverage terms
 
 The archived beverage release used version 1 of the search list. Version 2 is
@@ -111,12 +119,12 @@ dated directory.
 
 ```sh
 python -m rappi_co.beverages --all-countries --dry-run
-python -m rappi_co.release_update --out data/updates/20261018 --dry-run
-python -m rappi_co.release_update --out data/updates/20261018 --collect
+python -m rappi_co.release_update --out data/updates/YYYYMMDD --dry-run
+python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect
 ```
 
 The update writes new country workbooks under
-`data/updates/20261018/country_products/`. It stops on a CAPTCHA or access
+`data/updates/YYYYMMDD/country_products/`. It stops on a CAPTCHA or access
 challenge. Resume an interrupted run with the same output directory and
 `--resume`.
 
