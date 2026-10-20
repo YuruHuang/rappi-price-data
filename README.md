@@ -33,13 +33,12 @@ units, and collection dates are in the `Technical specifications` sheet.
   catalogue, national availability, sales, consumption, or market share.
 - Product-detail pages and verified stock counts are not part of this release.
 
-### How the collection was designed
+### Study design
 
-The same general terms are used in every country. Country terms cover local
-product language, and brand terms act as additional discovery seeds. Two
-delivery locations per country capture some variation in store coverage without
-presenting the results as nationally representative. Listings with unresolved
-sugar status stay in review rather than being labelled as SSBs.
+Both collectors use fixed shared terms and country-specific discovery terms.
+Two delivery locations per country capture some variation in store coverage but
+do not make the results nationally representative. The tobacco and beverage
+sections below describe the two search plans.
 
 ## 🚬 Tobacco terms
 
@@ -54,13 +53,33 @@ archived August 2026 protocol used 27 queries in Argentina, 32 in Colombia, 30
 in Peru, and 32 in Mexico, at both study locations.
 
 The shared terms are in [`config/study/terms.yml`](config/study/terms.yml).
-Country brand lists are in
-[`config/study/`](config/study/), with the exact queries and collection notes
-for [Argentina](docs/countries/argentina.md),
+Country brand lists are the `brand_terms_<country>.yml` files in
+[`config/study/`](config/study/). Collection notes are available for [Argentina](docs/countries/argentina.md),
 [Colombia](docs/countries/colombia.md), [Peru](docs/countries/peru.md), and
-[Mexico](docs/countries/mexico.md). A new tobacco term should be tested as a
-separate, dated protocol update; a missing search result does not show that a
-product was absent from the country.
+[Mexico](docs/countries/mexico.md). A missing search result does not show that
+a product was absent from the country.
+
+### Add a tobacco term
+
+1. Define the product family and country the term is meant to cover.
+2. Check the exact diagnostic plan first:
+
+   ```sh
+   python -m rappi_co.study --country mx --terms "new term" --dry-run
+   ```
+
+3. Run a dated pilot and inspect the returned listings before changing the
+   default protocol:
+
+   ```sh
+   python -m rappi_co.study --country mx --terms "new term" \
+     --data-root data/pilots/tobacco_term_check_YYYYMMDD
+   ```
+
+4. Add a generic term to `config/study/terms.yml` or a brand-qualified term to
+   the relevant `brand_terms_<country>.yml` file. Update that country's note.
+5. A changed default term list is a new protocol. Keep it separate from the
+   archived August 2026 release.
 
 ## 🧭 Beverage terms
 
@@ -139,7 +158,6 @@ The files in `datasets/` are archived. New collection output belongs in a new,
 dated directory.
 
 ```sh
-python -m rappi_co.beverages --all-countries --dry-run
 python -m rappi_co.release_update --out data/updates/YYYYMMDD --dry-run
 python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect
 ```
@@ -147,7 +165,11 @@ python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect
 The update writes new country workbooks under
 `data/updates/YYYYMMDD/country_products/`. It stops on a CAPTCHA or access
 challenge. Resume an interrupted run with the same output directory and
-`--resume`.
+`--resume`:
+
+```sh
+python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect --resume
+```
 
 ## 📌 Citation, contributions, and license
 

@@ -8,6 +8,8 @@
   terms for each country. The archived September 2026 data release is unchanged.
 - Documented the beverage-term pilot, its coverage limits, and the procedure
   for testing, reviewing, and adopting future terms.
+- Added a `--data-root` option for dated tobacco-term pilots and documented the
+  tobacco search protocol in the README.
 
 ## 2026.09
 

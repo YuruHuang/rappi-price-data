@@ -317,6 +317,14 @@ Run one request at every configured location before a full pass:
 python -m rappi_co.study --all-countries --terms cigarrillos --collect-only
 ```
 
+For a tobacco-term pilot, use a dated output directory so diagnostic files do
+not mix with a later release:
+
+```bash
+python -m rappi_co.study --country mx --terms "new term" \
+  --data-root data/pilots/tobacco_term_check_YYYYMMDD
+```
+
 Inspect the item and store counts. If every location is healthy, run one country at a time:
 
 ```bash

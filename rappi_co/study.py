@@ -343,6 +343,8 @@ def main() -> int:
                         help="classify/export the latest successful search files")
     parser.add_argument("--collect-only", action="store_true",
                         help="collect raw search files without classification/export")
+    parser.add_argument("--data-root", type=Path, default=ROOT / "data",
+                        help="directory for collection output")
     parser.add_argument("--min-delay", type=float, default=1.0)
     parser.add_argument("--max-delay", type=float, default=3.0)
     args = parser.parse_args()
@@ -363,6 +365,7 @@ def main() -> int:
         result = [run_country(
             code, addresses=args.address, terms=terms, skip_collect=args.skip_collect,
             collect_only=args.collect_only, min_delay=args.min_delay, max_delay=args.max_delay,
+            data_root=args.data_root,
         ) for code in countries]
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
