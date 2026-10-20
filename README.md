@@ -41,6 +41,27 @@ delivery locations per country capture some variation in store coverage without
 presenting the results as nationally representative. Listings with unresolved
 sugar status stay in review rather than being labelled as SSBs.
 
+## 🚬 Tobacco terms
+
+The tobacco search plan covers four product families: nicotine pouches,
+electronic cigarettes, heated tobacco, and cigarettes. The shared Spanish
+queries are `bolsas de nicotina`, `cigarrillos electronicos`, `vapeador`,
+`vapeadores`, `productos de tabaco calentado`, and `cigarrillos`.
+
+Each country also has a reviewed set of brand-qualified searches. These are
+discovery seeds, not a brand ranking or evidence of national availability. The
+archived August 2026 protocol used 27 queries in Argentina, 32 in Colombia, 30
+in Peru, and 32 in Mexico, at both study locations.
+
+The shared terms are in [`config/study/terms.yml`](config/study/terms.yml).
+Country brand lists are in
+[`config/study/`](config/study/), with the exact queries and collection notes
+for [Argentina](docs/countries/argentina.md),
+[Colombia](docs/countries/colombia.md), [Peru](docs/countries/peru.md), and
+[Mexico](docs/countries/mexico.md). A new tobacco term should be tested as a
+separate, dated protocol update; a missing search result does not show that a
+product was absent from the country.
+
 ## 🧭 Beverage terms
 
 The archived beverage release used version 1 of the search list. Version 2 is
