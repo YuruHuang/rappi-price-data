@@ -1,15 +1,76 @@
 # Rappi price data
 
-Rappi product listings from two delivery locations in each of Argentina,
-Colombia, Peru, and Mexico. The release covers tobacco and nicotine products,
-water, alcohol, and beverage candidates for review as sugar-sweetened
-beverages (SSBs).
+This repository contains Rappi product-listing data and the code used to collect it. The study covers tobacco and nicotine products, water, alcohol, and beverage candidates for review as sugar-sweetened beverages (SSBs) in Argentina, Colombia, Peru, and Mexico.
 
-## 📦 Data
+## For country teams
 
-[`datasets/country_products/`](datasets/country_products/) contains one
-analysis-ready workbook per country. Each workbook has five sheets:
-`Technical specifications`, `Tobacco products`, `SSBs`, `Water`, and `Alcohol`.
+Use this sequence before any new collection.
+
+### 1. Confirm the delivery points
+
+The study uses two fixed delivery points in each city. They are part of the protocol: do not substitute a nearby address during a run.
+
+| Country | City | Delivery points | Details |
+| --- | --- | --- | --- |
+| Argentina | Buenos Aires | Galerías Pacífico; Alto Palermo | [country note](docs/countries/argentina.md) |
+| Colombia | Bogotá | Plaza Bolívar; Andino | [country note](docs/countries/colombia.md) |
+| Peru | Lima | Larcomar; MegaPlaza | [country note](docs/countries/peru.md) |
+| Mexico | Mexico City | Bellas Artes; Perisur | [country note](docs/countries/mexico.md) |
+
+Each country note gives the address, district, coordinates, and tobacco collection context. The source files are [`config/study/zones_ar.yml`](config/study/zones_ar.yml), [`zones_co.yml`](config/study/zones_co.yml), [`zones_pe.yml`](config/study/zones_pe.yml), and [`zones_mx.yml`](config/study/zones_mx.yml).
+
+If a point no longer receives Rappi delivery, record the result. Propose a replacement with its full address, coordinates, district, and reason for the change. Update the zone file and country note before using the replacement.
+
+### 2. Review the terms
+
+Run the full dry run first. It makes no network requests and prints the two locations and every tobacco and beverage query.
+
+```sh
+python -m rappi_co.release_update --out data/updates/YYYYMMDD --dry-run
+```
+
+Check the country, locations, query count, and terms before collecting. The lists are deliberately finite; a zero result does not show that a product is absent from the country.
+
+- Tobacco: shared terms are in [`config/study/terms.yml`](config/study/terms.yml); country brand queries are in `config/study/brand_terms_<country>.yml`.
+- Beverages: shared categories, country terms, and brand queries are in [`config/beverages.yml`](config/beverages.yml).
+
+### 3. Test a proposed change
+
+Use a dated pilot directory. The command searches both configured locations but does not alter the archived release.
+
+```sh
+# Tobacco
+python -m rappi_co.study --country mx --terms "new term" \
+  --data-root data/pilots/tobacco_term_check_YYYYMMDD
+
+# Beverages
+python -m rappi_co.beverages --country mx --terms "new term" \
+  --data-root data/pilots/beverage_term_check_YYYYMMDD
+```
+
+For each pilot, review the returned product families, duplicate results, and capped store groups. For beverages, also review `beverage_query_yield_*.csv`, `beverage_coverage_*.csv`, and the review workbook. Keep a term only when it finds a relevant product family not already well covered by the existing list.
+
+Add a generic tobacco term to `config/study/terms.yml` and a brand term to the relevant country file. For beverages, add a generic term to `categories`, a country term to `regional_terms`, or a brand search to `brand_queries`. Record the change in the country note, study protocol, and changelog. A changed term list is a new protocol, not a revision to an archived release.
+
+### 4. Run and check a new release
+
+The full update command collects all four countries and writes a new package.
+
+```sh
+python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect
+```
+
+Do not write into `datasets/`. If the run stops, use the same output directory:
+
+```sh
+python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect --resume
+```
+
+Before sharing the result, check `data/updates/YYYYMMDD/manifest.json`, the four workbooks in `country_products/`, and the recorded source manifests. The update command checks source hashes, row identities, category partitions, and workbook contents; it stops when Rappi returns an access challenge.
+
+## Published data
+
+[`datasets/country_products/`](datasets/country_products/) contains one analysis-ready workbook per country. Each workbook has `Technical specifications`, `Tobacco products`, `SSBs`, `Water`, and `Alcohol` sheets.
 
 | Country | Workbook | Rows | Currency |
 | --- | --- | ---: | --- |
@@ -19,107 +80,24 @@ analysis-ready workbook per country. Each workbook has five sheets:
 | Mexico | [mexico.xlsx](datasets/country_products/mexico.xlsx) | 14,499 | MXN |
 | **Total** |  | **68,398** |  |
 
-Each row is a product listing from one store at one delivery location and one
-collection time. Products can appear in more than one row. Field definitions,
-units, and collection dates are in the `Technical specifications` sheet.
+One row is one product listing from one store at one delivery point at one collection time. Products can therefore appear in more than one row. Field definitions and collection dates are in each workbook's `Technical specifications` sheet.
 
-### What the data do and do not show
+Tobacco was collected on 16 August 2026; beverages were collected on 10 September 2026. Do not treat the two waves as contemporaneous. The SSB sheet is a screening set: sugar is unconfirmed for every row, and blank sugar fields mean unknown. The data describe listings at the sampled points, not national availability, sales, consumption, market share, or verified inventory.
 
-- Tobacco was collected on 16 August 2026; beverages on 10 September 2026.
-  Do not compare the two waves as if they were collected on the same day.
-- The SSB sheet is a screening set, not a confirmed measure of sugar content.
-  Sugar is unconfirmed for every row; blank sugar fields mean unknown.
-- Results describe the sampled Rappi listings. They do not measure the full
-  catalogue, national availability, sales, consumption, or market share.
-- Product-detail pages and verified stock counts are not part of this release.
+## Current search plans
 
-### Study design
+The archived tobacco release covers nicotine pouches, electronic cigarettes, heated tobacco, and cigarettes. It used six shared Spanish terms plus country-specific brand searches: 27 queries in Argentina, 32 in Colombia, 30 in Peru, and 32 in Mexico. The complete country lists and collection notes are in [`docs/countries/`](docs/countries/).
 
-Both collectors use fixed shared terms and country-specific discovery terms.
-Two delivery locations per country capture some variation in store coverage but
-do not make the results nationally representative. The tobacco and beverage
-sections below describe the two search plans.
-
-## 🚬 Tobacco terms
-
-The tobacco search plan covers four product families: nicotine pouches,
-electronic cigarettes, heated tobacco, and cigarettes. The shared Spanish
-queries are `bolsas de nicotina`, `cigarrillos electronicos`, `vapeador`,
-`vapeadores`, `productos de tabaco calentado`, and `cigarrillos`.
-
-Each country also has a reviewed set of brand-qualified searches. These are
-discovery seeds, not a brand ranking or evidence of national availability. The
-archived August 2026 protocol used 27 queries in Argentina, 32 in Colombia, 30
-in Peru, and 32 in Mexico, at both study locations.
-
-The shared terms are in [`config/study/terms.yml`](config/study/terms.yml).
-Country brand lists are the `brand_terms_<country>.yml` files in
-[`config/study/`](config/study/). Collection notes are available for [Argentina](docs/countries/argentina.md),
-[Colombia](docs/countries/colombia.md), [Peru](docs/countries/peru.md), and
-[Mexico](docs/countries/mexico.md). A missing search result does not show that
-a product was absent from the country.
-
-### Add a tobacco term
-
-1. Define the product family and country the term is meant to cover.
-2. Check the exact diagnostic plan first:
-
-   ```sh
-   python -m rappi_co.study --country mx --terms "new term" --dry-run
-   ```
-
-3. Run a dated pilot and inspect the returned listings before changing the
-   default protocol:
-
-   ```sh
-   python -m rappi_co.study --country mx --terms "new term" \
-     --data-root data/pilots/tobacco_term_check_YYYYMMDD
-   ```
-
-4. Add a generic term to `config/study/terms.yml` or a brand-qualified term to
-   the relevant `brand_terms_<country>.yml` file. Update that country's note.
-5. A changed default term list is a new protocol. Keep it separate from the
-   archived August 2026 release.
-
-## 🧭 Beverage terms
-
-The archived beverage release used version 1 of the search list. Version 2 is
-used for the next collection. It adds these tested country-specific terms:
+The archived beverage release used version 1 of [`config/beverages.yml`](config/beverages.yml). Version 2 is the plan for the next collection. It adds:
 
 - Argentina: `bebida lactea`, `limonada`, `cafe frio`, `vermut`, `aperitivo`
 - Colombia: `bebida lactea`, `bebida de malta`, `limonada`, `cafe frio`, `hard seltzer`
 - Peru: `bebida lactea`, `limonada`, `cafe frio`, `hard seltzer`, `bebida preparada`
 - Mexico: `bebida lactea`, `horchata`, `cafe frio`, `pulque`, `hard seltzer`
 
-The pilot ran 40 searches across the eight study locations. All completed, but
-some results were capped and broad terms produced many records for review.
-These are search terms only; they do not define a product category or confirm
-that a product is an SSB.
+The 40-search pilot completed in October 2026. It confirmed that the new terms returned listings, not that they provide complete coverage or identify SSBs. The exact version-1 file used for the published beverage release is retained at [`config/archive/beverages_v1.yml`](config/archive/beverages_v1.yml).
 
-The current list is [`config/beverages.yml`](config/beverages.yml). The exact
-version-1 file used for the archived release is
-[`config/archive/beverages_v1.yml`](config/archive/beverages_v1.yml).
-
-### Add a beverage term
-
-1. Define the country and beverage family the term should find.
-2. Test it at both configured locations in a dated pilot directory:
-
-   ```sh
-   python -m rappi_co.beverages --country mx --terms "horchata" \
-     --data-root data/pilots/beverage_term_check_YYYYMMDD
-   ```
-
-3. Review `beverage_query_yield_*.csv`, `beverage_coverage_*.csv`, and the
-   review workbook. Check duplicates, capped store groups, and the returned
-   product families. A non-empty result is not enough.
-4. Add a general term to `categories`, a country term to `regional_terms`, or
-   a named product search to `brand_queries`. Increment `version` and update
-   the changelog and study protocol.
-5. Run the full plan with `--dry-run` before collecting. A changed search list
-   is a new protocol; do not add its records to an archived release.
-
-## 🗂️ Repository map
+## Repository map
 
 ```text
 datasets/
@@ -130,15 +108,14 @@ datasets/
 docs/
 ├── study_protocol.md   study design and classification rules
 └── countries/          country collection notes
-config/                 search terms, locations, and settings
+config/                 search terms, delivery points, and settings
 rappi_co/               collection, classification, validation, and export code
 tests/                  automated checks
 ```
 
-The integrated and country workbooks contain the same observations in different
-formats. Do not append them together.
+The integrated and country workbooks contain the same observations in different formats. Do not append them together.
 
-## ♻️ Reproduce the published release
+## Reproduce the published workbooks
 
 ```sh
 python3 -m venv .venv
@@ -149,32 +126,8 @@ python -m rappi_co.export.country_product_workbooks \
 python -m pytest -q
 ```
 
-Use a new output directory. The exporter checks source hashes, row counts,
-identifiers, formulas, and written values.
+Use a new output directory. The exporter checks source hashes, row counts, identifiers, formulas, and written values.
 
-## 🔄 Collect a new release
+## Citation, contributions, and license
 
-The files in `datasets/` are archived. New collection output belongs in a new,
-dated directory.
-
-```sh
-python -m rappi_co.release_update --out data/updates/YYYYMMDD --dry-run
-python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect
-```
-
-The update writes new country workbooks under
-`data/updates/YYYYMMDD/country_products/`. It stops on a CAPTCHA or access
-challenge. Resume an interrupted run with the same output directory and
-`--resume`:
-
-```sh
-python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect --resume
-```
-
-## 📌 Citation, contributions, and license
-
-Use [`CITATION.cff`](CITATION.cff) to cite the repository and release manifest.
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for corrections or reproducible
-updates, and [`CHANGELOG.md`](CHANGELOG.md) for release changes. The software
-license is in [`LICENSE`](LICENSE); it does not claim ownership of Rappi or
-merchant content.
+Use [`CITATION.cff`](CITATION.cff) to cite the repository and release manifest. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for corrections or reproducible updates, and [`CHANGELOG.md`](CHANGELOG.md) for release changes. The software license is in [`LICENSE`](LICENSE); it does not claim ownership of Rappi or merchant content.
