@@ -1,0 +1,15 @@
+# Examples copied from the study profile; recheck delivery coverage before use.
+country: co
+locations:
+  - slug: centro-plaza-bolivar
+    lat: 4.598060
+    lng: -74.076090
+    address: "Carrera 7 #10-47, 111711 Bogotá D.C."
+    district: La Candelaria
+    city: Bogotá
+  - slug: chapinero-andino
+    lat: 4.666950
+    lng: -74.053126
+    address: "Carrera 11 #82-71, 110221 Bogotá D.C."
+    district: Chapinero
+    city: Bogotá

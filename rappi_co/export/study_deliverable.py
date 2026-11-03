@@ -521,7 +521,7 @@ def _load_zone(country: str, zone: dict, data_root: Path, profile: dict,
     frame = frame[frame["study_category"].notna()].copy()
     frame["country_code"] = country
     frame["country"] = profile["name"]
-    frame["city"] = profile["city"]
+    frame["city"] = zone.get("city", profile["city"])
     frame["currency"] = profile["currency"]
     frame["zone_slug"] = slug
     frame["address"] = zone["address"]
@@ -545,13 +545,14 @@ def run_export(country: str, addresses: list[str] | None = None, out_dir: str | 
                data_root: str | Path | None = None, config_dir: str | Path | None = None,
                sources: dict[str, str | Path] | None = None,
                classification_paths: dict[str, str | Path] | None = None,
-               run_token: str | None = None) -> dict:
+               run_token: str | None = None,
+               locations_file: str | Path | None = None) -> dict:
     import pandas as pd
 
     artifact_token = _artifact_token(run_token)
     config_dir = Path(config_dir) if config_dir else STUDY_CONFIG
     data_root = Path(data_root) if data_root else ROOT / "data"
-    profile = load_study_profile(country, config_dir)
+    profile = load_study_profile(country, config_dir, locations_file=locations_file)
     by_slug = {zone["slug"]: zone for zone in profile["zones"]}
     slugs = addresses or list(by_slug)
     if len(slugs) != len(set(slugs)):
@@ -570,7 +571,10 @@ def run_export(country: str, addresses: list[str] | None = None, out_dir: str | 
     ) for slug in slugs]
     items = pd.concat(frames, ignore_index=True)
     if items.empty:
-        raise ValueError(f"{country}: no products in the four configured categories to export")
+        return _write_export_tables(
+            pd.DataFrame(columns=ITEM_COLS), country, slugs, profile,
+            data_root, artifact_token, out_dir, locations_file,
+        )
 
     enrichment = pd.DataFrame([
         enrich_tobacco_fields(row.get("name"), row.get("short_description"),
@@ -751,21 +755,45 @@ def run_export(country: str, addresses: list[str] | None = None, out_dir: str | 
             items[column] = None
     items = items[ITEM_COLS].sort_values(["zone_slug", "store_name", "name"])
 
-    stores = (items.groupby(["country_code", "zone_slug", "store_id"], dropna=False)
-              .agg(store_type=("store_type", "first"), store_name=("store_name", "first"),
-                   parent_store_type=("parent_store_type", "first"),
-                   n_tobacco_observations=("product_id", "nunique"),
-                   product_types=("product_type", lambda values: "|".join(sorted(set(values.dropna())))))
-              .reset_index())
-    stores = stores[STORE_COLS]
+    return _write_export_tables(
+        items, country, slugs, profile, data_root, artifact_token,
+        out_dir, locations_file,
+    )
+
+
+def _write_export_tables(items, country: str, slugs: list[str], profile: dict,
+                         data_root: Path, artifact_token: str,
+                         out_dir: str | None = None,
+                         locations_file: str | Path | None = None) -> dict:
+    """Publish a validated target table, including a valid zero-target result."""
+    import pandas as pd
+
+    if items.empty:
+        stores = pd.DataFrame(columns=STORE_COLS)
+    else:
+        stores = (items.groupby(["country_code", "zone_slug", "store_id"], dropna=False)
+                  .agg(store_type=("store_type", "first"), store_name=("store_name", "first"),
+                       parent_store_type=("parent_store_type", "first"),
+                       n_tobacco_observations=("product_id", "nunique"),
+                       product_types=("product_type", lambda values: "|".join(sorted(set(values.dropna())))))
+                  .reset_index())
+        stores = stores[STORE_COLS]
     locations = pd.DataFrame(profile["zones"])
     locations = locations[locations["slug"].isin(slugs)].copy()
     locations = locations.rename(columns={"slug": "zone_slug", "lat": "latitude",
                                           "lng": "longitude"})
     locations.insert(0, "currency", profile["currency"])
-    locations.insert(0, "city", profile["city"])
+    if "city" not in locations:
+        locations["city"] = profile["city"]
+    else:
+        locations["city"] = locations["city"].fillna("")
+        if locations_file is None:
+            locations["city"] = locations["city"].replace("", profile["city"])
     locations.insert(0, "country", profile["name"])
-    locations.insert(0, "country_code", country)
+    if "country_code" in locations:
+        locations["country_code"] = country
+    else:
+        locations.insert(0, "country_code", country)
     counts = items.groupby("zone_slug").size()
     locations["n_tobacco_observations"] = (
         locations["zone_slug"].map(counts).fillna(0).astype(int))

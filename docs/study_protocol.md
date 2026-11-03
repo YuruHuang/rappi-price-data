@@ -1,5 +1,9 @@
 # Study protocol
 
+## Country team collections
+
+The archived release below used its original two-point sample. New country-team collections use `python -m rappi_co.run --country CODE` and may supply any positive number of delivery points through `--locations-file` in CSV, TSV, XLSX, JSON, or YAML. Users may supply their own query lists or files. A custom file is recorded as a custom plan, with coordinates, input hashes, and snapshots retained with each dated run. The historical two-point count is not a software limit. See `docs/country_team_guide.md` for the current collection procedure; do not interpret a new custom plan as the original archived sample.
+
 ## Purpose and unit of observation
 
 This study records tobacco and nicotine products, water, sugar-sweetened
@@ -61,13 +65,15 @@ can guarantee a complete platform catalog. Search results depend on the address,
 time, store participation, ranking, and platform response. Missing results do
 not establish that a product or brand was unavailable elsewhere in the country.
 
-The archived September 2026 beverage release used configuration version 1.
-Version 2 is a prospective protocol: after an October 2026 pilot at both
+The default beverage query plan is configuration version 1, matching the
+published September 2026 release. Teams can optionally copy and change their
+country's term list for a new run. Version 2 is retained separately at
+`config/archive/beverages_v2.yml` and is not loaded automatically. After an October 2026 pilot at both
 configured locations in each country, it adds five country-specific discovery
 terms per country. The pilot confirmed that each term returned listings and
 could be processed without an access or export error. It did not establish
 complete catalogue coverage, product prevalence, or SSB status. The terms are
-therefore used only for discovery in future collections. The procedure for
+therefore available as optional discovery additions for future collections. The procedure for
 testing and adopting further terms is documented in the repository README.
 
 ## Collection and record handling

@@ -1,0 +1,57 @@
+# Discovery seeds, not rankings or claims of market availability.
+# Diet/zero, juice, dairy, and concentrate candidates are retained for explicit review.
+# Version 2 adds country-specific terms tested in an October 2026 pilot. They
+# expand discovery for future collections only; they do not alter the archived release.
+version: 2
+categories:
+  water:
+    - agua
+    - agua mineral
+    - agua sin gas
+    - agua con gas
+  ssb:
+    - gaseosa
+    - refresco
+    - bebida azucarada
+    - bebida energetica
+    - bebida deportiva
+    - bebida isotonica
+    - te helado
+    - jugo
+    - nectar
+    - agua saborizada
+    - bebida de frutas
+  alcohol:
+    - cerveza
+    - vino
+    - espumante
+    - whisky
+    - vodka
+    - ron
+    - tequila
+    - gin
+    - licor
+    - coctel
+    - sidra
+regional_terms:
+  ar: [soda, agua de mesa, vino tinto, fernet, cerveza sin alcohol, bebida lactea, limonada, cafe frio, vermut, aperitivo]
+  co: [agua de mesa, avena bebida, aguardiente, cerveza sin alcohol, bebida lactea, bebida de malta, limonada, cafe frio, hard seltzer]
+  pe: [agua de mesa, chicha morada, pisco, cerveza sin alcohol, bebida lactea, limonada, cafe frio, hard seltzer, bebida preparada]
+  mx: [agua purificada, agua fresca, bebida rehidratante, mezcal, cerveza sin alcohol, bebida lactea, horchata, cafe frio, pulque, hard seltzer]
+brand_queries:
+  ar:
+    water: [agua Villavicencio, agua Eco de los Andes, agua Glaciar]
+    ssb: [gaseosa Coca Cola, gaseosa Pepsi, gaseosa Manaos, agua saborizada Levite, bebida Gatorade, bebida Speed]
+    alcohol: [cerveza Quilmes, cerveza Brahma, fernet Branca, vino Trapiche, cerveza Patagonia]
+  co:
+    water: [agua Cristal, agua Brisa, agua Manantial]
+    ssb: [gaseosa Coca Cola, gaseosa Postobon, gaseosa Colombiana, bebida Pony Malta, bebida Hit, bebida Gatorade]
+    alcohol: [cerveza Aguila, cerveza Poker, cerveza Club Colombia, aguardiente Antioqueno, ron Medellin]
+  pe:
+    water: [agua San Luis, agua Cielo, agua San Mateo]
+    ssb: [gaseosa Coca Cola, gaseosa Inca Kola, gaseosa Kola Real, bebida Sporade, bebida Cifrut, bebida Volt]
+    alcohol: [cerveza Cristal, cerveza Pilsen Callao, cerveza Cusquena, pisco Queirolo, ron Cartavio]
+  mx:
+    water: [agua Bonafont, agua Ciel, agua Epura]
+    ssb: [refresco Coca Cola, refresco Pepsi, refresco Jarritos, bebida Jumex, bebida Del Valle, bebida Gatorade]
+    alcohol: [cerveza Corona, cerveza Modelo, cerveza Tecate, tequila Jose Cuervo, mezcal 400 Conejos]

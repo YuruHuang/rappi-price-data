@@ -50,6 +50,8 @@ def load_zones(path: Path) -> list[dict]:
             raise ConfigError(f"{name}: zone #{i} is missing 'slug'")
         if str(z["slug"]) in seen_slugs:
             raise ConfigError(f"{name}: duplicate zone slug '{z['slug']}'")
+        if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]*", str(z["slug"])):
+            raise ConfigError(f"{name}: unsafe zone slug '{z['slug']}'")
         seen_slugs.add(str(z["slug"]))
         try:
             lat, lng = float(z["lat"]), float(z["lng"])
@@ -172,7 +174,8 @@ def brand_variants(entry: dict) -> list[str]:
     return list(dict.fromkeys(value.casefold() for value in variants if value))
 
 
-def load_study_profile(country: str, config_dir: Path) -> dict:
+def load_study_profile(country: str, config_dir: Path,
+                       locations_file: str | Path | None = None) -> dict:
     """Load one complete multicountry collection profile."""
     code = str(country).strip().lower()
     config_dir = Path(config_dir)
@@ -180,18 +183,27 @@ def load_study_profile(country: str, config_dir: Path) -> dict:
     if code not in countries:
         raise ConfigError(f"unsupported country {country!r}; expected one of {sorted(countries)}")
     profile = {"country_code": code, **countries[code]}
-    zones_path = config_dir / f"zones_{code}.yml"
-    if _load_mapping(zones_path).get("country") != code:
-        raise ConfigError(f"{zones_path.name}: country must be '{code}'")
-    zones = load_zones(zones_path)
-    if len(zones) != 2:
-        raise ConfigError(f"{zones_path.name}: collection profiles require exactly two zones")
+    zones_path = Path(locations_file) if locations_file is not None else config_dir / f"zones_{code}.yml"
+    if locations_file is not None:
+        from rappi_co.locations import load_location_file
+        zones = load_location_file(zones_path, country=code)
+        if not zones:
+            raise ConfigError(f"{zones_path.name}: no delivery locations for country '{code}'")
+        cities = list(dict.fromkeys(str(zone.get("city") or "").strip()
+                                    for zone in zones if zone.get("city")))
+        profile["city"] = ", ".join(cities)
+        for zone in zones:
+            zone.setdefault("city", "")
+    else:
+        if _load_mapping(zones_path).get("country") != code:
+            raise ConfigError(f"{zones_path.name}: country must be '{code}'")
+        zones = load_zones(zones_path)
     lat_bounds, lng_bounds = profile["bounds"]["lat"], profile["bounds"]["lng"]
     for zone in zones:
-        if not zone.get("address") or not zone.get("district"):
+        if not zone.get("address") or (locations_file is None and not zone.get("district")):
             raise ConfigError(f"{zones_path.name}: zone '{zone['slug']}' needs address and district")
         lat, lng = float(zone["lat"]), float(zone["lng"])
-        if not (lat_bounds[0] <= lat <= lat_bounds[1]
+        if locations_file is None and not (lat_bounds[0] <= lat <= lat_bounds[1]
                 and lng_bounds[0] <= lng <= lng_bounds[1]):
             raise ConfigError(f"{zones_path.name}: zone '{zone['slug']}' is outside {profile['city']}")
     terms = load_study_terms(config_dir / "terms.yml")

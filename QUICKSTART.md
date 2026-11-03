@@ -1,5 +1,35 @@
 # Quick start
 
+## Collect fresh data for your country
+
+Use Python 3.12 for the tested setup. After cloning the repository, run from its root:
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m rappi_co.run --country co \
+  --locations-file config/examples/locations_co.csv \
+  --scope both \
+  --out data/updates/co_MY_RUN --dry-run
+```
+
+This command keeps the original country queries used for the published data, including general words, local wording, and brand searches. No terms file is needed unless you choose to change the searches. The two-query term files in `config/examples/` are format examples, not the full lists. Your location file can contain any positive number of delivery points. CSV, TSV, XLSX, JSON, and YAML are accepted. Each point needs an address and numeric latitude/longitude. The examples include known public landmarks; add the checked points required by your team. A new country beyond ar/co/pe/mx still requires country-service configuration and code support.
+
+After reviewing the printed plan, replace `--dry-run` with `--collect`. Do not create the output directory first. Open the workbook under `data/updates/co_MY_RUN/country_products/`. Use a new run label for later collections. `--resume` is available for interrupted `--scope both --collect` runs with the original inputs.
+
+To use just beverages:
+
+```sh
+python -m rappi_co.run --country co --scope beverages \
+  --locations-file config/examples/locations_co.csv \
+  --out data/updates/co_beverages_MY_RUN --dry-run
+```
+
+This also keeps the full country's beverage terms. Custom lists are optional and replace the default list for that run. To add terms without dropping the existing country and brand queries, first export the full list as shown in [the detailed country team guide](docs/country_team_guide.md#prepare-your-search-lists), then edit the copy. Use `--terms-file` for TXT, CSV, TSV, XLSX, JSON, or YAML queries.
+
+## Existing published files
+
 The final files are in [`datasets/country_products/`](datasets/country_products/).
 There is one workbook for each country, and every workbook has the same five
 worksheets:
@@ -22,7 +52,7 @@ python3 -m venv .venv
 pip install -r requirements.txt
 ```
 
-## Rebuild the final workbooks
+## Optional rebuild of historical workbooks
 
 The final four workbooks can be rebuilt offline from the integrated release:
 
@@ -32,7 +62,7 @@ python -m rappi_co.export.country_product_workbooks \
 ```
 
 Choose a new output directory. The exporter checks its inputs and validates the
-workbooks before writing the release.
+workbooks before writing the release. This is useful for auditing or reformatting saved data and does not refresh prices.
 
 ## Collect updated country workbooks
 

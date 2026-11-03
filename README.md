@@ -4,11 +4,28 @@ This repository contains Rappi product-listing data and the code used to collect
 
 ## For country teams
 
-Use this sequence before any new collection.
+The main task is to collect fresh listings for **your country, your delivery points, and your search terms**. Start with the [country team guide](docs/country_team_guide.md) or [quick start](QUICKSTART.md).
+
+There is no fixed delivery-point count. Supply a CSV, TSV, XLSX, JSON, or YAML file using `--locations-file`. At minimum each row needs `address`, `lat`, and `lng`; include `slug` for a stable location ID and optionally `city`, `district`, and `country_code`. Coordinates must be supplied; the collector does not geocode street addresses. For example:
+
+```sh
+python -m rappi_co.run --country co \
+  --locations-file config/examples/locations_co.csv \
+  --scope both \
+  --out data/updates/co_MY_RUN --dry-run
+```
+
+This keeps the original country lists used for the published data, including generic, local, and brand queries. Changing delivery points does not change those terms. The two-query files in `config/examples/` show input formats; they are not the full study lists. Review the location list, exact queries, and request count. Replace `--dry-run` with `--collect` to make requests and create a new package. The default pacing is a random one to three seconds between sequential searches. Use a new output directory for every new run; do not create it manually first. For a both-scope collection, the workbook is written under `country_products/` in your output directory.
+
+For one product scope, use `--scope tobacco` or `--scope beverages`; omit term options to keep all configured queries for that topic. Custom terms are optional: `--terms "query one,query two"` or `--terms-file PATH` replaces the full list for that run. Terms files support TXT, CSV, TSV, XLSX, JSON, and YAML. To add a term while keeping existing searches, start from the full country list as shown in the [country team guide](docs/country_team_guide.md#prepare-your-search-lists). A new search word does not automatically add a classification rule.
+
+### Reference locations and shared default terms
+
+The following points document the archived study and remain the defaults when no custom file is supplied. Country teams can use their own list without editing these reference files. Keep the selected list stable during a run and retain its snapshot and manifest with the data.
 
 ### 1. Confirm the delivery points
 
-The study uses two fixed delivery points in each city. They are part of the protocol: do not substitute a nearby address during a run.
+The archived study sampled two points per city. That historical sample size is not a limit on new collections.
 
 | Country | City | Delivery points | Details |
 | --- | --- | --- | --- |
@@ -19,11 +36,11 @@ The study uses two fixed delivery points in each city. They are part of the prot
 
 Each country note gives the address, district, coordinates, and tobacco collection context. The source files are [`config/study/zones_ar.yml`](config/study/zones_ar.yml), [`zones_co.yml`](config/study/zones_co.yml), [`zones_pe.yml`](config/study/zones_pe.yml), and [`zones_mx.yml`](config/study/zones_mx.yml).
 
-If a point no longer receives Rappi delivery, record the result. Propose a replacement with its full address, coordinates, district, and reason for the change. Update the zone file and country note before using the replacement.
+For a custom collection, add or remove rows in your location input, review the dry run, and collect into a new output directory. If changing the shared reference sample, update the zone file, country note, and protocol documentation as well.
 
 ### 2. Review the terms
 
-Run the full dry run first. It makes no network requests and prints the two locations and every tobacco and beverage query.
+Run a dry run first. It makes no network requests and prints all selected locations and every tobacco and beverage query. The older command below still plans all four countries using the defaults; add `--country co` and `--locations-file PATH` to select a custom country collection.
 
 ```sh
 python -m rappi_co.release_update --out data/updates/YYYYMMDD --dry-run
@@ -54,7 +71,7 @@ Add a generic tobacco term to `config/study/terms.yml` and a brand term to the r
 
 ### 4. Run and check a new release
 
-The full update command collects all four countries and writes a new package.
+The update command below collects all four countries using shared defaults. Country teams normally use `rappi_co.run --country CODE` as shown above. The lower-level update command also accepts repeated `--country`, `--locations-file`, `--tobacco-terms`, and `--beverage-terms`.
 
 ```sh
 python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect
@@ -66,7 +83,7 @@ Do not write into `datasets/`. If the run stops, use the same output directory:
 python -m rappi_co.release_update --out data/updates/YYYYMMDD --collect --resume
 ```
 
-Before sharing the result, check `data/updates/YYYYMMDD/manifest.json`, the four workbooks in `country_products/`, and the recorded source manifests. The update command checks source hashes, row identities, category partitions, and workbook contents; it stops when Rappi returns an access challenge.
+Before sharing the result, check the run's `manifest.json`, the selected country workbooks in `country_products/`, and the source manifests. Resume only with the same inputs; changed locations, queries, or configuration are rejected. The update command checks source hashes, row identities, category partitions, and workbook contents; it stops when Rappi returns an access challenge.
 
 ## Published data
 
@@ -88,14 +105,16 @@ Tobacco was collected on 16 August 2026; beverages were collected on 10 Septembe
 
 The archived tobacco release covers nicotine pouches, electronic cigarettes, heated tobacco, and cigarettes. It used six shared Spanish terms plus country-specific brand searches: 27 queries in Argentina, 32 in Colombia, 30 in Peru, and 32 in Mexico. The complete country lists and collection notes are in [`docs/countries/`](docs/countries/).
 
-The archived beverage release used version 1 of [`config/beverages.yml`](config/beverages.yml). Version 2 is the plan for the next collection. It adds:
+The default beverage plan in [`config/beverages.yml`](config/beverages.yml) is version 1, the same query list used for the published September data. Changing terms is optional; copy the full country list, edit the copy, and pass it with a terms-file option as described in the country team guide.
+
+The later expanded version is retained separately at [`config/archive/beverages_v2.yml`](config/archive/beverages_v2.yml). It is not loaded by default. It adds:
 
 - Argentina: `bebida lactea`, `limonada`, `cafe frio`, `vermut`, `aperitivo`
 - Colombia: `bebida lactea`, `bebida de malta`, `limonada`, `cafe frio`, `hard seltzer`
 - Peru: `bebida lactea`, `limonada`, `cafe frio`, `hard seltzer`, `bebida preparada`
 - Mexico: `bebida lactea`, `horchata`, `cafe frio`, `pulque`, `hard seltzer`
 
-The 40-search pilot completed in October 2026. It confirmed that the new terms returned listings, not that they provide complete coverage or identify SSBs. The exact version-1 file used for the published beverage release is retained at [`config/archive/beverages_v1.yml`](config/archive/beverages_v1.yml).
+The 40-search pilot completed in October 2026. It confirmed that the new terms returned listings, not that they provide complete coverage or identify SSBs. Teams can choose to add those terms to their own copies. The original version-1 configuration is also retained at [`config/archive/beverages_v1.yml`](config/archive/beverages_v1.yml).
 
 ## Repository map
 
@@ -115,7 +134,9 @@ tests/                  automated checks
 
 The integrated and country workbooks contain the same observations in different formats. Do not append them together.
 
-## Reproduce the published workbooks
+## Optional reproduction of the published workbooks
+
+This reproduces the historical release for auditing or reprocessing; it does not collect fresh prices. Country teams collecting new data should use the country command above.
 
 ```sh
 python3 -m venv .venv

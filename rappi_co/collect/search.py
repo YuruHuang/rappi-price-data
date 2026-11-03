@@ -11,8 +11,10 @@ from __future__ import annotations
 import argparse
 import csv
 import gzip
+import hashlib
 import json
 import logging
+import math
 import random
 import time
 from datetime import datetime, timezone
@@ -48,15 +50,16 @@ STUDY_OUT_COLS = OUT_COLS + STUDY_EXTRA_COLS
 STORE_COLS = ["store_id", "store_type", "store_name", "parent_store_type", "n_products", "terms"]
 
 
-def _profile(country: str) -> dict:
-    return load_study_profile(country, STUDY_CONFIG)
+def _profile(country: str, locations_file: str | Path | None = None) -> dict:
+    return load_study_profile(country, STUDY_CONFIG, locations_file=locations_file)
 
 
-def _zone(address: str, country: str | None = None) -> dict:
+def _zone(address: str, country: str | None = None,
+          locations_file: str | Path | None = None) -> dict:
     if country:
-        profile = _profile(country)
+        profile = _profile(country, locations_file)
         zones = profile["zones"]
-        source = f"config/study/zones_{country}.yml"
+        source = str(locations_file) if locations_file else f"config/study/zones_{country}.yml"
     else:
         zones = (yaml.safe_load((ROOT / "config" / "zones_co.yml").read_text(encoding="utf-8"))
                  or {}).get("zones") or []
@@ -94,11 +97,18 @@ def _rewrite_source_terms(path: Path, rewritten: Path,
 
 def run(address: str, terms: list[str], out_dir: Path,
         min_delay: float = 1.0, max_delay: float = 3.0,
-        country: str | None = None) -> tuple[Path, Path]:
-    if min_delay < 0 or max_delay < min_delay:
-        raise ValueError("delays must satisfy 0 <= min_delay <= max_delay")
-    profile = _profile(country) if country else None
-    zone = _zone(address, country)
+        country: str | None = None,
+        locations_file: str | Path | None = None) -> tuple[Path, Path]:
+    if (not math.isfinite(min_delay) or not math.isfinite(max_delay)
+            or min_delay < 0 or max_delay < min_delay):
+        raise ValueError("delays must satisfy finite 0 <= min_delay <= max_delay")
+    if locations_file is not None and not country:
+        raise ValueError("locations_file requires a country")
+    locations_path = Path(locations_file).resolve() if locations_file is not None else None
+    locations_digest = (hashlib.sha256(locations_path.read_bytes()).hexdigest()
+                        if locations_path is not None else None)
+    profile = _profile(country, locations_file) if country else None
+    zone = _zone(address, country, locations_file)
     lat, lng = float(zone["lat"]), float(zone["lng"])
     ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -123,6 +133,7 @@ def run(address: str, terms: list[str], out_dir: Path,
     stores: dict[str, dict] = {}
     term_results: list[dict] = []
     n_rows = 0
+    returned_product_count = 0
     if profile:
         logger.info("search collection: country=%s address=%s (%.4f,%.4f) terms=%d",
                     profile["country_code"], address, lat, lng, len(terms))
@@ -147,6 +158,10 @@ def run(address: str, terms: list[str], out_dir: Path,
             else:
                 resp = search(term, lat, lng, client=client)
             validate_search_payload(resp, term)
+            for group in resp["stores"]:
+                if (not isinstance(group, dict)
+                        or not isinstance(group.get("products", []), (list, type(None)))):
+                    raise RuntimeError(f"search {term!r} returned malformed store/product groups; stop and inspect the response")
             # Persist the raw response so any field can be re-parsed later without re-scraping.
             _safe = "".join(c if c.isalnum() else "_" for c in term).strip("_") or "q"
             raw_name = f"{i:03d}_{_safe}.json.gz" if profile else f"{_safe}.json.gz"
@@ -154,6 +169,7 @@ def run(address: str, terms: list[str], out_dir: Path,
                 json.dump(resp, rf, ensure_ascii=False)
             term_rows = 0
             for meta, prod in iter_products(resp):
+                returned_product_count += 1
                 source_url = search_url if profile else f"unified-search?query={term}"
                 row = search_product_to_row(meta, prod, term, source_url)
                 if not row:
@@ -163,7 +179,7 @@ def run(address: str, terms: list[str], out_dir: Path,
                     row.update({
                         "country_code": profile["country_code"],
                         "country": profile["name"],
-                        "city": profile["city"],
+                        "city": zone.get("city", profile["city"]),
                         "currency": profile["currency"],
                         "price_local": row.get("price_cop"),
                         "original_price_local": row.get("original_price_cop"),
@@ -212,8 +228,13 @@ def run(address: str, terms: list[str], out_dir: Path,
         for st in sorted(stores.values(), key=lambda s: s["n_products"], reverse=True):
             sw.writerow({**st, "terms": "|".join(sorted(st["terms"]))})
 
-    if not seen or not stores:
-        raise RuntimeError(f"search collection for {address} returned no usable products")
+    if not seen and returned_product_count:
+        raise RuntimeError(f"search collection for {address} returned products but none had usable identifiers; stop and inspect the response")
+    if not seen:
+        logger.warning("No listings returned for %s; preserving the completed empty search and its raw evidence", address)
+    if (locations_path is not None
+            and hashlib.sha256(locations_path.read_bytes()).hexdigest() != locations_digest):
+        raise RuntimeError("locations file changed during collection; rerun after edits finish")
     items_work.replace(items_path)
     stores_work.replace(stores_path)
     raw_work.replace(raw_dir)
@@ -224,6 +245,9 @@ def run(address: str, terms: list[str], out_dir: Path,
             "complete": True,
             "country_code": profile["country_code"],
             "address": address,
+            "city": zone.get("city", profile["city"]),
+            "address_label": zone.get("address", ""),
+            "district": zone.get("district", ""),
             "latitude": lat,
             "longitude": lng,
             "currency": profile["currency"],
@@ -235,9 +259,16 @@ def run(address: str, terms: list[str], out_dir: Path,
             "raw_directory": raw_dir.name,
             "n_items": n_rows,
             "n_stores": len(stores),
+            "collection_outcome": "listings_returned" if seen else "no_results",
+            "warnings": ([] if seen else ["No listings returned for this location and query plan; this does not establish product absence or confirm delivery coverage."]),
             "term_results": term_results,
             "timestamp_utc": ts,
         }
+        if locations_file is not None:
+            manifest["locations_file"] = {
+                "path": str(locations_path),
+                "sha256": locations_digest,
+            }
         with open(manifest_work, "w", encoding="utf-8") as mf:
             json.dump(manifest, mf, ensure_ascii=False, indent=2)
             mf.write("\n")
@@ -253,16 +284,21 @@ def main() -> int:
     p.add_argument("--country", choices=["ar", "co", "pe", "mx"], default=None,
                    help="collection country; omit for the earlier Colombia config")
     p.add_argument("--address", required=True, help="zone slug from the selected config")
+    p.add_argument("--locations-file", type=Path,
+                   help="CSV or YAML delivery locations; requires --country")
     p.add_argument("--terms", default=None, help="comma-separated override of the seed terms")
     p.add_argument("--out", default=None, help="output dir (default data/raw/<address>/)")
     p.add_argument("--min-delay", type=float, default=1.0, help="min seconds between term requests")
     p.add_argument("--max-delay", type=float, default=3.0, help="max seconds between term requests")
     a = p.parse_args()
+    if a.locations_file is not None and not a.country:
+        p.error("--locations-file requires --country")
     default_out = (ROOT / "data" / a.country / "raw" / a.address if a.country
                    else ROOT / "data" / "raw" / a.address)
     out_dir = Path(a.out) if a.out else default_out
     run(a.address, _terms(a.terms, a.country), out_dir,
-        min_delay=a.min_delay, max_delay=a.max_delay, country=a.country)
+        min_delay=a.min_delay, max_delay=a.max_delay, country=a.country,
+        locations_file=a.locations_file)
     return 0
 
 

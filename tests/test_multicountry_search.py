@@ -1,4 +1,5 @@
 import csv
+import hashlib
 import json
 
 import httpx
@@ -67,6 +68,56 @@ def test_study_collection_preserves_all_source_terms_and_manifest(tmp_path, monk
     assert manifest["items"] == items_path.name
     assert [entry["raw_file"] for entry in manifest["term_results"]] == [
         "001_vapeador.json.gz", "002_cigarrillos.json.gz"]
+
+
+def test_custom_location_reaches_request_rows_and_manifest(tmp_path, monkeypatch):
+    locations_file = tmp_path / "locations.csv"
+    locations_file.write_text("delivery locations test fixture\n", encoding="utf-8")
+    profile = {
+        "country_code": "mx", "name": "Mexico", "city": "Mexico City",
+        "currency": "MXN", "locale": "es-MX",
+        "services_url": "https://services.mxgrability.rappi.com",
+        "zones": [{"slug": "sample-puebla", "lat": 19.04, "lng": -98.20,
+                   "address": "Public landmark", "district": "Centro", "city": "Puebla"}],
+    }
+    profiles_requested = []
+    searches = []
+
+    def custom_profile(country, locations_file=None):
+        profiles_requested.append((country, locations_file))
+        return profile
+
+    def fake_search(term, lat, lng, **kwargs):
+        searches.append((term, lat, lng))
+        return _response()
+
+    monkeypatch.setattr(collector, "_profile", custom_profile)
+    monkeypatch.setattr(collector, "search", fake_search)
+    items_path, _ = collector.run(
+        "sample-puebla", ["cigarrillos"], tmp_path / "raw", country="mx",
+        min_delay=0, max_delay=0, locations_file=locations_file,
+    )
+    with open(items_path, encoding="utf-8-sig", newline="") as handle:
+        row = next(csv.DictReader(handle))
+    manifest_path = items_path.with_name(
+        items_path.name.replace("search_items_", "search_manifest_")).with_suffix(".json")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert profiles_requested == [("mx", locations_file), ("mx", locations_file)]
+    assert searches == [("cigarrillos", 19.04, -98.20)]
+    assert row["city"] == "Puebla"
+    assert manifest["city"] == "Puebla"
+    assert manifest["latitude"] == 19.04 and manifest["longitude"] == -98.20
+    assert manifest["address_label"] == "Public landmark"
+    assert manifest["locations_file"] == {
+        "path": str(locations_file.resolve()),
+        "sha256": hashlib.sha256(locations_file.read_bytes()).hexdigest(),
+    }
+
+
+def test_custom_locations_require_country(tmp_path):
+    with pytest.raises(ValueError, match="locations_file requires a country"):
+        collector.run("any-point", ["cigarrillos"], tmp_path,
+                      min_delay=0, max_delay=0, locations_file=tmp_path / "locations.csv")
 
 
 def test_sanitized_query_collisions_keep_both_raw_responses(tmp_path, monkeypatch):

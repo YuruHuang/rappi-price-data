@@ -43,8 +43,9 @@ BASE_COLUMNS = [*KEYS, "country", "city", "currency", "address", "district", "la
 
 
 def plan_country(country: str, addresses: list[str] | None = None,
-                 terms: list[str] | None = None) -> dict:
-    profile = load_study_profile(country, STUDY_CONFIG)
+                 terms: list[str] | None = None,
+                 locations_file: str | Path | None = None) -> dict:
+    profile = load_study_profile(country, STUDY_CONFIG, locations_file=locations_file)
     config = yaml.safe_load(CONFIG.read_text(encoding="utf-8"))
     if set(config["categories"]) != INCLUDED:
         raise ValueError("beverage categories must be water, ssb, alcohol")
@@ -62,15 +63,20 @@ def plan_country(country: str, addresses: list[str] | None = None,
     if not slugs or len(set(slugs)) != len(slugs) or set(slugs) - set(zones):
         raise ValueError(f"invalid or duplicate {country} location: {slugs}")
     complete = set(slugs) == set(zones) and queries == expected
-    return {
+    result = {
         "country_code": country, "country": profile["name"], "city": profile["city"],
         "currency": profile["currency"], "addresses": [zones[s] for s in slugs],
         "queries": queries, "requests": len(slugs) * len(queries),
-        "protocol_status": "full" if complete else "partial", "full_protocol": complete,
+        "protocol_status": "custom" if locations_file is not None else ("full" if complete else "partial"),
+        "full_protocol": complete and locations_file is None,
         "scope": "beverages", "config_version": config["version"],
         "search_url": f"{profile['services_url'].rstrip('/')}{STUDY_SEARCH_PATH}",
         "catalog_completeness": "unknown; search results may be capped",
     }
+    if locations_file is not None:
+        from rappi_co.locations import location_file_record
+        result["locations_file"] = location_file_record(locations_file)
+    return result
 
 
 def _read_csv(path: Path) -> list[dict]:
@@ -344,7 +350,8 @@ def export_country(plan: dict, sources: dict[str, Path], data_root: Path,
         parsed, diagnostics = replay_search(Path(sources[zone["slug"]]))
         for row in parsed:
             row.update({k: plan[k] for k in ("country_code", "country", "city", "currency")})
-            row.update(zone_slug=zone["slug"], address=zone["address"], district=zone["district"],
+            row.update(city=zone.get("city", plan["city"]),
+                       zone_slug=zone["slug"], address=zone["address"], district=zone["district"],
                        latitude=zone["lat"], longitude=zone["lng"])
         raw.extend(parsed)
         query_rows.extend({**d, "country_code": plan["country_code"], "zone_slug": zone["slug"]}
@@ -513,18 +520,21 @@ def definition(column: str) -> str:
 
 def run_country(country: str, addresses=None, terms=None, *, skip_collect=False,
                 collect_only=False, data_root: Path | None = None, min_delay=1.0,
-                max_delay=3.0, details_path: Path | None = None) -> dict:
+                max_delay=3.0, details_path: Path | None = None,
+                locations_file: str | Path | None = None) -> dict:
     root = Path(data_root) if data_root is not None else ROOT / "data" / "beverages"
-    plan = plan_country(country, addresses, terms)
+    plan = plan_country(country, addresses, terms, locations_file=locations_file)
     sources = {}
     for zone in plan["addresses"]:
         slug = zone["slug"]
         directory = root / country / "raw" / slug
         if skip_collect:
-            source = _complete_source(directory, country, slug, plan["queries"])
+            source = _complete_source(directory, country, slug, plan["queries"],
+                                      **({"expected_zone": zone} if locations_file is not None else {}))
         else:
             source, _ = run_search(slug, plan["queries"], directory, country=country,
-                                   min_delay=min_delay, max_delay=max_delay)
+                                   min_delay=min_delay, max_delay=max_delay,
+                                   **({"locations_file": locations_file} if locations_file is not None else {}))
         sources[slug] = source
     result = {"plan": plan, "sources": {s: str(p) for s, p in sources.items()}}
     if not collect_only:
@@ -538,6 +548,8 @@ def main() -> int:
     group.add_argument("--country", choices=COUNTRIES, action="append")
     group.add_argument("--all-countries", action="store_true")
     parser.add_argument("--address", action="append")
+    parser.add_argument("--locations-file", type=Path,
+                        help="CSV, TSV, XLSX, JSON, or YAML delivery points; any positive number")
     parser.add_argument("--terms", help="comma-separated partial-protocol query override")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--skip-collect", action="store_true")
@@ -552,6 +564,9 @@ def main() -> int:
         parser.error("duplicate countries are not allowed")
     if args.address and len(countries) != 1:
         parser.error("--address requires one country")
+    if args.locations_file is not None:
+        from rappi_co.locations import validate_location_scope
+        validate_location_scope(args.locations_file, countries)
     if args.skip_collect and args.collect_only:
         parser.error("--skip-collect and --collect-only cannot be combined")
     if args.details and (len(countries) != 1 or not args.skip_collect or args.collect_only):
@@ -560,12 +575,12 @@ def main() -> int:
     result = []
     for code in countries:
         if args.dry_run:
-            result.append(plan_country(code, args.address, terms))
+            result.append(plan_country(code, args.address, terms, locations_file=args.locations_file))
         else:
             result.append(run_country(code, args.address, terms, skip_collect=args.skip_collect,
                                      collect_only=args.collect_only, data_root=args.data_root,
                                      min_delay=args.min_delay, max_delay=args.max_delay,
-                                     details_path=args.details))
+                                     details_path=args.details, locations_file=args.locations_file))
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 

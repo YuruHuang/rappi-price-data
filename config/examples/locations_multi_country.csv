@@ -1,0 +1,9 @@
+country_code,slug,lat,lng,address,district,city
+ar,centro-galerias-pacifico,-34.599250,-58.374779,"Av. Córdoba 550, C1054 CABA","San Nicolás, Comuna 1",Buenos Aires
+ar,palermo-alto-palermo,-34.588402,-58.410737,"Av. Santa Fe 3253, CABA","Palermo, Comuna 14",Buenos Aires
+co,centro-plaza-bolivar,4.598060,-74.076090,"Carrera 7 #10-47, 111711 Bogotá D.C.",La Candelaria,Bogotá
+co,chapinero-andino,4.666950,-74.053126,"Carrera 11 #82-71, 110221 Bogotá D.C.",Chapinero,Bogotá
+pe,miraflores-larcomar,-12.132220,-77.030550,"Centro Comercial Larcomar, Malecón de la Reserva 610, Miraflores 15074, Lima",Miraflores,Lima
+pe,independencia-megaplaza,-11.994440,-77.061150,"Centro Comercial MegaPlaza, Av. Alfredo Mendiola 3698, Independencia 15311, Lima",Independencia,Lima
+mx,centro-bellas-artes,19.435470,-99.141280,"Palacio de Bellas Artes, Av. Juárez s/n, Centro, 06050 Ciudad de México",Cuauhtémoc,Mexico City
+mx,coyoacan-perisur,19.304197,-99.190284,"Centro Comercial Perisur, Anillo Periférico Sur 4690, 04500 Ciudad de México",Coyoacán,Mexico City

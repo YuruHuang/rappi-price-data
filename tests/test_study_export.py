@@ -78,6 +78,99 @@ def test_export_uses_one_microsecond_token_and_refuses_existing_targets(tmp_path
     assert not [path for path in destination.iterdir() if path.name.startswith(".")]
 
 
+def test_export_preserves_custom_location_city_and_coordinates(tmp_path, monkeypatch):
+    slug = _minimal_export_inputs(tmp_path)
+    locations_file = tmp_path / "delivery_points.csv"
+    locations_file.write_text("locations test fixture\n", encoding="utf-8")
+    profile = load_study_profile("ar", Path("config/study"))
+    profile["zones"] = [{
+        "slug": slug, "lat": -31.42, "lng": -64.18,
+        "address": "Public landmark", "district": "Centro", "city": "Cordoba",
+    }]
+    calls = []
+
+    def custom_profile(country, config_dir, locations_file=None):
+        calls.append((country, locations_file))
+        return profile
+
+    monkeypatch.setattr(study_deliverable, "load_study_profile", custom_profile)
+    result = run_export("ar", addresses=[slug], data_root=tmp_path,
+                        locations_file=locations_file)
+    for artifact in ("items_csv", "locations_csv"):
+        with open(result[artifact], encoding="utf-8-sig", newline="") as handle:
+            row = next(csv.DictReader(handle))
+        assert row["city"] == "Cordoba"
+        assert row["address"] == "Public landmark"
+        assert float(row["latitude"]) == -31.42
+        assert float(row["longitude"]) == -64.18
+    assert calls == [("ar", locations_file)]
+
+
+@pytest.mark.parametrize("has_irrelevant_listing", [False, True])
+def test_export_zero_target_products_preserves_schema_and_all_custom_locations(
+        tmp_path, has_irrelevant_listing):
+    locations_file = tmp_path / "delivery_points.csv"
+    locations_file.write_text(
+        "country_code,slug,lat,lng,address,district,city\n"
+        "co,point-a,4.60,-74.08,Public landmark A,Centro,Bogota\n"
+        "co,point-b,4.67,-74.05,Public landmark B,North,Bogota\n"
+        "co,point-c,6.25,-75.56,Public landmark C,Centro,Medellin\n",
+        encoding="utf-8",
+    )
+    sources, classifications = {}, {}
+    for slug in ("point-a", "point-b", "point-c"):
+        raw = tmp_path / "co" / "raw" / slug / "search_items_20260101_000000.csv"
+        classified = tmp_path / "co" / "processed" / slug / "classifications.csv"
+        raw.parent.mkdir(parents=True)
+        classified.parent.mkdir(parents=True)
+        with raw.open("w", encoding="utf-8-sig", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=["store_id", "product_id", "name"])
+            writer.writeheader()
+            if has_irrelevant_listing:
+                writer.writerow({"store_id": "s1", "product_id": "p1", "name": "Notebook"})
+        with classified.open("w", encoding="utf-8-sig", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=[
+                "store_id", "product_id", *study_deliverable.CLASSIFICATION_COLS])
+            writer.writeheader()
+            if has_irrelevant_listing:
+                writer.writerow({"store_id": "s1", "product_id": "p1",
+                                 "primary_class": "non_tobacco", "product_type": "unknown",
+                                 "confidence": "high", "method": "test", "rationale": "irrelevant"})
+        sources[slug] = raw
+        classifications[slug] = classified
+
+    result = run_export(
+        "co", data_root=tmp_path, sources=sources,
+        classification_paths=classifications, locations_file=locations_file,
+        run_token="20260101_010203_123456",
+    )
+    assert result["n_observations"] == 0
+    assert result["n_store_observations"] == 0
+    for artifact, columns in (("items_csv", ITEM_COLS), ("stores_csv", STORE_COLS)):
+        with open(result[artifact], encoding="utf-8-sig", newline="") as handle:
+            reader = csv.DictReader(handle)
+            assert reader.fieldnames == columns
+            assert list(reader) == []
+    with open(result["locations_csv"], encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        assert reader.fieldnames == LOCATION_COLS
+        locations = list(reader)
+    assert [row["zone_slug"] for row in locations] == ["point-a", "point-b", "point-c"]
+    assert [row["city"] for row in locations] == ["Bogota", "Bogota", "Medellin"]
+    assert all(row["n_tobacco_observations"] == "0" for row in locations)
+    book = load_workbook(result["xlsx"], read_only=True)
+    assert book.sheetnames == ["items", "stores", "locations", "summary", "data_dictionary"]
+    assert book["items"].max_row == 1
+    assert book["stores"].max_row == 1
+    assert book["locations"].max_row == 4
+    summary = dict(book["summary"].iter_rows(min_row=2, values_only=True))
+    assert summary["locations"] == 3
+    assert summary["tobacco_observations"] == 0
+    assert summary["store_location_observations"] == 0
+    assert all(value == 0 for key, value in summary.items() if key.startswith("products_"))
+    book.close()
+
+
 def test_export_rolls_back_partial_finalization_and_cleans_staging(
         tmp_path, monkeypatch):
     slug = _minimal_export_inputs(tmp_path)

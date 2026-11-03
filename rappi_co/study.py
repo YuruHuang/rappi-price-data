@@ -125,6 +125,8 @@ def _write_processed_manifest(country: str, plan: dict, sources: dict[str, str],
         "queries": list(plan["queries"]),
         "query_count": len(plan["queries"]),
         "request_count": plan["requests"],
+        "location_records": plan["addresses"],
+        "locations_file": plan.get("locations_file"),
         "inputs": {
             "sources": source_records,
             "classifications": classification_records,
@@ -214,7 +216,7 @@ def _complete_raw_archive(raw_directory: Path, manifest: dict,
 
 
 def _complete_source(directory: Path, country: str, address: str,
-                     queries: list[str]) -> Path:
+                     queries: list[str], expected_zone: dict | None = None) -> Path:
     manifests = sorted(directory.glob("search_manifest_*.json"), reverse=True)
     for path in manifests:
         try:
@@ -228,6 +230,16 @@ def _complete_source(directory: Path, country: str, address: str,
                 or manifest.get("address") != address
                 or manifest.get("queries") != queries):
             continue
+        if expected_zone is not None:
+            try:
+                same_coordinates = (
+                    abs(float(manifest["latitude"]) - float(expected_zone["lat"])) < 1e-9
+                    and abs(float(manifest["longitude"]) - float(expected_zone["lng"])) < 1e-9
+                )
+            except (KeyError, TypeError, ValueError):
+                same_coordinates = False
+            if not same_coordinates:
+                continue
         match = re.fullmatch(r"search_manifest_(\d{8}_\d{6})\.json", path.name)
         if not match:
             continue
@@ -253,8 +265,9 @@ def _complete_source(directory: Path, country: str, address: str,
 
 
 def plan_country(country: str, addresses: list[str] | None = None,
-                 terms: list[str] | None = None) -> dict:
-    profile = load_study_profile(country, STUDY_CONFIG)
+                 terms: list[str] | None = None,
+                 locations_file: str | Path | None = None) -> dict:
+    profile = load_study_profile(country, STUDY_CONFIG, locations_file=locations_file)
     configured = {zone["slug"]: zone for zone in profile["zones"]}
     slugs = addresses or list(configured)
     if len(slugs) != len(set(slugs)):
@@ -266,7 +279,7 @@ def plan_country(country: str, addresses: list[str] | None = None,
     full_protocol = (len(slugs) == len(configured)
                      and set(slugs) == set(configured)
                      and queries == study_queries(profile))
-    return {
+    result = {
         "country_code": country,
         "country": profile["name"],
         "city": profile["city"],
@@ -274,30 +287,37 @@ def plan_country(country: str, addresses: list[str] | None = None,
         "addresses": [configured[slug] for slug in slugs],
         "queries": queries,
         "requests": len(slugs) * len(queries),
-        "protocol_status": "full" if full_protocol else "partial",
-        "full_protocol": full_protocol,
+        "protocol_status": "custom" if locations_file is not None else ("full" if full_protocol else "partial"),
+        "full_protocol": full_protocol and locations_file is None,
     }
+    if locations_file is not None:
+        from rappi_co.locations import location_file_record
+        result["locations_file"] = location_file_record(locations_file)
+    return result
 
 
 def run_country(country: str, addresses: list[str] | None = None,
                 terms: list[str] | None = None, skip_collect: bool = False,
                 collect_only: bool = False, min_delay: float = 1.0,
-                max_delay: float = 3.0, data_root: str | Path | None = None) -> dict:
+                max_delay: float = 3.0, data_root: str | Path | None = None,
+                locations_file: str | Path | None = None) -> dict:
     data_root = Path(data_root) if data_root else ROOT / "data"
-    plan = plan_country(country, addresses, terms)
+    plan = plan_country(country, addresses, terms, locations_file=locations_file)
     run_token = _run_token()
     diagnostic_root = (data_root / country / "processed" / "diagnostic" / run_token
-                       if not plan["full_protocol"] else None)
+                       if plan["protocol_status"] == "partial" else None)
     sources = {}
     classifications = {}
     for zone in plan["addresses"]:
         slug = zone["slug"]
         raw_dir = data_root / country / "raw" / slug
         if skip_collect:
-            source = _complete_source(raw_dir, country, slug, plan["queries"])
+            source = _complete_source(raw_dir, country, slug, plan["queries"],
+                                      **({"expected_zone": zone} if locations_file is not None else {}))
         else:
             source, _ = run_search(slug, plan["queries"], raw_dir, country=country,
-                                   min_delay=min_delay, max_delay=max_delay)
+                                   min_delay=min_delay, max_delay=max_delay,
+                                   **({"locations_file": locations_file} if locations_file is not None else {}))
         sources[slug] = str(source)
         if not collect_only:
             if diagnostic_root is not None:
@@ -318,6 +338,8 @@ def run_country(country: str, addresses: list[str] | None = None,
         }
         if diagnostic_root is not None:
             export_kwargs["out_dir"] = str(diagnostic_root / "deliverable")
+        if locations_file is not None:
+            export_kwargs["locations_file"] = locations_file
         deliverable = run_export(country, **export_kwargs)
         processed_manifest = _write_processed_manifest(
             country, plan, sources, classifications, deliverable, data_root,
@@ -336,6 +358,8 @@ def main() -> int:
     group.add_argument("--all-countries", action="store_true")
     parser.add_argument("--address", action="append",
                         help="zone slug; repeatable and valid with one country only")
+    parser.add_argument("--locations-file", type=Path,
+                        help="CSV, TSV, XLSX, JSON, or YAML delivery points; any positive number")
     parser.add_argument("--terms", default=None, help="comma-separated query override")
     parser.add_argument("--dry-run", action="store_true",
                         help="validate and print addresses, queries, and request counts")
@@ -353,6 +377,9 @@ def main() -> int:
         parser.error("each --country may be supplied only once")
     if args.address and len(countries) != 1:
         parser.error("--address requires exactly one --country")
+    if args.locations_file is not None:
+        from rappi_co.locations import validate_location_scope
+        validate_location_scope(args.locations_file, countries)
     if args.skip_collect and args.collect_only:
         parser.error("--skip-collect and --collect-only cannot be used together")
     terms = ([term.strip() for term in args.terms.split(",") if term.strip()]
@@ -360,12 +387,12 @@ def main() -> int:
     if args.terms and not terms:
         parser.error("--terms must contain at least one query")
     if args.dry_run:
-        result = [plan_country(code, args.address, terms) for code in countries]
+        result = [plan_country(code, args.address, terms, locations_file=args.locations_file) for code in countries]
     else:
         result = [run_country(
             code, addresses=args.address, terms=terms, skip_collect=args.skip_collect,
             collect_only=args.collect_only, min_delay=args.min_delay, max_delay=args.max_delay,
-            data_root=args.data_root,
+            data_root=args.data_root, locations_file=args.locations_file,
         ) for code in countries]
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0

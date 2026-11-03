@@ -107,8 +107,8 @@ def replay_search(source: Path) -> tuple[list[dict], list[dict]]:
             [entry.get("query") for entry in results] != queries):
         raise ValueError("search manifest query and archive records do not match")
     if (isinstance(manifest.get("n_items"), bool) or not isinstance(manifest.get("n_items"), int)
-            or manifest["n_items"] < 1):
-        raise ValueError("search manifest must provide a positive integer item count")
+            or manifest["n_items"] < 0):
+        raise ValueError("search manifest must provide a nonnegative integer item count")
     if "request_count" in manifest and (
             isinstance(manifest["request_count"], bool) or manifest["request_count"] != len(queries)):
         raise ValueError("search manifest request count does not match its queries")

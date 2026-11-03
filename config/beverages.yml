@@ -1,8 +1,6 @@
 # Discovery seeds, not rankings or claims of market availability.
 # Diet/zero, juice, dairy, and concentrate candidates are retained for explicit review.
-# Version 2 adds country-specific terms tested in an October 2026 pilot. They
-# expand discovery for future collections only; they do not alter the archived release.
-version: 2
+version: 1
 categories:
   water:
     - agua
@@ -34,10 +32,10 @@ categories:
     - coctel
     - sidra
 regional_terms:
-  ar: [soda, agua de mesa, vino tinto, fernet, cerveza sin alcohol, bebida lactea, limonada, cafe frio, vermut, aperitivo]
-  co: [agua de mesa, avena bebida, aguardiente, cerveza sin alcohol, bebida lactea, bebida de malta, limonada, cafe frio, hard seltzer]
-  pe: [agua de mesa, chicha morada, pisco, cerveza sin alcohol, bebida lactea, limonada, cafe frio, hard seltzer, bebida preparada]
-  mx: [agua purificada, agua fresca, bebida rehidratante, mezcal, cerveza sin alcohol, bebida lactea, horchata, cafe frio, pulque, hard seltzer]
+  ar: [soda, agua de mesa, vino tinto, fernet, cerveza sin alcohol]
+  co: [agua de mesa, avena bebida, aguardiente, cerveza sin alcohol]
+  pe: [agua de mesa, chicha morada, pisco, cerveza sin alcohol]
+  mx: [agua purificada, agua fresca, bebida rehidratante, mezcal, cerveza sin alcohol]
 brand_queries:
   ar:
     water: [agua Villavicencio, agua Eco de los Andes, agua Glaciar]
