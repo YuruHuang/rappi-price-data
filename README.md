@@ -21,6 +21,16 @@ For one product scope, use `--scope tobacco` or `--scope beverages`; omit term o
 
 A beverage-only run writes `country_products/<code>_beverages.xlsx` with three clean product tabs: **SSBs**, **Water**, and **Alcohol**. It uses the same column labels and formatting as the published country workbooks. The detailed review, comparison, coverage, and source files remain under `source/`. All three tabs are present even when one category has no returned listings. The SSB tab includes the saved screening cohort; it does not confirm added sugar for every row.
 
+All three scopes now use the published country product formatting automatically:
+
+| Scope | Final workbook tabs |
+| --- | --- |
+| `--scope tobacco` | Technical specifications; Tobacco products |
+| `--scope beverages` | SSBs; Water; Alcohol |
+| `--scope both` | Technical specifications; Tobacco products; SSBs; Water; Alcohol |
+
+The clean output uses readable field names, category colors, numeric formats, filters, frozen headers, and hidden evidence columns. Detailed source and diagnostic files remain separate.
+
 To format an existing beverage-only run without making new requests:
 
 ```sh
@@ -28,6 +38,14 @@ python -m rappi_co.export.beverage_workbook --run-dir data/updates/co_demo_02
 ```
 
 This writes `country_products/co_beverages_clean.xlsx` and a matching JSON manifest, preserving the existing workbook and saved data. Use `--out PATH.xlsx` to choose another new filename. Formatting does not add products that your search plan did not return.
+
+The general saved-run formatter also supports tobacco-only and combined runs:
+
+```sh
+python -m rappi_co.export.product_workbook --run-dir data/updates/YOUR_RUN
+```
+
+It writes a new `*_clean.xlsx` beside the existing output. For a combined run with several countries, add `--country co` to choose one country; otherwise it formats every country in that saved run.
 
 ### Reference locations and shared default terms
 

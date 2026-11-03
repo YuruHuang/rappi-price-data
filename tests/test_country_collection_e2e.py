@@ -11,6 +11,7 @@ import pytest
 from rappi_co import release_update
 from rappi_co import run as country_run
 from rappi_co.collect import search as collector
+from rappi_co.export.country_product_workbooks import DISPLAY, FIELD_SETS, TECHNICAL_LABELS
 
 
 def _locations_file(tmp_path, include_peru):
@@ -56,7 +57,14 @@ def _worksheet_rows(book, sheet):
     rows = book[sheet].iter_rows(values_only=True)
     headers = next(rows)
     assert len(headers) == len(set(headers)), "exported headers must not duplicate country_code"
-    return [dict(zip(headers, values)) for values in rows]
+    assert headers == tuple(DISPLAY[field] for field in FIELD_SETS[sheet])
+    return [dict(zip(FIELD_SETS[sheet], values)) for values in rows]
+
+
+def _technical(book):
+    rows = book['Technical specifications'].iter_rows(values_only=True)
+    assert next(rows) == TECHNICAL_LABELS
+    return {values[1]: values[2] for values in rows if values[0] == 'Overview'}
 
 
 @pytest.mark.parametrize("include_peru", [False, True], ids=["one-country-three-points", "two-countries"])
@@ -112,7 +120,7 @@ def test_custom_locations_real_pipeline_to_verified_country_workbooks(tmp_path, 
         book = load_workbook(out / "country_products" / f"{name}.xlsx", read_only=True, data_only=False)
         try:
             assert book.sheetnames == list(release_update.SHEETS)
-            technical = dict(list(book["Technical specifications"].iter_rows(values_only=True))[1:])
+            technical = _technical(book)
             assert technical["Delivery locations"] == str(len(expected_locations))
             for sheet in release_update.SHEETS[1:]:
                 rows = _worksheet_rows(book, sheet)
@@ -140,6 +148,13 @@ def test_custom_locations_real_pipeline_to_verified_country_workbooks(tmp_path, 
         assert record["longitude"] == location["lng"]
         assert record["city"] == location["city"]
         assert record["complete"] is True
+    if include_peru:
+        from rappi_co.export.product_workbook import export_saved_run
+        formatted = export_saved_run(out, country='pe')
+        assert len(formatted) == 1
+        assert formatted[0]['country_code'] == 'pe'
+        assert (out / 'country_products/pe_products_clean.xlsx').is_file()
+        assert not (out / 'country_products/co_products_clean.xlsx').exists()
 
 
 @pytest.mark.parametrize("empty_mode", ["all", "one"], ids=["all-locations-empty", "one-location-empty"])
@@ -167,7 +182,7 @@ def test_valid_empty_searches_preserve_locations_and_complete_country_package(tm
     book = load_workbook(out / "country_products" / "colombia.xlsx", read_only=True, data_only=False)
     try:
         assert book.sheetnames == list(release_update.SHEETS)
-        technical = dict(list(book["Technical specifications"].iter_rows(values_only=True))[1:])
+        technical = _technical(book)
         assert technical["Delivery locations"] == "3"
         assert technical["Collection dates"]
         assert len(technical["Collection dates"].split(", ")[0]) == 8

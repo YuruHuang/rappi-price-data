@@ -17,13 +17,10 @@ import hashlib
 import json
 import math
 import re
-import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
-from openpyxl import Workbook, load_workbook
-from openpyxl.cell import WriteOnlyCell
-from openpyxl.utils import get_column_letter
+from openpyxl import load_workbook
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -99,23 +96,6 @@ def _manifest_output(manifest: dict, key: str, root: Path) -> Path:
     return path
 
 
-def _write_sheet(book: Workbook, title: str, headers: list[str], rows: list[dict]) -> None:
-    sheet = book.create_sheet(title)
-    sheet.freeze_panes = "A2"
-    sheet.append(headers)
-    for row in rows:
-        values = []
-        for header in headers:
-            value = row.get(header)
-            cell = WriteOnlyCell(sheet, value)
-            if isinstance(value, str):
-                cell.data_type = "s"
-                cell.number_format = "@"
-            values.append(cell)
-        sheet.append(values)
-    sheet.auto_filter.ref = f"A1:{get_column_letter(len(headers))}{len(rows) + 1}"
-
-
 def _technical_rows(code: str, tobacco_rows: list[dict], audit_rows: list[dict], candidates: list[dict],
                     locations: list[dict] | None = None, cities: list[str] | None = None,
                     collection_dates: list[str] | None = None) -> list[list[str]]:
@@ -138,41 +118,12 @@ def _technical_rows(code: str, tobacco_rows: list[dict], audit_rows: list[dict],
     ]
 
 
-def _validate_workbook(path: Path, expected: dict[str, tuple[list[str], list[dict]]]) -> None:
-    with zipfile.ZipFile(path) as archive:
-        if archive.testzip() is not None:
-            raise ValueError(f"corrupt workbook: {path}")
-    book = load_workbook(path, read_only=True, data_only=False)
-    try:
-        if book.sheetnames != list(SHEETS):
-            raise ValueError(f"unexpected sheet order: {path}")
-        for name, (headers, rows) in expected.items():
-            iterator = book[name].iter_rows(values_only=False)
-            found_headers = [cell.value for cell in next(iterator)]
-            if found_headers != headers:
-                raise ValueError(f"header mismatch: {path}/{name}")
-            found = list(iterator)
-            if len(found) != len(rows):
-                raise ValueError(f"row-count mismatch: {path}/{name}")
-            for cells, source in zip(found, rows, strict=True):
-                if any(cell.data_type in {"f", "e"} for cell in cells):
-                    raise ValueError(f"formula or error in output: {path}/{name}")
-                for header, cell in zip(headers, cells, strict=True):
-                    # OOXML stores an empty text cell as a blank; openpyxl
-                    # correctly reads it back as None rather than CSV's "".
-                    expected_value = source.get(header)
-                    if expected_value == "":
-                        expected_value = None
-                    if cell.value != expected_value:
-                        raise ValueError(f"output value differs from source: {path}/{name}/{header}")
-    finally:
-        book.close()
-
-
 def _build_country(code: str, tobacco_manifest_path: Path, tobacco_root: Path,
                    beverage_manifest_path: Path, beverage_root: Path, destination: Path) -> dict:
-    tobacco_manifest = json.loads(tobacco_manifest_path.read_text(encoding="utf-8"))
-    beverage_manifest = json.loads(beverage_manifest_path.read_text(encoding="utf-8"))
+    tobacco_manifest_bytes = tobacco_manifest_path.read_bytes()
+    beverage_manifest_bytes = beverage_manifest_path.read_bytes()
+    tobacco_manifest = json.loads(tobacco_manifest_bytes)
+    beverage_manifest = json.loads(beverage_manifest_bytes)
     if tobacco_manifest.get("country_code") != code or beverage_manifest.get("plan", {}).get("country_code") != code:
         raise ValueError(f"wrong-country source manifest: {code}")
     if beverage_manifest.get("complete") is not True:
@@ -180,9 +131,9 @@ def _build_country(code: str, tobacco_manifest_path: Path, tobacco_root: Path,
     tobacco_book = _manifest_output(tobacco_manifest, "xlsx", tobacco_root)
     audit_path = _manifest_output(beverage_manifest, "audit_csv", beverage_root)
     candidates_path = _manifest_output(beverage_manifest, "ssb_candidates_csv", beverage_root)
-    tobacco_headers, tobacco_rows = _sheet(tobacco_book, "items")
-    audit_headers, audit_rows = _csv(audit_path)
-    candidate_headers, candidates = _csv(candidates_path)
+    _, tobacco_rows = _sheet(tobacco_book, "items")
+    _, audit_rows = _csv(audit_path)
+    _, candidates = _csv(candidates_path)
     for label, rows in (("tobacco", tobacco_rows), ("beverage audit", audit_rows), ("SSB candidates", candidates)):
         identities = [_identity(row, f"{code}/{label}") for row in rows]
         if len(identities) != len(set(identities)):
@@ -190,6 +141,11 @@ def _build_country(code: str, tobacco_manifest_path: Path, tobacco_root: Path,
     audit_ids = {_identity(row, f"{code}/beverage audit") for row in audit_rows}
     if not {_identity(row, f"{code}/SSB candidates") for row in candidates}.issubset(audit_ids):
         raise ValueError(f"SSB candidates are not an audit subset: {code}")
+    audit_by_key = {_identity(row, f"{code}/beverage audit"): row for row in audit_rows}
+    for row in candidates:
+        original = audit_by_key[_identity(row, f"{code}/SSB candidates")]
+        if any(value != original.get(field) for field, value in row.items() if field != 'ssb_candidate_status'):
+            raise ValueError(f'SSB candidate content differs from its audit observation: {code}')
     water = [row for row in audit_rows if row.get("beverage_category") == "water"]
     alcohol = [row for row in audit_rows if row.get("beverage_category") == "alcohol"]
     locations_by_slug = {}
@@ -208,9 +164,6 @@ def _build_country(code: str, tobacco_manifest_path: Path, tobacco_root: Path,
         cities = sorted({str(city) for city in (tobacco_manifest.get("city"),
                          beverage_manifest.get("plan", {}).get("city")) if city})
     final = destination / f"{COUNTRY_NAMES[code].lower().replace(' ', '_')}.xlsx"
-    book = Workbook(write_only=True)
-    book.properties.creator = "Rappi product study"
-    book.properties.title = f"Rappi product listings — {COUNTRY_NAMES[code]}"
     # Empty successful searches have no product row on which to store a date.
     # Their exact saved source filenames still carry the collection timestamp.
     source_groups = [*(tobacco_manifest.get("inputs", {}).get("sources", {}).values()),
@@ -225,22 +178,36 @@ def _build_country(code: str, tobacco_manifest_path: Path, tobacco_root: Path,
                 collection_dates.add(match.group(1))
     technical_rows = _technical_rows(code, tobacco_rows, audit_rows, candidates, locations, cities,
                                      sorted(collection_dates))
-    technical = book.create_sheet(SHEETS[0])
-    technical.freeze_panes = "A2"
-    technical.append(["Item", "Description"])
-    for row in technical_rows:
-        technical.append(row)
-    technical.auto_filter.ref = f"A1:B{len(technical_rows) + 1}"
-    _write_sheet(book, "Tobacco products", tobacco_headers, tobacco_rows)
-    _write_sheet(book, "SSBs", candidate_headers, candidates)
-    _write_sheet(book, "Water", audit_headers, water)
-    _write_sheet(book, "Alcohol", audit_headers, alcohol)
-    book.save(final)
-    _validate_workbook(final, {
-        "Tobacco products": (tobacco_headers, tobacco_rows), "SSBs": (candidate_headers, candidates),
-        "Water": (audit_headers, water), "Alcohol": (audit_headers, alcohol),
-    })
-    return {"country_code": code, "file": _record(final), "rows": {
+    from rappi_co.export.integrated_deliverable import canonical_row, observation_key
+    from rappi_co.export.product_workbook import (
+        technical_specifications, tobacco_tables, write_product_workbook,
+    )
+    tobacco_release = tobacco_manifest_path.stem.removeprefix('study_manifest_')
+    tables = tobacco_tables(tobacco_rows, code, tobacco_release,
+                            str(tobacco_book.relative_to(tobacco_root.resolve())))
+    tables.update({"SSBs": [], "Water": [], "Alcohol": []})
+    candidate_map = {observation_key(row): row for row in candidates}
+    beverage_release = beverage_manifest.get('run_id') or beverage_manifest_path.stem
+    for index, row in enumerate(audit_rows, 2):
+        if row['country_code'] != code:
+            raise ValueError(f'wrong-country beverage observation: {code}')
+        normalized = canonical_row(row, 'beverages', beverage_release,
+                                   str(audit_path.relative_to(beverage_root.resolve())), index, candidate_map)
+        name = {'SSB_candidates': 'SSBs', 'Water': 'Water', 'Alcohol': 'Alcohol'}.get(normalized['reporting_group'])
+        if name:
+            tables[name].append(normalized)
+    presentation = write_product_workbook(
+        final, COUNTRY_NAMES[code], tables,
+        technical=technical_specifications(technical_rows, tables, locations), replace=True,
+    )
+    for manifest, key, root in ((tobacco_manifest, 'xlsx', tobacco_root),
+                                (beverage_manifest, 'audit_csv', beverage_root),
+                                (beverage_manifest, 'ssb_candidates_csv', beverage_root)):
+        _manifest_output(manifest, key, root)
+    if (tobacco_manifest_path.read_bytes() != tobacco_manifest_bytes or
+            beverage_manifest_path.read_bytes() != beverage_manifest_bytes):
+        raise ValueError('Source manifest changed during country workbook export')
+    return {"country_code": code, "file": presentation['workbook'], "sheets": presentation['sheets'], "rows": {
         "tobacco": len(tobacco_rows), "ssb_candidates": len(candidates), "water": len(water), "alcohol": len(alcohol),
     }, "locations": locations or [], "cities": cities,
         "inputs": {"tobacco_manifest": _record(tobacco_manifest_path), "beverage_manifest": _record(beverage_manifest_path),

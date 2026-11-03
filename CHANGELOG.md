@@ -1,9 +1,11 @@
 # Changelog
 
-## Clean beverage workbooks
+## Clean country workbooks
 
 - Beverage-only country collections now write the clean `SSBs`, `Water`, and `Alcohol` tabs using the published country workbook's presentation, rather than copying the diagnostic workbook into `country_products/`.
 - Added an offline command to format a completed beverage run without collecting again. It verifies source hashes, identities, and the exact SSB candidate membership, and preserves review and comparison records in the source files.
+- Tobacco-only and combined collections now use the same published country formatter, with current-run technical specifications. Tobacco has two tabs, beverages have three, and combined runs have all five published tabs.
+- Added a general saved-run formatter for all three scopes, including moved run folders and empty category results.
 
 ## Unreleased
 

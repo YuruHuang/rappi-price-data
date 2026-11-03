@@ -3,7 +3,6 @@ import csv
 import hashlib
 import json
 
-from openpyxl import Workbook
 import pytest
 
 from rappi_co import run as country_run
@@ -113,45 +112,6 @@ def test_terms_file_is_loaded_for_selected_scope(tmp_path, capsys):
     assert report["planned_search_requests"] == 4
     assert report["input_files"][0]["sha256"] == hashlib.sha256(terms.read_bytes()).hexdigest()
     assert not output.exists()
-
-
-def test_tobacco_collection_copies_workbook_and_saves_inputs(
-        tmp_path, monkeypatch, capsys):
-    scope = "tobacco"
-    locations = _locations(tmp_path)
-    output = tmp_path / "collection"
-    book = tmp_path / "result.xlsx"
-    workbook = Workbook()
-    workbook.active.append(["product", "price"])
-    workbook.active.append(["Example", 100])
-    workbook.save(book)
-    calls = []
-
-    def fake_runner(country, **kwargs):
-        calls.append((country, kwargs))
-        return {"deliverable": {"xlsx": str(book)}}
-
-    runner = country_run.study if scope == "tobacco" else country_run.beverages
-    monkeypatch.setattr(runner, "run_country", fake_runner)
-
-    assert country_run.main([
-        "--country", "co", "--scope", scope, "--locations-file", str(locations),
-        "--terms", "query one,query two", "--out", str(output), "--collect",
-    ]) == 0
-
-    assert len(calls) == 1
-    assert calls[0][0] == "co"
-    assert calls[0][1]["locations_file"] == locations
-    assert calls[0][1]["terms"] == ["query one", "query two"]
-    copied = output / "country_products" / f"co_{scope}.xlsx"
-    assert copied.read_bytes() == book.read_bytes()
-    assert (output / "inputs" / "01_locations.csv").read_bytes() == locations.read_bytes()
-    assert (output / "plan.json").is_file()
-    manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
-    assert manifest["status"] == "completed_country_collection"
-    assert manifest["workbook"]["sha256"] == hashlib.sha256(book.read_bytes()).hexdigest()
-    assert not (output / "FAILED.json").exists()
-    assert json.loads(capsys.readouterr().out)["status"] == manifest["status"]
 
 
 def test_both_scopes_forward_only_selected_country_to_release(tmp_path, monkeypatch, capsys):

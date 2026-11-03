@@ -10,54 +10,16 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import math
 from pathlib import Path
 import tempfile
 
-from openpyxl import load_workbook
-
 from rappi_co.beverages import SSB_CANDIDATE_FAMILIES
-from rappi_co.export.country_product_workbooks import CountryExcel, DISPLAY, FIELD_SETS
 from rappi_co.export.integrated_deliverable import canonical_row, observation_key
+from rappi_co.export.product_workbook import write_product_workbook
 from rappi_co.release_update import _csv, _manifest_output, _record
 
 
 SHEETS = ("SSBs", "Water", "Alcohol")
-
-
-def _validate(path: Path, expected: dict[str, list[dict]]) -> None:
-    book = load_workbook(path, read_only=True, data_only=False)
-    try:
-        if book.sheetnames != list(SHEETS):
-            raise ValueError("Unexpected beverage product worksheets")
-        for name in SHEETS:
-            iterator = book[name].iter_rows()
-            fields = FIELD_SETS[name]
-            if [cell.value for cell in next(iterator)] != [DISPLAY[field] for field in fields]:
-                raise ValueError(f"Product headers differ: {name}")
-            rows = expected[name]
-            count = 0
-            for count, cells in enumerate(iterator, 1):
-                if count > len(rows):
-                    raise ValueError(f"Extra product rows: {name}")
-                for field, cell in zip(fields, cells, strict=True):
-                    value = rows[count - 1].get(field)
-                    if value == "":
-                        value = None
-                    if field == "discount_pct" and value is not None:
-                        value = float(value)
-                    if cell.data_type in {"f", "e"}:
-                        raise ValueError(f"Formula or error in product output: {name}/{field}")
-                    numeric = isinstance(value, (int, float)) and not isinstance(value, bool)
-                    equal = (isinstance(cell.value, (int, float)) and
-                             not isinstance(cell.value, bool) and
-                             math.isclose(cell.value, value, rel_tol=1e-12, abs_tol=1e-10)) if numeric else cell.value == value
-                    if not equal:
-                        raise ValueError(f"Product value differs from source: {name}/{field}")
-            if count != len(rows):
-                raise ValueError(f"Product row count differs: {name}")
-    finally:
-        book.close()
 
 
 def export_beverage_workbook(manifest_path: Path, data_root: Path, out: Path) -> dict:
@@ -113,16 +75,7 @@ def export_beverage_workbook(manifest_path: Path, data_root: Path, out: Path) ->
     out.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix=".beverage-products-", dir=out.parent) as directory:
         temporary = Path(directory) / out.name
-        excel = CountryExcel(temporary, plan.get("country"))
-        for name in tuple(excel.sheets):
-            if name not in SHEETS:
-                excel.workbook.remove(excel.sheets.pop(name))
-        for name in SHEETS:
-            excel.table(name, FIELD_SETS[name])
-            for row in expected[name]:
-                excel.append(name, row)
-        excel.save()
-        _validate(temporary, expected)
+        write_product_workbook(temporary, plan.get('country'), expected)
         # Refuse to publish if a saved input changed while it was being read.
         if manifest_path.read_bytes() != manifest_bytes:
             raise ValueError("Beverage source manifest changed during export")

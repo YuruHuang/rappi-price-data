@@ -38,6 +38,16 @@ python -m rappi_co.export.beverage_workbook --run-dir data/updates/co_demo_02
 
 Open `data/updates/co_demo_02/country_products/co_beverages_clean.xlsx`. No collection is repeated. The original workbook is retained. Change the run folder to match your own run; use `--out PATH.xlsx` if the default clean filename already exists.
 
+Tobacco-only runs also create the clean presentation, with `Technical specifications` and `Tobacco products`. Runs using `--scope both` create the same five tabs as the published country workbooks. No separate formatting command is needed for a new collection.
+
+To format an older saved tobacco or combined run without collecting again:
+
+```sh
+python -m rappi_co.export.product_workbook --run-dir data/updates/YOUR_RUN
+```
+
+The new file ends in `_clean.xlsx` and keeps the original output. The same command also accepts beverage-only runs.
+
 ## Existing published files
 
 The final files are in [`datasets/country_products/`](datasets/country_products/).

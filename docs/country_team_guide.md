@@ -133,9 +133,11 @@ This uses configured terms for both topics. Omit country flags only when all fou
 
 ## Review before sharing
 
-For both topics, review `manifest.json`, `update_state.json`, `inputs/`, and the workbook under `country_products/`. Keep `raw/tobacco/` and `raw/beverages/`, which contain source responses, search manifests, and derived topic outputs. Review beverage audit, query-yield, coverage, and review records as well as the final workbook. For a single topic, the wrapper writes `plan.json`, `inputs/`, `source/`, `manifest.json`, and a topic workbook under `country_products/`; a failure writes `FAILED.json`.
+For both topics, review `manifest.json`, `inputs/`, and the workbook under `country_products/`. An interrupted run also keeps `update_state.json` for resuming; it is removed after success. Keep `raw/tobacco/` and `raw/beverages/`, which contain source responses, search manifests, and derived topic outputs. Review beverage audit, query-yield, coverage, and review records as well as the final workbook. For a single topic, the wrapper writes `plan.json`, `inputs/`, `source/`, `manifest.json`, and a topic workbook under `country_products/`; a failure writes `FAILED.json`.
 
 For `--scope beverages`, the final `<code>_beverages.xlsx` has exactly three product tabs: `SSBs`, `Water`, and `Alcohol`. Their labels, column order, numeric formats, category colors, filters, and hidden evidence fields match the published country product workbooks. The detailed workbook with `summary`, `items`, `review`, and coverage tables remains in `source/`. A JSON manifest beside the clean workbook records source hashes and row counts. All three category tabs are written even when a category is empty.
+
+For `--scope tobacco`, `<code>_tobacco.xlsx` has `Technical specifications` and `Tobacco products`, using the same presentation. With `--scope both`, each country workbook has all five published tabs: `Technical specifications`, `Tobacco products`, `SSBs`, `Water`, and `Alcohol`. Technical specifications are generated from the current run's dates, locations, counts, and selected fields; they do not copy historical sample counts.
 
 ### Format a saved beverage run
 
@@ -150,5 +152,15 @@ open data/updates/co_demo_02/country_products/co_beverages_clean.xlsx
 Replace the run folder with your own. The command verifies the saved source manifests and category membership, preserves the original files, and writes a new workbook and JSON manifest. Use `--out PATH.xlsx` for another new filename. A run folder can be moved before formatting as long as its saved `source/` outputs and `manifest.json` stay together.
 
 Formatting only reorganizes the returned observations. For example, `--terms "agua,cerveza"` replaces the full beverage plan with two searches. It may return a few incidental SSB candidates, but it does not run the soda, juice, energy-drink, and other searches in the original full list. Omit term overrides to retain that full list, or supply a complete edited country list.
+
+### Format any completed saved run
+
+The general formatter supports all three scopes:
+
+```zsh
+python -m rappi_co.export.product_workbook --run-dir data/updates/YOUR_RUN
+```
+
+It writes `<code>_tobacco_clean.xlsx` for tobacco, `<code>_beverages_clean.xlsx` for beverages, or `<code>_products_clean.xlsx` for combined runs. Existing workbooks are preserved. Add `--out PATH.xlsx` to choose another new filename. For a combined run with several countries, add `--country co` to select one; choosing a single output filename requires selecting one country. Keep the completed run manifest and its `source/` or `raw/` folders together if you move the package.
 
 A completed package checks source hashes, row identities, category partitions, and workbook contents. Human review still matters: examine unexpected zero results, irrelevant products, duplicate sightings, capped store groups, and uncertain classification. A row describes a listing at a sampled place and time. It does not establish sales, national availability, or confirmed sugar content.
