@@ -138,9 +138,18 @@ def main(argv=None) -> int:
             products = args.out / "country_products"
             products.mkdir()
             workbook = products / f"{args.country}_{args.scope}.xlsx"
-            shutil.copyfile(collected["deliverable"]["xlsx"], workbook)
+            workbook_export = None
+            if args.scope == "beverages":
+                from rappi_co.export.beverage_workbook import export_beverage_workbook
+                workbook_export = export_beverage_workbook(
+                    Path(collected["deliverable"]["manifest"]), args.out / "source", workbook,
+                )
+            else:
+                shutil.copyfile(collected["deliverable"]["xlsx"], workbook)
             manifest = {"status": "completed_country_collection", "generated_at_utc": datetime.now(timezone.utc).isoformat(),
                         **report, "result": collected, "workbook": _record(workbook)}
+            if workbook_export is not None:
+                manifest["workbook_export"] = workbook_export
             (args.out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             print(json.dumps({"status": manifest["status"], "workbook": str(workbook.resolve()),
                               "manifest": str((args.out / "manifest.json").resolve())}, indent=2))

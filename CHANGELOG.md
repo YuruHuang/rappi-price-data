@@ -1,5 +1,10 @@
 # Changelog
 
+## Clean beverage workbooks
+
+- Beverage-only country collections now write the clean `SSBs`, `Water`, and `Alcohol` tabs using the published country workbook's presentation, rather than copying the diagnostic workbook into `country_products/`.
+- Added an offline command to format a completed beverage run without collecting again. It verifies source hashes, identities, and the exact SSB candidate membership, and preserves review and comparison records in the source files.
+
 ## Unreleased
 
 - Added `python -m rappi_co.run` for fresh country-team collections with selected country, scope, locations, and query lists or files.

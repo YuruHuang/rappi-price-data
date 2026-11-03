@@ -115,9 +115,9 @@ def test_terms_file_is_loaded_for_selected_scope(tmp_path, capsys):
     assert not output.exists()
 
 
-@pytest.mark.parametrize("scope", ["tobacco", "beverages"])
-def test_single_scope_collection_copies_workbook_and_saves_inputs(
-        tmp_path, monkeypatch, capsys, scope):
+def test_tobacco_collection_copies_workbook_and_saves_inputs(
+        tmp_path, monkeypatch, capsys):
+    scope = "tobacco"
     locations = _locations(tmp_path)
     output = tmp_path / "collection"
     book = tmp_path / "result.xlsx"

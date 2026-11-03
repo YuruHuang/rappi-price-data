@@ -135,4 +135,20 @@ This uses configured terms for both topics. Omit country flags only when all fou
 
 For both topics, review `manifest.json`, `update_state.json`, `inputs/`, and the workbook under `country_products/`. Keep `raw/tobacco/` and `raw/beverages/`, which contain source responses, search manifests, and derived topic outputs. Review beverage audit, query-yield, coverage, and review records as well as the final workbook. For a single topic, the wrapper writes `plan.json`, `inputs/`, `source/`, `manifest.json`, and a topic workbook under `country_products/`; a failure writes `FAILED.json`.
 
+For `--scope beverages`, the final `<code>_beverages.xlsx` has exactly three product tabs: `SSBs`, `Water`, and `Alcohol`. Their labels, column order, numeric formats, category colors, filters, and hidden evidence fields match the published country product workbooks. The detailed workbook with `summary`, `items`, `review`, and coverage tables remains in `source/`. A JSON manifest beside the clean workbook records source hashes and row counts. All three category tabs are written even when a category is empty.
+
+### Format a saved beverage run
+
+For an existing beverage-only run, no new collection is needed to create the clean layout:
+
+```zsh
+python -m rappi_co.export.beverage_workbook \
+  --run-dir data/updates/co_demo_02
+open data/updates/co_demo_02/country_products/co_beverages_clean.xlsx
+```
+
+Replace the run folder with your own. The command verifies the saved source manifests and category membership, preserves the original files, and writes a new workbook and JSON manifest. Use `--out PATH.xlsx` for another new filename. A run folder can be moved before formatting as long as its saved `source/` outputs and `manifest.json` stay together.
+
+Formatting only reorganizes the returned observations. For example, `--terms "agua,cerveza"` replaces the full beverage plan with two searches. It may return a few incidental SSB candidates, but it does not run the soda, juice, energy-drink, and other searches in the original full list. Omit term overrides to retain that full list, or supply a complete edited country list.
+
 A completed package checks source hashes, row identities, category partitions, and workbook contents. Human review still matters: examine unexpected zero results, irrelevant products, duplicate sightings, capped store groups, and uncertain classification. A row describes a listing at a sampled place and time. It does not establish sales, national availability, or confirmed sugar content.

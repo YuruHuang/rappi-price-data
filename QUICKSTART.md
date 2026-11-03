@@ -28,6 +28,16 @@ python -m rappi_co.run --country co --scope beverages \
 
 This also keeps the full country's beverage terms. Custom lists are optional and replace the default list for that run. To add terms without dropping the existing country and brand queries, first export the full list as shown in [the detailed country team guide](docs/country_team_guide.md#prepare-your-search-lists), then edit the copy. Use `--terms-file` for TXT, CSV, TSV, XLSX, JSON, or YAML queries.
 
+After a beverage-only collection, open `country_products/co_beverages.xlsx` inside your run folder. It has three clean tabs: `SSBs`, `Water`, and `Alcohol`. Review and diagnostic tables remain separately in `source/`.
+
+If you already collected beverages with an older version and got tabs such as `summary` and `items`, format that saved run with:
+
+```sh
+python -m rappi_co.export.beverage_workbook --run-dir data/updates/co_demo_02
+```
+
+Open `data/updates/co_demo_02/country_products/co_beverages_clean.xlsx`. No collection is repeated. The original workbook is retained. Change the run folder to match your own run; use `--out PATH.xlsx` if the default clean filename already exists.
+
 ## Existing published files
 
 The final files are in [`datasets/country_products/`](datasets/country_products/).
