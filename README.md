@@ -4,7 +4,7 @@ This repository contains Rappi product-listing data and the code used to collect
 
 ## For country teams
 
-The main task is to collect fresh listings for **your country, your delivery points, and your search terms**. Start with the [country team guide](docs/country_team_guide.md) or [quick start](QUICKSTART.md).
+The main task is to collect fresh listings for **your country, your delivery points, and your search terms**. Start with the [run sheet](docs/run_sheet.md) for the commands, or use the [country team guide](docs/country_team_guide.md) for full instructions.
 
 There is no fixed delivery-point count. Supply a CSV, TSV, XLSX, JSON, or YAML file using `--locations-file`. At minimum each row needs `address`, `lat`, and `lng`; include `slug` for a stable location ID and optionally `city`, `district`, and `country_code`. Coordinates must be supplied; the collector does not geocode street addresses. For example:
 
