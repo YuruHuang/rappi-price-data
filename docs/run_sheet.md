@@ -2,6 +2,8 @@
 
 Country teams · macOS Terminal
 
+[Download the landscape cheat sheet](rappi_cheatsheet.pdf) for a compact visual reference.
+
 Choose your delivery points and search terms, then collect a new Excel workbook. These examples use Colombia. For another country, use its code in `--country`, the term-file paths, and your output folder name. Keep `rappi_co` as written.
 
 **Country codes**  `ar` Argentina · `co` Colombia · `pe` Peru · `mx` Mexico
