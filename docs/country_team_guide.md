@@ -105,7 +105,7 @@ Requests run sequentially with default delays of one to three seconds. `--min-de
 
 For an interrupted `--scope both` collection, repeat its original command, inputs, output directory, and `--collect`, adding `--resume`. Resume checks the saved plan and rejects changed locations, queries, or configuration. Single-topic collections do not support resume through this wrapper; retain the failed run for diagnosis and choose a new folder for the next attempt.
 
-## Collect one topic or several countries
+## Collect one topic
 
 For only beverages with all configured country terms, use `--scope beverages`:
 
@@ -119,17 +119,61 @@ python -m rappi_co.run --country co \
 
 Use `--scope tobacco` for tobacco alone. A single-topic run can filter points with repeatable `--address SLUG` options. For `--scope both`, put exactly the intended points into the supplied locations file. Do not combine `--terms-file` with the topic-specific terms-file option; for both topics use their separate files.
 
-For several countries, the lower-level release command accepts repeated country selections:
+## Collect several countries
+
+For several countries using their original tobacco and beverage lists, put all delivery points in one file. Start with the supplied example and edit your copy:
+
+```zsh
+mkdir -p inputs
+cp -n config/examples/locations_multi_country.csv inputs/multi_country_locations.csv
+open -e inputs/multi_country_locations.csv
+```
+
+Keep `country_code` on every row (`ar`, `co`, `pe`, or `mx`). Add or remove locations as needed; every selected country needs at least one valid matching point. The entire file is validated, including rows for countries you have not selected. `cp -n` preserves an existing copy; check that copy or choose a new filename when repeating these steps.
+
+Select Colombia and Mexico by repeating `--country`:
 
 ```zsh
 python -m rappi_co.release_update \
   --country co --country mx \
-  --locations-file config/examples/locations_multi_country.csv \
+  --locations-file inputs/multi_country_locations.csv \
   --out data/updates/co_mx_20261103_demo \
   --dry-run
 ```
 
-This uses configured terms for both topics. Omit country flags only when all four countries are intended. Review the plan before replacing `--dry-run` with `--collect`.
+This keeps each country's own original terms, including local and brand queries. With the unchanged example locations, Colombia plans 152 searches and Mexico plans 154, for 306 total. Review the locations and both query lists before replacing `--dry-run` with `--collect`. The resulting `country_products/` folder contains `colombia.xlsx` and `mexico.xlsx`, each with all five tabs. Omit both country options to select all four countries; the location file must then have matching points for all four.
+
+`release_update` always collects both topics. It does not accept `--scope`, `--terms-file`, `--tobacco-terms-file`, or `--beverage-terms-file`. Its inline `--tobacco-terms` and `--beverage-terms` options apply the same replacement list to every selected country.
+
+### Use different edited terms for each country
+
+Run `rappi_co.run` once per country when teams want different edited lists. First prepare Colombia's full term copies as described above. Copy Mexico's full lists too, then edit the copies:
+
+```zsh
+cp -n config/examples/terms/mx_tobacco.csv inputs/mx_tobacco_full_terms.csv
+cp -n config/examples/terms/mx_beverages.csv inputs/mx_beverages_full_terms.csv
+open -e inputs/mx_tobacco_full_terms.csv inputs/mx_beverages_full_terms.csv
+```
+
+Use the same tagged location file, but name each country's term files explicitly:
+
+```zsh
+python -m rappi_co.run --country co --scope both \
+  --locations-file inputs/multi_country_locations.csv \
+  --tobacco-terms-file inputs/co_tobacco_full_terms.csv \
+  --beverage-terms-file inputs/co_beverages_full_terms.csv \
+  --out data/updates/co_custom_MY_RUN --dry-run
+
+python -m rappi_co.run --country mx --scope both \
+  --locations-file inputs/multi_country_locations.csv \
+  --tobacco-terms-file inputs/mx_tobacco_full_terms.csv \
+  --beverage-terms-file inputs/mx_beverages_full_terms.csv \
+  --out data/updates/mx_custom_MY_RUN --dry-run
+```
+
+Each command selects only its country's location rows and creates a separate country package. A supplied term file replaces that topic's entire default list; keep all the original rows you still want to search. After checking each plan, repeat each command with `--collect` instead of `--dry-run`.
+
+For beverage-only or tobacco-only runs across countries, use the same one-command-per-country approach with the corresponding `--scope` and `--terms-file`. Omit term options to retain the original country list. `rappi_co.run` takes one country per invocation; repeatable country selection belongs to `release_update`.
 
 ## Review before sharing
 

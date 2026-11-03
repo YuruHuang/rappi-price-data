@@ -47,6 +47,21 @@ python -m rappi_co.export.product_workbook --run-dir data/updates/YOUR_RUN
 
 It writes a new `*_clean.xlsx` beside the existing output. For a combined run with several countries, add `--country co` to choose one country; otherwise it formats every country in that saved run.
 
+### Run several countries
+
+Put the delivery points in one file, with `country_code` on every row and at least one matching point for each selected country. Then repeat `--country` to choose the countries:
+
+```sh
+python -m rappi_co.release_update \
+  --country co --country mx \
+  --locations-file config/examples/locations_multi_country.csv \
+  --out data/updates/co_mx_MY_RUN --dry-run
+```
+
+This keeps each country's original tobacco and beverage terms. Review both plans, then replace `--dry-run` with `--collect`. The output has separate `colombia.xlsx` and `mexico.xlsx` files under `country_products/`, each with all five tabs. Omit the country options to run all four countries, supplying matching locations for all four.
+
+`release_update` always collects both topics and has no `--scope` or term-file options. Its inline term overrides apply the same replacement list to every selected country. For different edited lists by country, or a single topic across countries, run `rappi_co.run` once per country with that country's files. See the [multi-country instructions](docs/country_team_guide.md#collect-several-countries) for commands.
+
 ### Reference locations and shared default terms
 
 The following points document the archived study and remain the defaults when no custom file is supplied. Country teams can use their own list without editing these reference files. Keep the selected list stable during a run and retain its snapshot and manifest with the data.
